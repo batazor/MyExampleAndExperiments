@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @user.name
+p
+  strong Email:
+  = @user.email
+p
+  strong Location:
+  = @user.location
+p
+  strong Description:
+  = @user.description
+
+= link_to 'Edit', edit_user_path(@user)
+'|
+= link_to 'Back', users_path
