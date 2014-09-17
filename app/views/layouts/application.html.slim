@@ -30,8 +30,14 @@ html lang="en"
             = link_to 'Users', users_path
 
 
-    div class="row"
-      div class="columns large-12"
+    div.row
+      div.columns.large-12
+        br
+        - flash.each do |type, message|
+          div.alert-box.radius class="#{ flass_class type }" data-alert=""
+            = message
+            a.close href="#" &times;
+
         == yield
 
     = javascript_include_tag "application"
