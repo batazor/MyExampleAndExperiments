@@ -1,11 +1,37 @@
-DOCTYPE html
-html lang='ru'
+doctype html
+html lang="en"
   head
-    title Micropost
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    title == content_for?(:title) ? yield(:title) : "Micropost"
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tag
 
   body
+    nav.top-bar data-topbar="" role="navigation"
+      ul.title-area
+        li.name
+          h1
+            a href="#" Micropost
+        /! Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+        li.toggle-topbar.menu-icon
+          a href="#"
+            span Menu
 
-    == yield
+      section.top-bar-section
+        /! Left Nav Section
+        ul.left
+          li
+            = link_to 'Posts', posts_path
+          li
+            = link_to 'Users', users_path
+
+
+    div class="row"
+      div class="columns large-12"
+        == yield
+
+    = javascript_include_tag "application"

@@ -12,4 +12,4 @@
   .field
     = f.label :user_id
     = f.select :user_id, options_for_select(@users)
-  .actions = f.submit 'Save'
+  .actions = f.submit nil, class: 'button'

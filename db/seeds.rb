@@ -1,6 +1,7 @@
 User.delete_all
 
 User.create(
+  id: "1",
   name: "Ivanov",
   email: "ivan@gmail.com",
   location: "ru",
@@ -8,6 +9,7 @@ User.create(
 )
 
 User.create(
+  id: "2",
   name: "Petr",
   email: "petr.uk@mail.ru",
   location: "ua",
@@ -23,5 +25,5 @@ Post.create(
 
 Post.create(
   content: "Сенсация, сенсация, сенсация",
-  user_id: 1
+  user_id: 2
 )

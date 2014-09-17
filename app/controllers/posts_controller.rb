@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    @users = User.all.map {|user| [user.name, user.id]}
   end
 
   # POST /posts
