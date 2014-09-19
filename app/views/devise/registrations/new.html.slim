@@ -3,28 +3,34 @@ h2 Sign up
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
 
-  = f.label :name
-  = f.text_field :name, autofocus: true
+  .row
+    .columns.large-6
+      .field
+        = f.label :name
+        = f.text_field :name, autofocus: true
 
-  = f.label :location
-  = f.text_field :location
+      .field
+	      = f.label :location
+	      = f.text_field :location
 
-  = f.label :description
-  = f.text_area :description
+      .field
+	      = f.label :description
+	      = f.text_area :description, rows: 5
 
-  = f.label :email
-  = f.email_field :email
+    .columns.large-6
+      .field
+	      = f.label :email
+	      = f.email_field :email
 
-  = f.label :password
-  - if @validatable
-    i
-      =' @minimum_password_length
-      | characters minimum
-  = f.password_field :password, autocomplete: "off"
+      .field
+        = f.label :password
+        = f.password_field :password, autocomplete: "off"
 
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation, autocomplete: "off"
+      .field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "off"
 
-  = f.submit "Sign up", class: "button"
+  .field
+    = f.submit "Sign up", class: "button"
 
 = render "devise/shared/links"

@@ -2,20 +2,17 @@ h1 Listing posts
 
 = link_to 'New Post', new_post_path, class: "button"
 
-table
-  thead
-    tr
-      th Content
-      th User
-      th
-      th
-      th
-
-  tbody
-    - @posts.each do |post|
-      tr
-        td = post.content
-        td = post.user.name
-        td = link_to 'Show', post
-        td = link_to 'Edit', edit_post_path(post)
-        td = link_to 'Destroy', post, data: {:confirm => 'Are you sure?'}, :method => :delete
+- @posts.each do |post|
+  hr
+  .row
+    .columns.large-9.medium-6
+      blockquote
+        = post.content
+        cite
+          = post.user.name
+          em #{ time_ago_in_words post.created_at } ago
+    .columns.large-3.medium-6
+      ul.inline-list
+        li =' link_to 'Show', post
+        li =' link_to 'Edit', edit_post_path(post)
+        li =' link_to 'Destroy', post, data: {:confirm => 'Are you sure?'}, :method => :delete
