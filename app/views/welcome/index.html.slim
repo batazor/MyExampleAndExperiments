@@ -1,0 +1,7 @@
+#form
+  = form_for :link, remote: true, url: links_path, :html => { :id => "new_link" } do |f|
+    = f.text_field :url, :placeholder => "http://example.com/page"
+    = f.submit "reduce"
+
+#reply
+  p.title#your_link 

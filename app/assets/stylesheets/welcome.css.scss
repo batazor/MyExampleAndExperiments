@@ -1,0 +1,57 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#form {
+  display: flex;
+  margin: 100px 0 50px 0;
+
+  form {
+    margin: auto;
+
+    input:not([type="submit"]) {
+      display: flex;
+      margin: 15px auto;
+      padding: 20px;
+      border: 1px solid rgb(52, 78, 93);
+      color: #666;
+      opacity: .94;
+      border-radius: 5px;
+      text-align: center;
+      width: 280px;
+      transition: all .3s;
+
+      &:focus:not([type="submit"]) {
+        display: flex;
+        border: 1px solid rgb(3, 154, 136);
+        opacity: 1;
+        width: 378px;
+        outline: none;
+        color: #55acee;
+      }
+    }
+
+    input[type="submit"] {
+      padding: 15px 25px;
+      font-size: 140%;
+      width: 420px;
+      color: #fff;
+      background-color: #55acee;
+      box-shadow: 0px 5px 0px 0px #3C93D5;
+      outline: none;
+      border: none;
+      border-radius: 2px;
+    }
+  }
+}
+
+#reply {
+  display: flex;
+
+  .title {
+    margin: auto;
+    opacity: 0.9;
+    background: #fff;
+    padding: 15px 25px;
+    border-radius: 5px;
+  }
+}
