@@ -59,35 +59,35 @@ body {
 
 @media screen and (max-width: 480px) {
   body {
-    background: url('background/bg-480.jpg') no-repeat center center fixed;
+    background: url(#{ asset_path('background/bg-480.jpg') }) no-repeat center center fixed;
     background-size: cover;
   }
 }
 
 @media screen and (max-width: 800px) and (min-width: 481px) {
   body {
-    background: url('background/bg-800.jpg') no-repeat center center fixed;
+    background: url(#{ asset_path('background/bg-800.jpg') }) no-repeat center center fixed;
     background-size: cover;
   }
 }
 
 @media screen and (max-width: 1024px) and (min-width: 801px) {
   body {
-    background: url('background/bg-1024.jpg') no-repeat center center fixed;
+    background: url(#{ asset_path('background/bg-1024.jpg') }) no-repeat center center fixed;
     background-size: cover;
   }
 }
 
 @media screen and (max-width: 1280px) and (min-width: 1025px) {
   body {
-    background: url('background/bg-1280.jpg') no-repeat center center fixed;
+    background: url(#{ asset_path('background/bg-1280.jpg') }) no-repeat center center fixed;
     background-size: cover;
   }
 }
 
 @media screen and (max-width: 1366px) and (min-width: 1281px) {
   body {
-    background: url('background/bg-1366.jpg') no-repeat center center fixed;
+    background: url(#{ asset_path('background/bg-1366.jpg') }) no-repeat center center fixed;
     background-size: cover;
   }
 }
