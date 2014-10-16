@@ -11,7 +11,7 @@ class LinksController < ApplicationController
       @hash = Digest::SHA1.hexdigest params[:link][:url]
       $redis.set(@hash[0..12], params[:link][:url]);
 
-      @reply = "Your link: " + @hash[0..12]
+      @reply = "Your link: <a href='http://mini-url.herokuapp.com/" + @hash[0..12] + "'>" + "http://mini-url.herokuapp.com/" + @hash[0..12] + "</a>"
     elsif
       @reply = "address not available"
     end
