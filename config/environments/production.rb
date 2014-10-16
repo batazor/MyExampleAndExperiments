@@ -81,5 +81,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Redis Heroku
-  ENV["REDISTOGO_URL"] = 'redis://redistogo:461330f1d223ebb335f498459ca8b3a7@greeneye.redistogo.com:10184/'
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:d2ca64120f77b311bcffc37ddc8274c2@greeneye.redistogo.com:10054/'
 end
