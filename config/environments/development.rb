@@ -34,4 +34,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Redis Heroku
+  # ENV["REDISTOGO_URL"] = 'redis://redistogo:461330f1d223ebb335f498459ca8b3a7@greeneye.redistogo.com:10184/'
 end

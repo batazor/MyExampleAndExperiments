@@ -8,7 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails', '~> 3.1.2'
 gem 'turbolinks',   '~> 2.3.0'
 gem 'jbuilder',     '~> 2.0'
-gem 'redis',        '2.1.1'
+gem 'redis'
 gem 'sdoc',         '~> 0.4.0', group: :doc
 
 group :development do
@@ -21,4 +21,5 @@ group :production do
   gem 'unicorn'
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
+  gem 'resque'
 end

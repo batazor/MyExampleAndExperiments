@@ -79,4 +79,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Redis Heroku
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:461330f1d223ebb335f498459ca8b3a7@greeneye.redistogo.com:10184/'
 end
