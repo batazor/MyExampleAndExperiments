@@ -8,7 +8,8 @@ var methodOverride = require('method-override');
 var app = express();
 
 // configuration
-mongoose.connect('mongodb://localhost/test');
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/todo';
+mongoose.connect(mongoUri);
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
@@ -70,5 +71,6 @@ app.get('*', function(req, res){
 });
 
 // application
-app.listen(8080);
+var port = process.env.PORT || 8080;
+app.listen(port);
 console.log("App listening on port 8080");
