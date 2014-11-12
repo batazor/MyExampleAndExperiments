@@ -9,6 +9,7 @@ gem 'jquery-rails', '~> 3.1.2'
 gem 'uglifier',     '~> 2.5.3'
 gem 'turbolinks',   '~> 2.5.2'
 gem 'jbuilder',     '~> 2.2.4'
+gem 'devise',       '~> 3.4.1'
 gem 'sdoc',         '~> 0.4.1', group: :doc
 
 group :development do
