@@ -37,4 +37,7 @@ Rails.application.configure do
 
   # Devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.to_prepare do
+      Devise::SessionsController.layout "login" 
+  end
 end

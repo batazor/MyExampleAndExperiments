@@ -36,4 +36,10 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Devise
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.to_prepare do
+      Devise::SessionsController.layout "login"
+  end
 end

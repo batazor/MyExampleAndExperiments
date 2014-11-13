@@ -75,4 +75,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Devise
+  config.to_prepare do
+      Devise::SessionsController.layout "login"
+  end
 end
