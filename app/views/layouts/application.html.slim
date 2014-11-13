@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Quest-rails
+    meta name="keywords" content="Blog Quest-rails"
+    meta name="author" content="batazor"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+
+    - if user_signed_in?
+      p
+        | Welcome
+        = current_user.email
+      = link_to 'Logged In [click to logout]', destroy_user_session_path, :method => :delete
+    - else
+      p You are not signed in.
+      = link_to 'Login', new_user_session_path
+
+    == yield
