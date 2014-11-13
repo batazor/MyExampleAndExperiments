@@ -4,11 +4,11 @@ html
     title Quest-rails
     meta name="keywords" content="Blog Quest-rails"
     meta name="author" content="batazor"
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-  body
+  body class='#{controller.controller_name}'
 
     - if user_signed_in?
       p
