@@ -1,3 +1,8 @@
+/*
+*
+*= require normalize-rails
+*/
+
 body{
   background: url(#{ asset_path('admin/background.svg') }) no-repeat center center fixed;
   background-size: cover;
