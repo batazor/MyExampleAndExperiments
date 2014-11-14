@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :categories
   end
 
   scope '/admin' do

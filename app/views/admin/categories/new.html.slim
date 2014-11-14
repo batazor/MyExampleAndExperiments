@@ -1,0 +1,15 @@
+h1 New Catigories
+
+= form_for :article, url: admin_categories_path do |f|
+  p
+    = f.label :title
+    br
+    = f.text_field :title
+
+  p
+    = f.label :text
+    br
+    = f.text_area :text
+
+  p
+    = f.submit
