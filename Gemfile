@@ -14,6 +14,7 @@ gem 'modernizr-rails',    '~> 2.7.1'
 gem 'devise',             '~> 3.4.1'
 gem 'sdoc',               '~> 0.4.1', group: :doc
 gem 'font-awesome-rails', '~> 4.2.0'
+gem "wysiwyg-rails"
 
 group :development do
   gem 'spring',        '~> 1.1.3'

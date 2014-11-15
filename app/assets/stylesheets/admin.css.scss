@@ -1,9 +1,12 @@
 /*
- *= require_self
- *= require normalize-rails
- *= require font-awesome
- *= require admin_ui/menu.css.scss
- */
+*= require_self
+*= require normalize-rails
+*= require froala_editor.min.css
+*= require froala_style.min.css
+*= require font-awesome
+*= require admin_ui/menu.css.scss
+*= require admin_ui/adminui.css.scss
+*/
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
@@ -65,4 +68,16 @@ a {
     font-size: 1.8em;
     line-height: 1.5;
   }
+}
+
+.content {
+		width: 100%;
+
+		.info {
+			width: 90%;
+			margin: 0 auto;
+			border: 3px solid white;
+			border-radius: 15px;
+			padding: 1em;
+		}
 }

@@ -162,6 +162,9 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
+    wysiwyg-rails (1.2.3)
+      font-awesome-rails (= 4.2.0.0)
+      railties (>= 3.2, < 5.0)
 
 PLATFORMS
   ruby
@@ -186,3 +189,4 @@ DEPENDENCIES
   turbolinks (~> 2.5.2)
   uglifier (~> 2.5.3)
   unicorn
+  wysiwyg-rails
