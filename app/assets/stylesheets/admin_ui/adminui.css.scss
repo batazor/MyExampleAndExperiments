@@ -156,3 +156,31 @@ $blue: #62B9ED;
     color: rgb(231, 42, 75);
   }
 }
+
+/*********************/
+/*** PAGINATION UI ***/
+/*********************/
+.pagination {
+  text-align: center;
+
+  span {
+    min-width: 22px;
+    background: rgba(115, 147, 168, 0.9);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    padding: 6px;
+
+    &:hover, &:focus{
+      background: rgba(40,110,250,0.9);
+    }
+
+    a {
+      padding: 6px;
+      border-radius: 3px;
+    }
+  }
+
+  .current {
+    background: rgba(40,110,250,0.9);
+  }
+}

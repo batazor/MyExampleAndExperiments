@@ -11,3 +11,5 @@ ul.list
       = link_to category.title, admin_category_path(category.id)
       = link_to 'Edit', edit_admin_category_path(category.id), class: 'update'
       = link_to 'Delete', admin_category_path(category.id), :method => 'delete', class: 'destroy'
+
+= paginate @categories

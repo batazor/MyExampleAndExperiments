@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
   layout "admin"
 
   def index
-    @categories = Category.all
+    @categories = Category.order("title").page(params[:page]).per(10)
   end
 
   def new
