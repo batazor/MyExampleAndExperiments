@@ -1,0 +1,37 @@
+.back_link
+  = link_to "back", admin_posts_url
+
+h1 Edit Post
+
+.form
+  = form_for @post, url: admin_post_path do |f|
+    - if @post.errors.any?
+      #error_explanation
+        h2
+          =' pluralize(@post.errors.count, "error")
+          ' prohibited this category from being saved:
+        ul
+          - @post.errors.full_messages.each do |msg|
+            li
+              = msg
+
+    p
+      = f.label :title
+      = f.text_field :title
+
+    p
+      | Category: &#160;
+      .select
+        = f.select :category_id, Category.all.collect {|c| [c.title, c.id]}
+
+    p Text
+    p.textarea
+      = f.text_area :text, id: "edit"
+
+    p
+      = f.submit 'UPDATE POST', class: "btn-primary"
+
+javascript:
+  $(function() {
+    $('#edit').editable({inlineMode: false})
+  });

@@ -19,6 +19,10 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
+  def show
+    @category = Category.find(params[:id])
+  end
+
   def edit
     @category = Category.find(params[:id])
   end
@@ -38,10 +42,6 @@ class Admin::CategoriesController < ApplicationController
     @category.destroy
 
     redirect_to admin_categories_path
-  end
-
-  def show
-    @category = Category.find(params[:id])
   end
 
   private

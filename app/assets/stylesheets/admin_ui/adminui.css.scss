@@ -184,3 +184,29 @@ $blue: #62B9ED;
     background: rgba(40,110,250,0.9);
   }
 }
+
+/*****************/
+/*** SELECT UI ***/
+/*****************/
+.select {
+  position: relative;
+  border: 1px solid #fff;
+
+  select {
+    width: 100%;
+    padding: 8px;
+    margin: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #fff;
+    border: 0;
+    outline: none;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  option {
+    color: #000;
+  }
+}

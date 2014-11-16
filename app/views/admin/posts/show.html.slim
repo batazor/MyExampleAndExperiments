@@ -1,0 +1,18 @@
+.back_link
+  = link_to "back", admin_posts_path
+.update_link
+  = link_to "update", edit_admin_post_path(@post)
+
+h1.title
+  strong Title: &#160;
+  = @post.title.html_safe
+
+.content
+  .info
+    strong Category: &#160;
+    =' @post.category.title
+
+    br
+
+    strong Description:
+    =' @post.text.html_safe
