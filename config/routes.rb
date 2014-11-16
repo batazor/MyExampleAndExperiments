@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     get '/main', to: 'admin#main'
   end
 
-  root 'welcome#main'
+  root 'welcome#index'
 end

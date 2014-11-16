@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
-  def main
+  def index
+    @post = Post.order("id DESC").page(params[:page]).per(5)
   end
 end

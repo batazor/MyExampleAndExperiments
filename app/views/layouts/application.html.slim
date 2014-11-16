@@ -10,7 +10,47 @@ html
 
   body class='#{controller.controller_name}'
 
+    header
+      .fixed-content
+        img class="port" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95581/cat.jpg"
+        h2 BLOG - WEB DEVELOPER
+        p
+          ' Ab abusu ad usum non valet consequentia.
+        .icon-row
+          a href="https://twitter.com/batazor"
+            = fa_icon "twitter"
+
+          a href="http://codepen.io/batazor/"
+            = fa_icon "codepen"
+
+          a href="https://www.linkedin.com/in/batazor"
+            = fa_icon "linkedin"
+
+          a href="https://vk.com/batazor"
+            = fa_icon "vk"
+
     == yield
 
-    script
-			new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+    .footer
+      .fixed-content
+        .icon-row
+          .blue
+            a href="https://github.com/batazor"
+              = fa_icon "github"
+
+            a href="https://plus.google.com/103200860898406264319/posts"
+              = fa_icon "google-plus"
+
+            a href="http://stackoverflow.com/users/3197412/user3197412"
+              = fa_icon "stack-overflow"
+
+            a href="#"
+              = fa_icon "html5"
+
+            a href="#"
+            = fa_icon "skype"
+
+    		p Neither cow has not suffered.
+    		p Blog created for educational purposes and does not assume any semantic meaning.
+
+        = fa_icon "chevron-up"
