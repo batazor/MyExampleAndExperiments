@@ -19,7 +19,7 @@ gem 'kaminari'
 
 group :development do
   gem 'spring',        '~> 1.1.3'
-  gem 'better_errors', '~> 2.0.0'
+  gem 'better_errors', '~> 1.1.0'
   gem 'rspec-rails'
 end
 
