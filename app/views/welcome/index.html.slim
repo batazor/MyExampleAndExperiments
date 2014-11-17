@@ -2,7 +2,8 @@
   .second
     .fixed-content
       h1
-        = post.title.html_safe
+        a href="#{post_index_path(post.id)}"
+          = post.title.html_safe
       p
         = post.text.html_safe
 

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/post/:id', to: 'post#index', :as => 'post_index'
+
   devise_for :users
 
   devise_scope :user do
