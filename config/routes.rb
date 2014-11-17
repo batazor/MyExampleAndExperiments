@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/post/:id', to: 'post#index', :as => 'post_index'
 
   resources :post do
-    resources :comments
+    resources :comments, only: [:create]
   end
 
   devise_for :users
