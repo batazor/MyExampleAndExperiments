@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   get '/post/:id', to: 'post#index', :as => 'post_index'
 
+  resources :post do
+    resources :comments
+  end
+
   devise_for :users
 
   devise_scope :user do

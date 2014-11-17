@@ -148,3 +148,40 @@ header {
     color: white;
   }
 }
+
+/********************/
+/***  COMMENT UI  ***/
+/********************/
+.comment_block {
+  input, textarea {
+    border: 4px solid rgba(0,0,0,0.1);
+    padding: 8px 10px;
+    border-radius: 5px;
+    outline: 0;
+    width: 40%;
+    min-width: 350px;
+  }
+
+  input[type="submit"]:hover {
+    background: #3c7fc6;
+    color: #d2d6dc;
+    transition: all 0.7s ease;
+  }
+}
+
+.comment {
+  margin: 2em auto;
+  border-bottom: 4px solid #d2d6dc;
+  border-radius: 15px;
+
+  &:hover {
+    zoom: 1.1;
+  }
+
+  &:nth-child(odd):hover {
+    transform: rotate(0.5deg);
+  }
+  &:nth-child(even):hover {
+    transform: rotate(-0.5deg);
+  }
+}
