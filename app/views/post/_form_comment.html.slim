@@ -1,0 +1,13 @@
+.second
+  .fixed-content
+    .comment_block
+      h3 Add a comment:
+      = form_for ([@post, @post.comments.build]) do |f|
+        p
+          = f.text_field :author, placeholder: "Your name"
+
+        p
+          = f.text_area :comment, placeholder: "Your comments"
+
+        p
+          = f.submit

@@ -1,0 +1,12 @@
+.second
+  .fixed-content
+    h2 Comments
+    - @post.comments.each do |comment|
+      .comment
+        p
+          strong Commenter: &#160;
+          =' comment.author
+
+        p
+          strong Comment: &#160;
+          =' comment.comment

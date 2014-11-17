@@ -5,29 +5,5 @@
     p
       = @post.text.html_safe
 
-.second
-  .fixed-content
-    h2 Comments
-    - @post.comments.each do |comment|
-      .comment
-        p
-          strong Commenter: &#160;
-          =' comment.author
-
-        p
-          strong Comment: &#160;
-          =' comment.comment
-
-.second
-  .fixed-content
-    .comment_block
-      h3 Add a comment:
-      = form_for ([@post, @post.comments.build]) do |f|
-        p
-          = f.text_field :author, placeholder: "Your name"
-
-        p
-          = f.text_area :comment, placeholder: "Your comments"
-
-        p
-          = f.submit
+= render "comment_list"
+= render "form_comment"
