@@ -14,5 +14,11 @@ h1.title
 
     br
 
+    - unless @post.tag_list.empty?
+      strong Tags: &#160;
+      =' @post.tag_list
+
+      br
+
     strong Description:
     =' @post.text.html_safe

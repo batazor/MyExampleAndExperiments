@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
   get '/post/:id', to: 'post#index', :as => 'post_index'
+  get 'tags/:tag', to: 'welcome#index', as: :tag
 
   resources :post do
     resources :comments, only: [:create]

@@ -6,4 +6,8 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, length: { in: 2..50 }
   validates :text, presence: true
   validates :category_id, presence: true, numericality: { only_integer: true }
+
+  # For Tag system
+  acts_as_taggable # Alias for acts_as_taggable_on :tags
+  acts_as_taggable_on :skills, :interests
 end

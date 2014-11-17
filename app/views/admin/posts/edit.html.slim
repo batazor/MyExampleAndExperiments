@@ -20,6 +20,10 @@ h1 Edit Post
       = f.text_field :title
 
     p
+      = f.label :tag_list, "Tags (separated by commas)"
+      = f.text_field :tag_list
+
+    p
       | Category: &#160;
       .select
         = f.select :category_id, Category.all.collect {|c| [c.title, c.id]}
