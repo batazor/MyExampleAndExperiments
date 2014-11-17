@@ -9,6 +9,6 @@ Post.create(title: 'Hello World',
             category_id: 1)
 
 User.delete_all
-User.create(id: 1,
-            email: 'admin@admin.com',
-            encrypted_password: '$2a$10$PY3IrDRZIKobZbzODFxy6OcTMm/ZIA9yKUSIinREeleYr1PMGDqJ2')
+User.create(email: 'admin@admin.com',
+            password: 'admin123',
+            password_confirmation: 'admin123')
