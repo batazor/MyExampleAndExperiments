@@ -2,12 +2,15 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <cstring>
+#include <map>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <iostream>
 
 int main(int argc, char *argv[]) {
+  std::map <std::string,std::string> DB;  // Key-Value DB?
   int port = 8080;
   char ip_addr[16] = "127.0.0.1";
   int sock, listener;
@@ -57,19 +60,70 @@ int main(int argc, char *argv[]) {
   printf("Server run in %s:%d\n", ip_addr, addr.sin_port);
   listen(listener, 1);
 
+  char* query;
+  char buf_tmp[1024];
+  char query_type[4];
+  char query_key[256];
+  char query_value[1024] = "";
   while(1) {
+    strcpy(query_type, "");
+    strcpy(query_key, "");
+    strcpy(query_value, "");
     sock = accept(listener, NULL, NULL);
     if (sock < 0) {
       perror("accept");
       exit(3);
     }
 
-    while(1) {
-      bytes_read = recv(sock, buf, 1024, 0);
-      if(bytes_read <= 0) break;
-      send(sock, buf, bytes_read, 0);
+    bytes_read = recv(sock, buf, 1024, 0);
+
+    strcpy(buf_tmp, buf);
+    query = strtok(buf_tmp, " ");
+    for (int i=0; query != NULL; ++i) {
+      if (i == 0) {
+        strcpy(query_type, query);
+      } else if (i == 1) {
+        strcpy(query_key, query);
+      } else {
+        strcat(query_value, query);
+        strcat(query_value, " ");
+      }
+      query = strtok (NULL, " ");
     }
 
+    if (strcmp(query_type, "set") == 0) {
+      std::string query_set = "";
+      DB.insert ( std::make_pair(query_key, query_value) );
+      query_set = std::string("Add new {")+query_key+std::string(":'")+query_value+std::string("'}");
+      printf("> Add new {%s:'%s'}\n", query_key, query_value);
+      strcpy(buf, query_set.c_str());
+    } else if (strcmp(query_type, "get") == 0) {
+      if(DB.find(std::string(query_key)) != DB.end()) {
+        printf("> Key value {%s:'%s'}\n", DB.find(query_key)->first.c_str(), DB.find(query_key)->second.c_str());
+        strcpy(query_value, DB.find(query_key)->second.c_str());
+        strcpy(buf, query_value);
+      } else {
+        printf("> get: Not Keys\n");
+        strcpy(buf, "Not Keys");
+      }
+    } else if (strcmp(query_type, "all") == 0) {
+      strcpy(buf, "");
+      printf("> SELECT ALL\n");
+      int k=1;
+      std::string query_all_tmp = "";
+      for (std::map<std::string,std::string>::iterator it=DB.begin(); it!=DB.end(); ++it) {
+        query_all_tmp = it->first + " => " + it->second + "\n> ";
+        printf("> %d:\t %s => %s\n", k, it->first.c_str(), it->second.c_str());
+        ++k;
+        strcat(buf, query_all_tmp.c_str());
+      }
+      send(sock, buf, bytes_read, 0);
+    } else {
+      printf("> Error Query\n");
+      strcpy(buf, "Error Query");
+    }
+
+    send(sock, buf, bytes_read, 0);
     close(sock);
   }
 
