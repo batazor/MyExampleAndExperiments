@@ -93,7 +93,8 @@ int main(int argc, char *argv[]) {
 
     if (strcmp(query_type, "set") == 0) {
       std::string query_set = "";
-      DB.insert ( std::make_pair(query_key, query_value) );
+      // DB.insert ( std::make_pair(query_key, query_value) ); // Not updates values
+      DB[query_key] = query_value; // Yes updates values
       query_set = std::string("Add new {")+query_key+std::string(":'")+query_value+std::string("'}");
       printf("> Add new {%s:'%s'}\n", query_key, query_value);
       strcpy(buf, query_set.c_str());
@@ -117,7 +118,6 @@ int main(int argc, char *argv[]) {
         ++k;
         strcat(buf, query_all_tmp.c_str());
       }
-      // send(sock, buf, bytes_read, 0);
     } else if (strcmp(query_type, "delete") == 0) {
       std::string query_delete = "";
       DB.erase (std::string(query_key));
