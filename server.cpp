@@ -117,7 +117,17 @@ int main(int argc, char *argv[]) {
         ++k;
         strcat(buf, query_all_tmp.c_str());
       }
-      send(sock, buf, bytes_read, 0);
+      // send(sock, buf, bytes_read, 0);
+    } else if (strcmp(query_type, "delete") == 0) {
+      std::string query_delete = "";
+      DB.erase (std::string(query_key));
+      printf("> deleted {%s}", query_key);
+      query_delete = std::string("deleted ") + query_key;
+      strcpy(buf, query_delete.c_str());
+    } else if (strcmp(query_type, "cleardb") == 0) {
+      DB.clear();
+      printf("> Removed all elements from the database");
+      strcpy(buf, "Removed all elements from the database");
     } else {
       printf("> Error Query\n");
       strcpy(buf, "Error Query");

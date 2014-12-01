@@ -40,6 +40,16 @@ Default: 127.0.0.1
     > key2 => value2
     > keyN => valueN
 
+### delete
+
+    > delete key
+    > deleted {key}
+
+### clear
+
+    > cleardb
+    > Removed all elements from the database
+
 ### exit
 
     > exit
