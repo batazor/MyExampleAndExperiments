@@ -174,14 +174,16 @@ header {
   border-bottom: 4px solid #d2d6dc;
   border-radius: 15px;
 
-  &:hover {
-    zoom: 1.1;
-  }
-
   &:nth-child(odd):hover {
     transform: rotate(0.5deg);
   }
   &:nth-child(even):hover {
     transform: rotate(-0.5deg);
+  }
+
+  .delete {
+    color: red;
+    padding: 15px;
+    text-shadow: 3px 3px 5px #a9b0ba;
   }
 }

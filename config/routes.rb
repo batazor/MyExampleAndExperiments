@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'welcome#index', as: :tag
 
   resources :post do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
 
   devise_for :users
