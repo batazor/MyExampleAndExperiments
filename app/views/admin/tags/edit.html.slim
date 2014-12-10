@@ -1,0 +1,23 @@
+.back_link
+  = link_to "back", admin_tags_url
+
+h1 Edit Tags
+
+.form
+  = form_for @tags, url: admin_tag_path do |f|
+    - if @tags.errors.any?
+      #error_explanation
+        h2
+          =' pluralize(@tags.errors.count, "error")
+          ' prohibited this category from being saved:
+        ul
+          - @tags.errors.full_messages.each do |msg|
+            li
+              = msg
+
+    p
+      = f.label :name
+      = f.text_field :name
+
+    p
+      = f.submit 'RENAME TAG', class: "btn-primary"

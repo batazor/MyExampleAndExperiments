@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :categories, :posts
+    resources :categories, :posts, :tags
   end
 
   scope '/admin' do
