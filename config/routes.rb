@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get '/post/:id', to: 'post#index', :as => 'post_index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
 
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :categories, :posts, :tags
+    get 'settings/url'
   end
 
   scope '/admin' do
