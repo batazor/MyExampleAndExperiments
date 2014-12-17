@@ -2,8 +2,7 @@
   .second
     .fixed-content
       h1
-        a href="#{post_index_path(post.id)}"
-          = post.title.html_safe
+        = url_pattern(post.title.html_safe, post.id, post.created_at.strftime("%F"))
       p
         = post.text.html_safe
       - unless post.tag_list.empty?

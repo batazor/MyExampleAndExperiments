@@ -210,3 +210,49 @@ $blue: #62B9ED;
     color: #000;
   }
 }
+
+/*****************/
+/*** RADIO UI ***/
+/*****************/
+.btn-radio {
+  list-style-type: none;
+  li { margin-bottom: 15px; }
+
+  input{
+    display: none;
+
+    &[type="radio"]:checked + label { color: #FFFFFF; }
+    &[type="radio"]:checked + label span.small {
+      background-color: rgba(255, 64, 64, 0.8);
+      opacity: 1;
+    }
+  }
+
+  label{
+    color:#777;
+    margin-right:20px;
+  }
+
+  span {
+    &.big {
+      background-color: #fff;
+      border-radius: 50% 50% 50% 50%;
+      display: inline-block;
+      height: 12px;
+      margin-bottom: -11px;
+      margin-right: 9px;
+      padding: 8px;
+      position: relative;
+      top: -3px;
+      width: 12px;
+    }
+
+    &.small {
+      border-radius: 50% 50% 50% 50%;
+      display: block;
+      height: 100%;
+      transition: background 0.4s ease 0s;
+      width: 100%;
+    }
+  }
+}

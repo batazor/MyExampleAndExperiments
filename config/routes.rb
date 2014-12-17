@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  get '/post/:id', to: 'post#index', :as => 'post_index'
-  get 'tags/:tag', to: 'welcome#index', as: :tag
+  get '/post/:id', to: 'post#index', :as => 'post_id'
+  get '/post/:date/:title', to: 'post#index', :as => 'post_date_title'
+  get 'tags/:tag', to: 'welcome#index', as: :ta
 
   resources :post do
     resources :comments, only: [:create, :destroy]
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories, :posts, :tags
     get 'settings/url'
+    patch 'settings/url', to: 'settings#update_url'
   end
 
   scope '/admin' do

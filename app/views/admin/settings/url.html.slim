@@ -1,2 +1,38 @@
+.back_link
+  = link_to "dashboard", main_url
+
 h1 URL pattern
-p Select defoltny pattern url
+
+.content
+  .info
+    h2.title
+      strong Select defoltny pattern url
+
+    = form_for @url, url: admin_settings_url_path do |f|
+      ul.btn-radio
+        li
+          = radio_button_tag :url_pattern, 'post_id', if @url.url_pattern == "post_id" then checked = true end
+
+          label class="radio" for="url_pattern_post_id"
+            span class="big"
+              span class="small"
+            = url_example("/post/:id")
+
+        li
+          = radio_button_tag :url_pattern, 'post_title', if @url.url_pattern == "post_title" then checked = true end
+
+          label class="radio" for="url_pattern_post_title"
+            span class="big"
+              span class="small"
+            = url_example("/post/:title")
+
+        li
+          = radio_button_tag :url_pattern, 'date_title', if @url.url_pattern == "date_title" then checked = true end
+
+          label class="radio" for="url_pattern_date_title"
+            span class="big"
+              span class="small"
+            = url_example("/post/:date/:title")
+
+      p
+        = f.submit 'UPDATE URL PATTERN', class: "btn-primary"

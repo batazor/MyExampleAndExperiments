@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117130332) do
+ActiveRecord::Schema.define(version: 20141217121715) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 20141117130332) do
 
   add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "settings", force: true do |t|
+    t.string "url_pattern"
+  end
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
