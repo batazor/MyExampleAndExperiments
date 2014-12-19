@@ -4,7 +4,8 @@ class Post < ActiveRecord::Base
   belongs_to :category
 
   validates :title, presence: true, length: { in: 2..50 }
-  validates_format_of :title, :with => /\A[а-яa-z\d]+[а-яa-z][а-яa-z\d]*\z/i, message: "Your title must have at least one letter"
+  # validates_format_of :title, :with => /\A*\z/i, message: "Your title must have at least one letter"
+  validates_format_of :title, :with => /\A[а-яa-z\d\s]+[а-яa-z][а-яa-z\d\s]*\z/i, message: "Your title must have at least one letter"
   validates :text, presence: true
   validates :category_id, presence: true, numericality: { only_integer: true }
 
