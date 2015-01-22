@@ -8,4 +8,9 @@ class WelcomeController < ApplicationController
       @post = Post.order("id DESC").page(params[:page]).per(5)
     end
   end
+
+  def rss
+    @posts = Post.order(created_at: :desc).limit(10)
+    render :layout => false
+  end
 end
