@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'feeds', to: 'welcome#rss', format: 'rss'
+  get 'sitemap' => 'welcome#sitemap'
 
   get '/post/:id', to: 'post#index', :as => 'post_id'
   get '/post/:date/:title', to: 'post#index', :as => 'post_date_title'

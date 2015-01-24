@@ -17,6 +17,8 @@ gem 'font-awesome-rails',  '~> 4.2.0'
 gem 'wysiwyg-rails'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 3.4.2'
+gem 'dynamic_sitemaps'
+gem 'whenever'
 
 group :development do
   gem 'spring',        '~> 1.1.3'

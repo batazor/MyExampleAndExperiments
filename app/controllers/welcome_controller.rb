@@ -13,4 +13,11 @@ class WelcomeController < ApplicationController
     @posts = Post.order(created_at: :desc).limit(10)
     render :layout => false
   end
+
+  def sitemap
+    respond_to do |format|
+      format.xml { render file: 'public/sitemaps/sitemap.xml' }
+      format.html { redirect_to root_url }
+    end
+  end
 end
