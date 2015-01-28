@@ -6,6 +6,7 @@
 
     <LinearLayout
         android:layout_marginBottom="10dp"
+        android:id="@+id/layout_news"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -22,27 +23,21 @@
             android:textSize="16sp"
             android:textStyle="bold"/>
 
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/imageNews"-->
-            <!--android:contentDescription="@string/app_name"/>-->
-
-        <TextView
-            android:id="@+id/imgUrl"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#43bd00"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:id="@+id/imageView"
+            android:contentDescription="@string/app_name" />
 
         <TextView
             android:id="@+id/desc"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textColor="#43bd00"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:padding="10dp"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 </LinearLayout>

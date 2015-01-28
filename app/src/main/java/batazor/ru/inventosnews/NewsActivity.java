@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,19 +39,22 @@ public class NewsActivity extends ListActivity {
     private static final String JSON_IMG_URL = "url";
     private static final String JSON_DESC = "desc";
     private static final String JSON_TYPE = "type";
+    // Download Image
+//    private static final String IMAGE = "image";
+//    private ImageView user_image;
 
     // contacts JSONArray
     JSONArray news = null;
 
     //    Hashmap for ListView
-    ArrayList<HashMap<String, String>> newsList;
+    ArrayList<HashMap<String, Object>> newsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        newsList = new ArrayList<HashMap<String, String>>();
+        newsList = new ArrayList<HashMap<String, Object>>();
         getListView();
 
         // Calling async task to get json
@@ -81,6 +87,7 @@ public class NewsActivity extends ListActivity {
      * Async task class to get json by making HTTP call
      * */
     private class GetContacts extends AsyncTask<Void, Void, Void> {
+//        Bitmap imageView;
 
         @Override
         protected void onPreExecute() {
@@ -95,6 +102,7 @@ public class NewsActivity extends ListActivity {
 
         @Override
         protected Void doInBackground(Void... arg0) {
+            Bitmap imageView;
 
             // Creating service handler class instance
             ServiceHandler sh = new ServiceHandler();
@@ -122,20 +130,24 @@ public class NewsActivity extends ListActivity {
                             String title = c.getString(JSON_TITLE);
                             String img_url = null;
                             String desc = null;
+                            imageView = null;
 
                             if (type.equals("news")) {
                                 desc = c.getString(JSON_DESC);
                                 JSONObject img = c.getJSONObject(JSON_IMG);
                                 img_url = img.getString(JSON_IMG_URL);
+                                imageView = getBitmapFromURL(img_url);
                             }
 
                             // tmp hashmap for single contact
-                            HashMap<String, String> news = new HashMap<String, String>();
+                            HashMap<String, Object> news = new HashMap<String, Object>();
 
                             // adding each child node to HashMap key => value
                             news.put(JSON_TITLE, title);
                             news.put(JSON_IMG_URL, img_url);
+                            news.put("IMAGE", imageView);
                             news.put(JSON_DESC, desc);
+                            news.put("NEWS", desc);
                             newsList.add(news);
                         }
 
@@ -165,8 +177,41 @@ public class NewsActivity extends ListActivity {
 
             ListAdapter adapter = new SimpleAdapter(
                     NewsActivity.this, newsList,
-                    list_item, new String[] { JSON_TITLE, JSON_IMG_URL, JSON_DESC }, new int[] { R.id.name, R.id.imgUrl, R.id.desc });
+                    list_item, new String[] { JSON_TITLE, "IMAGE", JSON_DESC, "NEWS" }, new int[] { R.id.name, R.id.imageView, R.id.desc, R.id.layout_news });
 
+            SimpleAdapter.ViewBinder viewBinder = new SimpleAdapter.ViewBinder() {
+                @Override
+                public boolean setViewValue(View view, Object data, String textRep) {
+                    if (view.getId() == R.id.layout_news) {
+                        if (((String) data) == null) {
+                            view.setBackgroundColor(0xffffffff);
+                        } else {
+                            view.setBackgroundColor(0xffcfcfcf);
+                        }
+                        return true;
+                    }
+                    if (view.getId() == R.id.desc) {
+                        if (((String) data) == null) {
+                            (view).setVisibility(View.GONE);
+                        } else {
+                            ((TextView) view).setText((String) data);
+                            (view).setVisibility(View.VISIBLE);
+                        }
+                        return true;
+                    }
+                    if (view.getId() == R.id.imageView) {
+                        if (data != null) {
+                            ((ImageView) view).setImageBitmap((Bitmap) data);
+                            (view).setVisibility(View.VISIBLE);
+                        } else {
+                            (view).setVisibility(View.GONE);
+                        }
+                        return true;
+                    }
+                    return false;
+                }
+            };
+            ((SimpleAdapter)adapter).setViewBinder(viewBinder);
             setListAdapter(adapter);
         }
 
