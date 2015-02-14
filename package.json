@@ -1,0 +1,12 @@
+{
+  "name": "node-simple-http-proxy",
+  "version": "0.0.1",
+  "description": "Simple http-prosy server on Node.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "batazor",
+  "license": "ISC"
+}
