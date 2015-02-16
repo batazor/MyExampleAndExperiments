@@ -1,18 +1,16 @@
-doctype html
-html
-  head
-    title Profile | Chat on Node.js
+extends ./layout.jade
 
-  body
+block content
     
-    h1 Profile Page
-    a(href="/logout") Logout
+  h1 Profile Page
+  a(href="/logout") Logout
+  a(href="/chat") Chat
 
-    //- LOCAL INFORMATION
-    p
-      strong id:
-        = user._id
-      strong email:
-        = user.local.email
-      strong password:
-        = user.local.password
+  //- LOCAL INFORMATION
+  p
+    strong id:
+      = user._id
+    strong email:
+      = user.local.email
+    strong password:
+      = user.local.password

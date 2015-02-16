@@ -4,7 +4,9 @@ module.exports = function(app, passport) {
   // HOME PAGE =================================================================
   // ===========================================================================
   app.get('/', function(req, res) {
-    res.render('index');
+    res.render('index', {
+      title: 'Welcome'
+    });
   });
 
   // ===========================================================================
@@ -12,7 +14,10 @@ module.exports = function(app, passport) {
   // ===========================================================================
   // show the login form
   app.get('/login', function(req, res) {
-    res.render('login', { message: req.flash('loginMessage') });
+    res.render('login', {
+      message: req.flash('loginMessage'),
+      title: "Login"
+    });
   });
 
   // process the login form
@@ -27,7 +32,10 @@ module.exports = function(app, passport) {
   // ===========================================================================
   // show the signup form
   app.get('/signup', function(req, res) {
-    res.render('signup', { message: req.flash('signupMessage') });
+    res.render('signup', {
+      message: req.flash('signupMessage'),
+      title: "Signup"
+    });
   });
 
   // process the signup form
@@ -51,7 +59,18 @@ module.exports = function(app, passport) {
   // show the user profile
   app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile', {
-      user : req.user
+      user : req.user,
+      title: "Profile"
+    });
+  });
+
+  // ===========================================================================
+  // CHAT ======================================================================
+  // ===========================================================================
+  app.get('/chat', isLoggedIn, function(req, res) {
+    res.render('chat', {
+      user : req.user,
+      title: "Chat"
     });
   });
 

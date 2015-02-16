@@ -1,22 +1,19 @@
-doctype html
-html
-  head
-    title Login | Chat on Node.js
+extends ./layout.jade
 
-  body
-    if (message.length > 0)
-      | #{message}
+block content
+  if (message.length > 0)
+    | #{message}
+    
+    
+  //- LOGIN FORM
+  form(action="/login" method="post")
+    input(type="text" name="email")
+    input(type="password" name="password")
       
-      
-    //- LOGIN FORM
-    form(action="/login" method="post")
-      input(type="text" name="email")
-      input(type="password" name="password")
-        
-      button(type="submit") Login
-      
-    p Need an account?
-      a(href="/signup") Signup
-    p Or go
-      a(href="/") home
-      | .
+    button(type="submit") Login
+    
+  p Need an account?
+    a(href="/signup") Signup
+  p Or go
+    a(href="/") home
+    | .
