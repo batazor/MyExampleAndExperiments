@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title Login | Chat on Node.js
+
+  body
+    if (message.length > 0)
+      | #{message}
+      
+    //- LOGIN FORM
+    form(action="/signup" method="post")
+      input(type="text" name="email")
+      input(type="password" name="password")
+        
+      button(type="submit") Login
+      
+      p Already have an account?
+        a(href="/login") Login
+      p Or go
+        a(href="/") home
+        | .
