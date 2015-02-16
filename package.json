@@ -10,6 +10,10 @@
   "keywords": [
     "chat"
   ],
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/batazor/nodejs-chat.git"
+  },
   "author": "batazor",
   "license": "ISC",
   "dependencies": {
