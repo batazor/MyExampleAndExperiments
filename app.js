@@ -6,6 +6,7 @@ var port     = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash 	 = require('connect-flash');
+var path 	   = require('path');
 
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'jade');
 
 // required for passport
