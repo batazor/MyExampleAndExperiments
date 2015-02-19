@@ -4,7 +4,8 @@ module.exports = function(app, passport) {
   // HOME PAGE =================================================================
   // ===========================================================================
   app.get('/', function(req, res) {
-    res.render('index', {
+    res.render('welcome/index', {
+      user : req.user,
       title: 'Welcome'
     });
   });
@@ -14,9 +15,18 @@ module.exports = function(app, passport) {
   // ===========================================================================
   // show the login form
   app.get('/login', function(req, res) {
-    res.render('login', {
+    res.render('auth/login', {
+      user : req.user,
       message: req.flash('loginMessage'),
-      title: "Login"
+      title: "Login",
+      form: {
+        action: '/login',
+        button: 'Login',
+        link: {
+          name: 'Signup',
+          url: '/signup'
+        }
+      }
     });
   });
 
@@ -32,9 +42,18 @@ module.exports = function(app, passport) {
   // ===========================================================================
   // show the signup form
   app.get('/signup', function(req, res) {
-    res.render('signup', {
+    res.render('auth/signup', {
+      user : req.user,
       message: req.flash('signupMessage'),
-      title: "Signup"
+      title: "Signup",
+      form: {
+        action: '/signup',
+        button: 'Signup',
+        link: {
+          name: 'Login',
+          url: '/login'
+        }
+      }
     });
   });
 
@@ -58,7 +77,7 @@ module.exports = function(app, passport) {
   // ===========================================================================
   // show the user profile
   app.get('/profile', isLoggedIn, function(req, res) {
-    res.render('profile', {
+    res.render('./profile/profile', {
       user : req.user,
       title: "Profile"
     });
@@ -68,12 +87,21 @@ module.exports = function(app, passport) {
   // CHAT ======================================================================
   // ===========================================================================
   app.get('/chat', isLoggedIn, function(req, res) {
-    res.render('chat', {
+    res.render('chat/chat', {
       user : req.user,
       title: "Chat"
     });
   });
 
+  // ===========================================================================
+  // OTHER PAGE ================================================================
+  // ===========================================================================
+  app.get('/about', isLoggedIn, function(req, res) {
+    res.render('other/about', {
+      user : req.user,
+      title: "About"
+    });
+  });
 };
 
 // route middleware to make sure a user is logged in

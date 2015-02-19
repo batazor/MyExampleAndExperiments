@@ -1,0 +1,9 @@
+extends ../template/layout.jade
+
+block content
+  blockquote
+    if (message.length > 0)
+      | #{message}
+    
+  //- SIGNUP FORM  
+  include __form.jade

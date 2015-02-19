@@ -1,0 +1,12 @@
+extends ../template/layout.jade
+
+block content
+  .row.row-chat
+    .chat-sidebar-left.col.s3.red.darken-1
+      include __sidebar-left.jade
+        
+    .chat-sidebar-content.col.s6.lime.lighten-5
+      include __content.jade
+      
+    .chat-sidebar-right.col.s3.red.darken-1
+      include __sidebar-right.jade

@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title #{title} | Chat on Node.js
+    link(rel="stylesheet", href="stylesheets/index.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+    
+  body.lime.lighten-4
+    div.wrapper
+      include __userbar.jade
+            
+      main
+        block content
+      div.push
+      
+    footer#footer.page-footer.red.darken-1
+      div.footer-copyright
+        div.container.row
+          © 2015 NodeJS-Chat
+          a.grey-text.text-lighten-4.right(href="http://batazor.ru/") batazor.ru
+          a.grey-text.text-lighten-4.right(href="https://github.com/batazor") github.com
+          a.grey-text.text-lighten-4.right(href="http://vk.com/batazor") vk.com
+      
+    //- Import jQuery before materialize.js
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+    script(src="javascript/index.js")

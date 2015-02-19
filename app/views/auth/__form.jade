@@ -1,0 +1,19 @@
+.row.container
+  form.card-panel(action="#{form.action}" method="post")
+    .row
+      .input-field.col.s6
+        input#email.validate(type="text" name="email")
+        label(for="email") Email  
+        
+      .input-field.col.s6
+        input#password.validate(type="password" name="password")
+        label(for="email") Password  
+      
+    .row  
+      button.btn.col.s12.waves-effect.waves-light.lime.darken-3(type="submit") #{form.button}
+
+    p Need an account?
+      a(href="#{form.link.url}")  #{form.link.name}
+    p Or go
+      a(href="/")  home
+      | .

@@ -1,0 +1,52 @@
+extends ../template/layout.jade
+
+block content
+
+  header.container
+    div.row.valign-wrapper
+      h1.valign.lime-text.text-darken-4 Welcome to your profile
+
+  //- LOCAL INFORMATION
+  .row.valign-wrapper
+    .col.s4
+      .card.valign.blue-grey.darken-1
+        .card-content.white-text
+          span.card-title Local Account
+        .card-action.white-text
+          p
+            strong.row id:  
+              = user._id
+            strong.row email:  
+              = user.local.email
+        .card-content.white-text
+          a(href="#!") Update
+          a(href="#!") Delete
+    
+    .col.s4
+      .card.valign.blue-grey.darken-1
+        .card-content.white-text
+          span.card-title Local Account
+        .card-action.white-text
+          p
+            strong.row id:  
+              = user._id
+            strong.row email:  
+              = user.local.email
+        .card-content.white-text
+          a(href="#!") Update
+          a(href="#!") Delete
+              
+    .col.s4
+      .card.valign.blue-grey.darken-1
+        .card-content.white-text
+          span.card-title Local Account
+        .card-action.white-text
+          p
+            strong.row id:  
+              = user._id
+            strong.row email:  
+              = user.local.email
+        .card-content.white-text
+          a(href="#!") Update
+          a(href="#!") Delete
+              
