@@ -3,6 +3,7 @@
 // =============================================================================
 var gulp = require('gulp'),                  // Gulp JS
     stylus = require('gulp-stylus'),         // Stylus to CSS
+    sass = require('gulp-sass'),             // Sass to CSS
     livereload = require('gulp-livereload'), // Livereload fot Gulp
     myth = require('gulp-myth'),             // Math in CSS - http://www.myth.io
     minifycss = require('gulp-minify-css'),  // Minification CSS
@@ -25,7 +26,9 @@ path = {
 };
 
 watch = {
+  css:    path.css + '/*.css',
   stylus: path.css + '/*.styl',
+  sass:   path.css + '/*.sass',
   js:     path.js  + '/*.js',
   img:    path.img + '/**/*',
   all:    path.app + '/**/*.*'
@@ -44,6 +47,27 @@ public = {
 gulp.task('stylus', function() {
   return gulp.src(watch.stylus)
     .pipe(stylus())
+    .on('error', console.log)
+    .pipe(myth())
+    .pipe(concat('build-stylus.css'))
+    .pipe(gulp.dest(path.css))
+    .pipe(notify({ message: 'Styles task complete' }));
+});
+
+// Build Sass
+gulp.task('sass', function() {
+  return gulp.src(watch.sass)
+    .pipe(sass({ compass: true, style: 'expanded', sourcemap: true }))
+    .on('error', console.log)
+    .pipe(myth())
+    .pipe(concat('build-sass.css'))
+    .pipe(gulp.dest(path.css))
+    .pipe(notify({ message: 'Sass task complete' }));
+});
+
+// Build CSS
+gulp.task('css', ['sass', 'stylus'], function() {
+  return gulp.src(watch.css)
     .on('error', console.log)
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
     .pipe(myth())
@@ -75,7 +99,7 @@ gulp.task('images', function() {
 
 // Clean
 gulp.task('clean', function(cb) {
-  del([public.css + '*', public.js + '*', public.img + '*'], cb);
+  del([public.css + '*', public.js + '*', public.img + '*', 'app/assets/stylesheets/build*'], cb);
 });
 
 // =============================================================================
@@ -83,7 +107,7 @@ gulp.task('clean', function(cb) {
 // =============================================================================
 gulp.task('watch', function() {
   // Pre-assembly project
-  gulp.watch(watch.stylus, ['stylus']);
+  gulp.watch(watch.stylus, ['css']);
   gulp.watch(watch.img, ['images']);
   gulp.watch(watch.js, ['js']);
 
@@ -98,12 +122,12 @@ gulp.task('watch', function() {
 // Default =====================================================================
 // =============================================================================
 gulp.task('default', ['clean'], function() {
-  gulp.start('stylus', 'js', 'images');
+  gulp.start('css', 'js', 'images');
 });
 
 // =============================================================================
 // Build =======================================================================
 // =============================================================================
 gulp.task('build', ['clean'], function() {
-  gulp.start('stylus', 'js', 'images');
+  gulp.start('css', 'js', 'images');
 });

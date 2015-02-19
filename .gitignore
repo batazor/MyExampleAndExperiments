@@ -9,5 +9,6 @@ node_modules
 public/components
 
 # Build
+app/assets/stylesheets/build*
 public
 !public/**/.keep
