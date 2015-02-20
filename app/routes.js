@@ -1,4 +1,5 @@
 module.exports = function(app, passport) {
+  var ChatRoom = require('./models/chatroom.js');
 
   // ===========================================================================
   // HOME PAGE =================================================================
@@ -86,10 +87,29 @@ module.exports = function(app, passport) {
   // ===========================================================================
   // CHAT ======================================================================
   // ===========================================================================
+  // show chat
   app.get('/chat', isLoggedIn, function(req, res) {
     res.render('chat/chat', {
       user : req.user,
       title: "Chat"
+    });
+  });
+
+  // ===========================================================================
+  // CHAT ROOM =================================================================
+  // ===========================================================================
+  // create chatRoom
+  app.post('/chatroom', function(req, res) {
+    var chatRoom = new ChatRoom({
+      name: req.body.name
+    });
+    chatRoom.save(function(err) {
+      if (err) {
+        return console.log(err);
+      } else {
+        res.end();
+        return console.log("created chatRoom");
+      }
     });
   });
 

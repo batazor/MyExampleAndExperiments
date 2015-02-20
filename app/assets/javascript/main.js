@@ -17,6 +17,9 @@ $(document).ready(function() {
     heightChatSidebar();
   });
 
+  // modal createRoom
+  $('.modal-createchatroom').leanModal();
+
   // Start Script
   heightChatSidebar();
 });

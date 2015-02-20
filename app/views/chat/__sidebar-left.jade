@@ -21,4 +21,17 @@ h5.grey-text.text-lighten-5.center CHATROOMS
     | Room 4
     i.mdi-action-exit-to-app.small.right
       
-a.col.s12.waves-effect.waves-light.btn(href='#!') Create Room
+a.col.s12.waves-effect.waves-light.btn.modal-createchatroom(href='#createchatroom') Create Room
+
+#createchatroom.modal.lime.lighten-4
+  .modal-content.container
+    .row.valign-wrapper
+      h4.valign.lime-text.text-darken-4 Create Chat Room
+    .row
+      from.col.s12
+        .row
+          .input-field.col.s12
+            input#chatRoomName(type="text" name="name")
+            label(for="chatRoomName") Name chat room
+        .row  
+          button.btn.col.s12.waves-effect.waves-light.lime.darken-3(type="submit") Create
