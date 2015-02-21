@@ -7,6 +7,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash 	 = require('connect-flash');
 var path 	   = require('path');
+var server   = require('http').createServer(app);
+var io       = require('socket.io')(server);
 
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -45,6 +47,9 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 // routes ======================================================================
 require('./app/routes.js')(app, passport);
 
+// socket.io
+require('./app/socketio.js')(io);
+
 // launch ======================================================================
-app.listen(port);
+server.listen(port);
 console.log('Server runs and listen on port ' + port);
