@@ -14,6 +14,7 @@ var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+var store        = new session.MemoryStore();
 
 var configDB = require('./config/database.js');
 
@@ -36,9 +37,11 @@ app.set('view engine', 'jade');
 
 // required for passport
 app.use(session({
+  name: 'nodejsvsrubyonrails',
   secret: 'nodejsvsrubyonrails',
   saveUninitialized: true,
-  resave: true
+  resave: true,
+  store: store
 }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -48,7 +51,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./app/routes.js')(app, passport);
 
 // socket.io
-require('./app/socketio.js')(io);
+require('./app/socketio.js')(io, store, passport);
 
 // launch ======================================================================
 server.listen(port);

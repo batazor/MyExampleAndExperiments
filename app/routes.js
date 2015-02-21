@@ -1,3 +1,5 @@
+var ChatRoom = require('./models/chatroom.js');
+
 module.exports = function(app, passport) {
 
   // ===========================================================================
@@ -32,7 +34,7 @@ module.exports = function(app, passport) {
 
   // process the login form
   app.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/profile',
+    successRedirect : '/chat',
     failureRedirect : '/login',
     failureFlash : true
   }));
@@ -87,10 +89,19 @@ module.exports = function(app, passport) {
   // CHAT ======================================================================
   // ===========================================================================
   // show chat
-  app.get('/chat', /* isLoggedIn,*/ function(req, res) {
-    res.render('chat/chat', {
-      user : req.user,
-      title: "Chat"
+  app.get('/chat', /*isLoggedIn*/ function(req, res) {
+    ChatRoom.find(function (err, data) {
+      if (err) {
+        return console.log(err);
+      } else {
+        console.log("read all chatRoom");
+      }
+
+      res.render('chat/chat', {
+        allChatRoom: data,
+        user : req.user,
+        title: "Chat"
+      });
     });
   });
 

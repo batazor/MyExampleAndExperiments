@@ -1,25 +1,12 @@
 h5.grey-text.text-lighten-5.center CHATROOMS
 
 #collectionChatRoom.collection
-  a.collection-item(href="#!")
-    i.mdi-communication-messenger.left
-    | Room 1
-    i.mdi-action-exit-to-app.small.right
-  
-  a.collection-item(href="#!")
-    i.mdi-communication-messenger.left
-    | Room 2
-    i.mdi-action-exit-to-app.small.right
-  
-  a.collection-item(href="#!")
-    i.mdi-communication-messenger.left
-    | Room 3
-    i.mdi-action-exit-to-app.small.right
-  
-  a.collection-item(href="#!")
-    i.mdi-communication-messenger.left
-    | Room 4
-    i.mdi-action-exit-to-app.small.right
+  each val in allChatRoom
+    if val.name.length
+      a.collection-item(data-chatroomid="#{val._id}" href="#!")
+        i.mdi-communication-messenger.left
+        = val.name
+        i.mdi-action-exit-to-app.small.right
       
 a.col.s12.waves-effect.waves-light.btn.modal-createchatroom(href='#createchatroom') Create Room
 

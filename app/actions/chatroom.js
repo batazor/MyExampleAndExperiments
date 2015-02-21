@@ -8,17 +8,8 @@ exports.create = function(data) {
     if (err) {
       return console.log(err);
     } else {
-      return console.log("created chatRoom");
+      console.log("created chatRoom");
     }
   });
-};
-
-exports.all = function() {
-  return chatRoom.find(function (err, data) {
-    if (err) {
-      return console.log(err);
-    } else {
-      return data;
-    }
-  });
+  return chatRoom;
 };

@@ -1,11 +1,6 @@
 $(document).ready(function() {
   var socket = io.connect('http://localhost:3000');
 
-  socket.on('news', function(data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
-
   // chatRoom ====================================================================
   // create chatRoom
   $('#createchatroom_btn').on('click', function() {
@@ -16,11 +11,47 @@ $(document).ready(function() {
   // new chatRoom
   socket.on('newChatRoom', function(data) {
     $('#collectionChatRoom').append('
-      <a class="collection-item" href="#!">
+      <a data-chatroomid="' + data._id + '" class="collection-item" href="#!">
         <i class="mdi-communication-messenger left"></i>
           ' + data.name + '
         <i class="mdi-action-exit-to-app small right"></i>
       </a>
+    ');
+    $('#collectionChatRoom').children('[data-chatroomid="' + data._id + '"]').click();
+  });
+
+  // select chatRoom
+  $('#collectionChatRoom').on('click', 'a', function() {
+    $('#writeMessageText').data('chatroomid', $(this).data('chatroomid'));
+  });
+
+  // Message ChatRoom ==========================================================
+  // write new message
+  $('#writeMessageBtn').on('click', function() {
+    var message = {
+      chatRoom: $('#writeMessageText').data('chatroomid'),
+      message: $('#writeMessageText').val()
+    };
+    socket.emit('writeMessage', message);
+    $('#writeMessageText').val('');
+  });
+
+  // newViewMessage
+  socket.on('newViewMessage', function(data) {
+    $('#chat').append('
+      <div class="row">
+        <div class="col s2 center">
+          <i class="grey lighten-5 mdi-action-account-circle medium"></i>
+          <div class="row center"></div>
+            <a href="#!">' + data.user.nick + '</a>
+        </div>
+        <div class="message col s10">
+          <div class="data">
+            ' + data.create_at +'
+          </div>
+          <p>' + data.message + '</p>
+        </div>
+      </div>
     ');
   });
 });
