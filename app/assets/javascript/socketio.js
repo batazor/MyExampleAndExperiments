@@ -23,6 +23,7 @@ $(document).ready(function() {
   // select chatRoom
   $('#collectionChatRoom').on('click', 'a', function() {
     $('#writeMessageText').data('chatroomid', $(this).data('chatroomid'));
+    socket.emit('viewMessageChatRoom', $(this).data('chatroomid'));
   });
 
   // Message ChatRoom ==========================================================
@@ -38,20 +39,28 @@ $(document).ready(function() {
 
   // newViewMessage
   socket.on('newViewMessage', function(data) {
+    console.log(data);
     $('#chat').append('
       <div class="row">
         <div class="col s2 center">
           <i class="grey lighten-5 mdi-action-account-circle medium"></i>
           <div class="row center"></div>
-            <a href="#!">' + data.user.nick + '</a>
+            <a href="#!">' + data.user.local.email + '</a>
         </div>
         <div class="message col s10">
           <div class="data">
-            ' + data.create_at +'
+            ' + data.message.created_at +'
           </div>
-          <p>' + data.message + '</p>
+          <p>' + data.message.message + '</p>
         </div>
       </div>
     ');
+  });
+
+  // view message chat room
+  socket.on('viewMessageChatRoom', function(data) {
+    $('#chat').empty();
+    
+    console.log(data);
   });
 });

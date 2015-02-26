@@ -1,8 +1,8 @@
 var cookieParser = require("cookie-parser");
 
 var ChatRoom = require('./actions/chatroom.js');
-var Message = require('./actions/message.js');
-var User = require('./actions/user.js');
+var Message = require('./models/message.js');
+var User = require('./models/user.js');
 
 var user = {};
 
@@ -19,13 +19,44 @@ module.exports = function(io, store) {
     // Message =================================================================
     // new write Message
     socket.on('writeMessage', function(data) {
-      data.user = user._id;
-      // var res = Message.create(data);
-      var res = User.info(user._id);
-      console.log('==============');
-      console.log(res);
-      console.log('==============');
-      // socket.emit('newViewMessage', res);
+      var message = new Message({
+        user: user._id,
+        chatRoom: data.chatRoom,
+        message: data.message
+      });
+      message.save(function(err) {
+        if (err) {
+          return console.log(err);
+        } else {
+          return console.log("created Message");
+        }
+      });
+      User.find({_id: user._id} ,function (err, userInfo) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Read user info");
+
+          var res = {};
+          res.message = message;
+          res.user = userInfo[0];
+
+          socket.emit('newViewMessage', res);
+        }
+      });
+    });
+
+    // view message chat room
+    socket.on('viewMessageChatRoom', function(data){
+      Message.find({chatRoom: data} ,function (err, message) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Read view message chat room");
+
+          socket.emit('viewMessageChatRoom', message);
+        }
+      });
     });
   });
 
