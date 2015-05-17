@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   // Save table data
-  var dataTable;
+  var dataTable = new randomData();
   // Pagination Default
   var currentPage = 1;
   var countElementPage;
@@ -15,8 +15,8 @@ $(document).ready(function(){
   // Select count data
   $('#select-data .count-data').on('click', function() {
     var nCount = $(this).data('count');
-    dataTable = randomData(nCount);
-    pagination(1, 10, dataTable);
+    dataTable.new(nCount);
+    pagination(1, 10, dataTable.hash);
     buildTable(dataTable, 'content', 0, 10);
 
     $('#select-data').closeModal();
@@ -49,8 +49,8 @@ $(document).ready(function(){
   // Click my count data
   $('#select-data').on('click', '#my-count-btn', function() {
     var nCount = $(this).attr('data-count');
-    dataTable = randomData(nCount);
-    pagination(1, 10, dataTable);
+    dataTable.new(nCount);
+    pagination(1, 10, dataTable.hash);
 
     $('#select-data').closeModal();
     $('table').removeClass('hidden');
@@ -60,14 +60,14 @@ $(document).ready(function(){
   // Pagination
   $('#pagination').on('click', 'li', function() {
     currentPage = $(this).data('page');
-    pagination(currentPage, 10, dataTable);
+    pagination(currentPage, 10, dataTable.hash);
   });
 
   // Filter
   $('#filter').on('input', function() {
     var search = $(this).val();
-    var newDataTable = filter(search, dataTable);
-    pagination(1, 10, newDataTable);
+    var newDataTable = new filterData(search, dataTable.hash);
+    pagination(1, 10, newDataTable.hash);
   });
 
   // Sort
@@ -131,7 +131,7 @@ $(document).ready(function(){
         break;
     }
 
-    pagination(currentPage, 10, dataTable);
+    pagination(currentPage, 10, dataTable.hash);
   });
 
 });

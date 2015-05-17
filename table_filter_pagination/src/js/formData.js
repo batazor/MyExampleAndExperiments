@@ -12,7 +12,7 @@ function buildTable(data, elementID, start, end) {
   }
 
   for (var i=start; i<end; i++) {
-    if (data[i] === undefined) break;
+    if (data.hash[i] === undefined) break;
 
     var tr = document.createElement("tr");
 
@@ -21,10 +21,10 @@ function buildTable(data, elementID, start, end) {
     var tdPrice    = document.createElement("td");
     var tdQuantity = document.createElement("td");
 
-    tdID.innerHTML       = data[i].id;
-    tdName.innerHTML     = data[i].name;
-    tdPrice.innerHTML    = data[i].price;
-    tdQuantity.innerHTML = data[i].quantity;
+    tdID.innerHTML       = data.hash[i].id;
+    tdName.innerHTML     = data.hash[i].name;
+    tdPrice.innerHTML    = data.hash[i].price;
+    tdQuantity.innerHTML = data.hash[i].quantity;
 
     tr.appendChild(tdID);
     tr.appendChild(tdName);

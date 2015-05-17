@@ -1,57 +1,62 @@
+// Prototype
+function randomData() {
+  this.hash = [];
+}
 
-function getRandomInt(min, max) {
+// generate Random Integer
+randomData.prototype.getRandomInt = function(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
-}
+};
 
-function getRandomPrice(min, max) {
+// generate random Price
+randomData.prototype.getRandomPrice = function(min, max) {
   return (Math.random() * (max - min) + min).toFixed(2);
-}
+};
 
-// Name list
-var NameArr = [
-  'Acer',
-  'Alcatel',
-  'Apple',
-  'ASUS',
-  'BlackBerry',
-  'Fly',
-  'Gigabyte',
-  'Highscreen',
-  'HTC',
-  'Huawei',
-  'Just5',
-  'LG',
-  'Meizu',
-  'Microsoft',
-  'Motorola',
-  'Nokia',
-  'Philips',
-  'RoverPC',
-  'Samsung',
-  'Sonim',
-  'Sony',
-  'Xiaomi',
-  'Билайн',
-  'МегаФон',
-  'МТС'
-];
-var NameArrCount = NameArr.length;
+// generate random Name
+randomData.prototype.getRandomName = function() {
+  var nameArr = [
+    'Acer',
+    'Alcatel',
+    'Apple',
+    'ASUS',
+    'BlackBerry',
+    'Fly',
+    'Gigabyte',
+    'Highscreen',
+    'HTC',
+    'Huawei',
+    'Just5',
+    'LG',
+    'Meizu',
+    'Microsoft',
+    'Motorola',
+    'Nokia',
+    'Philips',
+    'RoverPC',
+    'Samsung',
+    'Sonim',
+    'Sony',
+    'Xiaomi',
+    'Билайн',
+    'МегаФон',
+    'МТС'
+  ];
 
-// Generate Rand Data
-function randomData(countData) {
+  return nameArr[Math.floor(Math.random() * nameArr.length)];
+};
 
-  var hash = [];
+randomData.prototype.new = function(count) {
+  this.hash = [];
+  
+  for (var i = 0; i < count; i++) {
+    var randName = this.getRandomName();
 
-  for (var i = 0; i<countData; i++) {
-    var randName = NameArr[Math.floor(Math.random() * NameArrCount)];
-
-    hash.push({
+    this.hash.push({
       'id':       i,
-      'name':     randName,
-      'price':    getRandomPrice(1, 1000),
-      'quantity': getRandomInt(0, 20)
+      'name':     this.getRandomName(),
+      'price':    this.getRandomPrice(1, 1000),
+      'quantity': this.getRandomInt(0, 20)
     });
   }
-
-  return hash;
-}
+};
