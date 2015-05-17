@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+  head
+    title Form
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css")
+    link(rel="stylesheet", href="bundle.css")
+  
+  body
+    
+    .row.valign-wrapper.container
+      span.col.s4(id="open-select-data" class="waves-effect waves-light btn modal-trigger") Выберите набор данных
+      
+      .col.s4.offset-s4
+        .row
+          .col.s12.input-field
+            input(id="filter" type="text" disabled)
+            label(for="filter") Отфильтровать
+        
+    table.row.container.striped.hidden
+      thead#header
+        tr
+          th(data-field="id" data-sort="0") Идентификатор
+          th(data-field="name" data-sort="0") Название
+          th(data-field="price" data-sort="0") Стоимость
+          th(data-field="quantity" data-sort="0") Количество
+      tbody#content
+      
+    #pagination.row.container
+          
+          
+    #select-data.modal
+      .modal-content.center-align
+        h4.row Выберите набор данных
+        .row
+          .count-data.col.s5.waves-effect.waves-light.btn(data-count="10") Минимум
+          .count-data.col.s5.waves-effect.waves-light.btn.offset-s2(data-count="50") Максимум
+        .row.valign-wrapper
+          .col.s6.input-field.offset-s2
+            input(id="countdata" type="text")
+            label(for="countdata") Или укажите своё значение
+          #my-count-btn.col.s2.waves-effect.waves-light.btn.disabled ОК
+          
+          
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js")
+    script(src="bundle.js")
