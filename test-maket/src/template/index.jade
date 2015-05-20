@@ -1,0 +1,192 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    title HTML Template
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css")
+    link(rel="stylesheet" href="bundle.css")
+    link(rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,400italic,300,700&subset=cyrillic,latin")
+    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+  body
+    
+    #wrapper
+    
+      #header
+        #slider-box
+          #slider
+            li
+              a
+                img(src="images/header.jpg")
+            li
+              a
+                img(src="images/slider2.png")
+            li
+              a
+                img(src="images/header.jpg")
+            li
+              a
+                img(src="images/slider2.png")
+            li
+              a
+                img(src="images/header.jpg")
+          
+          #title
+            .portfolio
+              i.icon-menu
+              span ПОРТФОЛИО
+            span.nav.s-prev.icon-left-open
+            span.nav.s-next.icon-right-open
+            .desc 
+              span Коттеджный поселок " Right Bank "
+            .tr
+        
+          #link
+            i.icon-forward
+            span ПОДЕЛИТЬСЯ
+            i.icon-instagramm
+            i.icon-vk
+            
+        #slider-nav
+          span.s-prev.icon-left-open
+          span.s-next.icon-right-open
+          
+        
+      #content
+        .table
+          .col
+            .table-box
+              .box
+                h4 Местоположение:
+                p Россия, г. Москва, ул. Прибрежная 1
+              
+            .table-box
+              .box
+                h4 Цель:
+                p Создать модель загородного коттеджного поселка
+              
+          .col
+            .table-box
+              .box
+                h4 Площадь:
+                p 
+                  | 2 548 м
+                  sup 2
+              
+            .table-box
+              .box
+                h4 Над проектом работали:
+                p 
+                  | 2 548 м
+                  sup 2   
+              
+          .col
+            .table-box
+              .box
+                h4 Год: 
+                p 2015
+              
+            .table-box
+              .box
+                h4 Итог:
+                p Поселок находится в стадии строительства
+              
+        #description
+          h2 Описание
+          hr.blue
+          
+          p Жилой комплекс бизнес класса «Правый берег» удачно расположен в городе Химки на берегу канала им. Москвы. Окруженный зеленьюс собственным выходом к воде он не оставит равнодушным даже самого искушенного покупателя. В проекте использованы преимуществаблизости к воде в сочетании с передовыми архитектурными и техническими решениями.
+          
+          p Собственная благоустроенная набережная и комплексное озеленение создают комфортную территорию для отдыха жителей, а детскиеплощадки с современными развивающими игровыми городками идеально подходят для прогулок с детьми.
+          
+          p Двухуровневый подземный паркинг рассчитан на 790 машино-мест и представляет собой отапливаемые помещения,оснащенные современными коммуникациями. Доступ в паркинг осуществляется на лифтах непосредственно из жилой зоны.Проектировщиками разработаны системы транспортной логистики въездов и выездов из паркинга, а также движения автотранспортапо подземной части комплекса.
+        
+          .container
+            hr
+            a.next(href="#") 
+              | Читать далее
+              i.icon-down-open
+          
+        #people
+          h2 Над проектом работали
+          hr.yellow
+          
+          .people
+            .img-box
+              img(src="images/people1.jpg")
+              p.prof Главный архитектор
+              p.name Александр Прокопенко
+              
+            .img-box
+              img(src="images/people2.jpg")
+              p.prof Главный архитектор
+              p.name Александр Прокопенко
+              
+            .img-box
+              img(src="images/people3.jpg")
+              p.prof Главный архитектор
+              p.name Александр Прокопенко
+      
+      
+      #project
+        .box
+          .detail
+            img(src="images/block1.jpg")
+            p Архитектурное решение для библиотеки на Таганке
+            span
+              i.icon-calendar
+              | 2015
+              
+          .detail
+            img(src="images/block2.jpg")
+            p Архитектурное решение для библиотеки на Таганке
+            span
+              i.icon-calendar
+              | 2015
+              
+          .detail
+            img(src="images/block3.jpg")
+            p Архитектурное решение для библиотеки на Таганке
+            span
+              i.icon-calendar
+              | 2015
+              
+          .detail
+            img(src="images/block4.jpg")
+            p Архитектурное решение для библиотеки на Таганке
+            span
+              i.icon-calendar
+              | 2015
+        
+      #footer
+        .top
+          .block
+            ul.nav
+              li 
+                a(href='#') Бюро
+              li 
+                a(href='#') Портфолио
+              li 
+                a(href='#') Блог
+              li 
+                a(href='#') Контакты
+              
+          .box
+                  
+            p.phone 8 (495) 946-94-60
+                        
+            ul.social
+              li
+                i.icon-facebook
+              li
+                i.icon-vk
+              li
+                i.icon-instagramm
+              li
+                i.icon-odnoklassniki
+        
+        p.koperayt
+          © 2015, Ребрус. Все права защищены.
+          
+      script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+      script(src="bundle.js")
