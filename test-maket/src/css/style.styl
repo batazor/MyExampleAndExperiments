@@ -1,0 +1,438 @@
+html, body
+  height 100%
+  width 100%
+  font-family 'Roboto', sans-serif
+  font-size 100%
+  transition all .3s
+
+#wrapper
+  background-image url('./images/background.png')
+  background-repeat no-repeat
+  background-position 0% 50%
+  color white
+
+#header
+  width 100%
+  position relative
+
+  #slider-box
+    width 100%
+    height 400px
+    position relative
+
+    .sy-pager li
+      width 9px
+      height 9px
+      margin 0 4px
+      border-radius 100% 100% 100% 100%
+      display inline-block
+      background-color #595c65
+
+      &:hover
+      	cursor pointer
+      	background-color white
+
+    .sy-slide > a > img
+      height 400px
+
+    .sy-pager
+      position absolute
+      bottom 17px
+      z-index 999
+
+    .sy-next, .sy-prev
+      display hidden
+
+  #title
+    position absolute
+    top 0
+    z-index 3
+
+    .portfolio
+      background #363946
+      padding 25px
+      display inline-block
+      z-index 3
+
+      .icon-menu
+        padding 8px
+
+    .nav
+      background #e0bf22
+      padding 25px 5px
+      cursor pointer
+
+    .icon-left-open
+      border-right 1px solid #ecd97a
+
+    .desc
+      display inline-block
+      text-transform uppercase
+      padding 25px 30px
+      background rgba(54, 57, 70, 0.6)
+
+    .tr
+      display inline-block
+      border-right 40px solid transparent
+      border-top 68px solid rgba(54, 57, 70, 0.6)
+      vertical-align top
+
+  #link
+    display inline-block
+    background #2e4ed6
+    padding 20px 15px
+    color white
+    position absolute
+    right 0
+    top 35%
+    z-index 3
+    cursor pointer
+
+    span
+      padding 5px
+
+    .icon-instagramm, .icon-vk
+      padding 5px
+      margin 5px
+      background #4360da
+      color #8ea0e9
+      font-size 110%
+      cursor pointer
+
+      &:hover
+        color white
+
+  #slider-nav
+    position absolute
+    bottom 0
+    width 100%
+    height 60px
+    background rgba(54, 57, 70, 0.6)
+    z-index 3
+
+    .icon-left-open
+      position absolute
+      left 15px
+      bottom 16px
+      font-size 140%
+      cursor pointer
+
+    .icon-right-open
+      position absolute
+      right 15px
+      bottom 16px
+      font-size 140%
+      cursor pointer
+
+#content
+  color #363946
+  margin 50px 15% 0 15%
+
+  .table
+    display table
+
+    .table-box
+      display table-row
+
+      .box
+        display table-cell
+
+    .col
+      display table-cell
+      border-right 1px solid #363946
+      margin-right 6%
+      padding 1% 5px 1% 4%
+      width 33%
+
+      &:nth-child(1)
+        padding-left 0
+        margin 0
+
+      &:nth-child(3)
+        border-right none
+        margin-right 2.7%
+
+      h4
+        margin-bottom -5px
+        font-size 115%
+        color rgb(54, 57, 70)
+        line-height 1
+
+      p
+        font-size 90%
+        color rgba(54, 57, 70, 0.6)
+        line-height 1.444
+
+  #description
+    clear both
+
+    h2
+      font-size 200%
+      color rgb(54, 57, 70)
+      line-height 1.304
+      margin-bottom -8px
+
+    hr.blue
+      width 80px
+      border 2px solid #2e4ed6
+      float left
+      height 0
+      margin 20px 0
+
+    p
+      line-height 1.444
+      clear both
+
+
+    .container
+      position relative
+      margin-bottom 70px
+      margin-top 30px
+
+      hr
+        border 1px solid #cfd6f5
+        margin-left 145px
+
+    a.next
+      text-decoration none
+      color rgb(46, 78, 214)
+      line-height 3.333
+      position absolute
+      left 0
+      top -33px
+
+      .icon-down-open
+        padding 0px 11px
+        color #a7b4ed
+        font-size 129%
+
+#people
+  h2
+    font-size 200%
+    color rgb(54, 57, 70)
+    line-height 1.304
+    margin-bottom -8px
+
+  hr.yellow
+    width 80px
+    border 2px solid #e0bf22
+    float left
+    height 0
+    margin 20px 0
+
+  .people
+    clear both
+
+  .img-box
+    float left
+    width 33%
+    text-align center
+    margin 10px 0 40px 0
+
+    img
+      width 125px
+      height 125px
+      border-radius 100%
+
+    .prof
+      font-size 90%
+      color rgb(148, 150, 157)
+      line-height 1.444
+
+    .name
+      font-size 120%
+      color rgb(54, 57, 70)
+      line-height 1
+      margin-top -5px
+
+#project
+  width 100%
+  background #5c606b
+  overflow-y hidden
+
+  .box
+    width 1800px
+
+    .detail
+      position relative
+      float left
+
+      &:hover
+        p
+          opacity 1
+        img
+          opacity 0.4
+        span
+          opacity 1
+
+      img
+        width 450px
+        height 350px
+
+      p
+        font-size 200%
+        color rgb(255, 255, 255)
+        line-height 1.2
+        position absolute
+        bottom 50px
+        left 35px
+        width 50%
+        opacity 0
+
+      span
+        position absolute
+        bottom 30px
+        left 35px
+        color rgb(255, 255, 255)
+        opacity 0
+        line-height 3.75
+        font-size 95%
+
+      .icon-calendar
+        padding-right 8px
+
+#footer
+  background-image url('./images/footer.png')
+  background-size 100% 100%
+  padding 1px 16%
+  color #b9bbc2
+
+  .top
+    .nav
+      list-style-type none
+      padding 0 10px
+      font-size 130%
+      color rgb(185, 187, 194)
+      line-height 1
+
+      li
+        float left
+        padding 22px 18px
+
+        a
+          color #b9bbc2
+          text-decoration none
+
+    .box
+      float right
+
+      .phone
+        float left
+        margin 22px 0px
+        font-size 130%
+
+      .social
+        float right
+        list-style-type none
+        padding 0 20px
+        margin-bottom 15px
+
+        li
+          float left
+          background #505566
+          width 24px
+          height 24px
+          margin 2px
+          padding 4px
+          text-align center
+          line-height 24px
+          cursor pointer
+
+          &:hover
+            color white
+
+  .koperayt
+    clear both
+    text-align center
+    border-top 1px solid white
+    padding 20px 0
+    margin-top 0
+    color rgba(255, 255, 255, 0.6)
+    line-height 1.444
+
+@media (max-width: 620px)
+  body
+    font-size 76%
+
+  #people
+    .img-box
+      float left
+      width 33%
+      text-align center
+      margin 10px 0 40px 0
+
+      img
+        width 85px
+        height 85px
+
+  #footer
+    .top
+      .nav
+        li
+          text-align center
+          float none
+          padding 10px
+
+@media (max-width: 800px)
+  #footer
+    .top
+      .box
+        float none
+
+        .phone
+          width 100%
+          text-align center
+          margin-top 0
+          clear both
+
+        .social
+          padding-left 0
+
+@media (max-width: 950px)
+  body
+    font-size 80%
+
+  #header
+    #slider-box
+      height 300px
+
+      .sy-slide > a > img
+        height 300px
+
+  #project
+    .box
+      width 1440px
+
+      .detail
+        img
+          width 360px
+          height 270px
+
+  #footer
+    .top
+      .block
+        text-align center
+
+        .nav
+          display inline-block
+          padding none
+
+@media (max-width: 1200px)
+  #footer
+    .top
+      .box
+        float none
+
+        .phone
+          float: right
+
+        .social
+          width 100%
+          text-align center
+          display inline-block
+          float none
+          margin-top 0
+
+          li
+            float none
+            display inline-block
