@@ -1,0 +1,15 @@
+- if notice
+  p#notice
+    = notice
+
+h1 Your Pragmatic Catalog
+
+- cache ['store', Product.latest] do
+  - @products.each do |product|
+    - cache ['entry', product] do
+      div.entry
+        = image_tag(product.image_url)
+        h3= product.title
+        = sanitize(product.description)
+        div.price_line
+          span.price= number_to_currency(product.price)

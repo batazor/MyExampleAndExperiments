@@ -8,4 +8,8 @@ class Product < ActiveRecord::Base
     message: 'The URL must point to the image format GIF, JPG or PNG.'
   }
 
+  def self.latest
+    Product.order(:updated_at).last
+  end
+
 end
