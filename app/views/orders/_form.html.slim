@@ -8,14 +8,14 @@
 
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, size: 40
   .field
     = f.label :address
-    = f.text_area :address
+    = f.text_area :address, rows: 3, cols: 40
   .field
     = f.label :email
-    = f.text_field :email
+    = f.text_field :email, size: 40
   .field
     = f.label :pay_type
-    = f.text_field :pay_type
-  .actions = f.submit
+    = f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method'
+  .actions = f.submit 'Place Order'

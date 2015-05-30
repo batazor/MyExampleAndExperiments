@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to store_url, notice: 'Order was successfully created.' }
+        format.html { redirect_to store_url, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -53,9 +53,9 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render :show, status: :ok, location: @order }
       else
-        format.html { render action: 'edit' }
+        format.html { render :edit }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
