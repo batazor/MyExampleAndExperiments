@@ -21,7 +21,7 @@ class Product < ActiveRecord::Base
       if line_items.empty?
         return true
       else
-        errors.add(:base, 'There are headings')
+        errors.add(:base, 'Line Items present')
         return false
       end
     end

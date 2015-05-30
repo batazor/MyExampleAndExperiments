@@ -1,8 +1,4 @@
 - if notice
   p#notice= notice
 
-h2 Your Pragmatic Cart
-
-ul
-  - @cart.line_items.each do |item|
-    li #{ item.quantity } &times; #{ item.product.title }
+= render @cart
