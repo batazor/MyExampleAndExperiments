@@ -1,8 +1,18 @@
 Meteor.startup(function() {
+
+  Meteor.users.remove({});
+  Accounts.createUser({
+    username: "batazor",
+    email: "batazor111@gmail.com",
+    password: "demo1234!!"
+  });
+
   Factory.define('message', Messages, {
     text: function() {
       return Fake.sentence();
-    }
+    },
+    user: Meteor.users.findOne()._id,
+    timestamp: Date.now()
   });
 
   // Add this if you want to remove all messages before seeding
