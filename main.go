@@ -1,77 +1,39 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 	"os"
 
-	"github.com/julienschmidt/httprouter"
-	"github.com/russross/blackfriday"
+	"github.com/codegangsta/negroni"
 )
 
 func main() {
-	router := httprouter.New()
-	router.GET("/", HomeHandler)
-
-	// Posts collection
-	router.GET("/posts", PostsIndexHandler)
-	router.POST("/posts", PostsCreateHandler)
-
-	// Posts singular
-	router.GET("/posts/:id", PostShowHandler)
-	router.PUT("/posts/:id", PostUpdateHandler)
-	router.GET("/posts/:id/edit", PostEditHandler)
-
-	// Markdown
-	router.GET("/markdown", GenerateMarkdown)
-
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
 
-	fmt.Println("starting server on :8080")
-	http.ListenAndServe(":"+port, router)
+	// Middleware stack
+	n := negroni.New(
+		negroni.NewRecovery(),
+		negroni.HandlerFunc(MyMiddleware),
+		negroni.NewLogger(),
+		negroni.NewStatic(http.Dir("pupblic")),
+	)
+
+	n.Run(":" + port)
 }
 
-// HomeHandler -> Home page
-func HomeHandler(rw http.ResponseWriter, router *http.Request, p httprouter.Params) {
-	fmt.Fprintln(rw, "Home")
-}
+// MyMiddleware -> Middleware
+func MyMiddleware(rw http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	log.Println("Logging on the way there...")
 
-// PostsIndexHandler -> Posts index
-func PostsIndexHandler(rw http.ResponseWriter, router *http.Request, p httprouter.Params) {
-	fmt.Fprintln(rw, "posts index")
-}
+	if r.URL.Query().Get("password") == "secret123" {
+		next(rw, r)
+	} else {
+		http.Error(rw, "Not Authorized", 401)
+	}
 
-// PostsCreateHandler -> create post
-func PostsCreateHandler(rw http.ResponseWriter, router *http.Request, p httprouter.Params) {
-	fmt.Fprintln(rw, "posts create")
-}
-
-// PostShowHandler -> Show post
-func PostShowHandler(rw http.ResponseWriter, router *http.Request, p httprouter.Params) {
-	id := p.ByName("id")
-	fmt.Fprintln(rw, "showing post", id)
-}
-
-// PostUpdateHandler -> update posts
-func PostUpdateHandler(rw http.ResponseWriter, router *http.Request, p httprouter.Params) {
-	fmt.Fprintln(rw, "post update")
-}
-
-// PostDeleteHandler -> delete posts
-func PostDeleteHandler(rw http.ResponseWriter, router *http.Request, p httprouter.Params) {
-	fmt.Fprintln(rw, "post delete")
-}
-
-// PostEditHandler -> edit posts
-func PostEditHandler(rw http.ResponseWriter, router *http.Request, p httprouter.Params) {
-	fmt.Fprintln(rw, "post edit")
-}
-
-// GenerateMarkdown generate markdown.
-func GenerateMarkdown(rw http.ResponseWriter, router *http.Request, p httprouter.Params) {
-	markdown := blackfriday.MarkdownCommon([]byte(router.FormValue("body")))
-	rw.Write(markdown)
+	log.Println("Logging on the way bask...")
 }
