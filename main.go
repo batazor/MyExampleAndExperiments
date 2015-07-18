@@ -1,39 +1,31 @@
 package main
 
 import (
-	"log"
+	"encoding/json"
 	"net/http"
-	"os"
-
-	"github.com/codegangsta/negroni"
 )
 
-func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-
-	// Middleware stack
-	n := negroni.New(
-		negroni.NewRecovery(),
-		negroni.HandlerFunc(MyMiddleware),
-		negroni.NewLogger(),
-		negroni.NewStatic(http.Dir("pupblic")),
-	)
-
-	n.Run(":" + port)
+// Book -> struct save book
+type Book struct {
+	Title  string `json:"title"`
+	Author string `json:"author"`
 }
 
-// MyMiddleware -> Middleware
-func MyMiddleware(rw http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
-	log.Println("Logging on the way there...")
+func main() {
+	http.HandleFunc("/", ShowBooks)
+	http.ListenAndServe(":8080", nil)
+}
 
-	if r.URL.Query().Get("password") == "secret123" {
-		next(rw, r)
-	} else {
-		http.Error(rw, "Not Authorized", 401)
+// ShowBooks -> JSON
+func ShowBooks(w http.ResponseWriter, r *http.Request) {
+	book := Book{"Building Web Apps Go", "Jeremy Saenz"}
+
+	js, err := json.Marshal(book)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
-	log.Println("Logging on the way bask...")
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(js)
 }
