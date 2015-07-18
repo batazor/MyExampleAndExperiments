@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown Editor</title>
+  <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="page-title">
+      <h1>Markdown Generator</h1>
+      <p class="lead">Generate your markdown with Go</p>
+      <hr />
+    </div>
+
+    <form action="/markdown" method="POST">
+      <div class="form-group">
+        <textarea name="body" id="" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary pull-right" />
+        </div>
+    </form>
+
+    <script src="components/bootstrap/dist/js/bootstrap.min.js" charset="utf-8"></script>
+  </div>
+</body>
+</html>

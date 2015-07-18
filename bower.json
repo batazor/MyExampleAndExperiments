@@ -1,0 +1,17 @@
+{
+  "name": "Markdown Editor",
+  "version": "0.0.0",
+  "authors": [
+    "Login Viktor <batazor111@gmail.com>"
+  ],
+  "keywords": [
+    "go",
+    "markdown",
+    "editor"
+  ],
+  "license": "MIT",
+  "homepage": "http://batazor.ru",
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}
