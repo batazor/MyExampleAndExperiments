@@ -1,23 +1,31 @@
 package main
 
 import (
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 )
 
-func Test_HelloWorld(t *testing.T) {
-	req, err := http.NewRequest("GET", "localhost/foo", nil)
+func Test_App(t *testing.T) {
+	ts := httptest.NewServer(App())
+	defer ts.Close()
+
+	res, err := http.Get(ts.URL)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	res := httptest.NewRecorder()
-	HelloWorld(res, req)
+	body, err := ioutil.ReadAll(res.Body)
+	res.Body.Close()
 
-	exp := "Hello World"
-	act := res.Body.String()
-	if exp != act {
-		t.Fatalf("Expected %s gog %s", exp, act)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	exp := "Before... Hello World ...After"
+
+	if exp != string(body) {
+		t.Fatalf("Expected %s got %s", exp, body)
 	}
 }
