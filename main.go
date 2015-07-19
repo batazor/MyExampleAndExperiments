@@ -1,8 +1,9 @@
 package main
 
 import (
-	"encoding/json"
 	"net/http"
+	"path"
+	"text/template"
 )
 
 // Book -> struct save book
@@ -20,12 +21,14 @@ func main() {
 func ShowBooks(w http.ResponseWriter, r *http.Request) {
 	book := Book{"Building Web Apps Go", "Jeremy Saenz"}
 
-	js, err := json.Marshal(book)
+	fp := path.Join("template", "index.html")
+	tmpl, err := template.ParseFiles(fp)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	w.Write(js)
+	if err := tmpl.Execute(w, book); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
