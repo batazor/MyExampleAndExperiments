@@ -3,20 +3,35 @@
   <head>
     <meta charset="UTF-8">
     <title>Chat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <style>
-      input { display: block; }
-      ul    { list-style: none; }
+      ul#messages        { list-style: none; }
+      ul#messages li     { margin-bottom: 2px; }
+      ul#messages li img { margin-right: 10px; }
     </style>
   </head>
   <body>
 
-    <ul id="messages"></ul>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul id="messages"></ul>
+        </div>
+      </div>
 
-    <form id="chatbox">
-      {{.UserData.name}}:<br/>
-      <textarea></textarea>
-      <input type="submit" value="Send" />
-    </form>
+      <form id="chatbox" role="form">
+        <div class="form-group">
+          <label for="message">
+            Send a message as {{.UserData.name}}
+          </label>
+          or <a href="/logout">sign out</a>
+
+          <textarea id="message" class="form-control"></textarea>
+        </div>
+
+        <input type="submit" value="Send" class="btn btn-default" />
+      </form>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
@@ -50,6 +65,10 @@
             var msg = eval("(" + e.data + ")");
             messages.append(
               $("<li>").append(
+                $("<img>").attr("title", msg.Name).css({
+                  width: 50,
+                  verticalAlign: "middle"
+                }).attr("src", msg.AvatarURL),
                 $("<strong>").text(msg.Name + ": "),
                 $("<span>").text(msg.Message)
               )
