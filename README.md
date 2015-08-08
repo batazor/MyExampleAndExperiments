@@ -1,4 +1,4 @@
-# Chat on the Go lang
+# App Go-lang
 
 ## Tutorial: links, books and other
 
