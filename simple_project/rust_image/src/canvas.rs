@@ -1,51 +1,53 @@
 extern crate sdl2;
 
-use sdl2::pixels::PixelFormatEnum;
-use sdl2::rect::Rect;
 use sdl2::keyboard::Keycode;
+use sdl2::render::Renderer;
+use sdl2::Sdl;
+use sdl2::pixels::Color;
+use sdl2::rect::Point;
 
-pub fn test() {
-    let mut sdl_context = sdl2::init().video().unwrap();
+pub struct Canvas<'_> {
+    renderer: Renderer<'_>,
+    sdl_context: Sdl,
+}
 
-    let window = sdl_context.window("rust-sdl2 demo: Video", 800, 600)
-        .position_centered()
-        .opengl()
-        .build()
-        .unwrap();
+impl<'_> Canvas<'_> {
+    pub fn new(x: u32, y: u32) -> Canvas<'_> {
+        let sdl_context = sdl2::init().video().unwrap();
 
-    let mut renderer = window.renderer().build().unwrap();
+        let window = sdl_context.window("rust-3d-renderer", x, y)
+            .position_centered()
+            .opengl()
+            .build()
+            .unwrap();
 
-    // FIXME: rework it
-    let mut texture = renderer.create_texture_streaming(PixelFormatEnum::RGB24, (256, 256)).unwrap();
-    // Create a red-green gradient
-    texture.with_lock(None, |buffer: &mut [u8], pitch: usize| {
-        for y in (0..256) {
-            for x in (0..256) {
-                let offset = y*pitch + x*3;
-                buffer[offset + 0] = x as u8;
-                buffer[offset + 1] = y as u8;
-                buffer[offset + 2] = 0;
-            }
-        }
-    }).unwrap();
+        let renderer = window.renderer().build().unwrap();
 
-    renderer.clear();
-    renderer.copy(&texture, None, Some(Rect::new_unwrap(100, 100, 256, 256)));
-    renderer.copy_ex(&texture, None, Some(Rect::new_unwrap(450, 100, 256, 256)), 30.0, None, (false, false));
-    renderer.present();
+        Canvas { renderer: renderer, sdl_context: sdl_context }
+    }
 
-    let mut running = true;
+    pub fn set(&mut self, x: i32, y: i32, color: u32) {
+        self.renderer.set_draw_color(Color::RGB((color >> (8*2)) as u8, (color >> (8*1)) as u8, color as u8));
+        self.renderer.draw_point(Point::new(x, y));
+        self.renderer.present();
+    }
 
-    while running {
-        for event in sdl_context.event_pump().poll_iter() {
-            use sdl2::event::Event;
+    pub fn wait_for_esc(&mut self) {
 
-            match event {
-                Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
-                    running = false
-                },
-                _ => {}
+        let mut running = true;
+
+        while running {
+            for event in self.sdl_context.event_pump().poll_iter() {
+                use sdl2::event::Event;
+
+                match event {
+                    Event::Quit {..} | Event::KeyDown { keycode: Some(Keycode::Escape), .. } => {
+                        running = false
+                    },
+                    _ => {}
+                }
             }
         }
     }
+
 }

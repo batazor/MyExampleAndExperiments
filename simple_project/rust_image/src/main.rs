@@ -4,5 +4,7 @@ mod canvas;
 
 fn main() {
     println!("Hello World!");
-    canvas::test();
+    let mut canvas = canvas::Canvas::new(800, 600);
+    canvas.set(400, 300, 0xFFFFFF);
+    canvas.wait_for_esc();
 }
