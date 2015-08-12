@@ -6,11 +6,15 @@ extern crate rand;
 extern crate num;
 
 mod canvas;
+mod sdlcanvas;
+mod tgacanvas;
 mod geometry;
 mod model;
 
 use model::Model;
 use geometry::Vector3D;
+use tgacanvas::TgaCanvas;
+use canvas::Canvas;
 
 //const WHITE: u32 = 0xFFFFFF;
 //const RED: u32 = 0xFF0000;
@@ -19,22 +23,6 @@ use geometry::Vector3D;
 const WIDTH: usize = 700;
 const HEIGHT: usize = 700;
 const DEPTH: usize = 255;
-
-#[test]
-fn test_line() {
-    let mut canvas = canvas::Canvas::new(100, 100);
-    canvas.line(13, 20, 80, 40, WHITE);
-    canvas.line(20, 13, 40, 80, RED);
-    canvas.line(80, 40, 13, 20, BLUE);
-}
-
-#[test]
-fn test_triangle() {
-    let mut canvas = canvas::Canvas::new(200, 200);
-    canvas.triangle(10, 70, 50, 160, 70, 80, RED);
-    canvas.triangle(180, 50, 150, 1, 70, 180, WHITE);
-    canvas.triangle(180, 150, 120, 160, 130, 180, GREEN);
-}
 
 fn get_gray(intensity: f32) -> u32 {
     debug!("intensity is {}", intensity);
@@ -49,9 +37,9 @@ fn main() {
     env_logger::init().unwrap();
     info!("starting up");
     let light_direction = Vector3D::new(0.0, 0.0, -1.0);
-    let model = Model::new("african_head.obj");
-    let mut canvas = canvas::Canvas::new(WIDTH, HEIGHT);
-    debug!("drawing model");
+    let model = Model::new("obj_african/african_head.obj");
+    let mut canvas: TgaCanvas = Canvas::new(WIDTH, HEIGHT);
+    info!("drawing model");
     for face in model.faces {
         debug!("processing face:");
         debug!("({}, {}, {})", face[0], face[1], face[2]);
@@ -71,7 +59,7 @@ fn main() {
         }
     }
     info!("drawing result");
-    canvas.show();
-    info!("waiting for ESC");
-    canvas.wait_for_esc();
+    canvas.out();
+    info!("waiting for Enter");
+    canvas.wait_for_enter();
 }
