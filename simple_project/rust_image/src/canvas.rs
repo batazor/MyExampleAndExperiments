@@ -118,4 +118,45 @@ impl Canvas {
         }
     }
 
+    pub fn triangle(&mut self, mut x0: i32, mut y0: i32, mut x1: i32, mut y1: i32,
+                     mut x2: i32, mut y2: i32, color: u32) {
+        self.line(x0, y0, x1, y1, color);
+        self.line(x1, y1, x2, y2, color);
+        self.line(x2, y2, x0, y0, color);
+        if y0==y1 && y0==y2 {
+            return; // i dont care about degenerate triangles
+        }
+        // sort the vertices, t0, t1, t2 lower-to-upper (bubblesort yay!)
+        if y0 > y1 {
+            mem::swap(&mut x0, &mut x1);
+            mem::swap(&mut y0, &mut y1);
+        }
+        if y0 > y2 {
+            mem::swap(&mut x0, &mut x2);
+            mem::swap(&mut y0, &mut y2);
+        }
+        if y1 > y2 {
+            mem::swap(&mut x1, &mut x2);
+            mem::swap(&mut y1, &mut y2);
+        }
+        let total_height = y2 - y0;
+        for i in 0..total_height {
+            let second_half = i > y1 - y0 || y1 == y0;
+            let segment_height = if second_half { y2 - y1 } else { y1 - y0 };
+            let alpha = i as f32/total_height as f32;
+            let beta  = (i - if second_half { y1 - y0 } else { 0 }) as f32/segment_height as f32; // be careful: with above conditions no division by zero here
+            let mut ax = (x0 as f32 + (x2-x0) as f32*alpha) as i32;
+            let mut ay = (y0 as f32 + (y2-y0) as f32*alpha) as i32;
+            let mut bx = (if second_half { x1 as f32 + (x2-x1) as f32*beta } else { x0 as f32 + (x1-x0) as f32*beta }) as i32;
+            let mut by = (if second_half { y1 as f32 + (y2-y1) as f32*beta } else { y0 as f32 + (y1-y0) as f32*beta }) as i32;
+            if ax>bx{
+                mem::swap(&mut ax, &mut bx);
+                mem::swap(&mut ay, &mut by);
+            }
+            for j in ax..bx+1 {
+                self.set(j, y0+i, color); // attention, due to int casts t0.y+i != A.y
+            }
+        }
+    }
+
 }
