@@ -13,14 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
     TextView tvColor, tvSize;
 
-    final int MENU_COLOR_RED = 1;
-    final int MENU_COLOR_GREEN = 2;
-    final int MENU_COLOR_BLUE = 3;
-
-    final int MENU_SIZE_22 = 4;
-    final int MENU_SIZE_26 = 5;
-    final int MENU_SIZE_30 = 6;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +32,10 @@ public class MainActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.tvColor:
-                menu.add(0, MENU_COLOR_RED, 0, "Red");
-                menu.add(0, MENU_COLOR_GREEN, 0, "Green");
-                menu.add(0, MENU_COLOR_BLUE, 0, "Blue");
+                getMenuInflater().inflate(R.menu.color, menu);
                 break;
             case R.id.tvSize:
-                menu.add(0, MENU_SIZE_22, 0, "22");
-                menu.add(0, MENU_SIZE_26, 0, "26");
-                menu.add(0, MENU_SIZE_30, 0, "30");
+                getMenuInflater().inflate(R.menu.fontsize, menu);
                 break;
         }
     }
@@ -57,28 +45,28 @@ public class MainActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
         switch (item.getItemId()) {
             // menu items for tvColor
-            case MENU_COLOR_RED:
+            case R.id.menu_red:
                 tvColor.setTextColor(Color.RED);
                 tvColor.setText("Text color = red");
                 break;
-            case MENU_COLOR_GREEN:
+            case R.id.menu_green:
                 tvColor.setTextColor(Color.GREEN);
                 tvColor.setText("Text color = green");
                 break;
-            case MENU_COLOR_BLUE:
+            case R.id.menu_blue:
                 tvColor.setTextColor(Color.BLUE);
                 tvColor.setText("Text color = blue");
                 break;
             // menu items for tvSize
-            case MENU_SIZE_22:
+            case R.id.fontsize_22:
                 tvSize.setTextSize(22);
                 tvSize.setText("Text size = 22");
                 break;
-            case MENU_SIZE_26:
+            case R.id.fontsize_26:
                 tvSize.setTextSize(26);
                 tvSize.setText("Text size = 26");
                 break;
-            case MENU_SIZE_30:
+            case R.id.fontsize_30:
                 tvSize.setTextSize(30);
                 tvSize.setText("Text size = 30");
                 break;
