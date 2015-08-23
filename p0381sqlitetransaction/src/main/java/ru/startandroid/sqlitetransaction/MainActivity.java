@@ -31,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
     void myActions() {
         db = dbh.getWritableDatabase();
         delete(db, "mytable");
+        db.beginTransaction();
         insert(db, "mytable", "val1");
+        db.endTransaction();
+        insert(db, "mytable", "val2");
         read(db, "mytable");
         dbh.close();
     }
