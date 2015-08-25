@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">SimpleListChoice</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="names">
+        <item>Ivan</item>
+        <item>Maria</item>
+        <item>Peter</item>
+        <item>Anton</item>
+        <item>Dasha</item>
+        <item>Boris</item>
+        <item>Kostya</item>
+        <item>Igor</item>
+        <item>Anna</item>
+        <item>Denis</item>
+        <item>Vadim</item>
+        <item>Olga</item>
+        <item>Sergei</item>
+    </string-array>
+</resources>
