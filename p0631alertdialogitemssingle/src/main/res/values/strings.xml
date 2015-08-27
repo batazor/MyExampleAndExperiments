@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AlertDialogItemsSingle</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="items">Items</string>
+    <string name="adapter">Adapter</string>
+    <string name="cursor">Cursor</string>
+    <string name="ok">OK</string>
+</resources>
