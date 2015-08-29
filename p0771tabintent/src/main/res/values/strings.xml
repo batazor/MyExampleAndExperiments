@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TabIntent</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="text_activity1">One Activity</string>
+    <string name="text_activity2">Two Activity</string>
+</resources>
