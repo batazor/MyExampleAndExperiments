@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Files</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="write_file">Write file</string>
+    <string name="read_file">Read file</string>
+    <string name="write_file_sd">Write file SD</string>
+    <string name="read_file_sd">Read file SD</string>
+</resources>
