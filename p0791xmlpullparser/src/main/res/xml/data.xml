@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <phone>
+        <company>Samsung</company>
+        <model>Galaxy</model>
+        <price>18000</price>
+        <screen multitouch="yes" resolution="320x480">3</screen>
+        <colors>
+            <color>black</color>
+            <color>white</color>
+        </colors>
+    </phone>
+</data>
