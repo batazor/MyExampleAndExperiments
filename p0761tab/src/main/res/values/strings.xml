@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tab</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="text_tab1">One tab</string>
+    <string name="text_tab2">Two tab</string>
+    <string name="text_tab3">Three Tab</string>
+    <string name="text_tab_header">My title</string>
+</resources>
