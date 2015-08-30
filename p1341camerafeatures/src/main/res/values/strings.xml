@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CameraFeatures</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="color_effect">Color Effect</string>
+    <string name="flash_mode">Flash Mode</string>
+</resources>
