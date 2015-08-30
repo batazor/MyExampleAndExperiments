@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MultipleScreen</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="headers">
+        <item>Header 1</item>
+        <item>Header 2</item>
+        <item>Header 3</item>
+        <item>Header 4</item>
+    </string-array>
+
+    <string-array name="content">
+        <item>Content 1</item>
+        <item>Content 2</item>
+        <item>Content 3</item>
+        <item>Content 4</item>
+    </string-array>
+</resources>
