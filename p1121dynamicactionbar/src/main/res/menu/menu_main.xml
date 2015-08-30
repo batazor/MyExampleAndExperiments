@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/groupVsbl">
+        <item
+            android:id="@+id/item2"
+            android:icon="@android:drawable/ic_menu_call"
+            android:showAsAction="always|withText"
+            android:title="@string/menu_item2">
+        </item>
+    </group>
+</menu>
