@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SimpleWidget</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="widget_name">My first widget</string>
+    <string name="widget_text">Text in widget</string>
+</resources>
