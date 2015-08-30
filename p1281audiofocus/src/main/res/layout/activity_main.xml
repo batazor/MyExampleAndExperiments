@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <Button
+        android:id="@+id/btnPlayMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="onClickMusic"
+        android:text="@string/music">
+    </Button>
+    <Button
+        android:id="@+id/btnPlaySoundG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnPlayMusic"
+        android:onClick="onClickSound"
+        android:text="@string/sound_gain">
+    </Button>
+    <Button
+        android:id="@+id/btnPlaySoundGT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/btnPlaySoundG"
+        android:layout_toRightOf="@id/btnPlaySoundG"
+        android:onClick="onClickSound"
+        android:text="@string/sound_gain_transient">
+    </Button>
+    <Button
+        android:id="@+id/btnPlaySoundGTD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/btnPlaySoundG"
+        android:layout_toRightOf="@id/btnPlaySoundGT"
+        android:onClick="onClickSound"
+        android:text="@string/sound_gain_transient_duck">
+    </Button>
+</RelativeLayout>
