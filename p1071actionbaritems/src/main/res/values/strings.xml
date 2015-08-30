@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ActionBarItems</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="item1">Item1</string>
+    <string name="item2">Item2</string>
+    <string name="item3">Item3</string>
+    <string name="item4">Item4</string>
+</resources>
