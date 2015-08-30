@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
         Notification notif = new Notification(R.mipmap.ic_launcher, "Notif "
                 + id, System.currentTimeMillis());
         notif.flags |= Notification.FLAG_AUTO_CANCEL;
-        notif.setLatestEventInfo(this, "Title " + id, "Content " + id, pIntent);
+//        notif.setLatestEventInfo(this, "Title " + id, "Content " + id, pIntent);
         nm.notify(id, notif);
     }
 }

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ClickWidget</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="config">Config</string>
+    <string name="update">Update</string>
+    <string name="count">Count</string>
+    <string name="ok">Ok</string>
+</resources>
