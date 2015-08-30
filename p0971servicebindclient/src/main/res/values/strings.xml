@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ServiceBindClient</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="bind">Bind</string>
+    <string name="unbind">Unbind</string>
+</resources>
