@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Loader</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="format_short">Short</string>
+    <string name="format_long">Long</string>
+    <string name="get_time">Get time</string>
+    <string name="observer">Observer</string>
+</resources>
