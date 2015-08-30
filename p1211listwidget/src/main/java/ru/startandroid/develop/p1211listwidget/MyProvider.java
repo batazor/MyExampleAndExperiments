@@ -39,17 +39,17 @@ public class MyProvider extends AppWidgetProvider {
         }
     }
 
-    @Override
-    public RemoteViews getViewAt(int position) {
-        RemoteViews rView = new RemoteViews(context.getPackageName(),
-                R.layout.item);
-        rView.setTextViewText(R.id.tvItemText, data.get(position));
-        Intent clickIntent = new Intent();
-        clickIntent.putExtra(MyProvider.ITEM_POSITION, position);
-        rView.setOnClickFillInIntent(R.id.tvItemText, clickIntent);
-
-        return rView;
-    }
+//    @Override
+//    public RemoteViews getViewAt(int position) {
+//        RemoteViews rView = new RemoteViews(context.getPackageName(),
+//                R.layout.item);
+//        rView.setTextViewText(R.id.tvItemText, data.get(position));
+//        Intent clickIntent = new Intent();
+//        clickIntent.putExtra(MyProvider.ITEM_POSITION, position);
+//        rView.setOnClickFillInIntent(R.id.tvItemText, clickIntent);
+//
+//        return rView;
+//    }
 
     void updateWidget(Context context, AppWidgetManager appWidgetManager,
                       int appWidgetId) {
