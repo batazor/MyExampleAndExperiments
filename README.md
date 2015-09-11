@@ -37,10 +37,48 @@ rabbitmq.publish('nameChannel', {message: 'Hello World'});
 
 ### Methods
 
-#### #subscribe(nameChannel, options)
+#### #push(queueName, options)
 
-...
+Push to queue.
 
-#### #publish(nameChannel, options)
++ __queueName__ - name queue
++ __message__   - message
++ __options__   - options for queue
 
-...
+#### #pull(queueName, message, options)
+
+Pull to queue.
+
++ __queueName__ - name queue
++ __options__   - options for queue
+
+#### #unpull(queueName)
+
+Unsubscribe to queue.
+
+#### #publish(queueName, message, options)
+
+Publish to queue.
+
++ __queueName__ - name queue
++ __message__   - message
++ __options__   - options for queue
+
+#### #subscribe(queueName, options)
+
+Subscribe to queue.
+
++ __queueName__ - name queue
++ __options__   - options for queue
+
+#### #unsubscribe(queueName)
+
+Unsubscribe to queue.
+
+### TODO
+
++ Add method unsubscibe
++ Add method unpull
++ Add custom exchange
++ Add test
++ Add JSDoc

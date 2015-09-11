@@ -11,7 +11,6 @@
     "mq",
     "amqp"
   ],
-  "author": "Navigator",
   "license": "MIT",
   "dependencies": {
     "amqplib": "^0.3.2"
