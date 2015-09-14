@@ -44,12 +44,6 @@ Push to queue.
 + __queueName__ - name queue
 + __message__   - message
 + __options__   - AMQP options for queue
-  - type: the type of exchange 'direct', 'fanout', or 'topic' (default).
-  - passive: boolean, default false. If set, the server will not create the exchange. The client can use this to check whether an exchange exists without modifying the server state.
-  - durable: boolean, default false. If set when creating a new exchange, the exchange will be marked as durable. Durable exchanges remain active when a server restarts. Non-durable exchanges (transient exchanges) are purged if/when a server restarts.
-  - autoDelete: boolean, default true. If set, the exchange is deleted when there are no longer queues bound to it.
-  - noDeclare: boolean, default false. If set, the exchange will not be declared, this will allow the exchange to be deleted if you dont know its previous options.
-  - confirm: boolean, default false. If set, the exchange will be in confirm mode, and you will get a 'ack'|'error' event emitted on a publish, or the callback on the publish will be called.
 
 #### #pull(queueName, message, options)
 
@@ -57,12 +51,6 @@ Pull to queue.
 
 + __queueName__ - name queue
 + __options__   - AMQP options for queue
-  - type: the type of exchange 'direct', 'fanout', or 'topic' (default).
-  - passive: boolean, default false. If set, the server will not create the exchange. The client can use this to check whether an exchange exists without modifying the server state.
-  - durable: boolean, default false. If set when creating a new exchange, the exchange will be marked as durable. Durable exchanges remain active when a server restarts. Non-durable exchanges (transient exchanges) are purged if/when a server restarts.
-  - autoDelete: boolean, default true. If set, the exchange is deleted when there are no longer queues bound to it.
-  - noDeclare: boolean, default false. If set, the exchange will not be declared, this will allow the exchange to be deleted if you dont know its previous options.
-  - confirm: boolean, default false. If set, the exchange will be in confirm mode, and you will get a 'ack'|'error' event emitted on a publish, or the callback on the publish will be called.
 
 #### #unpull(queueName)
 
@@ -75,12 +63,6 @@ Publish to queue.
 + __queueName__ - name queue
 + __message__   - message
 + __options__   - AMQP options for queue
-  - type: the type of exchange 'direct', 'fanout', or 'topic' (default).
-  - passive: boolean, default false. If set, the server will not create the exchange. The client can use this to check whether an exchange exists without modifying the server state.
-  - durable: boolean, default false. If set when creating a new exchange, the exchange will be marked as durable. Durable exchanges remain active when a server restarts. Non-durable exchanges (transient exchanges) are purged if/when a server restarts.
-  - autoDelete: boolean, default true. If set, the exchange is deleted when there are no longer queues bound to it.
-  - noDeclare: boolean, default false. If set, the exchange will not be declared, this will allow the exchange to be deleted if you dont know its previous options.
-  - confirm: boolean, default false. If set, the exchange will be in confirm mode, and you will get a 'ack'|'error' event emitted on a publish, or the callback on the publish will be called.
 
 #### #subscribe(queueName, options)
 
@@ -88,16 +70,19 @@ Subscribe to queue.
 
 + __queueName__ - name queue
 + __options__   - AMQP options for queue
-  - type: the type of exchange 'direct', 'fanout', or 'topic' (default).
-  - passive: boolean, default false. If set, the server will not create the exchange. The client can use this to check whether an exchange exists without modifying the server state.
-  - durable: boolean, default false. If set when creating a new exchange, the exchange will be marked as durable. Durable exchanges remain active when a server restarts. Non-durable exchanges (transient exchanges) are purged if/when a server restarts.
-  - autoDelete: boolean, default true. If set, the exchange is deleted when there are no longer queues bound to it.
-  - noDeclare: boolean, default false. If set, the exchange will not be declared, this will allow the exchange to be deleted if you dont know its previous options.
-  - confirm: boolean, default false. If set, the exchange will be in confirm mode, and you will get a 'ack'|'error' event emitted on a publish, or the callback on the publish will be called.
 
 #### #unsubscribe(queueName)
 
 Unsubscribe to queue.
+
+### AMQP options for queue
+
+- type: the type of exchange 'direct', 'fanout', or 'topic' (default).
+- passive: boolean, default false. If set, the server will not create the exchange. The client can use this to check whether an exchange exists without modifying the server state.
+- durable: boolean, default false. If set when creating a new exchange, the exchange will be marked as durable. Durable exchanges remain active when a server restarts. Non-durable exchanges (transient exchanges) are purged if/when a server restarts.
+- autoDelete: boolean, default true. If set, the exchange is deleted when there are no longer queues bound to it.
+- noDeclare: boolean, default false. If set, the exchange will not be declared, this will allow the exchange to be deleted if you dont know its previous options.
+- confirm: boolean, default false. If set, the exchange will be in confirm mode, and you will get a 'ack'|'error' event emitted on a publish, or the callback on the publish will be called.
 
 ### TODO
 
