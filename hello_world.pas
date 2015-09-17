@@ -1,5 +1,8 @@
-Program HelloWord;
+program HelloWord;
+uses crt;
 
+(* Here the main program block starts *)
 begin
-  writeLn('Hello World!')
+  writeln('Hello World!');
+  readkey;
 end.
