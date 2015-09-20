@@ -1,9 +1,9 @@
-{{ define "write" }}
-
-{{ template "header" }}
-
 <div class="row">
-  <div class="col-xs-4"></div>
+  <div class="col-xs-2">
+    {{ if .ID }}
+      <a href="/delete/{{ .ID }}">Delete</a>
+    {{ end }}
+  </div>
 
   <div class="col-xs-4">
     <form role="form" method="POST" action="/SavePost">
@@ -16,19 +16,15 @@
 
       <div class="form-group">
         <label>Content</label>
-        <textarea id="content" name="content">{{ .Content }}</textarea>
+        <textarea id="content" name="content">{{ .ContentMarkdown }}</textarea>
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
   </div>
 
-  <div class="col-xs-4">
-    {{ if .ID }}
-      <a href="/delete?id={{ .ID }}">Delete</a>
-    {{ end }}
+  <div class="col-xs-6" id="md_html">
+    {{ .ContentHTML | unescape }}
   </div>
 </div>
 
-{{ template "footer" }}
-
-{{ end }}
+<script src="/assets/js/write.js"></script>
