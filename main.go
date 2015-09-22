@@ -4,30 +4,44 @@ import (
 	"html/template"
 	"net/http"
 
+	"go-blog-example/db/documents"
 	"go-blog-example/models"
 
 	"github.com/codegangsta/martini"
 	"github.com/martini-contrib/render"
-	"github.com/russross/blackfriday"
+	"labix.org/v2/mgo"
 )
 
-var posts map[string]*models.Post
+var postsCollection *mgo.Collection
 
 func indexHandler(rnd render.Render) {
+	postDocuments := []documents.PostDocument{}
+	postsCollection.Find(nil).All(&postDocuments)
+
+	posts := []models.Post{}
+	for _, doc := range postDocuments {
+		post := models.Post{doc.ID, doc.Title, doc.ContentHTML, doc.ContentMarkdown}
+		posts = append(posts, post)
+	}
+
 	rnd.HTML(200, "index", posts)
 }
 
 func writeHandler(rnd render.Render) {
-	rnd.HTML(200, "write", nil)
+	post := models.Post{}
+	rnd.HTML(200, "write", post)
 }
 
 func editHandler(rnd render.Render, r *http.Request, params martini.Params) {
 	id := params["id"]
-	post, found := posts[id]
-	if !found {
+
+	postDocument := documents.PostDocument{}
+	err := postsCollection.FindId(id).One(&postDocument)
+	if err != nil {
 		rnd.Redirect("/")
 		return
 	}
+	post := models.Post{postDocument.ID, postDocument.Title, postDocument.ContentHTML, postDocument.ContentMarkdown}
 
 	rnd.HTML(200, "write", post)
 }
@@ -36,18 +50,15 @@ func savePostHandler(rnd render.Render, r *http.Request) {
 	id := r.FormValue("id")
 	title := r.FormValue("title")
 	contentMarkdown := r.FormValue("content")
-	contentHTML := string(blackfriday.MarkdownBasic([]byte(contentMarkdown)))
+	ContentHTML := ConverMarkdownToHTML(contentMarkdown)
 
-	var post *models.Post
+	postDocument := documents.PostDocument{id, title, ContentHTML, contentMarkdown}
 	if id != "" {
-		post = posts[id]
-		post.Title = title
-		post.ContentHTML = contentHTML
-		post.ContentMarkdown = contentMarkdown
+		postsCollection.UpdateId(id, postDocument)
 	} else {
 		id = GenerateID()
-		post := models.NewPost(id, title, contentHTML, contentMarkdown)
-		posts[post.ID] = post
+		postDocument.ID = id
+		postsCollection.Insert(postDocument)
 	}
 
 	rnd.Redirect("/")
@@ -60,7 +71,7 @@ func deleteHandler(rnd render.Render, r *http.Request, params martini.Params) {
 		return
 	}
 
-	delete(posts, id)
+	postsCollection.RemoveId(id)
 
 	rnd.Redirect("/")
 }
@@ -68,9 +79,9 @@ func deleteHandler(rnd render.Render, r *http.Request, params martini.Params) {
 // getHtmlHandler ...
 func getHTMLHandler(rnd render.Render, r *http.Request) {
 	md := r.FormValue("md")
-	htmlBytes := blackfriday.MarkdownBasic([]byte(md))
+	html := ConverMarkdownToHTML(md)
 
-	rnd.JSON(200, map[string]interface{}{"html": string(htmlBytes)})
+	rnd.JSON(200, map[string]interface{}{"html": html})
 }
 
 func unescape(x string) interface{} {
@@ -78,7 +89,12 @@ func unescape(x string) interface{} {
 }
 
 func main() {
-	posts = make(map[string]*models.Post, 0)
+	session, err := mgo.Dial("localhost")
+	if err != nil {
+		panic(err)
+	}
+
+	postsCollection = session.DB("blog").C("posts")
 
 	m := martini.Classic()
 
