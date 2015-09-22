@@ -1,4 +1,4 @@
-package main
+package utils
 
 import (
 	"crypto/rand"
@@ -14,6 +14,7 @@ func GenerateID() string {
 	return fmt.Sprintf("%x", b)
 }
 
+// ConverMarkdownToHTML ...
 func ConverMarkdownToHTML(markdown string) string {
 	return string(blackfriday.MarkdownBasic([]byte(markdown)))
 }

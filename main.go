@@ -1,20 +1,59 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
+	"time"
 
 	"go-blog-example/db/documents"
 	"go-blog-example/models"
+	"go-blog-example/session"
+	"go-blog-example/utils"
 
 	"github.com/codegangsta/martini"
 	"github.com/martini-contrib/render"
 	"labix.org/v2/mgo"
 )
 
-var postsCollection *mgo.Collection
+// CookieName ...
+const (
+	CookieName = "sessionID"
+)
 
-func indexHandler(rnd render.Render) {
+var postsCollection *mgo.Collection
+var inMemorySession *session.Session
+
+func getLoginHandler(rnd render.Render) {
+	rnd.HTML(200, "login", nil)
+}
+
+func postLoginHandler(rnd render.Render, r *http.Request, w http.ResponseWriter) {
+	username := r.FormValue("username")
+	password := r.FormValue("password")
+
+	fmt.Println(username)
+	fmt.Println(password)
+
+	sessionID := inMemorySession.Init(username)
+
+	cookie := &http.Cookie{
+		Name:    CookieName,
+		Value:   sessionID,
+		Expires: time.Now().Add(5 * time.Minute),
+	}
+
+	http.SetCookie(w, cookie)
+
+	rnd.Redirect("/")
+}
+
+func indexHandler(rnd render.Render, r *http.Request) {
+	cookie, _ := r.Cookie(CookieName)
+	if cookie != nil {
+		fmt.Println(inMemorySession.Get(cookie.Value))
+	}
+
 	postDocuments := []documents.PostDocument{}
 	postsCollection.Find(nil).All(&postDocuments)
 
@@ -50,13 +89,13 @@ func savePostHandler(rnd render.Render, r *http.Request) {
 	id := r.FormValue("id")
 	title := r.FormValue("title")
 	contentMarkdown := r.FormValue("content")
-	ContentHTML := ConverMarkdownToHTML(contentMarkdown)
+	ContentHTML := utils.ConverMarkdownToHTML(contentMarkdown)
 
 	postDocument := documents.PostDocument{id, title, ContentHTML, contentMarkdown}
 	if id != "" {
 		postsCollection.UpdateId(id, postDocument)
 	} else {
-		id = GenerateID()
+		id = utils.GenerateID()
 		postDocument.ID = id
 		postsCollection.Insert(postDocument)
 	}
@@ -79,7 +118,7 @@ func deleteHandler(rnd render.Render, r *http.Request, params martini.Params) {
 // getHtmlHandler ...
 func getHTMLHandler(rnd render.Render, r *http.Request) {
 	md := r.FormValue("md")
-	html := ConverMarkdownToHTML(md)
+	html := utils.ConverMarkdownToHTML(md)
 
 	rnd.JSON(200, map[string]interface{}{"html": html})
 }
@@ -89,6 +128,8 @@ func unescape(x string) interface{} {
 }
 
 func main() {
+	inMemorySession = session.NewSession()
+
 	session, err := mgo.Dial("localhost")
 	if err != nil {
 		panic(err)
@@ -113,6 +154,8 @@ func main() {
 	m.Use(martini.Static("assets", staticOptions))
 
 	m.Get("/", indexHandler)
+	m.Get("/login", getLoginHandler)
+	m.Post("/login", postLoginHandler)
 	m.Get("/write", writeHandler)
 	m.Get("/edit/:id", editHandler)
 	m.Get("/delete/:id", deleteHandler)
