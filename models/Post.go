@@ -9,6 +9,6 @@ type Post struct {
 }
 
 // NewPost - constructor.
-func NewPost(id, title, ContentHTML, ContentMarkdown string) *Post {
-	return &Post{id, title, ContentHTML, ContentMarkdown}
+func NewPost(ID, title, ContentHTML, ContentMarkdown string) *Post {
+	return &Post{ID, title, ContentHTML, ContentMarkdown}
 }

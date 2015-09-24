@@ -6,7 +6,7 @@ import (
 	"go-blog-example/routes"
 	"go-blog-example/session"
 
-	"github.com/codegangsta/martini"
+	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
 	"labix.org/v2/mgo"
 )
@@ -45,9 +45,11 @@ func main() {
 
 	m.Get("/", routes.IndexHandler)
 	m.Get("/login", routes.GetLoginHandler)
+	m.Get("/logout", routes.LogoutHandler)
 	m.Post("/login", routes.PostLoginHandler)
 	m.Get("/write", routes.WriteHandler)
 	m.Get("/edit/:id", routes.EditHandler)
+	m.Get("/view/:id", routes.ViewHandler)
 	m.Get("/delete/:id", routes.DeleteHandler)
 	m.Post("/SavePost", routes.SavePostHandler)
 	m.Post("/gethtml", routes.GetHTMLHandler)

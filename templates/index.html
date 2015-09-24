@@ -1,8 +1,12 @@
-{{ range $key, $value := . }}
+{{ range $key, $value := .Posts }}
 <div class="row">
   <div class="col-xs-2"></div>
   <div class="col-xs-8">
-    <h1><a href="/edit/{{ $value.ID }}">{{ $value.Title }}</a></h1>
+    {{ if $.IsAuthorized }}
+      <h1><a href="/edit/{{ $value.ID }}">{{ $value.Title }}</a></h1>
+    {{ else }}
+      <h1><a href="/view/{{ $value.ID }}">{{ $value.Title }}</a></h1>
+    {{ end }}
   </div>
   <div class="col-xs-2"></div>
 </div>

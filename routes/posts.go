@@ -3,6 +3,7 @@ package routes
 import (
 	"go-blog-example/db/documents"
 	"go-blog-example/models"
+	"go-blog-example/session"
 	"go-blog-example/utils"
 	"net/http"
 
@@ -12,12 +13,22 @@ import (
 	"github.com/martini-contrib/render"
 )
 
-func WriteHandler(rnd render.Render) {
-	post := models.Post{}
-	rnd.HTML(200, "write", post)
+// WriteHandler ...
+func WriteHandler(rnd render.Render, s *session.Session) {
+	if !s.IsAuthorized {
+		rnd.Redirect("/")
+	}
+	model := models.EditPostModel{}
+	model.IsAuthorized = s.IsAuthorized
+	model.Post = models.Post{}
+	rnd.HTML(200, "write", model)
 }
 
-func EditHandler(rnd render.Render, r *http.Request, params martini.Params, db *mgo.Database) {
+// EditHandler ...
+func EditHandler(s *session.Session, rnd render.Render, r *http.Request, params martini.Params, db *mgo.Database) {
+	if !s.IsAuthorized {
+		rnd.Redirect("/")
+	}
 	postsCollection := db.C("posts")
 
 	id := params["id"]
@@ -30,16 +41,43 @@ func EditHandler(rnd render.Render, r *http.Request, params martini.Params, db *
 	}
 	post := models.Post{postDocument.ID, postDocument.Title, postDocument.ContentHTML, postDocument.ContentMarkdown}
 
-	rnd.HTML(200, "write", post)
+	model := models.EditPostModel{}
+	model.IsAuthorized = s.IsAuthorized
+	model.Post = post
+	rnd.HTML(200, "write", model)
 }
 
-func SavePostHandler(rnd render.Render, r *http.Request, db *mgo.Database) {
+// ViewHandler ...
+func ViewHandler(s *session.Session, rnd render.Render, r *http.Request, params martini.Params, db *mgo.Database) {
+	postsCollection := db.C("posts")
+
+	id := params["id"]
+
+	postDocument := documents.PostDocument{}
+	err := postsCollection.FindId(id).One(&postDocument)
+	if err != nil {
+		rnd.Redirect("/")
+		return
+	}
+	post := models.Post{postDocument.ID, postDocument.Title, postDocument.ContentHTML, postDocument.ContentMarkdown}
+
+	model := models.ViewPostModel{}
+	model.IsAuthorized = s.IsAuthorized
+	model.Post = post
+	rnd.HTML(200, "view", model)
+}
+
+// SavePostHandler ...
+func SavePostHandler(s *session.Session, rnd render.Render, r *http.Request, db *mgo.Database) {
+	if !s.IsAuthorized {
+		rnd.Redirect("/")
+	}
 	id := r.FormValue("id")
 	title := r.FormValue("title")
 	contentMarkdown := r.FormValue("content")
-	ContentHTML := utils.ConvertMarkdownToHTML(contentMarkdown)
+	contentHTML := utils.ConvertMarkdownToHTML(contentMarkdown)
 
-	postDocument := documents.PostDocument{id, title, ContentHTML, contentMarkdown}
+	postDocument := documents.PostDocument{id, title, contentHTML, contentMarkdown}
 
 	postsCollection := db.C("posts")
 	if id != "" {
@@ -53,7 +91,12 @@ func SavePostHandler(rnd render.Render, r *http.Request, db *mgo.Database) {
 	rnd.Redirect("/")
 }
 
-func DeleteHandler(rnd render.Render, r *http.Request, params martini.Params, db *mgo.Database) {
+// DeleteHandler ...
+func DeleteHandler(rnd render.Render, r *http.Request, params martini.Params, db *mgo.Database, s *session.Session) {
+	if !s.IsAuthorized {
+		rnd.Redirect("/")
+	}
+
 	id := params["id"]
 	if id == "" {
 		rnd.Redirect("/")
@@ -66,6 +109,7 @@ func DeleteHandler(rnd render.Render, r *http.Request, params martini.Params, db
 	rnd.Redirect("/")
 }
 
+// GetHTMLHandler ...
 func GetHTMLHandler(rnd render.Render, r *http.Request) {
 	md := r.FormValue("md")
 	html := utils.ConvertMarkdownToHTML(md)
