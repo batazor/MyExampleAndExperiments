@@ -14,7 +14,7 @@ func GenerateID() string {
 	return fmt.Sprintf("%x", b)
 }
 
-// ConverMarkdownToHTML ...
-func ConverMarkdownToHTML(markdown string) string {
+// ConvertMarkdownToHTML ...
+func ConvertMarkdownToHTML(markdown string) string {
 	return string(blackfriday.MarkdownBasic([]byte(markdown)))
 }
