@@ -1,3 +1,4 @@
 {
-  "url": "amqp://192.168.0.19"
+  "url": "amqp://localhost",
+  "reconnectTime": 15000
 }

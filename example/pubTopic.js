@@ -18,4 +18,11 @@ rabbitmq.on('message', function(data) {
   console.info(data);
 });
 
-rabbitmq.pull('testpull');
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+for (var i = 0; i < 40000; i++) {
+  var name = 'topic_' + getRandomInt(1, 999);
+  rabbitmq.pubTopic(name, { i: i }, 'test');
+};

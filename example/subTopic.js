@@ -16,6 +16,10 @@ rabbitmq.on('logs', function(print_log) {
 // Message
 rabbitmq.on('message', function(data) {
   console.info(data);
+  j++;
 });
 
-rabbitmq.pull('testpull');
+for (var i = 0; i < 1000; i++) {
+  var name = 'topic_' + i;
+  rabbitmq.subTopic(name, 'test');
+}

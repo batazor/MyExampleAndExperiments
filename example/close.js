@@ -18,4 +18,9 @@ rabbitmq.on('message', function(data) {
   console.info(data);
 });
 
-rabbitmq.pull('testpull');
+rabbitmq.subscribe('test');
+
+setTimeout(function() {
+  console.log('Disconnect ?')
+  rabbitmq.close('test');
+}, 5000);
