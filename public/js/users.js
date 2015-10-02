@@ -6,15 +6,12 @@ $(document).ready(function() {
   $('#submi_new_user').on('click', function(e) {
     e.preventDefault();
 
-    var data = {};
-    data.name = $('#name').val();
-    data.avatar = $('#avatar').val();
-    data.address = $('#address').val();
-    data.phone = $('#phone').val();
-    data.email = $('#email').val();
+    var data = new FormData(document.getElementById('form'));
+    data.append('name', 'rerwrwer');
+    data.append('email', 're43242342rwrwer');
 
-    $.post('/user', data, function(data) {
-      console.log(data);
-    });
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/user");
+    xhr.send(data);
   });
 });
