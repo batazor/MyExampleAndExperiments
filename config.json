@@ -5,6 +5,6 @@
     "host":     "localhost",
     "user":     "admin",
     "password": "admin",
-    "database": "admin"
+    "database": "demonstration"
   }
 }

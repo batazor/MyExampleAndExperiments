@@ -1,5 +1,6 @@
 var http = require('http'),
   url = require('url'),
+  jade = require('jade'),
   users = require('./handlers/users');
 
 function route(req, res) {
@@ -8,8 +9,8 @@ function route(req, res) {
   var method = req.method;
 
   if (method === "GET" && pathname[1] === "") {
-    res.writeHead(200, {"Content-Type": "text/plain"});
-    return res.end('Hello World');
+    var html = jade.renderFile(__dirname + '/public/users/users.jade', {});
+    return res.end(html);
   }
 
   if (method === "GET" && pathname[1] === "users") {

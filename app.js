@@ -8,4 +8,4 @@ http.createServer(onHandler).listen(config.port, function() {
 
 function onHandler(req, res) {
   router(req, res);
-}
+};
