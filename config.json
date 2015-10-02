@@ -1,3 +1,10 @@
 {
-  "port": 3040
+  "port": 3040,
+
+  "mysql": {
+    "host":     "localhost",
+    "user":     "admin",
+    "password": "admin",
+    "database": "admin"
+  }
 }
