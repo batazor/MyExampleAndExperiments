@@ -1,0 +1,112 @@
+doctype html
+
+html(lang='en')
+
+  head
+    meta(charset='UTF-8')
+    title Users
+    
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+    
+    link(rel='stylesheet' href='./public/css/bootstrap.min.css')
+    link(rel='stylesheet' href='./public/css/bootstrap-theme.min.css')
+    
+  body
+    header.container
+      h1 All Users
+    
+    content.container.col-xs-12
+      div.col-xs-4
+        img.img-responsive.col-xs-4(src="./public/images/sobaka.jpg" alt="Petr Gros")
+        div.col-xs-8
+          p.lead Petr Gros
+          strong Orel, Russia
+          p 
+            strong 89004562321
+          p
+            a(href="mailto:email@example.com") email@example.com
+        nav.col-xs-12
+          button.btn.btn-info.col-xs-5(class='edit_user' type='submit') Edit
+          button.btn.btn-danger.col-xs-5.col-xs-offset-2(class='delete_user' type='submit') Delete
+          
+      div.col-xs-4
+        img.img-responsive.col-xs-4(src="./public/images/sobaka.jpg" alt="Petr Gros")
+        div.col-xs-8
+          p.lead Petr Gros
+          strong Orel, Russia
+          p 
+            strong 89004562321
+          p
+            a(href="mailto:email@example.com") email@example.com
+        nav.col-xs-12
+          button.btn.btn-info.col-xs-5(class='edit_user' type='submit') Edit
+          button.btn.btn-danger.col-xs-5.col-xs-offset-2(class='delete_user' type='submit') Delete
+          
+      div.col-xs-4
+        img.img-responsive.col-xs-4(src="./public/images/sobaka.jpg" alt="Petr Gros")
+        div.col-xs-8
+          p.lead Petr Gros
+          strong Orel, Russia
+          p 
+            strong 89004562321
+          p
+            a(href="mailto:email@example.com") email@example.com
+        nav.col-xs-12
+          button.btn.btn-info.col-xs-5(class='edit_user' type='submit') Edit
+          button.btn.btn-danger.col-xs-5.col-xs-offset-2(class='delete_user' type='submit') Delete
+          
+      div.col-xs-4
+        img.img-responsive.col-xs-4(src="./public/images/sobaka.jpg" alt="Petr Gros")
+        div.col-xs-8
+          p.lead Petr Gros
+          strong Orel, Russia
+          p 
+            strong 89004562321
+          p
+            a(href="mailto:email@example.com") email@example.com
+        nav.col-xs-12
+          button.btn.btn-info.col-xs-5(class='edit_user' type='submit') Edit
+          button.btn.btn-danger.col-xs-5.col-xs-offset-2(class='delete_user' type='submit') Delete
+          
+      div.col-xs-4
+        img.img-responsive.col-xs-4(src="./public/images/sobaka.jpg" alt="Petr Gros")
+        div.col-xs-8
+          p.lead Petr Gros
+          strong Orel, Russia
+          p 
+            strong 89004562321
+          p
+            a(href="mailto:email@example.com") email@example.com
+        nav.col-xs-12
+          button.btn.btn-info.col-xs-5(class='edit_user' type='submit') Edit
+          button.btn.btn-danger.col-xs-5.col-xs-offset-2(class='delete_user' type='submit') Delete
+      
+    form.container.form-horizontal
+      h2 New users
+      div.col-xs-4.form-group
+        label.col-sm-2.control-label(for='name') Name
+        div.col-sm-10
+          input.form-control(id='name' type='text' name='name' placeholder='Petr Gros')
+      div.col-xs-4.form-group
+        label.col-sm-2.control-label(for='address') Address
+        div.col-sm-10
+          input.form-control(id='address' type='text' name='address' placeholder='Orel, Russia')
+      div.col-xs-4.form-group
+        label.col-sm-2.control-label(for='avatar') Avatar
+        div.col-sm-10
+          input.form-control(id='avatar' type='file' name='avatar')
+      div.col-xs-4.form-group
+        label.col-sm-2.control-label(for='phone') Phone
+        div.col-sm-10
+          input.form-control(id='phone' type='text' name='phone' placeholder='89004562321, 86742390404')
+      div.col-xs-4.form-group
+        label.col-sm-2.control-label(for='email') Email
+        div.col-sm-10
+          input.form-control(id='email' type='email' name='email' placeholder='email@example.com')
+      button.col-xs-4.btn.btn-success(id='submi_new_user' type='submit') Go
+    
+    script(src='./public/js/jquery.min.js')
+    script(src='./public/js/bootstrap.min.js')
+    script(src='./public/js/users.js')
+  
