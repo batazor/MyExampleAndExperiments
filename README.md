@@ -2,24 +2,24 @@
 
 Simple app.
 
-# CONFIGURATION
+### CONFIGURATION
 
 Configuration is set to `config.json`.
 Install MySQL parameters and port.
 
-# INSTALL
+### INSTALL
 
 ```
 npm run init
 ```
 
-# RUN
+### RUN
 
 ```
 npm start
 ```
 
-# API
+### API
 
 **GET /users** - get all users
 
@@ -63,3 +63,11 @@ __params__
     "id": "46"
 }
 ```
+
+### Response
+
+JSON structure
+
+status (bool)
+code (array string error)
+data (data JSON or string)
