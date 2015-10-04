@@ -11,7 +11,9 @@
   "author": "batazor",
   "license": "MIT",
   "dependencies": {
+    "formidable": "^1.0.17",
     "jade": "^1.11.0",
+    "multiparty": "^4.1.2",
     "mysql": "^2.9.0"
   }
 }

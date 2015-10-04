@@ -19,7 +19,7 @@ function route(req, res) {
   }
 
   if (method === "GET" && pathname[1] === "user") {
-    return Users.show(req, res);
+    return Users.show(req, res, pathname[2]);
   }
 
   if (method === "POST" && pathname[1] === "user") {

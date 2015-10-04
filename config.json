@@ -3,8 +3,8 @@
 
   "mysql": {
     "host":     "localhost",
-    "user":     "admin",
-    "password": "admin",
+    "user":     "root",
+    "password": "Ab1234Ec",
     "database": "demonstration"
   }
 }
