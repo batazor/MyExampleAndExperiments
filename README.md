@@ -68,6 +68,6 @@ __params__
 
 JSON structure
 
-status (bool)
-code (array string error)
-data (data JSON or string)
+status (bool)  
+code (array string error)  
+data (data JSON or string)  
