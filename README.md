@@ -7,6 +7,11 @@ Simple example DevOps
 
 ## Docker RUN
 
-#### Redis Image
+```bash
+# Run Redis container
+docker run -d --name redis -p 6379:6379 redis
 
-`docker run -d --name redis -p 6379:6379 redis`
+# Node build Image and create container
+docker build -t batazor/node .
+docker run -d --name node -p 8080 --link redis:redis batazor/node
+```
