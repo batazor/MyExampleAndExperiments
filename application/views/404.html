@@ -1,0 +1,13 @@
+{% extends "template.tpl" %}
+{% block title %}Что то пошло не так{% endblock %}
+
+{% block content %}
+	<div id="error_404">
+		<h1>404</h1>
+		<div class="z">
+			<div class="rabbit"></div>
+			<div class="clouds"></div>
+		</div>
+		<p>Запрошенная вами страница не найдена. Вернитесь на <a href="/main">главную</a> или <a onclick="history.back()">предыдущую</a> страницу.</p>
+	</div>
+{% endblock %}

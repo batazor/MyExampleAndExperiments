@@ -1,0 +1,55 @@
+{% extends "template.tpl" %}
+{% block title %}Вопросы по тегу{% endblock %}
+
+{% block content %}
+	{% if info.otvet == "gut" %}
+		<div id="question">
+			{% for question in info.question %}
+				<article class="list"><p><a href="/question/{{question.id}}">{{question.question}}</a></p></article>
+			{% endfor %}
+		</div>
+		<div id="paginator"><span class="paginate left ajax"><i></i><i></i></span><p class="counter"></p><span class="paginate right ajax"><i></i><i></i></span></div>
+<script>
+$(document).ready(function(){
+	// basic paging logic to demo the buttons
+	var pr = document.querySelector( '.paginate.left' );
+	var pl = document.querySelector( '.paginate.right' );
+
+	pr.onclick = slide.bind( this, -1 );
+	pl.onclick = slide.bind( this, 1 );
+
+	var index = 0, total = {{info.page_count}};
+
+	function slide(offset) {
+		index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+		document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+		pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+		pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+	}
+
+	slide(0);
+
+	$('.left').click( function() {
+		$.ajax({
+			type: 'POST',
+			url: '/ajax.php?action=paginator_tag',
+			data: 'count={{info.count}}&tag_id={{info.tag_id}}&page='+index,
+			success: function(data){
+				$('#question').html(data);
+			}
+		});
+	});
+	$('.right').click( function() {
+		$.ajax({
+			type: 'POST',
+			url: '/ajax.php?action=paginator_tag',
+			data: 'count={{info.count}}&tag_id={{info.tag_id}}&page='+index,
+			success: function(data){
+				$('#question').html(data);
+			}
+		});
+	});
+});
+</script>
+	{% endif %}
+{% endblock %}
