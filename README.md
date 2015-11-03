@@ -4,7 +4,7 @@ Simple site for passing the tests
 
 ## Demo
 
-!(try-out.tk)[docs/try-out.png]
+![try-out.tk](docs/try-out.png)
 [try-out.tk](http://try-out.tk/)
 
 ## P.S
