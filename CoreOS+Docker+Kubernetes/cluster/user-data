@@ -10,6 +10,7 @@ coreos:
     listen-peer-urls: http://$private_ipv4:2380,http://$private_ipv4:7001
   fleet:
     public-ip: $public_ipv4
+    metadata: cluster=vagrant
   flannel:
     interface: $public_ipv4
   units:
@@ -38,3 +39,9 @@ coreos:
 
       [Install]
       WantedBy=sockets.target
+write_files:
+  - path: /home/core/test.txt
+    permissions: 0644
+    owner: core
+    content: |
+      Hello Cluster
