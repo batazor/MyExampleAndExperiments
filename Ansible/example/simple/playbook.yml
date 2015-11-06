@@ -1,0 +1,12 @@
+- hosts: localhost
+  vars:
+    root_dir: /tmp/hey
+  tasks:
+    - shell: uptime
+
+    - name: create directory
+      file: path={{ root_dir }} state=directory
+
+    - template: src=templates/nginx.conf.j2 dest=/etc/nginx.conf
+      tags: nginx
+      sudo: yes
