@@ -1,6 +1,6 @@
 # SICP
 
-I'm read SICP and post my versions answer.
+I read SICP and post my versions answer.
 
 ## Run
 
