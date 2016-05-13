@@ -1,27 +1,34 @@
 .flex-container {
+  height: 400px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: space-between;
 }
 
 .flex-element {
   order: 0;
-  flex: 1;
+  flex: 1 100px;
 }
 
 .element-1 {
-  flex: 1;
+
 }
 
 .element-2 {
-  flex: 2;
+
 }
 
 .element-3 {
-  flex: 3;
+
 }
 
 .element-4 {
-  flex: 4;
+
+}
+
+.element-5 {
+
 }
