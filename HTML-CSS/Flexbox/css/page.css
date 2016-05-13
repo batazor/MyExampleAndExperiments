@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.35em;
+  font-family: 'Nunito', sans-serif;
+  color: #fff;
+  background: #e8e9e9;
+  padding: 0 5%;
+}
+
+h1 {
+  color: #555;
+}
+
+.flex-container {
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  margin: 45px auto;
+  box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.flex-element {
+  color: #fff;
+  padding: 15px;
+  margin: 5px;
+  background: firebrick;
+  border-radius: 3px;
+}
