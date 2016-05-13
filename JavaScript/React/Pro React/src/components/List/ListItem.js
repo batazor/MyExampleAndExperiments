@@ -6,7 +6,7 @@ class ListItem extends Component {
   render() {
     return (
       <li>
-        { this.props.quantity } × { this.props.name }
+        { this.props.quantity } × { this.props.children }
       </li>
     )
   }
