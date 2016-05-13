@@ -1,14 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Hello extends Component {
-  render() {
-    const place = "World";
+import Hello from './components/Hello';
+import List from './components/List';
 
-    return (
-      <h1>Hello { place }</h1>
-    );
-  }
-}
 
-ReactDOM.render(<Hello />, document.getElementById('root'));
+ReactDOM.render(<List />, document.getElementById('root'));
