@@ -2,6 +2,19 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.flex-element:first-child {
+  margin-right: auto;
+}
+
+.flex-element:last-child {
+  margin-left: auto;
+}
+
+.flex-element:nth-child(4) {
+  margin: auto;
 }
 
 .flex-element {
