@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 
 class Hello extends Component {
   render() {
+    const place = "World";
+
     return (
-      <h1>Hello World</h1>
+      <h1>Hello { place }</h1>
     );
   }
 }
