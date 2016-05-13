@@ -1,0 +1,20 @@
+{
+  "name": "pro-react-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "source/App.js",
+  "scripts": {
+    "start": "node_modules/.bin/webpack-dev-server --progress"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.8.0",
+    "babel-loader": "^6.2.4",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "react": "^15.0.2"
+  }
+}
