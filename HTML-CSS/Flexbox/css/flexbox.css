@@ -4,11 +4,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
 }
 
 .flex-element {
   order: 0;
+  align-self: center;
 }
 
 .element-1 {
