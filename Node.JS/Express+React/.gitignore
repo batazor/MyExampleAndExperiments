@@ -1,0 +1,11 @@
+# Dependences
+node_modules
+
+# Logs
+*.log
+
+# Build
+dist
+
+# IDE
+.idea

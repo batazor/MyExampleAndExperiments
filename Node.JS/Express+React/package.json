@@ -1,0 +1,17 @@
+{
+  "name": "express_redux_example",
+  "version": "1.0.0",
+  "description": "Simple example redux, express",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "redux",
+    "react",
+    "webpack",
+    "express"
+  ],
+  "author": "batazor",
+  "license": "MIT"
+}
