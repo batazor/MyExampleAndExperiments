@@ -7,6 +7,21 @@
 
 .flex-element {
   order: 0;
-  flex-grow: 1;
-  flex-basis: 200px;
+  flex: 1;
+}
+
+.element-1 {
+  flex: 1;
+}
+
+.element-2 {
+  flex: 2;
+}
+
+.element-3 {
+  flex: 3;
+}
+
+.element-4 {
+  flex: 4;
 }
