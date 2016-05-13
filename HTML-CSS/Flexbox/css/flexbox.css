@@ -1,18 +1,12 @@
 .flex-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 
-.element-1 {
-  order: 1;
-}
-
-.element-2 {
-  order: 2;
-}
-
-.element-8 {
-  order: -1;
+.flex-element {
+  order: 0;
+  flex-grow: 1;
+  flex-basis: 200px;
 }
