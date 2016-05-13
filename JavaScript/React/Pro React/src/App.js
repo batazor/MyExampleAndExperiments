@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-class Hello extends React.Component {
+class Hello extends Component {
   render() {
     return (
       <h1>Hello World</h1>
