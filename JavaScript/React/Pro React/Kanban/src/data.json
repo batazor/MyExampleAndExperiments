@@ -1,38 +1,32 @@
 [
   {
     "id": 1,
-    "title": "Card detailed description.",
-    "status": "todo",
-    "tasks": [
-      {
-        "id": 1,
-        "name": "Task one",
-        "done": true
-      },
-      {
-        "id": 2,
-        "name": "Task two",
-        "done": false
-      },
-      {
-        "id": 3,
-        "name": "Task three",
-        "done": false
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Card Two title",
-    "description": "Card detailed description",
+    "title": "Read the Book",
+    "description": "I should read the whole book",
     "status": "in-progress",
     "tasks": []
   },
   {
-    "id": 3,
-    "title": "Card Three title",
-    "description": "Card detailed description",
-    "status": "done",
-    "tasks": []
+    "id": 2,
+    "title": "Write some code",
+    "description": "Code along with the samples in the book",
+    "status": "todo",
+    "tasks": [
+      {
+        "id": 1,
+        "name": "ContactList Example",
+        "done": true
+      },
+      {
+        "id": 2,
+        "name": "Kanban Example",
+        "done": false
+      },
+      {
+        "id": 3,
+        "name": "My own experiments",
+        "done": false
+      }
+    ]
   }
 ]

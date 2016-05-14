@@ -10,11 +10,11 @@ class KanbanBoard extends Component {
           this.props.cards.filter((card) => card.status === "todo")
         } />
 
-        <List id="todo" title="In Progress" cards={
+        <List id="in-progress" title="In Progress" cards={
           this.props.cards.filter((card) => card.status === "in-progress")
         } />
 
-        <List id="todo" title="Done" cards={
+        <List id="done" title="Done" cards={
           this.props.cards.filter((card) => card.status === "done")
         } />
 
