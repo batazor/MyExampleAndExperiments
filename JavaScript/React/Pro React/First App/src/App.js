@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import Hello from './components/Hello';
 import List from './components/List';
+import CommentForm from './components/CommentForm';
+import Search from './components/Search';
 
 
-ReactDOM.render(<List />, document.getElementById('root'));
+ReactDOM.render(<Search />, document.getElementById('root'));

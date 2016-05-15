@@ -4,10 +4,11 @@ import Card from './Card';
 class List extends Component {
   render() {
     let cards = this.props.cards.map((card) => {
-      return <Card id={ card.id }
-                    key={ card.id }
+      return <Card key={ card.id }
+                    id={ card.id }
                     title={ card.title }
                     description={ card.description }
+                    color={ card.color }
                     tasks={ card.tasks } />
     });
 

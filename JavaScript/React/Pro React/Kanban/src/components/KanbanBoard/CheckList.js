@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 class CheckList extends Component {
   render() {
-    let tasks = this.props.tasks.map((tasks) => (
-      <li className="checlist__task">
+    let tasks = this.props.tasks.map((task) => (
+      <li key={ task.id } className="checlist__task">
         <input type="checkbox" defaultChecked={ task.done } />
         { task.name }
         <a href="#" className="checklist__task--remove" />
@@ -12,7 +12,12 @@ class CheckList extends Component {
 
     return (
       <div className="checlist">
-        <ul>{ tasks }</ul>
+        <div className="checlist">
+          <ul>{ tasks }</ul>
+          <input type="text"
+                  className="checklist--add-task"
+                  placeholder="Typethen hit Enter to add a task"/>
+        </div>
       </div>
     );
   }
