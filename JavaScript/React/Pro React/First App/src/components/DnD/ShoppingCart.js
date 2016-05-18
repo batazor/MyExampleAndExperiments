@@ -48,8 +48,8 @@ class ShoppingCart extends Component {
       backgroundColor: backgroundColor
     };
 
-    return (
-      <div className='shopping-cart' style={ style }>
+    return connectDropTarget(
+      <div className='shopping-cart' style={style}>
         { isActive ?
           'Hummmm, snack!' :
           'Drag here to order!'
