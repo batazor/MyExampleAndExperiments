@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import ShoppingCart from './ShoppingCart';
-import Snack from './Snack';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+
+import ShoppingCart from './ShoppingCart';
+import Snack from './Snack';
+import './style.css';
 
 class Container extends Component {
   render() {
