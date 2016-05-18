@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import update from 'react-addons-update';
 
+import { throttle } from './utils';
 import KanbanBoard from './KanbanBoard';
 
 // Polyfills
 import 'babel-polyfill';
 import 'whatwg-fetch';
-
 
 // If you're running the server the server locally, the URL will be, by default,
 // localhost:3000
@@ -23,6 +23,10 @@ class KanbanBoardContainer extends Component {
     this.state = {
       cards: []
     };
+    // Only call updateCardStatus when arguments change
+    this.updateCardStatus = throttle(this.updateCardStatus.bind(this));
+    // Call updateCardPosition at max every 500ms (or when arguments change)
+    this.updateCardPosition = throttle(this.updateCardPosition.bind(this), 500);
   }
 
   componentDidMount() {
@@ -170,6 +174,75 @@ class KanbanBoardContainer extends Component {
     });
   }
 
+  updateCardStatus(cardId, listId) {
+    // Find the index of the card
+    let cardIndex = this.state.cards.findIndex((card) => card.id == cardId);
+    // Get the current card
+    let card = this.state.cards[cardIndex];
+    // Only proceed if hovering over a different list
+    if (card.status !== listId) {
+      // set the component state to the mutated object
+      this.setState(update(this.state, {
+        cards: {
+          [cardIndex]: {
+            status: { $set: listId }
+          }
+        }
+      }));
+    }
+  }
+
+  updateCardPosition(cardId, afterId) {
+    // Only proceed if hovering over a different card
+    let cardIndex = this.state.cards.findIndex((card) => card.id == cardId);
+    // Get the current card
+    let card = this.state.cards[cardIndex];
+    // Find the index of the card the user is hovering over
+    let afterIndex = this.state.cards.findIndex((card) => card.id == afterId);
+    // Use splice to remove the card and reinsert it a the new index
+    this.setState(update(this.state, {
+      cards: {
+        $splice: [
+          [cardIndex, 1],
+          [afterIndex, 0, card]
+        ]
+      }
+    }));
+  }
+
+  persistCardDrag (cardId, status) {
+    // Find the index of the card
+    let cardIndex = this.state.cards.findIndex((card) => card.id == cardId);
+    // Get the current card
+    let card = this.state.cards[cardIndex];
+
+    fetch(`${ API_URL }/cards/${ cardId }`, {
+      method: 'put',
+      headers: API_HEADERS,
+      body: JSON.stringify({ status: card.status, row_order_position: cardIndex })
+    })
+    .then((response) => {
+      if (!response.ok) {
+        // Throw an error if server response wasn't 'ok'
+        // so you can revert back the optimistic changes
+        // made to the UI.
+        throw new Error("Server responce wasn't OK");
+      }
+    })
+    .catch((error) => {
+      console.erroir("Fetch error:", error);
+      this.setState(
+        update(this.state, {
+          cards: {
+            [cardIndex]: {
+              status: { $set: status }
+            }
+          }
+        })
+      );
+    });
+  }
+
   render() {
     return (
       <KanbanBoard cards={ this.state.cards }
@@ -177,6 +250,11 @@ class KanbanBoardContainer extends Component {
                       toggle: this.toggleTask.bind(this),
                       delete: this.deleteTask.bind(this),
                       add: this.addTask.bind(this)
+                    }}
+                    cardCallbacks={{
+                      updateStatus: this.updateCardStatus,
+                      updatePosition: this.updateCardPosition,
+                      persistCardDrag: this.persistCardDrag.bind(this)
                     }} />
     )
   }

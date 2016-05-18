@@ -72,11 +72,11 @@ ul {
 .card__title:before {
   display: inline-block;
   width: 1em;
-  content: '🡆';
+  content: '►';
 }
 
 .card__title--is-open:before {
-  content: '🡇';
+  content: '▼';
 }
 
 .checklict__task:first-child {
@@ -97,4 +97,15 @@ ul {
   display: inline-block;
   color: #d66;
   content:  "+";
+}
+
+.toggle-enter {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.toggle-enter.toggle-enter-active {
+  max-height: 300px;
+  overflow: hidden;
+  transition: max-height .25s ease-out;
 }
