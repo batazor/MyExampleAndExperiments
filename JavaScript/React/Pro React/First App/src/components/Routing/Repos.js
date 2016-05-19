@@ -15,6 +15,9 @@ class Repos extends Component {
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({ repositories: responseData });
+    })
+    .catch((error) => {
+      this.props.history.pushState(null, '/error');
     });
   }
 
@@ -25,13 +28,18 @@ class Repos extends Component {
       </li>
     ));
 
+    let child = this.props.children &&
+                React.cloneElement(this.props.children, {
+                  repositories: this.state.repositories
+                });
+
     return (
       <div>
         <h1>Github Repos</h1>
         <ul>
           { repos }
         </ul>
-        { this.props.children }
+        { child }
       </div>
     );
   }
