@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import marked from 'marked';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { DragSource, DropTarget } from 'react-dnd';
+import { Link } from 'react-router';
 
 import CheckList from './CheckList';
 import constants from './constants';
@@ -91,6 +92,10 @@ class Card extends Component {
     return connectDropTarget(connectDragSource(
       <div className="card">
         <div style={ sideColor } />
+        <div className="card__edit">
+          <Link to={ '/edit/' + this.props.id }>&#9998;</Link>
+        </div>
+        { /* &#9998; is the HTML entity for the utf-8 pencil character (✎) */ }
         <div className={
                 this.state.showDetails ?
                   "card__title card__title--is-open" :
@@ -100,8 +105,8 @@ class Card extends Component {
           { this.props.title }
         </div>
         <ReactCSSTransitionGroup transitionName="toggle"
-                                   transitionEnterTimeout={ 300 }
-                                   transitionLeaveTimeout={ 300 }>
+                                   transitionEnterTimeout={ 250 }
+                                   transitionLeaveTimeout={ 250 }>
           { cardDetails }
         </ReactCSSTransitionGroup>
       </div>
