@@ -21,7 +21,7 @@ class Repos extends Component {
   render() {
     let repos = this.state.repositories.map((repo) => (
       <li key={ repo.id }>
-        <Link to={ "/repos/details/" + repo.name }>{ repo.name }</Link>
+        <Link to={ "/repo/" + repo.name }>{ repo.name }</Link>
       </li>
     ));
 
