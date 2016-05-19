@@ -29,15 +29,14 @@ class KanbanBoardContainer extends Component {
     this.updateCardPosition = throttle(this.updateCardPosition.bind(this), 500);
   }
 
-  componentDidMount() {
+  componentDidMount(){
     fetch(API_URL + '/cards', { headers: API_HEADERS })
     .then((response) => response.json())
     .then((responseData) => {
-      this.setState({
-        cards: responseData
-      });
-
-      window.state = this.state;
+      this.setState({ cards: responseData });
+    })
+    .catch((error) => {
+      console.log('Error fetching and parsing data', error);
     });
   }
 
@@ -91,7 +90,7 @@ class KanbanBoardContainer extends Component {
 
   deleteTask(cardId, taskId, taskIndex) {
     // Keep a reference to the original state prior to the mutations
-    // in case you need to revert the optimistic changes in the UI
+    // in case we need to revert the optimistic changes in the UI
     let prevState = this.state;
 
     // Find the index of the card
@@ -128,7 +127,7 @@ class KanbanBoardContainer extends Component {
 
   toggleTask(cardId, taskId, taskIndex) {
     // Keep a reference to the original state prior to the mutations
-    // in case you need to revert the optimistic changes in the UI
+    // in case we need to revert the optimistic changes in the UI
     let prevState = this.state;
 
     // Find the index of the card
