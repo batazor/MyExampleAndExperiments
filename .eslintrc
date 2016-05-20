@@ -1,0 +1,3 @@
+parser: "babel-eslint",
+rules:
+  - comma-dangle: true

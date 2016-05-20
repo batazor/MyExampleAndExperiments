@@ -1,0 +1,56 @@
+{
+  "name": "lmap",
+  "version": "0.0.1",
+  "description": "Simply service with chat and map.",
+  "main": "src/server",
+  "scripts": {
+    "start": "node dist/server",
+    "dev": "npm run dev:server && npm run dev:client",
+    "dev:server": "babel-node src/server",
+    "dev:client": "webpack-dev-server --progress",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "babel src/server -d dist/server",
+    "build:client": "babel src/app -d dist/app",
+    "test": "npm run test:server && npm run test:client",
+    "test:server": "echo \"Error: no test specified\" && exit 1",
+    "test:client": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npm run lint:server && npm run lint:client",
+    "lint:server": "eslint src/server",
+    "lint:client": "eslint src/app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/batazor/LMap.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "map",
+    "DnD"
+  ],
+  "author": "batazor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/batazor/LMap/issues"
+  },
+  "homepage": "https://github.com/batazor/LMap#readme",
+  "devDependencies": {
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.10.2",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "react-hot-loader": "^1.3.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
