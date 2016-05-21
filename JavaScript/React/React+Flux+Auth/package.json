@@ -38,6 +38,7 @@
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^5.0.0",
     "file-loader": "^0.8.4",
+    "flux": "^2.1.1",
     "glob": "^7.0.0",
     "isparta-instrumenter-loader": "^1.0.0",
     "karma": "^0.13.9",
@@ -72,6 +73,9 @@
   },
   "dependencies": {
     "core-js": "^2.0.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "express-jwt": "^3.4.0",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0"
