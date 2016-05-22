@@ -1,20 +1,15 @@
 // Set environment =============================================================
-
 import dotenv from 'dotenv';
-
-const app = dotenv.config();
+dotenv.config();
 
 // Set basic configuration app =================================================
-
 export const APP_NAME = process.env.APP_NAME || 'LMap';
-
 export const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4000;
 export const DOMAIN = process.env.DAMAIN || `http://127.0.0.1:${ PORT }`;
 export const ENV = process.env.NODE_ENV || 'develop';
 export const DEBUG =process.env.NODE_ENV === 'develop';
 
 // Set analytics services ======================================================
-
 export const analytics = {
   google: {
     trackingId: process.env.GOOGLE_TRACKING_ID || 'UA-XXXXX-X'
@@ -22,7 +17,6 @@ export const analytics = {
 };
 
 // Set database ================================================================
-
 export const database = {
   MongoDB: {
     DATABASE_URL: process.env.MONGODB_DATABASE_URL || `mongodb://localhost:27017/${ APP_NAME }`,
@@ -30,7 +24,6 @@ export const database = {
 };
 
 // Set Auth ====================================================================
-
 export const authConfig = {
   serverCode: {
     secret: 'mySecretCode',

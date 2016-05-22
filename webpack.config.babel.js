@@ -1,7 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-
-const DEBUG = process.env.NODE_ENV === 'develop';
+import { DEBUG } from './src/server/config';
 
 const devFlagPlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(DEBUG))
@@ -10,7 +9,7 @@ const devFlagPlugin = new webpack.DefinePlugin({
 export default {
   devtool: 'eval-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://0.0.0.0:8080',
     'webpack/hot/only-dev-server',
     './src/app/app'
   ],
@@ -29,7 +28,7 @@ export default {
       {
         test: /\.js$/,
         loaders: ['react-hot', 'babel'],
-        include: path.join(__dirname, 'src'),
+        include: path.join(__dirname, 'src/app'),
         exclude: /node_modules/,
       },
       {
@@ -40,7 +39,10 @@ export default {
   },
   devServer: {
     contentBase: "./src/public",
+    hot: true,
+    quiet: false,
     colors: true,
+    noInfo: true,
     historyApiFallback: true,
     inline: true
   },

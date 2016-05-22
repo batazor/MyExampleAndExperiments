@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function Foo() {
-  return <div>I am Foo!</div>
+export default class Foo extends Component {
+  render() {
+    return (
+      <div>And I am Foo!</div>
+    );
+  }
 }
