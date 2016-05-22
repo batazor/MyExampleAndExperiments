@@ -1,9 +1,10 @@
 import path from 'path';
 import webpack from 'webpack';
-import { DEBUG } from './src/server/config';
+import { DEBUG, PORT } from './src/server/config';
 
 const devFlagPlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(DEBUG))
+  __DEV__: JSON.stringify(JSON.parse(DEBUG)),
+  __PORT__: JSON.stringify(JSON.parse(PORT))
 });
 
 export default {
@@ -41,9 +42,19 @@ export default {
     contentBase: "./src/public",
     hot: true,
     quiet: false,
-    colors: true,
     noInfo: true,
     historyApiFallback: true,
-    inline: true
+    inline: true,
+    stats: {
+      cached: true,
+      cachedAssets: true,
+      chunks: true,
+      chunkModules: false,
+      colors: true,
+      hash: false,
+      reasons: true,
+      timings: true,
+      version: false
+    }
   },
 };
