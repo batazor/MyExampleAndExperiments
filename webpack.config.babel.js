@@ -1,9 +1,10 @@
 import path from 'path';
 import webpack from 'webpack';
-import { app as configApp } from './src/config';
+
+const DEBUG = process.env.NODE_ENV === 'develop';
 
 const devFlagPlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(configApp.DEBUG))
+  __DEV__: JSON.stringify(JSON.parse(DEBUG))
 });
 
 export default {

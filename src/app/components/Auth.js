@@ -1,0 +1,18 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router';
+
+export default class Bar extends Component {
+  render() {
+    return (
+      <div>
+        <h2>Welcome! Please Login.</h2>
+        <Link to="/auth/linkedin">LinkedIn</Link>
+        {' '}
+        <Link to="/auth/github">Github</Link>
+        {' '}
+        <Link to="/auth/twitter">Twitter</Link>
+        {' '}
+      </div>
+    );
+  }
+}
