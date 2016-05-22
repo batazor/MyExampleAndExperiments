@@ -1,7 +1,12 @@
-var path = require('path');
-var webpack = require('webpack');
+import path from 'path';
+import webpack from 'webpack';
+import { app as configApp } from './src/config';
 
-module.exports = {
+const devFlagPlugin = new webpack.DefinePlugin({
+  __DEV__: JSON.stringify(JSON.parse(configApp.DEBUG))
+});
+
+export default {
   devtool: 'eval-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:8080',
@@ -15,7 +20,8 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    devFlagPlugin
   ],
   module: {
     loaders: [

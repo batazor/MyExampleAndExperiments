@@ -5,10 +5,10 @@
   "main": "src/server",
   "scripts": {
     "start": "node dist/server",
-    "dev": "npm run dev:server | npm run dev:client",
+    "dev": "NODE_ENV=develop npm run dev:server | npm run dev:client",
     "dev:server": "babel-node src/server",
     "dev:client": "webpack-dev-server --progress",
-    "build": "npm run build:server | npm run build:client",
+    "build": "NODE_ENV=production npm run build:server | npm run build:client",
     "build:server": "babel src/server -d dist/server",
     "build:client": "babel src/app -d dist/app",
     "test": "npm run test:server | npm run test:client",
