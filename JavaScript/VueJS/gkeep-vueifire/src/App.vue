@@ -2,17 +2,30 @@
   <div>
     <create-note-form></create-note-form>
     <notes></notes>
+    <update-modal :note.sync="selectedNote"></update-modal>
   </div>
 </template>
 
 <script>
   import Notes from './components/notes/Index'
   import CreateNoteForm from './components/notes/Create'
+  import UpdateModal from './components/notes/UpdateModal'
 
   export default {
     components: {
       Notes,
-      CreateNoteForm
+      CreateNoteForm,
+      UpdateModal
+    },
+    data () {
+      return {
+        selectedNote: null
+      }
+    },
+    events: {
+      'note.selected': function (note) {
+        this.selectedNote = note
+      }
     }
   }
 </script>

@@ -8,9 +8,7 @@
 </template>
 
 <script>
-  import Firebase from 'firebase'
-
-  let firebase = new Firebase('https://intense-torch-7218.firebaseio.com/')
+  import noteRepository from '../../data/NoteRepository'
 
   export default {
     data () {
@@ -22,10 +20,8 @@
     methods: {
       createNote () {
         if (this.title.trim() || this.content.trim()) {
-          firebase.child('notes').push({title: this.title, content: this.content}, (err) => {
-            if (err) {
-              throw err
-            }
+          noteRepository.create({title: this.title, content: this.content}, (err) => {
+            if (err) throw err // TODO: inform the user
             this.title = ''
             this.content = ''
           })
