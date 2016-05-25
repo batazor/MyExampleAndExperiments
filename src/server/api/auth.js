@@ -14,7 +14,7 @@ export default () => {
 
   auth.get('/github/callback', passportGitHub.authenticate('github', {
     failureRedirect: '/auth'
-  }), () => {
+  }), (req, res) => {
     res.redirect('/');
   });
 

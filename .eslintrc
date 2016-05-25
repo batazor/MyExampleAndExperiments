@@ -11,8 +11,10 @@ rules:
   semi:
     - 2
     - always
+  no-console: 0
   # React
-  no-danger: 1
+  no-danger: 0
+  react/jsx-uses-vars: 2
 env:
   es6: true
   node: true

@@ -5,11 +5,11 @@ export function increase(n) {
     type: INCREASE,
     amount: n
   };
-};
+}
 
 export function decrease(n) {
   return {
     type: DECREASE,
     amount: n
   };
-};
+}

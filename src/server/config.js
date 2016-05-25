@@ -13,13 +13,13 @@ export const DEBUG =process.env.NODE_ENV === 'develop';
 export const analytics = {
   google: {
     trackingId: process.env.GOOGLE_TRACKING_ID || 'UA-XXXXX-X'
-  },
+  }
 };
 
 // Set database ================================================================
 export const database = {
   MongoDB: {
-    DATABASE_URL: process.env.MONGODB_DATABASE_URL || `mongodb://localhost:27017/${ APP_NAME }`,
+    DATABASE_URL: process.env.MONGODB_DATABASE_URL || `mongodb://localhost:27017/${ APP_NAME }`
   }
 };
 

@@ -18,5 +18,5 @@ app.use(passport.session());
 
 // Listen ======================================================================
 app.listen(PORT, function() {
-  console.log(`✔ Server API listening on ${ DOMAIN }, Ctrl+C to stop`)
+  console.log(`✔ Server API listening on ${ DOMAIN }, Ctrl+C to stop`);
 });

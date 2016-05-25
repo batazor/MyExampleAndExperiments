@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react';  // eslint-disable-line no-unused-vars
 import { Link, browserHistory } from 'react-router';
 
 export default function App({ children }) {
@@ -21,4 +21,4 @@ export default function App({ children }) {
       <div>{ children }</div>
     </div>
   );
-};
+}
