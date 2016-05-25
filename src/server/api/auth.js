@@ -1,4 +1,3 @@
-import path from 'path';
 import { Router } from 'express';
 
 import passportGitHub from '../auth/github';
@@ -6,7 +5,7 @@ import passportGitHub from '../auth/github';
 export default () => {
   let auth = Router();
 
-  auth.get('/', (req, res, next) => {
+  auth.get('/', (req, res) => {
     res.send('Go back and register!');
   });
 

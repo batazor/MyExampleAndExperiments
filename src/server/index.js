@@ -1,9 +1,8 @@
-import path from 'path';
 import express from 'express';
 import passport from 'passport';
 import session from 'express-session';
 
-import { PORT, DOMAIN, DEBUG, authConfig } from './config';
+import { PORT, DOMAIN, authConfig } from './config';
 import Router from './api';
 
 // Express =====================================================================
