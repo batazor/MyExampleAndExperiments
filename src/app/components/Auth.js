@@ -8,7 +8,7 @@ export default class Auth extends Component {
         <h2>Welcome! Please Login.</h2>
         <Link to="/auth/linkedin">LinkedIn</Link>
         {' '}
-        <Link to="/auth/github">Github</Link>
+        <a href="http://localhost:4000/auth/github">Github</a>
         {' '}
         <Link to="/auth/twitter">Twitter</Link>
         {' '}

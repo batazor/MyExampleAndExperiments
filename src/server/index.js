@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import passport from 'passport';
 import session from 'express-session';
@@ -7,6 +8,8 @@ import Router from './api';
 
 // Express =====================================================================
 let app = express();
+
+app.use('/static', express.static(path.resolve(__dirname, '../public/static')));
 
 // Router
 app.use(Router());
