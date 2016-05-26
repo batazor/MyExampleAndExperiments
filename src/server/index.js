@@ -2,21 +2,29 @@ import path from 'path'
 import express from 'express'
 import passport from 'passport'
 import session from 'express-session'
-import mongoose from 'mongoose'
-
+import graphqlHTTP from 'express-graphql'
 import { PORT, DOMAIN, authConfig, dbConfig } from './config'
+import mongoose from 'mongoose'
+import Schema from './data/schema'
 import Router from './api'
 
 // Express =====================================================================
 let app = express()
 
+// static content
 app.use('/static', express.static(path.resolve(__dirname, '../public/static')))
 
-// DataBase
-mongoose.connect(dbConfig.MongoDB.DATABASE_URL)
+// MongoDB connect
+mongoose.connect(dbConfig.MONGODB_DATABASE_URL)
 
 // Router
 app.use(Router())
+
+// GraphQL
+app.use('/graphql', graphqlHTTP({
+  schema: Schema,
+  graphiql: true
+}))
 
 // Auth ========================================================================
 app.use(session(authConfig.serverCode))

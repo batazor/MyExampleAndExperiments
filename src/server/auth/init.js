@@ -1,5 +1,5 @@
 import passport from 'passport';
-import User from '../schema/user';
+import User from '../models/user';
 
 export default () => {
 

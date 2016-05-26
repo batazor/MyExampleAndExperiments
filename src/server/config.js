@@ -18,9 +18,7 @@ export const analytics = {
 
 // Set database ================================================================
 export const dbConfig = {
-  MongoDB: {
-    DATABASE_URL: process.env.MONGODB_DATABASE_URL || `mongodb://localhost:27017/${ APP_NAME }`
-  }
+  MONGODB_DATABASE_URL: process.env.MONGODB_DATABASE_URL || `mongodb://localhost:27017/${ APP_NAME }`
 };
 
 // Set Auth ====================================================================
