@@ -1,13 +1,13 @@
-import { Router } from 'express';
+import { Router } from 'express'
 
-import passportGitHub from '../auth/github';
+import passportGitHub from '../auth/github'
 
 export default () => {
-  let auth = Router();
+  let auth = Router()
 
   auth.get('/', (req, res) => {
-    res.send('Go back and register!');
-  });
+    res.send('Go back and register!')
+  })
 
   // GitHub Auth ===============================================================
   auth.get('/github', passportGitHub.authenticate('github'));
@@ -15,8 +15,8 @@ export default () => {
   auth.get('/github/callback', passportGitHub.authenticate('github', {
     failureRedirect: '/auth'
   }), (req, res) => {
-    res.redirect('/');
-  });
+    res.redirect('/')
+  })
 
-  return auth;
-};
+  return auth
+}
