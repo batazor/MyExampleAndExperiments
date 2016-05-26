@@ -4,6 +4,11 @@ Simply service with chat and map.
 
 ## Getting Started
 
++ create `.env` file
++ `docker-compose up`
+
+or
+
 + npm install
 + create `.env` file
 + npm run dev
