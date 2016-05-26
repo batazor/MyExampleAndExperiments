@@ -12,6 +12,7 @@ Simply service with chat and map.
 
 Create a `.env` file in the root directory of your project.
 Add environment-specific variables on new lines in the form of **NAME=VALUE**.
+
 For __example__:
 
 ```
@@ -22,4 +23,8 @@ DB_PASS=s1mpl3
 
 ### Used packages
 
+- **Environment**
 + [dotenv](https://github.com/motdotla/dotenv) - Set Environment
+- **Testing**
+- **Front-end**
+- **Back-end**
