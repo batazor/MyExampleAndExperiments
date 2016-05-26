@@ -1,13 +1,13 @@
 import React from 'react'
-import { Route } from 'react-router'
-import App from './containers/UserPage'
-import RepoPage from './containers/RepoPage'
+import { Route, IndexRoute } from 'react-router'
+
+import { App, Home, Foo, Bar, Auth } from './components';
 
 export default (
-  <Route path="/" component={App}>
-    <Route path="/:login/:name"
-            component={RepoPage} />
-    <Route path="/:login"
-            component={UserPAge} />
+  <Route path="/" component={ App }>
+    <IndexRoute component={ Home } />
+    <Route path="auth" component={ Auth } />
+    <Route path="foo" component={ Foo } />
+    <Route path="bar" component={ Bar } />
   </Route>
 )

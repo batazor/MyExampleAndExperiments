@@ -1,5 +1,5 @@
 if (__DEV__) {
-  import Root from './Root.dev.js'
+  module.exports = require('./Root.dev')
 } else {
-  import Root from './Root.prod.js'
+  module.exports = require('./Root.prod')
 }

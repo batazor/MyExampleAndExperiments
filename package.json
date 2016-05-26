@@ -59,6 +59,7 @@
     "react-router-redux": "^4.0.4",
     "redux": "^3.5.2",
     "redux-devtools": "^3.3.1",
+    "redux-thunk": "^2.1.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"

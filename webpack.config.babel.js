@@ -47,15 +47,11 @@ export default {
     historyApiFallback: true,
     inline: true,
     stats: {
-      cached: true,
-      cachedAssets: true,
       chunks: true,
       chunkModules: false,
       colors: true,
-      hash: false,
       reasons: true,
-      timings: true,
-      version: false
+      timings: true
     }
   },
 };
