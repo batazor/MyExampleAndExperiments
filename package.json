@@ -11,13 +11,13 @@
     "build": "NODE_ENV=production npm run build:server | npm run build:client",
     "build:server": "babel src/server -d dist/server",
     "build:client": "babel src/app -d dist/app",
-    "test": "mocha --compilers js:babel-core/register --require ./src/test/setup 'test/**/*.@{js|jsx}'",
+    "test": "npm run test:server | npm run test:client",
     "test:server": "echo \"Error: no test specified\" && exit 1",
     "test:client": "echo \"Error: no test specified\" && exit 1",
+    "test:watch": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/eslint/bin/eslint.js src",
     "lint:server": "./node_modules/eslint/bin/eslint.js --fix src/server",
-    "lint:client": "./node_modules/eslint/bin/eslint.js --fix src/app",
-    "test:watch": "npm run test -- --watch-extensions js"
+    "lint:client": "./node_modules/eslint/bin/eslint.js --fix src/app"
   },
   "repository": {
     "type": "git",

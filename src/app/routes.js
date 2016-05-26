@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import { App, Home, Foo, Bar, Auth } from './components';
+import { App, Home, Foo, Bar, Auth, Todo } from './components';
 
 export default (
   <Route path="/" component={ App }>
@@ -9,5 +9,6 @@ export default (
     <Route path="auth" component={ Auth } />
     <Route path="foo" component={ Foo } />
     <Route path="bar" component={ Bar } />
+    <Route path="todo" component={ Todo } />
   </Route>
 )
