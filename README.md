@@ -20,22 +20,3 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASS=s1mpl3
 ```
-
-### Used packages
-
-| NAME             | Description                             |
-|------------------|-----------------------------------------|
-| **Environment**  | -- |
-| [dotenv](https://github.com/motdotla/dotenv) | Set Environment |
-| **Testing**      | -- |
-| mocha      | -- |
-| chai       | -- |
-| chai-http  | -- |
-| karma      | -- |
-| **Front-end**    | -- |
-| react      | -- |
-| react-dom  | -- |
-| redux      | -- |
-| **Back-end**     | -- |
-| express  | -- |
-| mongoose | -- |
