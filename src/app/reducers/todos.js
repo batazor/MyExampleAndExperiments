@@ -1,5 +1,11 @@
 const todo = (state, action) => {
   switch (action.type) {
+    case 'INIT_TODO':
+      return {
+        id: action.todos[0]._id,
+        text: action.todos.text,
+        completed: action.todos.completed
+      }
     case 'ADD_TODO':
       return {
         id: action.id,
