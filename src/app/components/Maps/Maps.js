@@ -1,16 +1,23 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 
-let divStyle = {
-  background: 'green',
-  padding: '15px',
-  border: '5px solid red'
-};
+import Header from '../Header'
+import Menu from '../Menu'
+import Chat from '../Chat'
 
 export default class Maps extends Component {
   render() {
     return (
-      <div style={divStyle}>
-        And We am Maps!
+      <div className='row'>
+        <div className='col-xs'>
+          <Header />
+          <div className='row'>
+            <div className='col-xs'>
+              <div className='box'>
+                And We am Maps!
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

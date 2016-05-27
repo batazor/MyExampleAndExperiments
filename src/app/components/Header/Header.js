@@ -5,8 +5,10 @@ import Navigation from '../Navigation'
 export default class Header extends Component {
   render() {
     return (
-      <header className='col-xs'>
-        <Navigation className='box' />
+      <header className='row'>
+        <div className='col-xs'>
+          <Navigation className='box' />
+        </div>
       </header>
     )
   }
