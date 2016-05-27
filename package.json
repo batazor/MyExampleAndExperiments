@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/batazor/LMap#readme",
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
@@ -44,6 +45,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "chai-immutable": "^1.5.4",
+    "classnames": "^2.2.5",
     "css-loader": "^0.23.1",
     "es6-promise": "^3.2.1",
     "eslint": "^2.10.2",

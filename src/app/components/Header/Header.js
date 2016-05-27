@@ -7,10 +7,6 @@ export default class Header extends Component {
     return (
       <header className='col-xs'>
         <Navigation className='box' />
-
-        <div>
-          <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>
-        </div>
       </header>
     )
   }

@@ -39,15 +39,22 @@ export default {
           "style",
           `css-loader?${JSON.stringify({
             sourceMap: DEBUG,
-            modules: true,
-            localIdentName: DEBUG ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
             minimize: !DEBUG,
           })}`,
         ]
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
+        loaders: [
+          "style",
+          `css-loader?${JSON.stringify({
+            sourceMap: DEBUG,
+            modules: true,
+            localIdentName: DEBUG ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
+            minimize: !DEBUG,
+          })}`,
+          "sass"
+        ]
       },
     ]
   },
