@@ -7,7 +7,7 @@ let divStyle = {
   border: '5px solid red'
 };
 
-export default class Bar extends Component {
+export default class NotFound extends Component {
   render() {
     return (
       <div style={divStyle}>

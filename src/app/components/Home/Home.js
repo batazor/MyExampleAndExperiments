@@ -1,6 +1,6 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
-import { increase, decrease } from '../actions/count';
+import { increase, decrease } from '../../actions/count';
 
 function Home({ number, increase, decrease }) {
   return (
