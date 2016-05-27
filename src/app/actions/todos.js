@@ -11,7 +11,7 @@ import {
 let nextTodoId = 0
 const API_URL = `http://localhost:${__PORT__}/graphql`
 
-export const initTodo = () => {
+export const initTodo = (text) => {
 
   const query = `
     query {
@@ -23,18 +23,19 @@ export const initTodo = () => {
     }
   `
 
-  return (dispatch) => fetch(API_URL, {
+  return (dispatch) => fetch(API_URL + `?query=${query}`, {
     method: 'GET',
     headers: new Headers({
       'Content-Type': 'application/graphql'
-    }),
-    body: query
+    })
   })
   .then(response => response.json())
-  .then(json => dispatch({
-    type: INIT_TODO,
-    payload: json
-  }))
+  .then(
+    json => dispatch({
+      type: INIT_TODO,
+      payload: json
+    })
+  )
   .catch(exception => dispatch({
     type: ERROR,
     payload: exception.message

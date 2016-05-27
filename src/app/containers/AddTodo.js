@@ -14,7 +14,7 @@ let AddTodo = ({ dispatch }) => {
           return
         }
 
-        dispatch(addTodo(input.value))
+        // dispatch(addTodo(input.value))
         dispatch(initTodo(input.value))
         input.value = ''
       }}>

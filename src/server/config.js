@@ -24,7 +24,7 @@ export const dbConfig = {
 // Set Auth ====================================================================
 export const authConfig = {
   serverCode: {
-    secret: process.env.AUTH_SECRET_CODE,
+    secret: process.env.AUTH_SECRET_CODE || 'my_secret_code',
     resave: true,
     saveUnitialized: true
   },
