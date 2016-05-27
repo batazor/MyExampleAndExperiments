@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
+import Button from '../Button'
+
 export default class Navigation extends Component {
   render() {
     return (
       <div>
         Links:
+        {' '}
+        <Button />
         {' '}
         <Link to="/">Home</Link>
         {' '}

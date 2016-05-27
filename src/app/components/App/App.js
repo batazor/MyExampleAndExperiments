@@ -2,7 +2,9 @@ import React from 'react'  // eslint-disable-line no-unused-vars
 import Header from '../Header'
 import Menu from '../Menu'
 import Chat from '../Chat'
+
 import './flexboxgrid.css'
+import './App.css'
 
 export default function App({ children }) {
   return (
