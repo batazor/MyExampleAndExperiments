@@ -1,30 +1,19 @@
-import React from 'react';  // eslint-disable-line no-unused-vars
-import { Link, browserHistory } from 'react-router';
-
+import React from 'react'  // eslint-disable-line no-unused-vars
+import Header from '../Header'
+import Menu from '../Menu'
+import Chat from '../Chat'
 import './flexboxgrid.css'
 
 export default function App({ children }) {
   return (
     <div>
-      <header className='row'>
-        Links:
-        {' '}
-        <Link to="/">Home</Link>
-        {' '}
-        <Link to="/foo">Foo</Link>
-        {' '}
-        <Link to="/bar">Bar</Link>
-        {' '}
-        <Link to="/auth">Auth</Link>
-        {' '}
-        <Link to="/todo">Todo</Link>
-
-        <div>
-          <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>
+      <Header className='row' />
+      <div  className='row'>
+        <Menu className='col-xs-1' />
+        <div className='col-xs-10'>
+          { children }
         </div>
-      </header>
-      <div className='row'>
-        { children }
+        <Chat className='col-xs-1' />
       </div>
     </div>
   );
