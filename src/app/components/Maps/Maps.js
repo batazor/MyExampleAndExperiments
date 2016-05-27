@@ -6,11 +6,11 @@ let divStyle = {
   border: '5px solid red'
 };
 
-export default class Bar extends Component {
+export default class Maps extends Component {
   render() {
     return (
       <div style={divStyle}>
-        And I am Bar!
+        And We am Maps!
       </div>
     );
   }
