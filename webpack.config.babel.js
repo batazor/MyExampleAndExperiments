@@ -37,10 +37,7 @@ export default {
         test: /\.css$/,
         loaders: [
           "style",
-          `css-loader?${JSON.stringify({
-            sourceMap: DEBUG,
-            minimize: !DEBUG,
-          })}`,
+          'css-loader',
         ]
       },
       {
