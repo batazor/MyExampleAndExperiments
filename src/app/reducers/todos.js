@@ -2,9 +2,9 @@ const todo = (state, action) => {
   switch (action.type) {
     case 'INIT_TODO':
       return {
-        id: action.todos[0]._id,
-        text: action.todos.text,
-        completed: action.todos.completed
+        id: action.id,
+        text: action.text,
+        completed: false
       }
     case 'ADD_TODO':
       return {
@@ -21,12 +21,18 @@ const todo = (state, action) => {
         completed: !state.completed
       })
     default:
+      console.log(123, action)
       return state
   }
 }
 
 const todos = (state = [], action) => {
   switch (action.type) {
+    case 'INIT_TODO':
+      return [
+        ...state,
+        todo(undefined, action)
+      ]
     case 'ADD_TODO':
       return [
         ...state,

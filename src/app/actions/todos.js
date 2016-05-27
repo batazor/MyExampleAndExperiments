@@ -21,21 +21,20 @@ export const initTodo = (text) => {
         completed
       }
     }
-  `
+  `.trim()
 
   return (dispatch) => fetch(API_URL + `?query=${query}`, {
     method: 'GET',
-    headers: new Headers({
+    headers: {
       'Content-Type': 'application/graphql'
-    })
+    }
   })
   .then(response => response.json())
-  .then(
-    json => dispatch({
-      type: INIT_TODO,
-      payload: json
-    })
-  )
+  .then(json => dispatch({
+    type: INIT_TODO,
+    id: nextTodoId++,
+    text: json.data.todos[0].text
+  }))
   .catch(exception => dispatch({
     type: ERROR,
     payload: exception.message
@@ -43,11 +42,33 @@ export const initTodo = (text) => {
 }
 
 export const addTodo = (text) => {
-  return {
+
+  const query = `
+    mutation {
+      addTodo (
+        text: "${text}",
+        completed: 0
+      ) { _id, text, completed }
+    }
+  `.trim()
+
+  return (dispatch) => fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/graphql'
+    },
+    body: query
+  })
+  .then(response => response.json())
+  .then(json => dispatch({
     type: ADD_TODO,
     id: nextTodoId++,
-    text
-  }
+    text: json.data.addTodo.text
+  }))
+  .catch(exception => dispatch({
+    type: ERROR,
+    payload: exception.message
+  }))
 }
 
 export const setVisibilityFilter = (filter) => {

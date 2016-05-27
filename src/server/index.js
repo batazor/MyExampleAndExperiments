@@ -2,6 +2,7 @@ import path from 'path'
 import express from 'express'
 import passport from 'passport'
 import session from 'express-session'
+import cors from 'cors'
 import graphqlHTTP from 'express-graphql'
 import { PORT, DOMAIN, authConfig, dbConfig } from './config'
 import mongoose from 'mongoose'
@@ -17,13 +18,19 @@ app.use('/static', express.static(path.resolve(__dirname, '../public/static')))
 // MongoDB connect
 mongoose.connect(dbConfig.MONGODB_DATABASE_URL)
 
+// CORS
+app.use(cors())
+
 // Router
 app.use(Router())
 
 // GraphQL
-app.use('/graphql', graphqlHTTP({
-  schema: Schema,
-  graphiql: true
+app.use('/graphql', graphqlHTTP((req, res) => {
+  return {
+    schema: Schema,
+    graphiql: true,
+    pretty: true
+  }
 }))
 
 // Auth ========================================================================
