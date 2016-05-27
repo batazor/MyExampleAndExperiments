@@ -4,7 +4,7 @@ import Menu from '../Menu'
 import Chat from '../Chat'
 
 import './flexboxgrid.css'
-import './App.css'
+import './App.scss'
 
 export default function App({ children }) {
   return (
