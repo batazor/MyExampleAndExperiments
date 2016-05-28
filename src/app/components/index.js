@@ -1,6 +1,6 @@
 export App from './App'
 export Home from './Home'
-export Foo from './Foo'
+export Admin from './Admin'
 export Maps from './Maps'
 export Auth from './Auth'
 export Todo from './TodoApp'

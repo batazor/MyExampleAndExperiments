@@ -11,8 +11,8 @@ export default class Navigation extends Component {
         <Link to="/">
           <Button style="btnOne">Home</Button>
         </Link>
-        <Link to="/foo">
-          <Button style="btnOne">Foo</Button>
+        <Link to="/admin">
+          <Button style="btnOne">Admin</Button>
         </Link>
         <Link to="/maps">
           <Button style="btnOne">Maps</Button>

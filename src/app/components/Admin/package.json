@@ -1,6 +1,6 @@
 {
-  "name": "Foo",
+  "name": "Admin",
   "version": "0.0.0",
   "private": true,
-  "main": "./Foo"
+  "main": "./Admin"
 }
