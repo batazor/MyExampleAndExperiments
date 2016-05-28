@@ -1,10 +1,5 @@
 import {
   GraphQLList as List,
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLNonNull as NonNull,
   GraphQLID
 } from 'graphql'
 

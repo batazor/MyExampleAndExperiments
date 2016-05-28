@@ -10,7 +10,7 @@ export default () => {
   })
 
   // GitHub Auth ===============================================================
-  auth.get('/github', passportGitHub.authenticate('github'));
+  auth.get('/github', passportGitHub.authenticate('github'))
 
   auth.get('/github/callback', passportGitHub.authenticate('github', {
     failureRedirect: '/auth'

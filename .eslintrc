@@ -10,7 +10,7 @@ rules:
     - unix
   semi:
     - 2
-    - always
+    - never
   no-console: 0
   # Possible Errors
   comma-dangle: 1
@@ -47,6 +47,31 @@ rules:
   no-caller: 1
   no-case-declarations: 1
   no-div-regex: 1
+  no-else-return: 1
+  no-empty-pattern: 1
+  no-eq-null: 1
+  no-eval: 2
+  no-extra-bind: 1
+  no-fallthrough: 2
+  no-floating-decimal: 2
+  no-implicit-globals: 2
+  no-implied-eval: 1
+  no-magic-numbers: 1
+  no-multi-spaces: 1
+  no-octal: 1
+  no-redeclare: 1
+  no-self-assign: 1
+  # Variables
+  no-unused-vars: 1
+  # Node.js and CommonJS
+  handle-callback-err: 2
+  # Stylistic Issues
+  # ...
+  # ECMAScript 6
+  constructor-super: 1
+  no-class-assign: 1
+  no-const-assign: 2
+  no-new-symbol: 2
   # React
   no-danger: 0
   react/jsx-uses-vars: 2

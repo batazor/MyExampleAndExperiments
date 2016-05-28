@@ -6,7 +6,7 @@ const TodoSchema = new Schema({
   text: { type: String, default: 'Default description' },
   completed: { type: Boolean, default: false },
   created_at: { type: Date },
-  update_at: { type: Date },
+  update_at: { type: Date }
 
 })
 

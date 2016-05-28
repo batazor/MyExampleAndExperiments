@@ -8,5 +8,5 @@ export default function App({ children }) {
     <div className='row'>
       { children }
     </div>
-  );
+  )
 }

@@ -25,7 +25,7 @@ app.use(cors())
 app.use(Router())
 
 // GraphQL
-app.use('/graphql', graphqlHTTP((req, res) => {
+app.use('/graphql', graphqlHTTP((req, res) => { // eslint-disable-line no-unused-vars
   return {
     schema: Schema,
     graphiql: true,

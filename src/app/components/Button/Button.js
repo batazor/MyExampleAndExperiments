@@ -7,20 +7,20 @@ export default class Button extends Component {
 
     let buttonStyle = s.btn
     switch (this.props.style) {
-      case 'btnOne':
-        buttonStyle += ` ${s.btnOne}`
-        break
-      case 'btnTwo':
-        buttonStyle += ` ${s.btnTwo}`
-        break
-      case 'btnThree':
-        buttonStyle += ` ${s.btnThree}`
-        break
-      case 'btnFour':
-        buttonStyle += ` ${s.btnFour}`
-        break
-      default:
-        buttonStyle += ` ${s.btnOne}`
+    case 'btnOne':
+      buttonStyle += ` ${s.btnOne}`
+      break
+    case 'btnTwo':
+      buttonStyle += ` ${s.btnTwo}`
+      break
+    case 'btnThree':
+      buttonStyle += ` ${s.btnThree}`
+      break
+    case 'btnFour':
+      buttonStyle += ` ${s.btnFour}`
+      break
+    default:
+      buttonStyle += ` ${s.btnOne}`
     }
 
     return(

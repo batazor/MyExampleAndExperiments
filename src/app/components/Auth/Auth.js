@@ -16,6 +16,6 @@ export default class Auth extends Component {
           <GithubAuth />
         </div>
       </div>
-    );
+    )
   }
 }

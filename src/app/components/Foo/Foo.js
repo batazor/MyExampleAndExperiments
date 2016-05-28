@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
+import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 
 import Header from '../Header'
 import Menu from '../Menu'
@@ -19,6 +19,6 @@ export default class Foo extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
