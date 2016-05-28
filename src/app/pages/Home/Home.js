@@ -2,9 +2,9 @@ import React from 'react' // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux'
 import { increase, decrease } from '../../actions/count'
 
-import Header from '../Header'
-import Menu from '../Menu'
-import Chat from '../Chat'
+import Header from '../../components/Header'
+import Menu from '../../components/Menu'
+import Chat from '../../components/Chat'
 import menuItem from '../../data/menu.json'
 
 function Home({ number, increase, decrease }) {

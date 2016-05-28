@@ -1,7 +1,7 @@
 import React from 'react' // eslint-disable-line no-unused-vars
 import { Route, IndexRoute } from 'react-router'
 
-import { App, Home, Admin, Maps, Auth, User, Todo, NotFound } from './components'
+import { App, Home, Admin, Maps, Auth, User, Todo, NotFound } from './pages'
 
 export default (
   <Route path="/" component={ App }>

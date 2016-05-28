@@ -1,8 +1,8 @@
 import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 
-import Header from '../Header'
-import Menu from '../Menu'
-import Chat from '../Chat'
+import Header from '../../components/Header'
+import Menu from '../../components/Menu'
+import Chat from '../../components/Chat'
 import menuItem from '../../data/menu.json'
 
 export default class Admin extends Component {

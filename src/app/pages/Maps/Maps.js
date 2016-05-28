@@ -1,9 +1,9 @@
 import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 
-import Header from '../Header'
-import Menu from '../Menu'
-import Chat from '../Chat'
+import Header from '../../components/Header'
+import Menu from '../../components/Menu'
+import Chat from '../../components/Chat'
 import menuItem from '../../data/menu.json'
 import './Maps.css'
 
