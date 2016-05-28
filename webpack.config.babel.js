@@ -1,6 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-import { DEBUG, PORT } from './src/server/config';
+import { DEBUG, PORT, APP_NAME } from './src/server/config';
 
 const devFlagPlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(DEBUG)),

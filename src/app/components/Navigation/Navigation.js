@@ -20,6 +20,9 @@ export default class Navigation extends Component {
         <Link to="/auth">
           <Button style="btnOne">Auth</Button>
         </Link>
+        <Link to="/user">
+          <Button style="btnOne">User</Button>
+        </Link>
         <Link to="/todo">
           <Button style="btnOne">Todo</Button>
         </Link>

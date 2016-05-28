@@ -5,7 +5,7 @@ import './App.scss'
 
 export default function App({ children }) {
   return (
-    <div className='row'>
+    <div>
       { children }
     </div>
   )

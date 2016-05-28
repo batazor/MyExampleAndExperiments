@@ -9,12 +9,3 @@ export default function configureStore(initialState) {
     applyMiddleware(thunk)
   )
 }
-
-
-//
-// import * as reducers from './reducers';
-//
-// const reducer = combineReducers({
-//   ...reducers,
-//   routing: routerReducer
-// });
