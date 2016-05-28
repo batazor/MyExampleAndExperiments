@@ -7,8 +7,8 @@ const Todo = ({ onClick, competed, text }) => ( // eslint-disable-line no-unused
 )
 
 Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired
 }
 

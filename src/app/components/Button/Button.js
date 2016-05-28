@@ -30,6 +30,6 @@ export default class Button extends Component {
 }
 
 Button.propTypes = {
-  style: PropTypes.string,
-  children: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired,
+  style: PropTypes.string
 }
