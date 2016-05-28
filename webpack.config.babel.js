@@ -12,6 +12,7 @@ export default {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:8080',
     'webpack/hot/only-dev-server',
+    'babel-polyfill',
     './src/app/app'
   ],
   output: {
@@ -31,7 +32,7 @@ export default {
         test: /\.js$/,
         loaders: ['react-hot', 'babel'],
         include: path.join(__dirname, 'src/app'),
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,

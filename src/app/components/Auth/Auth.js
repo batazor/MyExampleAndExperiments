@@ -1,8 +1,8 @@
 import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import { Link } from 'react-router'
 
+import GithubAuth from '../../containers/Auth'
 import Logo from '../Logo'
-import Button from '../Button'
 import s from './Auth.scss'
 
 export default class Auth extends Component {
@@ -13,9 +13,7 @@ export default class Auth extends Component {
           <Logo />
           <h2>Welcome! Please Login.</h2>
 
-          <Button style="btnThree">GitHub</Button>
-          <Button style="btnThree">LinkedIn</Button>
-          <Button style="btnThree">Twitter</Button>
+          <GithubAuth />
         </div>
       </div>
     );
