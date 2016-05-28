@@ -8,7 +8,9 @@ import './Maps.css'
 
 export default class Maps extends Component {
   render() {
-    const position = [51.505, -0.09]
+    const X = 51.505
+    const Y = -0.09
+    const position = [X, Y]
     const map = (
       <Map center={position} zoom={13}>
         <TileLayer
@@ -30,7 +32,9 @@ export default class Maps extends Component {
           <div className='row'>
             <div className='col-xs'>
               <div className='box'>
+                <Menu />
                 {map}
+                <Chat />
               </div>
             </div>
           </div>

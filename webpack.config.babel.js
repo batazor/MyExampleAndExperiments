@@ -27,6 +27,13 @@ export default {
     devFlagPlugin
   ],
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loaders: ['eslint'],
+        include: path.join(__dirname, 'src/app'),
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 
 export default class Chat extends Component {
   render() {

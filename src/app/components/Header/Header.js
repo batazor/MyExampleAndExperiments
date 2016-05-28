@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
+import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 import Navigation from '../Navigation'
 
 export default class Header extends Component {

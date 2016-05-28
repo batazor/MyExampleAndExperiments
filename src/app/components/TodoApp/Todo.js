@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react' // eslint-disable-line no-unused-vars
 
-const Todo = ({ onClick, competed, text }) => (
+const Todo = ({ onClick, competed, text }) => ( // eslint-disable-line no-unused-vars
   <li onClick={onClick}>
     {text}
   </li>

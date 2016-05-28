@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react' // eslint-disable-line no-unused-vars
 
 const Link = ({ active, children, onClick }) => {
   if (active) {

@@ -13,7 +13,9 @@ export default class Foo extends Component {
           <div className='row'>
             <div className='col-xs'>
               <div className='box'>
+                <Menu />
                 And I am Foo!
+                <Chat />
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react' // eslint-disable-line no-unused-vars
 import 'classnames'
 import s from './Button.scss'
 

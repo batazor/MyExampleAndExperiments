@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react' // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux'
-import { addTodo, initTodo } from '../actions/todos'
+import { addTodo } from '../actions/todos'
 
 let AddTodo = ({ dispatch }) => {
   let input

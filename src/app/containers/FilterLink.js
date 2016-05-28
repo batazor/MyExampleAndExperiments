@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux' // eslint-disable-line no-unused-vars
 import { setVisibilityFilter } from '../actions/todos'
 import Link from '../components/TodoApp/Link'
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react' // eslint-disable-line no-unused-vars
 import { Route, IndexRoute } from 'react-router'
 
 import { App, Home, Foo, Maps, Auth, Todo, NotFound } from './components'

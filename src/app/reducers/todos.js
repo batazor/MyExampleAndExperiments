@@ -21,7 +21,7 @@ const todo = (state, action) => {
       completed: !state.completed
     })
   default:
-    console.log(123, action)
+    console.log('123', action)
     return state
   }
 }

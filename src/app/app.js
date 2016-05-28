@@ -1,6 +1,5 @@
 import React from 'react' // eslint-disable-line no-unused-vars
 import { render } from 'react-dom'
-import { createStore, combineReducers } from 'redux'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import Root from './containers/Root'

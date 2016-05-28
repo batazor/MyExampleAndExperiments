@@ -9,9 +9,10 @@ import {
 } from '../constants'
 
 let nextTodoId = 0
+const firstTodo = 0
 const API_URL = `http://localhost:${__PORT__}/graphql`
 
-export const initTodo = (text) => {
+export const initTodo = () => {
 
   const query = `
     query {
@@ -33,7 +34,7 @@ export const initTodo = (text) => {
   .then(json => dispatch({
     type: INIT_TODO,
     id: nextTodoId++,
-    text: json.data.todos[0].text
+    text: json.data.todos[firstTodo].text
   }))
   .catch(exception => dispatch({
     type: ERROR,

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react' // eslint-disable-line no-unused-vars
 import Footer from './Footer'
 import AddTodo from '../../containers/AddTodo'
 import VisibleTodoList from '../../containers/VisibleTodoList'
@@ -13,9 +13,11 @@ const Todo = () => (
       <Header />
       <div className='row'>
         <div className='col-xs'>
+          <Menu />
           <AddTodo />
           <VisibleTodoList />
           <Footer />
+          <Chat />
         </div>
       </div>
     </div>

@@ -7,6 +7,9 @@ import Menu from '../Menu'
 import Chat from '../Chat'
 
 function Home({ number, increase, decrease }) {
+
+  const step = 1
+
   return (
     <div className='row'>
       <div className='col-xs'>
@@ -14,11 +17,15 @@ function Home({ number, increase, decrease }) {
         <div className='row'>
           <div className='col-xs'>
             <div className='box'>
+              <Menu />
+
               Some state change:
               { number }
 
-              <button onClick={() => increase(1)}>Increase</button>
-              <button onClick={() => decrease(1)}>Decrease</button>
+              <button onClick={() => increase(step)}>Increase</button>
+              <button onClick={() => decrease(step)}>Decrease</button>
+
+              <Chat />
             </div>
           </div>
         </div>
