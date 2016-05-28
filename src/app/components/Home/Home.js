@@ -5,6 +5,7 @@ import { increase, decrease } from '../../actions/count'
 import Header from '../Header'
 import Menu from '../Menu'
 import Chat from '../Chat'
+import menuItem from '../../data/menu.json'
 
 function Home({ number, increase, decrease }) {
 
@@ -17,15 +18,21 @@ function Home({ number, increase, decrease }) {
         <div className='row'>
           <div className='col-xs'>
             <div className='box'>
-              <Menu />
+              <div className='row'>
+                <div className='col-xs-3'>
+                  <Menu items={menuItem} />
+                </div>
+                <div className='col-xs-8'>
+                  Some state change:
+                  { number }
 
-              Some state change:
-              { number }
-
-              <button onClick={() => increase(step)}>Increase</button>
-              <button onClick={() => decrease(step)}>Decrease</button>
-
-              <Chat />
+                  <button onClick={() => increase(step)}>Increase</button>
+                  <button onClick={() => decrease(step)}>Decrease</button>
+                </div>
+                <div className='col-xs-1'>
+                  <Chat />
+                </div>
+              </div>
             </div>
           </div>
         </div>

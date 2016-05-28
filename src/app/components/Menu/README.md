@@ -27,10 +27,6 @@ Name item
 
 `label: 'myItemOne'`
 
-#### onClick
-
-Function
-
 #### href
 
 Link to site or page

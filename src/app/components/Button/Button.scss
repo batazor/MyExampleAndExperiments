@@ -11,7 +11,6 @@
   margin: 0.1em 0.1em 0.6em 0.1em;
   text-align: center;
   width: 100%;
-  min-width: 140px;
   transition-property: all;
   transition-duration: .6s;
   transition-timing-function: ease;
@@ -23,7 +22,8 @@
 // button one
 //////////////////////////
 .btnOne {
-    letter-spacing: 0;
+  letter-spacing: 0;
+  min-width: 140px;
 }
 
 .btnOne:hover,

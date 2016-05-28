@@ -61,6 +61,10 @@ export default {
           "sass"
         ]
       },
+      {
+        test: /\.json/,
+        loader: "json"
+      },
     ]
   },
   devServer: {

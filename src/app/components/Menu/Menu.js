@@ -19,6 +19,10 @@ export default class Menu extends Component {
   }
 }
 
+Menu.defaultProps = {
+  items: []
+}
+
 Menu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired

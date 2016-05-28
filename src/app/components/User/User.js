@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Header from '../Header'
 import Menu from '../Menu'
 import Chat from '../Chat'
+import menuItem from '../../data/menu.json'
 
 class User extends Component {
   render () {
@@ -16,15 +17,15 @@ class User extends Component {
         <div className='col-xs'>
           <Header />
           <div className='row'>
-            <div className='col-xs'>
-              <div className='box'>
-                <Menu />
-
-                <p>Welcome to LMap, {name} {surname}! </p>
-                <p>You have {photos.length} photos for {year} year.</p>
-
-                <Chat />
-              </div>
+            <div className='col-xs-3'>
+              <Menu items={menuItem} />
+            </div>
+            <div className='col-xs-8'>
+              <p>Welcome to LMap, {name} {surname}! </p>
+              <p>You have {photos.length} photos for {year} year.</p>
+            </div>
+            <div className='col-xs-1'>
+              <Chat />
             </div>
           </div>
         </div>
