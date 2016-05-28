@@ -9,6 +9,7 @@ class User extends Component {
   render () {
 
     const { name, surname } = this.props.user
+    const { year, photos } = this.props.photos
 
     return (
       <div className='row'>
@@ -20,6 +21,7 @@ class User extends Component {
                 <Menu />
 
                 <p>Welcome to LMap, {name} {surname}! </p>
+                <p>You have {photos.length} photos for {year} year.</p>
 
                 <Chat />
               </div>
@@ -33,7 +35,8 @@ class User extends Component {
 
 function mapStateToProps (state) {
   return {
-    user: state.user
+    user: state.user,
+    photos: state.photos
   }
 }
 
