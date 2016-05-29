@@ -16,10 +16,12 @@ export default class Counter extends Component {
 
     return (
       <div>
-        Some state change: { number }
+        {
+          fetching ? <p>Loading...</p> : <p>Some state change: { number }</p>
+        }
 
-        <button onClick={(e) => this.increaseBtnClick(step)}>Increase</button>
-        <button onClick={(e) => this.decreaseBtnClick(step)}>Decrease</button>
+        <button onClick={() => this.increaseBtnClick(step)}>Increase</button>
+        <button onClick={() => this.decreaseBtnClick(step)}>Decrease</button>
       </div>
     )
   }
