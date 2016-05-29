@@ -9,7 +9,7 @@ const devFlagPlugin = new webpack.DefinePlugin({
 });
 
 export default {
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:8080',
     'webpack/hot/only-dev-server',
@@ -32,6 +32,7 @@ export default {
       {
         test: /\.js$/,
         loaders: ['eslint'],
+        exclude: /node_modules/,
         include: path.join(__dirname, 'src/app'),
       }
     ],
