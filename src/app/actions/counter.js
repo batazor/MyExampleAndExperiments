@@ -36,9 +36,11 @@ export function decreaseCounter(n) {
 }
 
 export function increase(n) {
-  return {
-    type: INCREASE,
-    amount: n
+  return (dispatch) => {
+    dispatch({
+      type: INCREASE,
+      amount: n
+    })
   }
 }
 
