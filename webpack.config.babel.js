@@ -1,6 +1,7 @@
-import path from 'path';
-import webpack from 'webpack';
-import { DEBUG, PORT, APP_NAME } from './src/server/config';
+import path from 'path'
+import webpack from 'webpack'
+import autoprefixer from 'autoprefixer'
+import { DEBUG, PORT, APP_NAME } from './src/server/config'
 
 const devFlagPlugin = new webpack.DefinePlugin({
   __DEV__: JSON.stringify(JSON.parse(DEBUG)),
@@ -38,37 +39,41 @@ export default {
       {
         test: /\.js$/,
         loaders: ['react-hot', 'babel'],
-        include: path.join(__dirname, 'src/app'),
+        include: path.join(__dirname, 'src'),
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
         loaders: [
-          "style",
-          'css-loader',
+          'style',
+          'css',
+          'postcss'
         ]
       },
       {
         test: /\.scss$/,
         loaders: [
-          "style",
+          'style',
           `css-loader?${JSON.stringify({
             sourceMap: DEBUG,
             modules: true,
             localIdentName: DEBUG ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
             minimize: !DEBUG,
           })}`,
-          "sass"
+          'sass'
         ]
       },
       {
         test: /\.json/,
-        loader: "json"
+        loader: 'json'
       },
     ]
   },
+  postcss: () => {
+    return [autoprefixer]
+  },
   devServer: {
-    contentBase: "./src/public",
+    contentBase: './src/public',
     hot: true,
     quiet: false,
     noInfo: true,
@@ -82,4 +87,4 @@ export default {
       timings: true
     }
   },
-};
+}
