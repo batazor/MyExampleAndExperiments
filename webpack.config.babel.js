@@ -9,7 +9,7 @@ const devFlagPlugin = new webpack.DefinePlugin({
 });
 
 export default {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: DEBUG ? 'cheap-module-eval-source-map' : undefined,
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:8080',
     'webpack/hot/only-dev-server',
@@ -71,7 +71,11 @@ export default {
     ]
   },
   postcss: () => {
-    return [autoprefixer]
+    return [
+      autoprefixer({
+        browsers: ['last 2 versions']
+      })
+    ]
   },
   devServer: {
     contentBase: './src/public',

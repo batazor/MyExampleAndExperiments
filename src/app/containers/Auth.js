@@ -7,12 +7,12 @@ let GithubAuth = ({ dispatch }) => {
   return (
     <div>
       <Button
-        style="btnThree"
+        style='btnThree'
         onClick={() => dispatch(githubAuth)}>
         GitHub
       </Button>
-      <Button style="btnThree">LinkedIn</Button>
-      <Button style="btnThree">Twitter</Button>
+      <Button style='btnThree'>LinkedIn</Button>
+      <Button style='btnThree'>Twitter</Button>
     </div>
   )
 }

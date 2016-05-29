@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 export default class Logo extends Component {
   render () {
     return (
-      <Link to="/">
+      <Link to='/'>
         <h2>LMap</h2>
       </Link>
     )

@@ -8,23 +8,23 @@ export default class Navigation extends Component {
   render() {
     return (
       <div className={s.container}>
-        <Link to="/">
-          <Button style="btnOne">Home</Button>
+        <Link to='/'>
+          <Button style='btnOne'>Home</Button>
         </Link>
-        <Link to="/admin">
-          <Button style="btnOne">Admin</Button>
+        <Link to='/admin'>
+          <Button style='btnOne'>Admin</Button>
         </Link>
-        <Link to="/maps">
-          <Button style="btnOne">Maps</Button>
+        <Link to='/maps'>
+          <Button style='btnOne'>Maps</Button>
         </Link>
-        <Link to="/auth">
-          <Button style="btnOne">Auth</Button>
+        <Link to='/auth'>
+          <Button style='btnOne'>Auth</Button>
         </Link>
-        <Link to="/user">
-          <Button style="btnOne">User</Button>
+        <Link to='/user'>
+          <Button style='btnOne'>User</Button>
         </Link>
-        <Link to="/todo">
-          <Button style="btnOne">Todo</Button>
+        <Link to='/todo'>
+          <Button style='btnOne'>Todo</Button>
         </Link>
       </div>
     )

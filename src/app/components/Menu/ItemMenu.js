@@ -9,7 +9,7 @@ export default class ItemMenu extends Component {
 
     return (
       <div>
-        <Button style="btnTwo">{label}</Button>
+        <Button style='btnTwo'>{label}</Button>
       </div>
     )
   }
