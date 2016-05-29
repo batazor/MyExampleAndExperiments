@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react' // eslint-disable-line no-unused-vars
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
-import routes from '../routes'
+import routes from '../../routes'
 
 export default class Root extends Component {
   render() {
@@ -16,6 +16,6 @@ export default class Root extends Component {
 }
 
 Root.propTypes = {
-  history: PropTypes.object.isRequired,
-  store: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }

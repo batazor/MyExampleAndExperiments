@@ -6,7 +6,7 @@ import {
   SET_VISIBILITY_FILTER,
   TOGGLE_TODO,
   ERROR
-} from '../constants'
+} from '../constants/Todo'
 
 let nextTodoId = 0
 const firstTodo = 0

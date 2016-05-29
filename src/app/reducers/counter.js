@@ -1,4 +1,4 @@
-import { INCREASE, DECREASE } from '../constants'
+import { INCREASE, DECREASE } from '../constants/Counter'
 
 const initialState = {
   step: 1,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 
-import GithubAuth from '../../containers/Auth'
+import AuthBtn from '../../containers/Auth'
 import Logo from '../../components/Logo'
 import s from './Auth.scss'
 
@@ -12,7 +12,7 @@ export default class Auth extends Component {
           <Logo />
           <h2>Welcome! Please Login.</h2>
 
-          <GithubAuth />
+          <AuthBtn />
         </div>
       </div>
     )

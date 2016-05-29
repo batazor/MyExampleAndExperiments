@@ -5,7 +5,7 @@ import {
   SET_COUNTER,
   DECREASE_COUNTER,
   INCREASE_COUNTER
-} from '../constants'
+} from '../constants/Counter'
 
 export function getCounter() {
   return {

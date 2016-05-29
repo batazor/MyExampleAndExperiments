@@ -3,7 +3,7 @@ import 'whatwg-fetch'
 import {
   ERROR,
   AUTH_GITHUB
-} from '../constants'
+} from '../constants/Auth'
 
 const API_URL = `http://localhost:${__PORT__}/auth`
 const API_URL_GITHUB = API_URL + '/github'
