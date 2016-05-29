@@ -4,13 +4,13 @@ import { Route, IndexRoute } from 'react-router'
 import { App, Home, Admin, Maps, Auth, User, Todo, NotFound } from './pages'
 
 export default (
-  <Route path='/' component={ App }>
-    <IndexRoute component={ Home } />
-    <Route path='auth' component={ Auth } />
-    <Route path='user' component={ User } />
-    <Route path='admin' component={ Admin } />
-    <Route path='maps' component={ Maps } />
-    <Route path='todo' component={ Todo } />
-    <Route path='*' component={ NotFound } />
+  <Route path='/' component={App}>
+    <IndexRoute component={Home} />
+    <Route path='auth' component={Auth} />
+    <Route path='user' component={User} />
+    <Route path='admin' component={Admin} onEnter={Admin.onEnter} />
+    <Route path='maps' component={Maps} />
+    <Route path='todo' component={Todo} />
+    <Route path='*' component={NotFound} />
   </Route>
 )

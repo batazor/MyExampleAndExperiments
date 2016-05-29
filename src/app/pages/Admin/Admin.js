@@ -6,6 +6,15 @@ import Chat from '../../components/Chat'
 import menuItem from '../../data/menu.json'
 
 export default class Admin extends Component {
+
+  static onEnter(nextState, replace) {
+    const role = window.localStorage.getItem('userRole')
+
+    if (role !== 'admin') {
+      replace('/auth')
+    }
+  }
+
   render() {
     return (
       <div className='row'>
