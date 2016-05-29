@@ -17,21 +17,19 @@ function Home({ number, increase, decrease }) {
         <Header />
         <div className='row'>
           <div className='col-xs'>
-            <div className='box'>
-              <div className='row'>
-                <div className='col-xs-3'>
-                  <Menu items={menuItem} />
-                </div>
-                <div className='col-xs-8'>
-                  Some state change:
-                  { number }
+            <div className='row'>
+              <div className='col-xs-3'>
+                <Menu items={menuItem} />
+              </div>
+              <div className='col-xs-8'>
+                Some state change:
+                { number }
 
-                  <button onClick={() => increase(step)}>Increase</button>
-                  <button onClick={() => decrease(step)}>Decrease</button>
-                </div>
-                <div className='col-xs-1'>
-                  <Chat />
-                </div>
+                <button onClick={() => increase(step)}>Increase</button>
+                <button onClick={() => decrease(step)}>Decrease</button>
+              </div>
+              <div className='col-xs-1'>
+                <Chat />
               </div>
             </div>
           </div>
