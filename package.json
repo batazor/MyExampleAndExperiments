@@ -8,7 +8,7 @@
     "dev": "npm run dev:server | npm run dev:client",
     "dev:server": "NODE_ENV=develop babel-node src/server",
     "dev:client": "NODE_ENV=develop webpack-dev-server --progress --inline --hot",
-    "docs": "./node_modules/.bin/esdoc -c esdoc.json",
+    "docs": "$(npm bin)/esdoc -c esdoc.json",
     "clean": "rm -rf ./dist",
     "build": "npm run clean && npm run build:server && npm run build:client",
     "build:server": "NODE_ENV=production babel src/server -d dist/server",
@@ -18,7 +18,7 @@
     "test:server": "echo \"Error: no test specified\" && exit 1",
     "test:client": "echo \"Error: no test specified\" && exit 1",
     "test:watch": "echo \"Error: no test specified\" && exit 1",
-    "lint": "./node_modules/eslint/bin/eslint.js src",
+    "lint": "$(npm bin)/eslint.js src",
     "lint:server": "./node_modules/eslint/bin/eslint.js --fix src/server",
     "lint:client": "./node_modules/eslint/bin/eslint.js --fix src/app"
   },
