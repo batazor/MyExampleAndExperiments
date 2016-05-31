@@ -10,9 +10,12 @@ const devFlagPlugin = new webpack.DefinePlugin({
 
 export default {
   devtool: DEBUG ? 'cheap-module-eval-source-map' : undefined,
-  entry: [
+  entry: DEBUG ? [
     'webpack-dev-server/client?http://0.0.0.0:8080',
     'webpack/hot/only-dev-server',
+    'babel-polyfill',
+    './src/app/app'
+  ] : [
     'babel-polyfill',
     './src/app/app'
   ],
@@ -25,6 +28,17 @@ export default {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_console: !DEBUG,
+        drop_debugger: !DEBUG,
+        unsafe: true,
+        comparisons: !DEBUG,
+        booleans: !DEBUG,
+        if_return: !DEBUG,
+      }
+    }),
     devFlagPlugin
   ],
   module: {

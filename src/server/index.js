@@ -13,7 +13,7 @@ import Router from './api'
 let app = express()
 
 // static content
-app.use('/static', express.static(path.resolve(__dirname, '../public/static')))
+app.use('/dist', express.static(path.resolve(__dirname, '../public')))
 
 // MongoDB connect
 mongoose.connect(dbConfig.MONGODB_DATABASE_URL)
