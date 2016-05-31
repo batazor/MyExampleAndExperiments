@@ -2,17 +2,21 @@ import React, { Component } from 'react' // eslint-disable-line no-unused-vars
 
 export default class Counter extends Component {
 
-  increaseBtnClick(step) {
-    this.props.increase(step)
+  increaseBtnClick() {
+    this.props.increase()
   }
 
-  decreaseBtnClick(step) {
-    this.props.decrease(step)
+  decreaseBtnClick() {
+    this.props.decrease()
+  }
+
+  componentWillMount() {
+    this.props.init()
   }
 
   render() {
 
-    let { step, number, fetching } = this.props
+    let { number, fetching } = this.props
 
     return (
       <div>
@@ -20,8 +24,8 @@ export default class Counter extends Component {
           fetching ? <p>Loading...</p> : <p>Some state change: { number }</p>
         }
 
-        <button onClick={() => this.increaseBtnClick(step)}>Increase</button>
-        <button onClick={() => this.decreaseBtnClick(step)}>Decrease</button>
+        <button onClick={() => this.increaseBtnClick()}>Increase</button>
+        <button onClick={() => this.decreaseBtnClick()}>Decrease</button>
       </div>
     )
   }

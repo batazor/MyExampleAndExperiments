@@ -31,7 +31,7 @@ const RootMutation = new ObjectType({
     addTodo: todoMutation.addTodo,
     updateTodo: todoMutation.updateTodo,
     increaseCounter: counterMutation.increaseCounter,
-    dicreaseCounter: counterMutation.dicreaseCounter
+    decreaseCounter: counterMutation.decreaseCounter
   })
 })
 

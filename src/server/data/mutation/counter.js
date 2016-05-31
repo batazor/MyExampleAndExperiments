@@ -6,7 +6,7 @@ import {
 } from 'graphql'
 
 import counterType from '../types/CounterType'
-import { increase, dicrease } from '../../models/counter'
+import { increase, decrease } from '../../models/counter'
 
 export default {
   increaseCounter: {
@@ -14,9 +14,9 @@ export default {
     args: {},
     resolve: increase
   },
-  dicreaseCounter: {
+  decreaseCounter: {
     type: counterType,
     args: {},
-    resolve: dicrease
+    resolve: decrease
   }
 }

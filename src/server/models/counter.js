@@ -6,7 +6,7 @@ export const increase = () => {
   })
 }
 
-export const dicrease = () => {
+export const decrease = () => {
   return ({
     number: --counter
   })
