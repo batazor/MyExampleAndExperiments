@@ -36,7 +36,10 @@ export default {
         unsafe: true,
         comparisons: !DEBUG,
         booleans: !DEBUG,
-        if_return: !DEBUG,
+        if_return: !DEBUG
+      },
+      output: {
+        comments: DEBUG
       }
     }),
     devFlagPlugin
