@@ -9,31 +9,12 @@ const devFlagPlugin = new webpack.DefinePlugin({
   __PORT__: JSON.stringify(JSON.parse(PORT))
 })
 
-const cssLoaders = DEBUG ? {
-  test: /\.css$/,
-  loaders: [
-    'style',
-    'css',
-    'postcss'
-  ]
-} : {
+const cssLoaders = {
   test: /\.css$/,
   loader: ExtractTextPlugin.extract('style', 'css!postcss')
 }
 
-const scssLoaders = DEBUG ? {
-  test: /\.scss$/,
-  loaders: [
-    'style',
-    `css-loader?${JSON.stringify({
-      sourceMap: DEBUG,
-      modules: true,
-      localIdentName: DEBUG ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]',
-      minimize: !DEBUG,
-    })}`,
-    'sass'
-  ]
-} : {
+const scssLoaders = {
   test: /\.scss$/,
   loader: ExtractTextPlugin.extract('style', `css-loader?${JSON.stringify({
     sourceMap: DEBUG,
@@ -45,15 +26,7 @@ const scssLoaders = DEBUG ? {
 
 export default {
   devtool: DEBUG ? 'cheap-module-eval-source-map' : undefined,
-  entry: DEBUG ? [
-    'webpack-dev-server/client?http://0.0.0.0:8080',
-    'webpack/hot/only-dev-server',
-    'babel-polyfill',
-    './src/app/app'
-  ] : [
-    'babel-polyfill',
-    './src/app/app'
-  ],
+  entry: [ './src/app/app' ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -61,9 +34,8 @@ export default {
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('bundle.css'),
+    new ExtractTextPlugin('bundle.css', { allChunks: true, disable: DEBUG }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -102,6 +74,10 @@ export default {
         test: /\.json/,
         loader: 'json'
       },
+      {
+        test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+        loader: 'file?name=[path][name].[ext]?[hash]'
+      }
     ]
   },
   postcss: () => {

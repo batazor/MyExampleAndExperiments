@@ -7,7 +7,7 @@
     "start": "node dist/server",
     "dev": "npm run dev:server | npm run dev:client",
     "dev:server": "NODE_ENV=develop babel-node src/server",
-    "dev:client": "NODE_ENV=develop webpack-dev-server --progress",
+    "dev:client": "NODE_ENV=develop webpack-dev-server --progress --inline --hot",
     "clean": "rm -rf ./dist",
     "build": "npm run clean && npm run build:server && npm run build:client",
     "build:server": "NODE_ENV=production babel src/server -d dist/server",

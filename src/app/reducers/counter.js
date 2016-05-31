@@ -13,7 +13,6 @@ const initialState = {
 export default function update(state = initialState, action) {
   switch (action.type) {
   case COUNTER_INIT:
-    console.log(action)
     return {...state, number: action.payload.number}
   case COUNTER_INCREASE:
     return {...state, number: action.payload.number}
