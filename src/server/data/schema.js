@@ -3,8 +3,13 @@ import {
   GraphQLObjectType as ObjectType
 } from 'graphql'
 
+// todo
 import todoQueries from './queries/todo'
 import todoMutation from './mutation/todo'
+
+// counter
+import counterQueries from './queries/counter'
+import counterMutation from './mutation/counter'
 
 // Setup GraphQL RootQuery
 const RootQuery = new ObjectType({
@@ -13,7 +18,8 @@ const RootQuery = new ObjectType({
   fields: () => ({
     todo: todoQueries.todo,
     todos: todoQueries.todos,
-    todoId: todoQueries.todoId
+    todoId: todoQueries.todoId,
+    counter: counterQueries.getCounter
   })
 })
 
@@ -23,7 +29,9 @@ const RootMutation = new ObjectType({
   description: 'Realize Root Mutations',
   fields: () => ({
     addTodo: todoMutation.addTodo,
-    updateTodo: todoMutation.updateTodo
+    updateTodo: todoMutation.updateTodo,
+    increaseCounter: counterMutation.increaseCounter,
+    dicreaseCounter: counterMutation.dicreaseCounter
   })
 })
 
