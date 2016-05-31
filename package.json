@@ -18,9 +18,10 @@
     "test:server": "echo \"Error: no test specified\" && exit 1",
     "test:client": "echo \"Error: no test specified\" && exit 1",
     "test:watch": "echo \"Error: no test specified\" && exit 1",
-    "lint": "$(npm bin)/eslint.js src",
+    "lint": "$(npm bin)/eslint.js src && flow",
     "lint:server": "./node_modules/eslint/bin/eslint.js --fix src/server",
-    "lint:client": "./node_modules/eslint/bin/eslint.js --fix src/app"
+    "lint:client": "./node_modules/eslint/bin/eslint.js --fix src/app",
+    "flow": "flow"
   },
   "repository": {
     "type": "git",
@@ -61,6 +62,7 @@
     "eslint-plugin-react": "^5.1.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
+    "flow-bin": "^0.26.0",
     "graphql": "^0.5.0",
     "isomorphic-fetch": "^2.2.1",
     "jsdom": "^9.2.0",

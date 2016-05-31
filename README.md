@@ -4,14 +4,19 @@ Simply service with chat and map.
 
 ## Getting Started
 
-+ create `.env` file
-+ `docker-compose up`
-
-or
-
 + npm install
 + create `.env` file
-+ npm run dev
++ npm run build
++ npm run start
+
+
+| Command   | Description                      |
+|-----------|----------------------------------|
+| npm i     | Install dependencies             |
+| npm start | Start application                |
+| npm build | Build application                |
+| npm test  | Run test                         |
+| npm lint  | Linter code                      |
 
 ### Environment
 
