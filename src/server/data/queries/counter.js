@@ -1,9 +1,5 @@
-import {
-  GraphQLInt
-} from 'graphql'
-
 import CounterType from '../types/CounterType'
-import { increase, decrease, getCounter } from '../../models/counter'
+import { getCounter } from '../../models/counter'
 
 export default {
   getCounter: {

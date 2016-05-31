@@ -1,9 +1,7 @@
 import {
   GraphQLObjectType as ObjectType,
-  GraphQLString,
   GraphQLInt,
-  GraphQLNonNull as NonNull,
-  GraphQLID
+  GraphQLNonNull as NonNull
 } from 'graphql'
 
 const CounterType = new ObjectType({

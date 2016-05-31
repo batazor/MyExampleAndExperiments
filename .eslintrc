@@ -84,7 +84,8 @@ env:
   es6: true
   node: true
   browser: true
-extends: 'eslint:recommended'
+extends:
+  - eslint:recommended
 globals:
   __PORT__: true
   __DEV__: true
