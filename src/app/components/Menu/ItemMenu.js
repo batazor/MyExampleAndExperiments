@@ -1,15 +1,21 @@
 import React, { Component, PropTypes } from 'react' // eslint-disable-line no-unused-vars
+import { Link } from 'react-router'
 
+import Menu from '../Menu'
+import NavLink from '../NavLink'
 import Button from '../Button'
 
 export default class ItemMenu extends Component {
   render() {
 
-    const label = this.props.item.label
+    const item = this.props.item
 
     return (
       <div>
-        <Button style='btnTwo'>{label}</Button>
+        <Link to={item.href}>
+          <Button style='btnTwo'>{item.href}</Button>
+        </Link>
+        { item.children && item.children.length ? <Menu items={item.children} params={true} /> : null }
       </div>
     )
   }

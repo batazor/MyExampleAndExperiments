@@ -72,7 +72,7 @@ export default {
       scssLoaders,
       {
         test: /\.json/,
-        loader: 'json'
+        loader: 'json?[hash:base64:3]'
       },
       {
         test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,

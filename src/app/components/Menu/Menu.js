@@ -6,10 +6,11 @@ export default class Menu extends Component {
   render() {
 
     const items = this.props.items
+    const params = this.props.params
 
     return (
       <div>
-        <h4>Menu</h4>
+        { params ? null : <h4>Menu</h4> }
 
         {items.map(function(item, index) {
           return <ItemMenu key={index} item={item} />
@@ -20,7 +21,8 @@ export default class Menu extends Component {
 }
 
 Menu.defaultProps = {
-  items: []
+  items: [],
+  params: false
 }
 
 Menu.propTypes = {

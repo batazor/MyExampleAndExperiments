@@ -1,7 +1,7 @@
 [
   {
     "label": "statistic",
-    "href": "admin/static",
+    "href": "/admin/static",
     "order": "auto",
     "icon": {
       "type": "font-awesome",
@@ -11,7 +11,7 @@
     "children": [
       {
         "label": "todo",
-        "href": "todo",
+        "href": "/admin/static/todo",
         "order": 1,
         "icon": {
           "type": "link",
@@ -21,7 +21,7 @@
       },
       {
         "label": "user",
-        "href": "user",
+        "href": "/admin/static/user",
         "order": 2,
         "icon": {
           "type": "font-awesome",
@@ -33,7 +33,7 @@
   },
   {
     "label": "user",
-    "href": "admin/user",
+    "href": "/admin/user",
     "order": "auto",
     "icon": {
       "type": "font-awesome",
@@ -43,12 +43,16 @@
     "children": [
       {
         "label": "create",
-        "href": "new",
+        "href": "/admin/user/new",
         "icon": {
           "type": "font-awesome",
           "name": "fa-plas",
           "customClass": "fa-lg fa-rotate-90"
         }
+      },
+      {
+        "label": "edit",
+        "href": "/admin/user/new/edit"
       }
     ]
   }
