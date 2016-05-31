@@ -4,6 +4,9 @@ import { bindActionCreators } from 'redux'
 import { init, increase, decrease } from '../actions/counter'
 import CounterCtrl from '../components/Counter'
 
+/**
+ * Class Counter
+ */
 class Counter extends Component {
   render() {
 
@@ -18,12 +21,24 @@ class Counter extends Component {
   }
 }
 
+/**
+ * mapStateToProps - get data is reducer
+ *
+ * @param  object state get state
+ * @return object       Return object { counter }
+ */
 function mapStateToProps (state) {
   return {
     counter: state.counter
   }
 }
 
+/**
+ * mapDispatchToProps - bind function
+ *  
+ * @param  object dispatch description
+ * @return {type}          description
+ */
 function mapDispatchToProps(dispatch) {
   return {
     initActions: bindActionCreators(init, dispatch),

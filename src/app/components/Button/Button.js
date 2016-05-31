@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react' // eslint-disable-line no-un
 import 'classnames'
 import s from './Button.scss'
 
+/**
+ * Class component <Button />
+ */
 export default class Button extends Component {
   render() {
 
