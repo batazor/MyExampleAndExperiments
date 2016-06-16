@@ -6,15 +6,53 @@
   <script src="https://fb.me/react-with-addons-15.1.0.js"></script>
   <script src="https://fb.me/react-dom-15.1.0.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+
+  <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="app"></div>
 
   <script type="text/babel">
-    const HelloReact = React.createClass({
+
+    const GlyphIcon = React.createClass({
+      render: function() {
+        return(
+          <span className={'glyphicon glyphicon-' + this.props.icon}></span>
+        )
+      }
+    })
+
+    const Button = React.createClass({
+      render: function() {
+        return (
+          <button onClick={this.props.onClick}>{this.props.children}</button>
+        )
+      }
+    })
+
+    const HelloMessage = React.createClass({
 
       propTypes: {
         message: React.PropTypes.string
+      },
+
+      componentWillMount: function() {
+        console.log('componentWillMount')
+      },
+
+      componentDidMount: function() {
+        console.log('componentDidMount')
+      },
+
+      componentWillUnmount: function() {
+        console.log('componentWillUnmount')
       },
 
       getDefaultProps: function() {
@@ -23,22 +61,87 @@
         }
       },
 
+      render: function() {
+        return (
+          <h1>{this.props.message}</h1>
+        )
+      }
+    })
+
+    const TextBox = React.createClass({
+
       getInitialState: function() {
         return {
-          message: 'I am from default state'
+          isEditing: false
         }
       },
 
-      updateMessage: function(e) {
-        this.setState({message: e.target.value})
+      update: function() {
+        this.props.update(this.refs.messageTextBox.value)
+        this.setState({
+          isEditing: false
+        })
+      },
+
+      edit: function() {
+        this.setState({
+          isEditing: true
+        })
       },
 
       render: function() {
         return (
           <div>
-            <input type="text" onChange={this.updateMessage}/>
-            <h1>Hello React</h1>
-            <div>{this.state.message}</div>
+            {this.props.label} <br/>
+            <input type='text' ref='messageTextBox' disabled={!this.state.isEditing}/>
+            {
+              this.state.isEditing ?
+                <button onClick={this.update}>
+                  <GlyphIcon icon='ok' /> Update
+                </button>
+                :
+                <button onClick={this.edit}>
+                  <GlyphIcon icon='pencil' /> Edit
+                </button>
+            }
+          </div>
+        )
+      }
+    })
+
+    const HelloReact = React.createClass({
+
+      getInitialState: function() {
+        return {
+          firstName: '',
+          lastName: ''
+        }
+      },
+
+      update: function(key, value) {
+        var newState = {}
+        newState[key] = value
+        this.setState(newState)
+      },
+
+      reload: function() {
+        ReactDOM.unmountComponentAtNode(document.getElementById('app'))
+        ReactDOM.render(
+          <HelloReact />, document.getElementById('app')
+        )
+      },
+
+      render: function() {
+        return (
+          <div>
+            <HelloMessage message={'Hello ' + this.state.firstName + ' ' + this.state.lastName} />
+            <TextBox
+              label='First Name'
+              update={this.update.bind(this, 'firstName')} />
+            <TextBox
+              label='Last Name'
+              update={this.update.bind(this, 'lastName')} />
+            <button onClick={this.reload}>Reload</button>
           </div>
         )
       }
