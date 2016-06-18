@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Hello React</title>
-  <script src="https://fb.me/react-with-addons-15.1.0.js"></script>
-  <script src="https://fb.me/react-dom-15.1.0.js"></script>
+  <script src="https://fb.me/react-with-addons-0.14.0.js"></script>
+  <script src="https://fb.me/react-dom-0.14.0.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
 
   <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
@@ -37,111 +37,70 @@
       }
     })
 
-    const HelloMessage = React.createClass({
-
-      propTypes: {
-        message: React.PropTypes.string
-      },
-
-      componentWillMount: function() {
-        console.log('componentWillMount')
-      },
-
-      componentDidMount: function() {
-        console.log('componentDidMount')
-      },
-
-      componentWillUnmount: function() {
-        console.log('componentWillUnmount')
-      },
+    const HelloReact = React.createClass({
 
       getDefaultProps: function() {
         return {
-          message: 'I am from default'
+          likes: 0
         }
       },
-
-      render: function() {
-        return (
-          <h1>{this.props.message}</h1>
-        )
-      }
-    })
-
-    const TextBox = React.createClass({
 
       getInitialState: function() {
         return {
-          isEditing: false
+          isIncreasing: false
         }
       },
 
-      update: function() {
-        this.props.update(this.refs.messageTextBox.value)
-        this.setState({
-          isEditing: false
-        })
+      componentWillReceiveProps: function(nextProps) {
+        this._logPropsAndState('componentWillReceiveProps()')
+        console.log('nextProps.likes: ' + nextProps.likes)
+
+        this.setState({isIncreasing: nextProps.likes > this.props.likes})
       },
 
-      edit: function() {
-        this.setState({
-          isEditing: true
-        })
+      shouldComponentUpdate: function(nextProps, nextState) {
+        this._logPropsAndState('shouldComponentUpdate()')
+        console.log('nextProps.likes: ' + nextProps.likes
+          + ' nextState.isIncreasing: ' + nextState.isIncreasing)
+
+        return nextProps.likes > 1;
       },
 
-      render: function() {
-        return (
-          <div>
-            {this.props.label} <br/>
-            <input type='text' ref='messageTextBox' disabled={!this.state.isEditing}/>
-            {
-              this.state.isEditing ?
-                <button onClick={this.update}>
-                  <GlyphIcon icon='ok' /> Update
-                </button>
-                :
-                <button onClick={this.edit}>
-                  <GlyphIcon icon='pencil' /> Edit
-                </button>
-            }
-          </div>
-        )
-      }
-    })
-
-    const HelloReact = React.createClass({
-
-      getInitialState: function() {
-        return {
-          firstName: '',
-          lastName: ''
-        }
+      componentDidUpdate: function(prevProps, prevState) {
+        this._logPropsAndState('componentDidUpdate')
+        console.log('prevProps.likes: ' + prevProps.likes
+          + ' prevState.isIncreasing:' + prevState.isIncreasing)
+        console.log('componentDidUpdate() gives an opportunity to execute code after react is finished updating the DOM.')
       },
 
-      update: function(key, value) {
-        var newState = {}
-        newState[key] = value
-        this.setState(newState)
+      _logPropsAndState: function(callingFunction) {
+        console.log('=> ' + callingFunction)
+        console.log('this.props.likes: ' + this.props.likes)
+        console.log('this.state.isIncreasing: ' + this.state.isIncreasing)
       },
 
-      reload: function() {
-        ReactDOM.unmountComponentAtNode(document.getElementById('app'))
-        ReactDOM.render(
-          <HelloReact />, document.getElementById('app')
-        )
+      like() {
+        console.log(this)
+        this.setProps({likes: this.props.likes + 1})
+      },
+
+      unlike() {
+        this.setProps({likes: this.props.likes - 1})
       },
 
       render: function() {
+
+        this._logPropsAndState("render()")
+
         return (
           <div>
-            <HelloMessage message={'Hello ' + this.state.firstName + ' ' + this.state.lastName} />
-            <TextBox
-              label='First Name'
-              update={this.update.bind(this, 'firstName')} />
-            <TextBox
-              label='Last Name'
-              update={this.update.bind(this, 'lastName')} />
-            <button onClick={this.reload}>Reload</button>
+            <Button onClick={this.like}><GlyphIcon icon='thumbs-up'/> Like</Button>
+            <Button onClick={this.unlike}><GlyphIcon icon='thumbs-down'/> Unlike</Button>
+            <br/>
+            Likes {this.props.likes}
+            <GlyphIcon
+              icon={(this.state.isIncreasing)
+              ? 'circle-arrow-up' : 'circle-arrow-down'}/>
           </div>
         )
       }
