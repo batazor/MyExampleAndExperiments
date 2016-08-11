@@ -5,6 +5,7 @@ Example use fluentd, elasticsearch, docker on docker-compose
 ### getting started
 
 ```
+docker-compose build
 docker-compose up
 ```
 
