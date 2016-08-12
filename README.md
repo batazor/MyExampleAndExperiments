@@ -15,4 +15,5 @@ docker-compose up
 | Nginx             | localhost:9999          |
 | Node Example      | localhost:4040          |
 | MongoDB           | localhost:27017         |
+| RabbitMQ Admin    | localhost:15672         |
 | Kibana            | localhost:5601          |

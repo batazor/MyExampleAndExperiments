@@ -4,7 +4,7 @@ const logger = require('fluent-logger');
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-logger.configure('fluentd.node.example', {
+logger.configure('docker.node.example', {
   host: 'fluentd',
   port: 24224,
   timeout: 3.0,
@@ -24,6 +24,6 @@ app.get('/', function(request, response) {
 });
 
 app.listen(PORT, function() {
-  logger.emit('start', {message: 'Server start'});
+  logger.emit('server', {message: 'Server start'});
   console.log("Listening on " + PORT);
 });

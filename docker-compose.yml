@@ -30,8 +30,6 @@ services:
     - "27017:27017"
     logging:
       driver: fluentd
-      options:
-        tag: docker.mongo
   node-example:
     container_name: node-example
     build: ./node-example
@@ -39,10 +37,24 @@ services:
     - fluentd
     ports:
     - "4040:3000"
+    logging:
+      driver: fluentd
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.6.5-management
+    depends_on:
+    - fluentd
+    ports:
+    - "15672:15672"
+    logging:
+      driver: fluentd
+      options:
+        tag: rabbitmq
   kibana:
     container_name: kibana
     image: kibana
     depends_on:
     - elasticsearch
+    - fluentd
     ports:
     - "5601:5601"
