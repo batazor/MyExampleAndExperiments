@@ -16,7 +16,12 @@ app.get('/', function(request, response) {
   const data = {
     from: 'userA',
     to: 'userB',
-    password: 'secretSecret'
+    password: 'secretSecret',
+    test: {
+      a: 'a',
+      b: 'b',
+      c: 'c'
+    }
   };
 
   logger.emit('user', data);
