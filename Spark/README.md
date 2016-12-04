@@ -18,6 +18,18 @@ docker cp ./learning-sparkexample spark-example:/tmp/learning-sparkexample
 docker exec -it spark-example bin/spark-submit /tmp/learning-sparkexample/learning-sparkexample/SimpleApp.py
 ```
 
+#### JAVA
+
+```
+docker exec -it spark-example bash -c \
+  "cd /tmp/learning-sparkexample/learning-sparkexample/JAVA && mvn package"
+
+docker exec -it spark-example bin/spark-submit \
+  --class "SimpleApp" \
+  --master local[4] \
+  /tmp/learning-sparkexample/learning-sparkexample/JAVA/target/simple-project-1.0.jar
+```
+
 #### Scala
 
 ```
