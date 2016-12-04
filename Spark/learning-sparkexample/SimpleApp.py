@@ -2,8 +2,6 @@
 from pyspark import SparkContext
 
 # Setting Spark work
-# conf = SparkConf().setMaster("local").setAppName("Hello World APP")
-# sc = SparkContext(conf = conf)
 sc = SparkContext("local", "Hello World APP")
 
 # Should be some file on your system
