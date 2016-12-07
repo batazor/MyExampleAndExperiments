@@ -18,6 +18,14 @@ docker cp ./learning-sparkexample spark-example:/tmp/learning-sparkexample
 docker exec -it spark-example bin/spark-submit /tmp/learning-sparkexample/learning-sparkexample/SimpleApp.py
 ```
 
+#### Jupyter Notebook
+
+```
+docker run -d -p 8888:8888 -v $(pwd)/spark-notebook:/opt/notebooks batazor/spark-notebook
+```
+
+Open http://localhost:8888
+
 #### JAVA
 
 ```
