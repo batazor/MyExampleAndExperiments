@@ -21,7 +21,7 @@ docker exec -it spark-example bin/spark-submit /tmp/learning-sparkexample/learni
 #### Jupyter Notebook
 
 ```
-docker run -d -p 8888:8888 -v $(pwd)/spark-notebook:/opt/notebooks batazor/spark-notebook
+docker run -d --name spark-notebook -p 8888:8888 -v $(pwd)/spark-notebook:/opt/notebooks batazor/spark-notebook
 ```
 
 Open http://localhost:8888
