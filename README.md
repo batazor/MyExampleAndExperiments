@@ -2,6 +2,4 @@
 
 ### Path
 
-```
-- GCE - configuration for GCE
-```
+`./GCE` - configuration for GCE
