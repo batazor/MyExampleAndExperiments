@@ -4,21 +4,21 @@ metadata:
   name: nginx-us
   annotations:
     federation.kubernetes.io/replica-set-preferences: |
-        {
-            "rebalance": true,
-            "clusters": {
-                "gce-us-east1": {
-                    "minReplicas": 2,
-                    "maxReplicas": 4,
-                    "weight": 1
-                },
-                "gce-us-central1": {
-                    "minReplicas": 2,
-                    "maxReplicas": 4,
-                    "weight": 1
-                }
-            }
+      {
+        "rebalance": true,
+        "clusters": {
+          "gce-us-east1": {
+            "minReplicas": 2,
+            "maxReplicas": 4,
+            "weight": 1
+          },
+          "gce-us-central1": {
+            "minReplicas": 2,
+            "maxReplicas": 4,
+            "weight": 1
+          }
         }
+      }
 spec:
   replicas: 4
   template:
