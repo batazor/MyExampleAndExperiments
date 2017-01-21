@@ -26,27 +26,27 @@ spec:
           - --advertise-address=ADVERTISE_ADDRESS
           - --token-auth-file=/srv/kubernetes/known-tokens.csv
         ports:
-          - containerPort: 443
-            name: https
-          - containerPort: 8080
-            name: local
+        - containerPort: 443
+          name: https
+        - containerPort: 8080
+          name: local
         volumeMounts:
-          - name: federation-apiserver-secrets
-            mountPath: /srv/kubernetes/
-            readOnly: true
+        - name: federation-apiserver-secrets
+          mountPath: /srv/kubernetes/
+          readOnly: true
       - name: etcd
         image: quay.io/coreos/etcd:v3.0.7
         command:
-          - "/usr/local/bin/etcd"
+        - "/usr/local/bin/etcd"
         args:
-          - "--data-dir=/var/lib/etcd"
+        - "--data-dir=/var/lib/etcd"
         volumeMounts:
-          - name: etcd-data
-            mountPath: /var/lib/etcd
-      volumes:
-        - name: federation-apiserver-secrets
-          secret:
-            secretName: federation-apiserver-secrets
         - name: etcd-data
-          persistentVolumeClaim:
-            claimName: federation-apiserver-etcd
+          mountPath: /var/lib/etcd
+      volumes:
+      - name: federation-apiserver-secrets
+        secret:
+          secretName: federation-apiserver-secrets
+      - name: etcd-data
+        persistentVolumeClaim:
+          claimName: federation-apiserver-etcd

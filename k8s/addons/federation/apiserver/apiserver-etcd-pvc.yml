@@ -9,7 +9,7 @@ metadata:
     app: federated-cluster
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
