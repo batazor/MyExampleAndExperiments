@@ -47,11 +47,11 @@ FEDERATED_API_SERVER_ADDRESS=$(kubectl --context="gke_${GCP_PROJECT}_us-central1
   get services federation-apiserver \
   -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
-sed -i "s|ADVERTISE_ADDRESS|${FEDERATED_API_SERVER_ADDRESS}|g" ../k8s/addons/federation/apiserver/apiserver-deploy.yaml
+sed -i "s|ADVERTISE_ADDRESS|${FEDERATED_API_SERVER_ADDRESS}|g" deployments/apiserver-deploy.yaml
 
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
-  create -f ../k8s/addons/federation/apiserver/apiserver-deploy.yaml
+  create -f deployments/apiserver-deploy.yaml
 
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
