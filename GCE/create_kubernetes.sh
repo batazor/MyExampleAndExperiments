@@ -71,7 +71,7 @@ kubectl config set-cluster federation-cluster \
   --server=https://${FEDERATED_API_SERVER_ADDRESS} \
   --insecure-skip-tls-verify=true
 
-FEDERATION_CLUSTER_TOKEN=$(cut -d"," -f1 ../k8s/addons/federation/known-tokens.csv)
+FEDERATION_CLUSTER_TOKEN=$(cut -d"," -f1 known-tokens.csv)
 
 kubectl config set-credentials federation-cluster \
   --token=${FEDERATION_CLUSTER_TOKEN}

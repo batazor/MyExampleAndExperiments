@@ -15,7 +15,8 @@ gcloud container clusters create gce-asia-east1 \
   --no-enable-cloud-monitoring \
   --enable-autoscaling \
   --min-nodes "3" \
-  --max-nodes "4"
+  --max-nodes "4" \
+  --async
 
 gcloud container clusters create gce-europe-west1 \
   --zone europe-west1-b \
@@ -30,7 +31,8 @@ gcloud container clusters create gce-europe-west1 \
   --no-enable-cloud-monitoring \
   --enable-autoscaling \
   --min-nodes "3" \
-  --max-nodes "4"
+  --max-nodes "4" \
+  --async
 
 gcloud container clusters create gce-us-east1 \
   --zone=us-east1-b \
@@ -45,7 +47,8 @@ gcloud container clusters create gce-us-east1 \
   --no-enable-cloud-monitoring \
   --enable-autoscaling \
   --min-nodes "3" \
-  --max-nodes "4"
+  --max-nodes "4" \
+  --async
 
 gcloud container clusters create gce-us-central1 \
   --zone=us-central1-b \
@@ -60,6 +63,7 @@ gcloud container clusters create gce-us-central1 \
   --no-enable-cloud-monitoring \
   --enable-autoscaling \
   --min-nodes "3" \
-  --max-nodes "4"
+  --max-nodes "4" \
+  --async
 
 gcloud container clusters list
