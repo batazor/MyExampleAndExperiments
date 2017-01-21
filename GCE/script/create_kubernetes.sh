@@ -47,11 +47,11 @@ FEDERATED_API_SERVER_ADDRESS=$(kubectl --context="gke_${GCP_PROJECT}_us-central1
   get services federation-apiserver \
   -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
-sed -i "s|ADVERTISE_ADDRESS|${FEDERATED_API_SERVER_ADDRESS}|g" ../deployments/federation-apiserver.yaml
+sed -i "s|ADVERTISE_ADDRESS|${FEDERATED_API_SERVER_ADDRESS}|g" ../k8s/addons/federation/apiserver/apiserver-deploy.yaml
 
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
-  create -f ../deployments/federation-apiserver.yaml
+  create -f ../k8s/addons/federation/apiserver/apiserver-deploy.yaml
 
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
@@ -61,14 +61,12 @@ kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get pods
 
+# TODO: check get EXTERNAL-IP
+sleep 120
+
 # Provision Federated Controller Manager =======================================
 
 # Create the Federated API Server Kubeconfig
-FEDERATED_API_SERVER_ADDRESS=$(kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
-  --namespace=federation \
-  get services federation-apiserver \
-  -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-
 kubectl config set-cluster federation-cluster \
   --server=https://${FEDERATED_API_SERVER_ADDRESS} \
   --insecure-skip-tls-verify=true
@@ -98,11 +96,14 @@ kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
 # Deploy the Federated Controller Manager
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
-  create -f deployments/federation-controller-manager.yaml
+  create -f ../k8s/addons/federation/controller-manager-deploy.yaml
 
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get pods
+
+# TODO: check get EXTERNAL-IP
+sleep 60
 
 # ------------------------------------------------------------------------------
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
@@ -112,7 +113,6 @@ kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
 
 kubectl --context=federation-cluster \
   create -f clusters/gce-asia-east1.yaml
-
 
 # ------------------------------------------------------------------------------
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
