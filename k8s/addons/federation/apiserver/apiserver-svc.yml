@@ -11,7 +11,7 @@ spec:
     app: federated-cluster
     module: federation-apiserver
   ports:
-    - name: https
-      protocol: TCP
-      port: 443
-      targetPort: 443
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443

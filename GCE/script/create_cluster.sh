@@ -1,3 +1,5 @@
+#/bin/bash
+
 # Use the gcloud container clusters create command to create a Kubernetes clusters in the following zones:
 
 gcloud container clusters create gce-asia-east1 \

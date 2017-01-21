@@ -1,3 +1,5 @@
+#/bin/bash
+
 # Configuring kubeconfig =======================================================
 
 # Get credentials for each Kubernetes cluster:

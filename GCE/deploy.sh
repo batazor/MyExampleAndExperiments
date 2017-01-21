@@ -1,2 +1,4 @@
+#/bin/bash
+
 # Create cluster
-./create_cluster.sh
+./script/create_cluster.sh
