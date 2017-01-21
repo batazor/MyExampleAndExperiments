@@ -59,3 +59,5 @@ gcloud container clusters create gce-us-central1 \
   --enable-autoscaling \
   --min-nodes "3" \
   --max-nodes "4"
+
+gcloud container clusters list
