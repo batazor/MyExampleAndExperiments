@@ -1,5 +1,7 @@
 # Create K8S cluster in GCE
 
+See the [Kubernetes Cluster Federation aka Ubernetes design doc](https://github.com/kubernetes/kubernetes/blob/release-1.3/docs/design/federated-services.md) for more details.
+
 
 ### Script
 

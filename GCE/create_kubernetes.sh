@@ -12,12 +12,14 @@ kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   create -f ../k8s/addons/federation/apiserver/apiserver-svc.yml
 
+# Wait until the `EXTERNAL-IP` is populated as it will be required to configure
+# the federation-controller-manager.
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get services
 
 # TODO: check get EXTERNAL-IP
-sleep 60
+sleep 120
 
 # Create the federation-apiserver-secrets
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
@@ -47,11 +49,11 @@ FEDERATED_API_SERVER_ADDRESS=$(kubectl --context="gke_${GCP_PROJECT}_us-central1
   get services federation-apiserver \
   -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
-sed -i "s|ADVERTISE_ADDRESS|${FEDERATED_API_SERVER_ADDRESS}|g" deployments/apiserver-deploy.yaml
+sed -i "s|ADVERTISE_ADDRESS|${FEDERATED_API_SERVER_ADDRESS}|g" deployments/federation-apiserver.yaml
 
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
-  create -f deployments/apiserver-deploy.yaml
+  create -f deployments/federation-apiserver.yaml
 
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
@@ -94,6 +96,9 @@ kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   describe secrets federation-apiserver-kubeconfig
 
 # Deploy the Federated Controller Manager
+# FEDERATION_DNS=$(gcloud dns managed-zones list --filter federation | awk '{print $2}' | grep -v DNS_NAME)
+# sed -i "s|federation.com.|$FEDERATION_DNS|g" deployments/federation-controller-manager.yaml
+
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create -f ../k8s/addons/federation/controller-manager-deploy.yaml
