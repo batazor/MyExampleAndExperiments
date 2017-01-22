@@ -1,6 +1,6 @@
 # NodeJS
 
-![NodeJS](./NodeJS.png)
+![NodeJS](./images/NodeJS.png)
 
 + Package manager
   + Yarn

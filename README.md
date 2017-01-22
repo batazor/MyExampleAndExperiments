@@ -1,9 +1,12 @@
 # architecture
 General description of the architecture
 
-![architecture](architecture.png)
+![architecture](./images/architecture.png)
 
 ### Detail architecture
+
+##### [Workflow](./Workflow.md)
+Describes tools for work with worklow.
 
 ##### [Documentation](./Documentation.md)
 Describes tools for work with documentation.
