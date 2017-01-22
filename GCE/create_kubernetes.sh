@@ -106,12 +106,12 @@ kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create -f ../k8s/addons/federation/controller-manager-deploy.yaml
 
+# TODO: it's bad
+sleep 60
+
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get pods
-
-# TODO: it's bad
-sleep 60
 
 # ------------------------------------------------------------------------------
 kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
