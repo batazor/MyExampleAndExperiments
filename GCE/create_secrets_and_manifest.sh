@@ -1,5 +1,7 @@
 #/bin/bash
 
+export GCP_PROJECT_NAME=$(gcloud config list --format='value(core.project)')
+
 # Configuring kubeconfig =======================================================
 
 # Get credentials for each Kubernetes cluster:
@@ -11,15 +13,11 @@ gcloud container clusters get-credentials gce-us-central1 --zone=us-central1-b
 # List the contexts stored in your local kubeconfig:
 for c in $(kubectl config view -o jsonpath='{.contexts[*].name}'); do echo $c; done
 
-# Store the GCP Project Name
-export GCP_PROJECT=$(gcloud config list --format='value(core.project)')
-
 # Generate Cluster Configs =====================================================
-
 # For each cluster create a kubeconfig file and
 # update the corresponding cluster manifest:
 
-kubectl config use-context "gke_${GCP_PROJECT}_asia-east1-b_gce-asia-east1"
+kubectl config use-context "gke_${GCP_PROJECT_NAME}_asia-east1-b_gce-asia-east1"
 ASIA_SERVER_ADDRESS=$(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')
 
 cat > clusters/gce-asia-east1.yaml <<EOF
@@ -39,7 +37,7 @@ kubectl config view --flatten --minify > kubeconfigs/gce-asia-east1/kubeconfig
 
 # ------------------------------------------------------------------------------
 
-kubectl config use-context "gke_${GCP_PROJECT}_europe-west1-b_gce-europe-west1"
+kubectl config use-context "gke_${GCP_PROJECT_NAME}_europe-west1-b_gce-europe-west1"
 EUROPE_SERVER_ADDRESS=$(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')
 
 cat > clusters/gce-europe-west1.yaml <<EOF
@@ -59,7 +57,7 @@ kubectl config view --flatten --minify > kubeconfigs/gce-europe-west1/kubeconfig
 
 # ------------------------------------------------------------------------------
 
-kubectl config use-context "gke_${GCP_PROJECT}_us-central1-b_gce-us-central1"
+kubectl config use-context "gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1"
 US_CENTRAL_SERVER_ADDRESS=$(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')
 
 cat > clusters/gce-us-central1.yaml <<EOF
@@ -79,7 +77,7 @@ kubectl config view --flatten --minify > kubeconfigs/gce-us-central1/kubeconfig
 
 # ------------------------------------------------------------------------------
 
-kubectl config use-context "gke_${GCP_PROJECT}_us-east1-b_gce-us-east1"
+kubectl config use-context "gke_${GCP_PROJECT_NAME}_us-east1-b_gce-us-east1"
 US_EAST_SERVER_ADDRESS=$(kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}')
 
 cat > clusters/gce-us-east1.yaml <<EOF
