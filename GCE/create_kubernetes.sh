@@ -1,15 +1,15 @@
 #/bin/bash
 
-export GCP_PROJECT_NAME=$(gcloud config list --format='value(core.project)')
+export GCP_PROJECT=$(gcloud config list --format='value(core.project)')
 
 # Federation Namespace =========================================================
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   create -f ../k8s/addons/federation/federation-ns.yml
 
 # Provision Federated API Server ===============================================
 
 # Create the Federated API Server Service
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   create -f ../k8s/addons/federation/apiserver/apiserver-svc.yml
 
 # TODO: check get EXTERNAL-IP
@@ -17,55 +17,55 @@ sleep 150
 
 # Wait until the `EXTERNAL-IP` is populated as it will be required to configure
 # the federation-controller-manager.
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get services
 
 # ------------------------------------------------------------------------------
 
 # Create the federation-apiserver-secrets
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
-  create secret generic federation-apiserver-secrets --from-file=../k8s/addons/federation/known-tokens.csv
+  create secret generic federation-apiserver-secrets --from-file=known-tokens.csv
 
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   describe secrets federation-apiserver-secrets
 
 # Federation API Server Deployment =============================================
 # Create a Persistent Volume Claim
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create -f ../k8s/addons/federation/apiserver/apiserver-etcd-pvc.yml
 
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get pvc
 
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get pv
 
 # Create the Deployment
-FEDERATED_API_SERVER_ADDRESS=$(kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+FEDERATED_API_SERVER_ADDRESS=$(kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get services federation-apiserver \
   -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
 sed -i "s|ADVERTISE_ADDRESS|${FEDERATED_API_SERVER_ADDRESS}|g" deployments/federation-apiserver.yaml
 
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create -f deployments/federation-apiserver.yaml
 
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get deployments
 
 # TODO: it's bad
 sleep 120
 
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get pods
 
@@ -89,12 +89,12 @@ kubectl config use-context federation-cluster
 kubectl  config view --flatten --minify > kubeconfigs/federation-apiserver/kubeconfig
 
 # Create the Federated API Server Secret
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create secret generic federation-apiserver-kubeconfig \
   --from-file=kubeconfigs/federation-apiserver/kubeconfig
 
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   describe secrets federation-apiserver-kubeconfig
 
@@ -102,11 +102,11 @@ kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
 # FEDERATION_DNS=$(gcloud dns managed-zones list --filter federation | awk '{print $2}' | grep -v DNS_NAME)
 # sed -i "s|federation.com.|$FEDERATION_DNS|g" deployments/federation-controller-manager.yaml
 
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create -f ../k8s/addons/federation/controller-manager-deploy.yaml
 
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get pods
 
@@ -114,7 +114,7 @@ kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
 sleep 60
 
 # ------------------------------------------------------------------------------
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create secret generic gce-asia-east1 \
   --from-file=kubeconfigs/gce-asia-east1/kubeconfig
@@ -123,7 +123,7 @@ kubectl --context=federation-cluster \
   create -f clusters/gce-asia-east1.yaml
 
 # ------------------------------------------------------------------------------
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create secret generic gce-europe-west1 \
   --from-file=kubeconfigs/gce-europe-west1/kubeconfig
@@ -132,7 +132,7 @@ kubectl --context=federation-cluster \
   create -f clusters/gce-europe-west1.yaml
 
 # ------------------------------------------------------------------------------
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create secret generic gce-us-central1 \
   --from-file=kubeconfigs/gce-us-central1/kubeconfig
@@ -141,7 +141,7 @@ kubectl --context=federation-cluster \
   create -f clusters/gce-us-central1.yaml
 
 # ------------------------------------------------------------------------------
-kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
+kubectl --context="gke_${GCP_PROJECT}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   create secret generic gce-us-east1 \
   --from-file=kubeconfigs/gce-us-east1/kubeconfig
