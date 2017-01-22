@@ -12,14 +12,16 @@ kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
 kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
   create -f ../k8s/addons/federation/apiserver/apiserver-svc.yml
 
+# TODO: check get EXTERNAL-IP
+sleep 150
+
 # Wait until the `EXTERNAL-IP` is populated as it will be required to configure
 # the federation-controller-manager.
 kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get services
 
-# TODO: check get EXTERNAL-IP
-sleep 150
+# ------------------------------------------------------------------------------
 
 # Create the federation-apiserver-secrets
 kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
@@ -60,12 +62,12 @@ kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get deployments
 
+# TODO: it's bad
+sleep 120
+
 kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get pods
-
-# TODO: check get EXTERNAL-IP
-sleep 120
 
 # Provision Federated Controller Manager =======================================
 
@@ -108,7 +110,7 @@ kubectl --context="gke_${GCP_PROJECT_NAME}_us-central1-b_gce-us-central1" \
   --namespace=federation \
   get pods
 
-# TODO: check get EXTERNAL-IP
+# TODO: it's bad
 sleep 60
 
 # ------------------------------------------------------------------------------
