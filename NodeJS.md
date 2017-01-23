@@ -22,6 +22,10 @@
       + Redux
   + Visualization
     + [D3](https://d3js.org/)
+  + Text Editor
+    + [Slate](https://github.com/ianstormtaylor/slate)
+  + Date
+    + [date-fns](https://github.com/date-fns/date-fns)
 
 ---
 
