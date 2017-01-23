@@ -11,6 +11,9 @@ Describes tools for work with worklow.
 ##### [Documentation](./Documentation.md)
 Describes tools for work with documentation.
 
+##### [Logging](./Logging.md)
+Describes tools for work with logging.
+
 ##### [Service](./Service.md)
 Describes tools for work with services.
 

@@ -7,7 +7,7 @@
 ![Workflow](./images/idea-to-production-10-steps.png)
 
 The natural course of the software development process passes through 10 major steps;
-GitLab has built solutions for all of them:
+GitLab has built solutions for all them:
 
 1. **IDEA:** Every new proposal starts with an idea, which usually come up in a chat. For this stage, GitLab integrates with Mattermost.
 1. **ISSUE:** The most effective way to discuss an idea is creating an issue for it. Your team and your collaborators can help you to polish and improve it in the issue tracker.
