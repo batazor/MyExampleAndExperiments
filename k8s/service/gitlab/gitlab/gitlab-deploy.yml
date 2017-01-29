@@ -15,6 +15,8 @@ spec:
       - name: gitlab
         image: gitlab/gitlab-ce:8.16.3-ce.0
         imagePullPolicy: Always
+        securityContext:
+          privileged: true
         ports:
         - name: http
           containerPort: 80
