@@ -7,11 +7,13 @@ services:
     - "24224:24224"
     volumes:
     - "./fluentd:/fluentd/etc"
+    
   elasticsearch:
     container_name: elasticsearch
     image: elasticsearch
     depends_on:
     - fluentd
+    
   nginx:
     container_name: nginx
     build: ./nginx
@@ -21,6 +23,7 @@ services:
     - "9999:80"
     logging:
       driver: fluentd
+      
   mongo:
     container_name: mongo
     image: mongo
@@ -30,6 +33,7 @@ services:
     - "27017:27017"
     logging:
       driver: fluentd
+      
   node-example:
     container_name: node-example
     build: ./node-example
@@ -39,6 +43,7 @@ services:
     - "4040:3000"
     logging:
       driver: fluentd
+      
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3.6.5-management
@@ -50,6 +55,7 @@ services:
       driver: fluentd
       options:
         tag: rabbitmq
+        
   kibana:
     container_name: kibana
     image: kibana
