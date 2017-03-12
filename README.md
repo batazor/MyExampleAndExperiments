@@ -15,4 +15,5 @@ sudo apt-get install ansible
 sudo ansible-playbook tasks/taskName.yml
 ```
 
-- **install-zsh** - Install zsh on your machine
+- **zsh-install** - Install zsh on your machine
+- **zsh-setting** - Setting zsh on your machine
