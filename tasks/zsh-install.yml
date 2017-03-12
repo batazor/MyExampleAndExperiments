@@ -3,12 +3,6 @@
   hosts: all
   sudo: yes
 
-  # vars:
-  #   pbname: $inventory_hostname
-  #   distro: ${ansible_distribution}
-  #   pkg_mgr: ${ansible_pkg_mgr}
-  #   zsh_theme: steeef
-
   tasks:
   - name: Installing Zsh and git
     apt: name={{ item }} state=latest
@@ -27,6 +21,12 @@
     register: cloning
     sudo: no
 
+  - name: Check zsh version
+    shell: "zsh --version | cut -d ' ' -f2"
+    register: zsh_register_version
+    changed_when: false
+    tags: configure
+
   - name: Creating new ~/.zshrc
     copy:
       src=~/.oh-my-zsh/templates/zshrc.zsh-template
@@ -37,7 +37,7 @@
   - name: Change uoyr shell to zsh
     action: shell chsh -s `which zsh`
 
-  - name: Reboot this server
-    shell: reboot
-    async: 0
-    poll: 0
+  - name: Set zsh as default shell
+    user:
+      name: "{{ ansible_user_id }}"
+      shell: /bin/zsh
