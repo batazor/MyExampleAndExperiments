@@ -1,0 +1,19 @@
+---
+language: python
+python: "2.7"
+sudo: required
+services:
+- docker
+
+install: pip install molecule docker-py
+script:
+- export MOLECULE_APTPROXY_PATH="$PWD/00aptproxy" && touch "$MOLEKULE_APTPROXY_PATH"
+
+# normal test
+- MOLECULE_ZSH_USER=root molecule --debug test
+
+# test for other zsh_user
+- molecule create
+- ansible-playbook tasks/zsh.yml
+- MOLECULE_ZSH_USER=testuser molecule --debug converge
+- molecule destroy
