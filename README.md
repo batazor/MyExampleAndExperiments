@@ -1,4 +1,6 @@
 # create-an-environment
+
+o͡͡͡╮༼ • ʖ̯ • ༽╭o͡͡͡
 Ansible role for creating healthy environment
 
 ### Install Ansible
