@@ -15,4 +15,5 @@ galaxy_info:
   - shell
   - user
   - zsh
+  - vim
   dependencies: []

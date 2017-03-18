@@ -4,4 +4,10 @@
   tags: [ zsh, install ]
 
 - include: zsh-setting.yml
-  tags: [ zsh, configure ]
+  tags: [ zsh, setting ]
+
+- include: vim-install.yml
+  tags: [ vim, install ]
+
+- include: vim-setting.yml
+  tags: [ vim, setting ]
