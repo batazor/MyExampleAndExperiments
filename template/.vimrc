@@ -1,29 +1,80 @@
-## General
-set number	# Show line numbers
-set linebreak	# Break lines at word (requires Wrap lines)
-set showbreak=+++	# Wrap-broken line prefix
-set textwidth=120	# Line wrap (number of cols)
-set showmatch	# Highlight matching brace
-set spell	# Enable spell-checking
-set virtualedit=block	# Enable free-range cursor
-set visualbell	# Use visual bell (no beeping)
+" General ======================================================================
+" Show line numbers
+set number
 
-set hlsearch	# Highlight all search results
-set smartcase	# Enable smart-case search
-set ignorecase	# Always case-insensitive
-set incsearch	# Searches for strings incrementally
+" Break lines at word (requires Wrap lines)
+set linebreak
 
-set autoindent	# Auto-indent new lines
-set expandtab	# Use spaces instead of tabs
-set shiftwidth=2	# Number of auto-indent spaces
-set smartindent	# Enable smart-indent
-set smarttab	# Enable smart-tabs
-set softtabstop=4	# Number of spaces per Tab
+" Wrap-broken line prefix
+set showbreak=+++
 
-## Advanced
-set confirm	# Prompt confirmation dialogs
-set ruler	# Show row and column ruler information
-set showtabline=2	# Show tab bar
+" Line wrap (number of cols)
+set textwidth=120
 
-set undolevels=1000	# Number of undo levels
-set backspace=indent,eol,start	# Backspace behaviour
+" Highlight matching brace
+set showmatch
+
+" Enable spell-checking
+set spell
+
+" Enable free-range cursor
+set virtualedit=block
+
+" Use visual bell (no beeping)
+set visualbell
+
+" Highlight all search results
+set hlsearch
+
+" Enable smart-case search
+set smartcase
+
+" Always case-insensitive
+set ignorecase
+
+" Searches for strings incrementally
+set incsearch
+
+" Auto-indent new lines
+set autoindent
+
+" Use spaces instead of tabs
+set expandtab
+
+" Number of auto-indent spaces
+set shiftwidth=2
+
+" Enable smart-indent
+set smartindent
+
+" Enable smart-tabs
+set smarttab
+
+" Number of spaces per Tab
+set softtabstop=4
+
+" Advanced =====================================================================
+" Prompt confirmation dialogs
+set confirm
+
+" Show row and column ruler information
+set ruler
+
+" Show tab bar
+set showtabline=2
+
+" Number of undo levels
+set undolevels=1000
+
+" Backspace behaviour
+set backspace=indent,eol,start
+
+" Editor =======================================================================
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
+" Always show statusline
+set laststatus=2
+
+" Powerline
+set rtp+=/usr/share/powerline/bindings/vim/
