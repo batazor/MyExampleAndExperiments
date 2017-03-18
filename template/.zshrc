@@ -31,7 +31,6 @@ POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
 # POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-# POWERLEVEL9K_TIME_FORMAT="%D{%H:%M \uE868  %d.%m.%y}"
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='022'
 POWERLEVEL9K_RAM_ELEMENTS=(ram_free)
 
@@ -50,7 +49,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker dotenv nvm)
+plugins=(git docker docker-compose dotenv nvm)
 
 source $ZSH/oh-my-zsh.sh
 
