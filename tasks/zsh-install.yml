@@ -10,6 +10,7 @@
      - git
      - zsh
      - git-core
+     - powerline
 
   - name: Backing up existing ~/.zshrc
     action: shell if [ -f ~/.zshrc ]; then mv ~/.zshrc ~/.zshrc{,.orig}; fi
