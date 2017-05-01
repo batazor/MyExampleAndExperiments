@@ -1,2 +1,2 @@
-# k8s-chart-template
+# chart-template
 Kubernates Chart template
