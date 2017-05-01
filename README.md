@@ -1,2 +1,2 @@
 # chart-template
-Kubernates Chart template
+A Helm Chart template
