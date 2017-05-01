@@ -1,2 +1,2 @@
-# k8s-svc-template
+# service-template
 Kubernetes service template
