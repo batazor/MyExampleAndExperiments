@@ -1,9 +1,9 @@
 package main
 
 import (
-	"net"
-	"fmt"
 	"bufio"
+	"fmt"
+	"net"
 )
 
 func main() {
