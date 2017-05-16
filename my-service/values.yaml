@@ -1,4 +1,4 @@
-## Default values for charts repository
+## Default values for my-service.
 ## This is a YAML-formatted file.
 ## Declare variables to be passed into your templates.
 
@@ -26,8 +26,8 @@ image:
   ## Docker Registry/Hub image name and tag
   ##
   registry: registry.k8s.community
-  name: my-charts
-  tag: 0.0.2
+  name: my-service
+  tag: 0.0.3
 
   ## Docker Registry/Hub auth secret name, always use `registry-pull-secret` if registry inside if k8s
   ##
@@ -70,7 +70,7 @@ ingress:
 service:
   ## App container name
   ##
-  name: charts
+  name: my-service
   
   ## Service Type
   ## For minikube, set this to NodePort, elsewhere use ClusterIP
@@ -85,17 +85,13 @@ service:
   ##
   internalPort: 8080
 
-  ## Health cheks port
-  ##
-  healthPort: 8080
-
 ## Resource requests and limits
 ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
 resources:
   limits:
-    cpu: 50m
+    cpu: 30m
     memory: 48Mi
   requests:
-    cpu: 50m
+    cpu: 30m
     memory: 48Mi
