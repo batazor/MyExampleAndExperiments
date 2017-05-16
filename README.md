@@ -1,2 +1,2 @@
 # My App
-Kubernetes application template
+Kubernetes service template
