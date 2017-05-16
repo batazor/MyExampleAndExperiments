@@ -1,0 +1,18 @@
+apiVersion: v1
+entries:
+  my-service:
+  - created: 2017-05-16T19:59:07.516354518+07:00
+    description: A Helm chart template for Kubernetes charts repository
+    digest: 42e66b0a5433e7e913cf1aca048e259f3be25bc6947a55f37db04d60140e5677
+    engine: gotpl
+    home: https://k8s.community/
+    maintainers:
+    - email: k8s.community@gmail.com
+      name: Kubernetes Community
+    name: my-service
+    sources:
+    - https://github.com/k8s-community/my-charts
+    urls:
+    - https://k8s-community.github.io/my-charts/my-service-0.0.2.tgz
+    version: 0.0.2
+generated: 2017-05-16T19:59:07.51557332+07:00
