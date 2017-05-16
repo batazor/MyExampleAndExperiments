@@ -1,2 +1,2 @@
-# chart-template
-A Helm Chart template
+# My Chart
+A Helm Chart template for creating the chart repository hosted on Github
