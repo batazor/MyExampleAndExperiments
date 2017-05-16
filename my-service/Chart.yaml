@@ -1,6 +1,6 @@
-name: charts
+name: my-service
 description: A Helm chart template for Kubernetes charts repository
-version: 0.0.1
+version: 0.0.2
 home: https://k8s.community/
 sources:
   - https://github.com/k8s-community/my-charts
