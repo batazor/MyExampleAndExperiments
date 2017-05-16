@@ -1,0 +1,4 @@
+package: github.com/k8s-community/myapp
+import:
+- package: github.com/takama/router
+  version: ^0.5.0

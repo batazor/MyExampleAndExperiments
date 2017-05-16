@@ -1,0 +1,9 @@
+FROM scratch
+
+ENV MYAPP_SERVICE_PORT 8080
+
+EXPOSE $MYAPP_SERVICE_PORT
+
+COPY myapp /
+
+CMD ["/myapp"]

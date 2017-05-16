@@ -1,2 +1,2 @@
-# service-template
-Kubernetes service template
+# My App
+Kubernetes application template
