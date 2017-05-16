@@ -1,4 +1,4 @@
-## Default values for my-service.
+## Default values for myapp.
 ## This is a YAML-formatted file.
 ## Declare variables to be passed into your templates.
 
@@ -26,8 +26,8 @@ image:
   ## Docker Registry/Hub image name and tag
   ##
   registry: registry.k8s.community
-  name: my-service
-  tag: 0.0.3
+  name: myapp
+  tag: 0.0.4
 
   ## Docker Registry/Hub auth secret name, always use `registry-pull-secret` if registry inside if k8s
   ##
@@ -70,7 +70,7 @@ ingress:
 service:
   ## App container name
   ##
-  name: my-service
+  name: myapp
   
   ## Service Type
   ## For minikube, set this to NodePort, elsewhere use ClusterIP
