@@ -4,8 +4,8 @@ BUILDTAGS=
 
 # Use the 0.0.0 tag for testing, it shouldn't clobber any release builds
 APP?=myapp
-PROJECT?=myapp
-RELEASE?=0.0.2
+PROJECT?=github.com/k8s-community/myapp
+RELEASE?=0.0.3
 GOOS?=linux
 REPOSITORY?=k8s-community
 REGISTRY?=registry.k8s.community
