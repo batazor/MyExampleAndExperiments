@@ -1,0 +1,10 @@
+name: charts
+description: A Helm chart template for Kubernetes charts repository
+version: 0.0.1
+home: https://k8s.community/
+sources:
+  - https://github.com/k8s-community/my-charts
+maintainers:
+  - name: Kubernetes Community
+    email: k8s.community@gmail.com
+engine: gotpl
