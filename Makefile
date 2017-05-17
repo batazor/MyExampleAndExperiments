@@ -50,7 +50,7 @@ run: container
 
 deploy: push
 	helm repo add ${USERNAME} ${HELM_REPO} \
-	helm repo up \
+	&& helm repo up \
     && helm upgrade ${CONTAINER_NAME} ${USERNAME}/${APP} --namespace ${NAMESPACE} --set image.tag=${RELEASE} -i --wait
 
 fmt:
