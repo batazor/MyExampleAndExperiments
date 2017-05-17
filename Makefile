@@ -4,10 +4,11 @@ BUILDTAGS=
 
 # Use the 0.0.0 tag for testing, it shouldn't clobber any release builds
 APP?=myapp
-PROJECT?=github.com/k8s-community/myapp
-RELEASE?=0.0.4
+USER?=k8s-community
+RELEASE?=0.0.5
+PROJECT?=github.com/${USER}/myapp
+HELMREPO?=https://${USER}.github.io/mycharts
 GOOS?=linux
-REPOSITORY?=k8s-community
 REGISTRY?=registry.k8s.community
 MYAPP_SERVICE_PORT?=8080
 
@@ -47,8 +48,9 @@ run: container
 		-d $(PREFIX):$(RELEASE)
 
 deploy: push
+	helm repo add ${USER} ${HELMREPO}
 	helm repo up \
-    && helm upgrade ${CONTAINER_NAME} ${REPOSITORY}/${APP} --namespace ${NAMESPACE} --set image.tag=${RELEASE} -i --wait
+    && helm upgrade ${CONTAINER_NAME} ${USER}/${APP} --namespace ${NAMESPACE} --set image.tag=${RELEASE} -i --wait
 
 fmt:
 	@echo "+ $@"
