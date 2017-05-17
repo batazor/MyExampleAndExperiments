@@ -1,6 +1,6 @@
 name: myapp
 description: A Helm chart template for Kubernetes charts repository
-version: 0.0.4
+version: 0.0.5
 home: https://k8s.community/
 sources:
   - https://github.com/k8s-community/myapp
