@@ -1,4 +1,4 @@
-package: github.com/k8s-community/myapp
+package: github.com/batazor-tutorial/myapp
 import:
 - package: github.com/takama/router
   version: ^0.5.0
