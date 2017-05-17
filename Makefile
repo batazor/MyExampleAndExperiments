@@ -6,7 +6,7 @@ BUILDTAGS=
 APP?=myapp
 CHARTS?=mycharts
 USERNAME?=k8s-community
-RELEASE?=0.0.7
+RELEASE?=0.0.8
 PROJECT?=github.com/${USERNAME}/${APP}
 HELM_REPO?=https://${USERNAME}.github.io/${CHARTS}
 GOOS?=linux
@@ -49,7 +49,7 @@ run: container
 		-d $(PREFIX):$(RELEASE)
 
 deploy: push
-	helm repo add ${USERNAME} ${HELM_REPO}
+	helm repo add ${USERNAME} ${HELM_REPO} \
 	helm repo up \
     && helm upgrade ${CONTAINER_NAME} ${USERNAME}/${APP} --namespace ${NAMESPACE} --set image.tag=${RELEASE} -i --wait
 
