@@ -4,10 +4,11 @@ BUILDTAGS=
 
 # Use the 0.0.0 tag for testing, it shouldn't clobber any release builds
 APP?=myapp
+CHARTS?=mycharts
 USER?=k8s-community
 RELEASE?=0.0.5
-PROJECT?=github.com/${USER}/myapp
-HELMREPO?=https://${USER}.github.io/mycharts
+PROJECT?=github.com/${USER}/${APP}
+HELMREPO?=https://${USER}.github.io/${CHARTS}
 GOOS?=linux
 REGISTRY?=registry.k8s.community
 MYAPP_SERVICE_PORT?=8080
