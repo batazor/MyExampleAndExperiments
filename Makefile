@@ -5,11 +5,11 @@ BUILDTAGS=
 # Use the 0.0.0 tag for testing, it shouldn't clobber any release builds
 APP?=myapp
 PROJECT?=github.com/k8s-community/myapp
-RELEASE?=0.0.3
+RELEASE?=0.0.4
 GOOS?=linux
 REPOSITORY?=k8s-community
 REGISTRY?=registry.k8s.community
-K8SAPP_SERVICE_PORT?=8080
+MYAPP_SERVICE_PORT?=8080
 
 NAMESPACE?=dev
 PREFIX?=${REGISTRY}/${NAMESPACE}/${APP}
@@ -42,8 +42,8 @@ push: container
 	docker push $(PREFIX):$(RELEASE)
 
 run: container
-	docker run --name ${CONTAINER_NAME} -p ${K8SAPP_SERVICE_PORT}:${K8SAPP_SERVICE_PORT} \
-		-e "K8SAPP_SERVICE_PORT=${K8SAPP_SERVICE_PORT}" \
+	docker run --name ${CONTAINER_NAME} -p ${MYAPP_SERVICE_PORT}:${MYAPP_SERVICE_PORT} \
+		-e "MYAPP_SERVICE_PORT=${MYAPP_SERVICE_PORT}" \
 		-d $(PREFIX):$(RELEASE)
 
 deploy: push
