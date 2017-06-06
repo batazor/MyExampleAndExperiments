@@ -1,14 +1,10 @@
-hash: 1a2a9e1534cc395e530fce2cd1028df28854480d848353e51454a22eb1a60d34
-updated: 2017-06-06T14:17:43.46852029+03:00
+hash: 00419b3a98cd4058649d47f95dea3e117a8ec1c69370cc4c1edef2ec6bf06d0e
+updated: 2017-06-06T14:38:53.811623366+03:00
 imports:
 - name: github.com/joho/godotenv
-  version: 325433c502d409f3c3dc820098fb0cfe38d98dc7
+  version: 726cc8b906e3d31c70a9671c90a13716a8d3f50d
 - name: github.com/Sirupsen/logrus
-  version: 5e5dc898656f695e2a086b8e12559febbfc01562
+  version: ba1b36c82c5e05c4f912a88eab0dcd91a171688f
 - name: github.com/takama/router
   version: bb2e2b42ce5f3985536263c61ae196a556108254
-- name: golang.org/x/sys
-  version: b90f89a1e7a9c1f6b918820b3daa7f08488c8594
-  subpackages:
-  - unix
 testImports: []

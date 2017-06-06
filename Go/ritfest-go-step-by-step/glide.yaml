@@ -2,3 +2,7 @@ package: ritfest-go-step-by-step
 import:
 - package: github.com/takama/router
   version: ^0.6.3
+- package: github.com/joho/godotenv
+  version: ^1.1.0
+- package: github.com/Sirupsen/logrus
+  version: ^0.11.5
