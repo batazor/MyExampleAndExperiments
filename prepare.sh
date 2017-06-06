@@ -1,4 +1,4 @@
 #!/bin/sh
 
 helm package myapp
-helm repo index ./ --url https://k8s-community.github.io/mycharts
+helm repo index ./ --url https://github.com/batazor-tutorial/mycharts
