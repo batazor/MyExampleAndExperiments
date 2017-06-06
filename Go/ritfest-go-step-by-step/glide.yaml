@@ -1,0 +1,4 @@
+package: ritfest-go-step-by-step
+import:
+- package: github.com/takama/router
+  version: ^0.6.3

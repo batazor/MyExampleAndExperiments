@@ -1,1 +1,4 @@
-step-by-step
+ritfest-go-step-by-step
+.idea
+.env
+vendor/
