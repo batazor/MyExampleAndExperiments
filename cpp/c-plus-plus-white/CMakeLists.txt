@@ -4,6 +4,6 @@ project(c_plus_plus_white)
 set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES
-        "week 1/math2.cpp")
+        "week 1/hw03.cpp")
 
 add_executable(c_plus_plus_white ${SOURCE_FILES})
