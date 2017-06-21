@@ -7,18 +7,21 @@
 
 using namespace std;
 
-bool Containers(vector<string> words, string w) {
-    for (auto s : words) {
-        if (s == w) {
-            return true;
-        }
+void PrintWorlds(vector<string> words) {
+    for (auto w : words) {
+        cout << w << " ";
     }
-    return false;
+}
+
+void ChangeInt(int x) {
+    x = 42;
 }
 
 int main() {
-    cout << Containers({"air", "water", "fire"}, "fire");
-    cout << Containers({"air", "water", "fire"}, "milk");
-    cout << Containers({"air", "water", "fire"}, "water");
+    PrintWorlds({"one", "two", "three"});
+
+    int a = 5;
+    ChangeInt(a);
+    cout << endl << a << endl;
     return 0;
 }
