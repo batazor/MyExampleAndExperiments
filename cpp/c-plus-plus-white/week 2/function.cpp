@@ -3,15 +3,22 @@
 //
 
 #include <iostream>
+#include <vector>
+
 using namespace std;
 
-int Sum(int x, int y) {
-    return x + y;
+bool Containers(vector<string> words, string w) {
+    for (auto s : words) {
+        if (s == w) {
+            return true;
+        }
+    }
+    return false;
 }
 
 int main() {
-    int x, y;
-    cin >> x >> y;
-    cout << Sum(x, y);
+    cout << Containers({"air", "water", "fire"}, "fire");
+    cout << Containers({"air", "water", "fire"}, "milk");
+    cout << Containers({"air", "water", "fire"}, "water");
     return 0;
 }
