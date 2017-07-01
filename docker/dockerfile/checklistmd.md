@@ -1,9 +1,12 @@
 # CHECLIST for `Dockerfile`
 
-1. [ ] \#1 Use [alpine](https://hub.docker.com/_/alpine/) as base image
-2. [ ] \#2 Minimize Layers
-3. [ ] \#3 Use flag for clean install package
-4. [ ] \#4 Use applications for check your Dockerfile
+* [ ] \#1 Use [alpine](https://hub.docker.com/_/alpine/) as base image
+
+* [ ] \#2 Minimize Layers
+
+* [ ] \#3 Use flag for clean install package
+
+* [ ] \#4 Use applications for check your Dockerfile
 
 ### \#1 Base image
 
