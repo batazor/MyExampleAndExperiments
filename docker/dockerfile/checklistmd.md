@@ -1,4 +1,4 @@
-# CHECLIST for `Dockerfile`
+# CHECLIST f or `Dockerfile`
 
 * [ ] \#1 Use [alpine](https://hub.docker.com/_/alpine/) as base image
 
