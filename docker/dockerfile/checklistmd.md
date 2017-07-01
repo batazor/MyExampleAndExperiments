@@ -35,6 +35,8 @@ apk add --no-cache nginx
 
 ### \#5 Use applications for check your Dockerfile
 
+* [FromLatest.io](https://www.fromlatest.io) - Analyze your Dockefile for create better and more portable Docker images.
+
 
 
 
