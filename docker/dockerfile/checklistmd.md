@@ -4,8 +4,7 @@
 2. [ ] \#2 Don’t install debug tools like vim/curl
 3. [ ] \#3 Minimize Layers
 4. [ ] \#4 Use flag for clean install package
-
-
+5. [ ] \#5 Use applications for check your Dockerfile
 
 ### \#1 Base image
 
@@ -33,6 +32,10 @@ rm -rf /var/lib/apt/lists/*
 # Alpine
 apk add --no-cache nginx
 ```
+
+### \#5 Use applications for check your Dockerfile
+
+
 
 
 
