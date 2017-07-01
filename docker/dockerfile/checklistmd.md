@@ -1,10 +1,9 @@
 # CHECLIST for `Dockerfile`
 
 1. [ ] \#1 Use [alpine](https://hub.docker.com/_/alpine/) as base image
-2. [ ] \#2 Don’t install debug tools like vim/curl
-3. [ ] \#3 Minimize Layers
-4. [ ] \#4 Use flag for clean install package
-5. [ ] \#5 Use applications for check your Dockerfile
+2. [ ] \#2 Minimize Layers
+3. [ ] \#3 Use flag for clean install package
+4. [ ] \#4 Use applications for check your Dockerfile
 
 ### \#1 Base image
 
@@ -14,7 +13,7 @@
 FROM alpine
 ```
 
-### \#3 Minimize layers
+### \#2 Minimize layers
 
 Combine your RUN statements to reduce the image size.
 
@@ -22,7 +21,7 @@ Combine your RUN statements to reduce the image size.
 RUN apt-get install -y php php-mysql php-encrypt
 ```
 
-### \#4 Use flag for clean install package
+### \#3 Use flag for clean install package
 
 ```
 # Debian/Ubuntu
@@ -33,11 +32,9 @@ rm -rf /var/lib/apt/lists/*
 apk add --no-cache nginx
 ```
 
-### \#5 Use applications for check your Dockerfile
+### \#4 Use applications for check your Dockerfile
 
 * [FromLatest.io](https://www.fromlatest.io) - Analyze your Dockefile for create better and more portable Docker images.
-
-
 
 
 
