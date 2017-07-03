@@ -24,3 +24,7 @@ docker run -it --rm \
 ```
 docker-compose up
 ```
+
+### Demo app
+
+`demo-app` - demo application. Work in 3000 port. Send error message in sentry.
