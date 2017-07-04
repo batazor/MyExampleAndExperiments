@@ -3,7 +3,6 @@ project(c_plus_plus_white)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES
-        "week 2/Factorial.cpp")
+set(SOURCE_FILES "week 2/IsPalindrom.cpp")
 
 add_executable(c_plus_plus_white ${SOURCE_FILES})
