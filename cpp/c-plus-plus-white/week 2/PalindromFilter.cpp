@@ -27,8 +27,7 @@ vector<string> PalindromFilter(vector<string> words, int minLength) {
     vector<string> filterWord = {};
 
     for (auto i = words.begin(); i != words.end(); ++i) {
-        string test = *i;
-        if (test.size() >= minLength && IsPalindrom(test)) {
+        if ((*i).size() >= minLength && IsPalindrom((*i))) {
             filterWord.push_back(*i);
         }
     }
