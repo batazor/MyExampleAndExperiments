@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int IsPalindrom(string word) {
+bool IsPalindrom(string word) {
     if (word.size() < 2) return true;
 
     int sizeCount = word.size() / 2 + 1;
