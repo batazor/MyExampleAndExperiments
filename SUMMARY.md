@@ -5,5 +5,29 @@
   * [Dockerfile](docker/dockerfile.md)
     * [CHECKLIST.md](docker/dockerfile/checklistmd.md)
   * [MULTI-STAGE BUILDS](docker/multi-stage-builds.md)
+  * [Command](docker/command.md)
+  * [Registry](docker/registry.md)
 * [CI/CD](structure-project.md)
+  * [GitLab](structure-project/gitlab.md)
+* [CoreOS](coreos.md)
+* [DataBase](database.md)
+  * [ETCD](etcd.md)
+  * [MongoDB](mongodb.md)
+  * [MySQL](mysql.md)
+  * [Redis](redis.md)
+* [Kubernetes](kubernetes.md)
+  * [Must Have](kubernetes/must-have.md)
+  * [How run kubernetes?](kubernetes/how-run-kubernetes.md)
+  * [Life hacks](kubernetes/life-hacks.md)
+  * CRUD SERVER
+  * [CRUD SERVICE](kubernetes/crud-service.md)
+  * [Federation](kubernetes/federation.md)
+  * [Helm](kubernetes/helm.md)
+  * [Ingress](kubernetes/ingress.md)
+  * [Minikube](kubernetes/minikube.md)
+  * How run kubernetes?
+* Monitoring
+  * Fluent
+  * Elasticsearch
+  * Kibana
 
