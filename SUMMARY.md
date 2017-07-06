@@ -19,5 +19,6 @@
   * [Must Have](kubernetes/must-have.md)
   * CRUD SERVER
   * [CRUD SERVICE](kubernetes/crud-service.md)
+  * [Federation](kubernetes/federation.md)
 * Monitoring
 
