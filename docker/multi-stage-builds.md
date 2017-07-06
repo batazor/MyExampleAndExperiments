@@ -1,6 +1,7 @@
-# MULTI-STAGE BUILDS
+## MULTI-STAGE BUILDS
+___
 
-```
+```bash
 FROM node:8.1.3 AS storefront
 
 WORKDIR src
@@ -18,6 +19,3 @@ COPY --from=storefront /src/dist ./
 
 CMD ["nginx"]
 ```
-
-
-

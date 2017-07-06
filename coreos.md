@@ -1,6 +1,7 @@
-# CoreOS
+## CoreOS
+___
 
-+ [Update CoreOS](https://coreos.com/os/docs/latest/update-strategies.html)
+* [Update CoreOS](https://coreos.com/os/docs/latest/update-strategies.html)
 
 ### Update CoreOS `user_data`
 
