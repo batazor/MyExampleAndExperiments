@@ -8,7 +8,7 @@
   * [Command](docker/command.md)
   * [Registry](docker/registry.md)
 * [CI/CD](structure-project.md)
-  * GitLab
+  * [GitLab](structure-project/gitlab.md)
 * [CoreOS](coreos.md)
 * [DataBase](database.md)
   * [ETCD](etcd.md)
