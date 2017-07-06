@@ -27,4 +27,7 @@
   * [Minikube](kubernetes/minikube.md)
   * How run kubernetes?
 * Monitoring
+  * Fluent
+  * Elasticsearch
+  * Kibana
 
