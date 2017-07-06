@@ -21,5 +21,6 @@
   * [CRUD SERVICE](kubernetes/crud-service.md)
   * [Federation](kubernetes/federation.md)
   * [Helm](kubernetes/helm.md)
+  * [Ingress](kubernetes/ingress.md)
 * Monitoring
 
