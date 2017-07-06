@@ -24,5 +24,6 @@
   * [Helm](kubernetes/helm.md)
   * [Ingress](kubernetes/ingress.md)
   * [Minikube](kubernetes/minikube.md)
+  * [Security](kubernetes/security.md)
 * Monitoring
 
