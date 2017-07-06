@@ -17,10 +17,12 @@
   * [Redis](redis.md)
 * [Kubernetes](kubernetes.md)
   * [Must Have](kubernetes/must-have.md)
+  * [Life hacks](kubernetes/life-hacks.md)
   * CRUD SERVER
   * [CRUD SERVICE](kubernetes/crud-service.md)
   * [Federation](kubernetes/federation.md)
   * [Helm](kubernetes/helm.md)
   * [Ingress](kubernetes/ingress.md)
+  * [Minikube](kubernetes/minikube.md)
 * Monitoring
 
