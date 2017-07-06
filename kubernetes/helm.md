@@ -1,12 +1,14 @@
 # Helm
 
+---
+
 The Kubernetes Package Manager
 
 ### Links
 
-+ [helm](https://helm.sh/)
-+ [Install](https://github.com/kubernetes/helm/blob/master/docs/install.md)
-+ [Docs](https://github.com/kubernetes/helm#docs)
+* [helm](https://helm.sh/)
+* [Install](https://github.com/kubernetes/helm/blob/master/docs/install.md)
+* [Docs](https://github.com/kubernetes/helm#docs)
 
 ### How do I enable the Incubator repository?
 
@@ -18,5 +20,8 @@ The Kubernetes Package Manager
 
 #### Other
 
-- `--version` - version service
-- `--namespace` - select namespace for run application
+* `--version` - version service
+* `--namespace` - select namespace for run application
+
+
+

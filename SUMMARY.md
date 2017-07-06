@@ -1,8 +1,8 @@
 # Summary
 
 * [Introduction](README.md)
-* GitFlow
-* 12 factors
+* [GitFlow](gitflow.md)
+* [12 factors](12-factors.md)
 * [Docker](docker.md)
   * [Dockerfile](docker/dockerfile.md)
     * [CHECKLIST.md](docker/dockerfile/checklistmd.md)
@@ -21,15 +21,16 @@
   * [Must Have](kubernetes/must-have.md)
   * [How run kubernetes?](kubernetes/how-run-kubernetes.md)
   * [Life hacks](kubernetes/life-hacks.md)
-  * CRUD SERVER
+  * [CRUD SERVER](kubernetes/crud-server.md)
   * [CRUD SERVICE](kubernetes/crud-service.md)
   * [Federation](kubernetes/federation.md)
   * [Helm](kubernetes/helm.md)
   * [Ingress](kubernetes/ingress.md)
   * [Minikube](kubernetes/minikube.md)
-  * How run kubernetes?
-* Monitoring
-  * Fluent
-  * Elasticsearch
-  * Kibana
+  * [How run kubernetes?](kubernetes/how-run-kubernetes.md)
+* [Monitoring](monitoring.md)
+  * [Fluent](monitoring/fluent.md)
+  * [Elasticsearch](monitoring/elasticsearch.md)
+  * [Kibana](monitoring/kibana.md)
+  * [Sentry](monitoring/sentry.md)
 
