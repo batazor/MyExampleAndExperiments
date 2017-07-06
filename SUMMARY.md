@@ -15,6 +15,9 @@
   * [MongoDB](mongodb.md)
   * [MySQL](mysql.md)
   * [Redis](redis.md)
-* Kubernetes
+* [Kubernetes](kubernetes.md)
+  * [Must Have](kubernetes/must-have.md)
+  * CRUD SERVER
+  * [CRUD SERVICE](kubernetes/crud-service.md)
 * Monitoring
 
