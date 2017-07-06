@@ -16,7 +16,7 @@
 FROM alpine
 ```
 
-### \#2 Minimize layers
+### \#2 Use Fewer Layers
 
 Combine your RUN statements to reduce the image size.
 
@@ -24,7 +24,11 @@ Combine your RUN statements to reduce the image size.
 RUN apt-get install -y php php-mysql php-encrypt
 ```
 
-### \#3 Use flag for clean install package
+### \#3 Make Container Boot Time Predictable
+
+Dependencies don't affect the speed of execution of the container.
+
+### \#4 Use flag for clean install package
 
 ```
 # Debian/Ubuntu
@@ -35,7 +39,9 @@ rm -rf /var/lib/apt/lists/*
 apk add --no-cache nginx
 ```
 
-### \#4 Use applications for check your Dockerfile
+### \#6 Understand and Use Docker Cache Effectively
+
+### \#5 Use applications for check your Dockerfile
 
 * [FromLatest.io](https://www.fromlatest.io) - Analyze your Dockefile for create better and more portable Docker images.
 
