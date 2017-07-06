@@ -20,5 +20,6 @@
   * CRUD SERVER
   * [CRUD SERVICE](kubernetes/crud-service.md)
   * [Federation](kubernetes/federation.md)
+  * [Helm](kubernetes/helm.md)
 * Monitoring
 
