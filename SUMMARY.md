@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * [GitFlow](gitflow.md)
+* [WorkFloy Editor](workfloy-editor.md)
 * [12 factors](12-factors.md)
 * [Docker](docker.md)
   * [Dockerfile](docker/dockerfile.md)
@@ -28,9 +29,5 @@
   * [Ingress](kubernetes/ingress.md)
   * [Minikube](kubernetes/minikube.md)
   * [How run kubernetes?](kubernetes/how-run-kubernetes.md)
-* [Monitoring](monitoring.md)
-  * [Fluent](monitoring/fluent.md)
-  * [Elasticsearch](monitoring/elasticsearch.md)
-  * [Kibana](monitoring/kibana.md)
-  * [Sentry](monitoring/sentry.md)
+* WorkFloy Editor
 
