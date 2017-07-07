@@ -1,7 +1,6 @@
-## Structure project
-___
+# Structure project
 
-Every service has "ops" folder 
+Every service has "ops" folder
 
 ```markdown
 service-repo

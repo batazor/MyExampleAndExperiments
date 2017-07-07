@@ -8,9 +8,9 @@ Use:
 
 Use:
 
-+ Linter
+* Linter
 
-+ Test
+* Test
 
 
 

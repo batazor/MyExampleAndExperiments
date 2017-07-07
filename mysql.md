@@ -1,12 +1,11 @@
-## MySQL
-___
+# MySQL
 
 Resolve all host
 
 `GRANT ALL PRIVILEGES ON *.* TO 'userName'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;`
 
-*Import dump* `mysql -uuserName -p database -h 127.0.0.1 --port 3306 < dump.sql`  
-*Export dump* `mysqldump -uuserName -p database -h 127.0.0.1 --port 3306 > dump.sql`
+_Import dump_ `mysql -uuserName -p database -h 127.0.0.1 --port 3306 < dump.sql`  
+_Export dump_ `mysqldump -uuserName -p database -h 127.0.0.1 --port 3306 > dump.sql`
 
 ### Run `phpmyadmin`
 
@@ -19,3 +18,6 @@ docker run -it \
   -e PMA_PASSWORD="password" \
   phpmyadmin/phpmyadmin
 ```
+
+
+
