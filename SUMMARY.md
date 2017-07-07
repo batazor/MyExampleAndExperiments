@@ -3,7 +3,6 @@
 * [Introduction](README.md)
 * [GitFlow](gitflow.md)
 * [WorkFloy Editor](workfloy-editor.md)
-* [WorkFloy Editor](workfloy-editor.md)
 * [12 factors](12-factors.md)
 * [Docker](docker.md)
   * [Dockerfile](docker/dockerfile.md)
@@ -19,5 +18,4 @@
   * [MongoDB](mongodb.md)
   * [MySQL](mysql.md)
   * [Redis](redis.md)
-* [WorkFloy Editor](workfloy-editor.md)
 
