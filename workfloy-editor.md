@@ -2,7 +2,15 @@
 
 Use:
 
-+ [EditorConfig](http://editorconfig.org/)
+* [EditorConfig](http://editorconfig.org/)
+
+# Programming
+
+Use:
+
++ Linter
+
++ Test
 
 
 
