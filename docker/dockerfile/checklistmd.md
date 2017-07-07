@@ -1,5 +1,6 @@
-## CHECKLIST for `Dockerfile`
-___
+# CHECKLIST for `Dockerfile`
+
+---
 
 * [ ] \#1 Use [alpine](https://hub.docker.com/_/alpine/) as base image
 
@@ -8,7 +9,6 @@ ___
 * [ ] \#3 Use flag for clean install package
 
 * [ ] \#4 Use applications for check your Dockerfile
-
 
 ### \#1 Base image
 
@@ -46,3 +46,6 @@ apk add --no-cache nginx
 ### \#6 Use applications for check your Dockerfile
 
 * [FromLatest.io](https://www.fromlatest.io) - Analyze your Dockefile for create better and more portable Docker images.
+
+
+

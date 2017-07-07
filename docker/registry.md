@@ -1,5 +1,6 @@
-## Registry
-___
+# Registry
+
+---
 
 ### Example run
 
@@ -13,6 +14,9 @@ registry:2.6.0
 
 ### Tutorial
 
-* https://habrahabr.ru/post/320884/
-* https://docs.docker.com/registry/deploying/
-* http://fl47l1n3.net/2015/11/17/private-docker-registry/
+* [https://habrahabr.ru/post/320884/](https://habrahabr.ru/post/320884/)
+* [https://docs.docker.com/registry/deploying/](https://docs.docker.com/registry/deploying/)
+* [http://fl47l1n3.net/2015/11/17/private-docker-registry/](http://fl47l1n3.net/2015/11/17/private-docker-registry/)
+
+
+

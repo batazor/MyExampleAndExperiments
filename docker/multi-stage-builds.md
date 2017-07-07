@@ -1,5 +1,6 @@
-## MULTI-STAGE BUILDS
-___
+# MULTI-STAGE BUILDS
+
+---
 
 ```bash
 FROM node:8.1.3 AS storefront
@@ -8,7 +9,7 @@ WORKDIR src
 COPY ./ ./
 RUN npm i && \
     npm build
-    
+
 FROM alpine
 
 EXPOSE 80 443
@@ -19,3 +20,6 @@ COPY --from=storefront /src/dist ./
 
 CMD ["nginx"]
 ```
+
+
+
