@@ -34,7 +34,5 @@
   * [Fluent](monitoring/fluent.md)
   * [Elasticsearch](monitoring/elasticsearch.md)
   * [Kibana](monitoring/kibana.md)
-  * [Sentry](monitoring/sentry.md)
-  * [Error-tracing \(Sentry\)](error-tracing.md)
-
+  * [Sentry \(Error-tracing\)](monitoring/sentry.md)
 
