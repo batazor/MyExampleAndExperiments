@@ -35,4 +35,6 @@
   * [Elasticsearch](monitoring/elasticsearch.md)
   * [Kibana](monitoring/kibana.md)
   * [Sentry \(Error-tracing\)](monitoring/sentry.md)
+* Load balancer
+  * [Nginx](nginx.md)
 
