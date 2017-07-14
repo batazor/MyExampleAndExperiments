@@ -3,6 +3,7 @@
 * [Introduction](README.md)
 * [WorkFloy](workfloy-editor.md)
   * [GitFlow](workfloy-editor/gitflow.md)
+  * [12 factors](workfloy-editor/12-factors.md)
 * [12 factors](12-factors.md)
 * [Docker](docker.md)
   * [Dockerfile](docker/dockerfile.md)
