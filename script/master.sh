@@ -12,6 +12,8 @@ ssl() {
 }
 
 generate_config_master() {
+  print_green "Clear dist" && rm -rf dist
+
   for yaml in `find template/master -type f | grep "\.template"`; do
     path=$(echo $yaml | sed -r 's/^template/dist/g')
 
