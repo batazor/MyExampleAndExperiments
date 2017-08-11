@@ -15,13 +15,16 @@ spec:
     - --leader-elect=true
     - --service-account-private-key-file=${PATH_TO_K8S_CERT}/apiserver-key.pem
     - --root-ca-file=${PATH_TO_K8S_CERT}/ca.pem
+    resources:
+      requests:
+        cpu: 200m
     livenessProbe:
       httpGet:
         host: 127.0.0.1
         path: /healthz
         port: 10252
       initialDelaySeconds: 15
-      timeoutSeconds: 1
+      timeoutSeconds: 15
     volumeMounts:
     - mountPath: /etc/kubernetes/ssl
       name: ssl-certs-kubernetes

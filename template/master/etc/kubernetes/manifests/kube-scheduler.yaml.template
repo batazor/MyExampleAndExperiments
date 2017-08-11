@@ -13,10 +13,13 @@ spec:
     - scheduler
     - --master=http://127.0.0.1:8080
     - --leader-elect=true
+    resources:
+      requests:
+        cpu: 100m
     livenessProbe:
       httpGet:
         host: 127.0.0.1
         path: /healthz
         port: 10251
       initialDelaySeconds: 15
-      timeoutSeconds: 1
+      timeoutSeconds: 15

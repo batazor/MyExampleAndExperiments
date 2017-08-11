@@ -12,7 +12,6 @@ export DEPLOY_ROOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 source "$DEPLOY_ROOT_DIR/script/common.sh"
 source "$DEPLOY_ROOT_DIR/script/ssl.sh"
-source "$DEPLOY_ROOT_DIR/script/k8s.sh"
 source "$DEPLOY_ROOT_DIR/script/master.sh"
 source "$DEPLOY_ROOT_DIR/script/worker.sh"
 

@@ -26,7 +26,20 @@ generate_config_master() {
 }
 
 start_master() {
-  print_green "Start..." && reinit
+  print_green "Start..."
+
+  sudo systemctl daemon-reload
+
+  print_green " - configure flanneld && etcd"
+  curl -X PUT -d "value={\"Network\":\"$POD_NETWORK\",\"Backend\":{\"Type\":\"vxlan\"}}" "$ETCD_SERVER/v2/keys/coreos.com/network/config"
+
+  sudo systemctl enable flanneld docker kubelet
+  sudo systemctl restart flanneld docker kubelet
+
+  cat << EOF
+Basic Health Checks
+$ curl http://127.0.0.1:8080/version
+EOF
 }
 
 add_master() {

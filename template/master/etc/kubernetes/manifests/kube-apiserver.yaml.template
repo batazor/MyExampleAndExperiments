@@ -24,6 +24,14 @@ spec:
     - --client-ca-file=${PATH_TO_K8S_CERT}/ca.pem
     - --service-account-key-file=${PATH_TO_K8S_CERT}/apiserver-key.pem
     - --runtime-config=extensions/v1beta1=true,extensions/v1beta1/networkpolicies=true
+    - --anonymous-auth=false
+    livenessProbe:
+      httpGet:
+        host: 127.0.0.1
+        port: 8080
+        path: /healthz
+      initialDelaySeconds: 15
+      timeoutSeconds: 15
     ports:
     - containerPort: 443
       hostPort: 443
