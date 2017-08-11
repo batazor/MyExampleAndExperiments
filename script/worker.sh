@@ -34,6 +34,8 @@ generate_config_worker() {
     mkdir -p $directory
     eval "envsubst < ${yaml} > $path"
   done
+
+  sudo cp ./dist /
 }
 
 start_worker() {

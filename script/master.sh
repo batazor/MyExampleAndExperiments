@@ -23,6 +23,8 @@ generate_config_master() {
     mkdir -p $directory
     eval "envsubst < ${yaml} > $path"
   done
+
+  sudo cp ./dist /
 }
 
 start_master() {
