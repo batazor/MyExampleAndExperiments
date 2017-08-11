@@ -1,13 +1,21 @@
 [Service]
 Environment=KUBELET_IMAGE_TAG=${K8S_VER}
+Environment=KUBELET_IMAGE_URL=quay.io/coreos/hyperkube
 Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
   --volume var-log,kind=host,source=/var/log \
   --mount volume=var-log,target=/var/log \
   --volume dns,kind=host,source=/etc/resolv.conf \
   --mount volume=dns,target=/etc/resolv.conf \
   --volume cni-bin,kind=host,source=/opt/cni/bin \
-  --mount volume=cni-bin,target=/opt/cni/bin"
-ExecStartPre=/usr/bin/mkdir -p ${PATH_TO_K8S_MANIFEST}
+  --mount volume=cni-bin,target=/opt/cni/bin
+  --volume rkt,kind=host,source=/opt/bin/host-rkt
+  --mount volume=rkt,target=/usr/bin/rkt
+  --volume var-lib-rkt,kind=host,source=/var/lib/rkt
+  --mount volume=var-lib-rkt,target=/var/lib/rkt
+  --volume stage,kind=host,source=/tmp
+  --mount volume=stage,target=/tmp"
+ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
+ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
 ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
@@ -16,6 +24,8 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --network-plugin=${NETWORK_PLUGIN} \
   --container-runtime=docker \
+  --rkt-path=/usr/bin/rkt \
+  --rkt-stage1-image=coreos.com/rkt/stage1-coreos \
   --allow-privileged=true \
   --pod-manifest-path=/etc/kubernetes/manifests \
   --hostname-override=${ADVERTISE_IP} \

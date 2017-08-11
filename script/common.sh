@@ -26,7 +26,4 @@ show_config() {
   yes_or_no "NETWORK_PLUGIN"       ${NETWORK_PLUGIN}       || exit 1
   yes_or_no "SERVICE_IP_RANGE"     ${SERVICE_IP_RANGE}     || exit 1
   yes_or_no "WORKER_FQDN"          ${WORKER_FQDN}          || exit 1
-
-  yes_or_no "PATH_TO_K8S_CERT"     ${PATH_TO_K8S_CERT}     || exit 1
-  yes_or_no "PATH_TO_K8S_MANIFEST" ${PATH_TO_K8S_MANIFEST} || exit 1
 }

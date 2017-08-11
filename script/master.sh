@@ -1,12 +1,12 @@
 ssl() {
-  sudo mkdir -p ${PATH_TO_K8S_CERT}
+  sudo mkdir -p /etc/kubernetes/ssl
 
-  sudo cp ./cert/ca.pem ${PATH_TO_K8S_CERT}/ca.pem
-  sudo cp ./cert/apiserver.pem ${PATH_TO_K8S_CERT}/apiserver.pem
-  sudo cp ./cert/apiserver-key.pem ${PATH_TO_K8S_CERT}/apiserver-key.pem
+  sudo cp ./cert/ca.pem /etc/kubernetes/ssl/ca.pem
+  sudo cp ./cert/apiserver.pem /etc/kubernetes/ssl/apiserver.pem
+  sudo cp ./cert/apiserver-key.pem /etc/kubernetes/ssl/apiserver-key.pem
 
-  sudo chmod 600 ${PATH_TO_K8S_CERT}/*-key.pem
-  sudo chown root:root ${PATH_TO_K8S_CERT}/*-key.pem
+  sudo chmod 600 /etc/kubernetes/ssl/*-key.pem
+  sudo chown root:root /etc/kubernetes/ssl/*-key.pem
 
   print_green "TLS Assets"
 }
@@ -25,7 +25,6 @@ generate_config_master() {
   done
 
   sudo cp -R dist/* /
-  mkdir /opt/cni/bin/
 }
 
 start_master() {

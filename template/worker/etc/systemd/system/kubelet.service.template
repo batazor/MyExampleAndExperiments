@@ -19,8 +19,8 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \\
   --cluster-dns=${DNS_SERVICE_IP} \\
   --cluster-domain=cluster.local \\
   --kubeconfig=/etc/kubernetes/worker-kubeconfig.yaml \\
-  --tls-cert-file=${PATH_TO_K8S_CERT}worker.pem \\
-  --tls-private-key-file=${PATH_TO_K8S_CERT}worker-key.pem
+  --tls-cert-file=/etc/kubernetes/sslworker.pem \\
+  --tls-private-key-file=/etc/kubernetes/sslworker-key.pem
 Restart=always
 RestartSec=10
 [Install]

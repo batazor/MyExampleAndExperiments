@@ -13,8 +13,8 @@ spec:
     - controller-manager
     - --master=http://127.0.0.1:8080
     - --leader-elect=true
-    - --service-account-private-key-file=${PATH_TO_K8S_CERT}/apiserver-key.pem
-    - --root-ca-file=${PATH_TO_K8S_CERT}/ca.pem
+    - --service-account-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+    - --root-ca-file=/etc/kubernetes/ssl/ca.pem
     resources:
       requests:
         cpu: 200m

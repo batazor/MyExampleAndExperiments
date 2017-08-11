@@ -19,10 +19,10 @@ spec:
     - --secure-port=${APISERVER_PORT}
     - --advertise-address=${ADVERTISE_IP}
     - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
-    - --tls-cert-file=${PATH_TO_K8S_CERT}/apiserver.pem
-    - --tls-private-key-file=${PATH_TO_K8S_CERT}/apiserver-key.pem
-    - --client-ca-file=${PATH_TO_K8S_CERT}/ca.pem
-    - --service-account-key-file=${PATH_TO_K8S_CERT}/apiserver-key.pem
+    - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
+    - --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+    - --client-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
     - --runtime-config=extensions/v1beta1=true,extensions/v1beta1/networkpolicies=true
     - --anonymous-auth=false
     livenessProbe:
