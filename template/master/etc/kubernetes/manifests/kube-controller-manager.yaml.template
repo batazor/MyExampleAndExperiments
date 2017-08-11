@@ -13,8 +13,8 @@ spec:
     - controller-manager
     - --master=http://127.0.0.1:8080
     - --leader-elect=true
-    - --service-account-private-key-file=${PATH_TO_K8S_CERT}apiserver-key.pem
-    - --root-ca-file=${PATH_TO_K8S_CERT}ca.pem
+    - --service-account-private-key-file=${PATH_TO_K8S_CERT}/apiserver-key.pem
+    - --root-ca-file=${PATH_TO_K8S_CERT}/ca.pem
     livenessProbe:
       httpGet:
         host: 127.0.0.1
