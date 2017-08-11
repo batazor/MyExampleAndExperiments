@@ -8,4 +8,5 @@ clean_k8s_conf() {
   sudo systemctl daemon-reload
   sudo systemctl disable kubelet docker flanneld etcd2
   sudo systemctl stop kubelet docker flanneld etcd2
+  sudo systemctl start etcd2 flanneld
 }
