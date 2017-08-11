@@ -27,14 +27,3 @@ show_config() {
   yes_or_no "PATH_TO_K8S_CERT"     ${PATH_TO_K8S_CERT} || exit 1
   yes_or_no "PATH_TO_K8S_MANIFEST" ${PATH_TO_K8S_MANIFEST} || exit 1
 }
-
-generate_config() {
-  for yaml in `find . -type f | grep "\.template"`; do
-    path=$(echo $yaml | sed -r 's/\/template\//dist\//g')
-    path=$(echo $path | sed -r 's/\.template//g')
-    path=$(echo $path | sed 's/\.//')
-    directory=$(echo $path | sed 's/\(.*\)\/.*/\1/')
-    mkdir -p $directory
-    eval "envsubst < ${yaml} > $path"
-  done
-}
