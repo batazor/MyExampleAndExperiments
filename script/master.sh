@@ -25,7 +25,12 @@ generate_config_master() {
   done
 }
 
+start_master() {
+  print_green "Start..." && reinit
+}
+
 add_master() {
   print_green "Move ssh cert" && ssl
   yes_or_no "Generate new config?" && generate_config_master;
+  yes_or_no "Start master?" && start_master;
 }

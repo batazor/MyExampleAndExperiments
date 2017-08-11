@@ -22,3 +22,10 @@ Create file `.env`
 | DNS_SERVICE_IP       | 10.3.0.10                                         |
 | NETWORK_PLUGIN       |                                                   |
 | SERVICE_IP_RANGE     | 10.3.0.0/24                                       |
+
+
+### Getting start
+
+```
+./run.sh
+```
