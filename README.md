@@ -5,7 +5,7 @@ Generator config for Kubernetes
 
 ### ENV variable
 
-See file `.env`
+Create file `.env`
 
 | Name             | Value |
 |------------------|----------------------------------------|
