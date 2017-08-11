@@ -1,5 +1,5 @@
 new_ssl() {
-  pwd
+  rm -rf ./cert
 
   print_green " - Create cert folder"
   mkdir cert
