@@ -10,8 +10,8 @@ Create file `.env`
 | Name                 | Value                                             |
 |----------------------|---------------------------------------------------|
 | **Network**          |                                                   |
-| ADVERTISE_IP         | 443                                               |
-| APISERVER_PORT       | 127.0.01                                          |
+| ADVERTISE_IP         | 127.0.0.1                                         |
+| APISERVER_PORT       | 6443                                              |
 | **Kubernetes**       |                                                   |
 | MASTER_HOST          | 127.0.0.1                                         |
 | ETCD_SERVER          | http://127.0.0.1:2379                             |
