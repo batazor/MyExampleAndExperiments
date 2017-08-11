@@ -23,7 +23,7 @@ install_kubectl() {
   chmod +x ~/bin/kubectl
 
   print_green " - Edit .bashrc"
-  echo "export PATH=$PATH:~/bin" > ~/.bashrc
+  echo "export PATH=$PATH:~/bin" > ${HOME}/.bashrc
 
   print_green " - Setting kubectl"
   kubectl config set-cluster default-cluster --server=https://${MASTER_HOST}:${APISERVER_PORT} --certificate-authority=${CA_CERT}

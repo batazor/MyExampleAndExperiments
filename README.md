@@ -9,7 +9,8 @@ Create file `.env`
 
 | Name                 | Value                                             |
 |----------------------|---------------------------------------------------|
-| **Network**          |                                                   |
+| **OS**               |                                                   |
+| HOME                 | /home/core                                        |
 | ADVERTISE_IP         | 127.0.0.1                                         |
 | APISERVER_PORT       | 6443                                              |
 | **Kubernetes**       |                                                   |
