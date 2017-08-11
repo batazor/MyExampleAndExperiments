@@ -14,13 +14,27 @@ yes_or_no() {
 }
 
 show_config() {
-  yes_or_no "ADVERTISE_IP"     ${ADVERTISE_IP}     || exit 1
-  yes_or_no "APISERVER_PORT"   ${APISERVER_PORT}   || exit 1
+  yes_or_no "ADVERTISE_IP"         ${ADVERTISE_IP}     || exit 1
+  yes_or_no "APISERVER_PORT"       ${APISERVER_PORT}   || exit 1
 
-  yes_or_no "MASTER_HOST"      ${MASTER_HOST}      || exit 1
-  yes_or_no "ETCD_ENDPOINTS"   ${ETCD_ENDPOINTS}   || exit 1
-  yes_or_no "K8S_VER"          ${K8S_VER}          || exit 1
-  yes_or_no "DNS_SERVICE_IP"   ${DNS_SERVICE_IP}   || exit 1
-  yes_or_no "NETWORK_PLUGIN"   ${NETWORK_PLUGIN}   || exit 1
-  yes_or_no "SERVICE_IP_RANGE" ${SERVICE_IP_RANGE} || exit 1
+  yes_or_no "MASTER_HOST"          ${MASTER_HOST}      || exit 1
+  yes_or_no "ETCD_ENDPOINTS"       ${ETCD_ENDPOINTS}   || exit 1
+  yes_or_no "K8S_VER"              ${K8S_VER}          || exit 1
+  yes_or_no "DNS_SERVICE_IP"       ${DNS_SERVICE_IP}   || exit 1
+  yes_or_no "NETWORK_PLUGIN"       ${NETWORK_PLUGIN}   || exit 1
+  yes_or_no "SERVICE_IP_RANGE"     ${SERVICE_IP_RANGE} || exit 1
+
+  yes_or_no "PATH_TO_K8S_CERT"     ${PATH_TO_K8S_CERT} || exit 1
+  yes_or_no "PATH_TO_K8S_MANIFEST" ${PATH_TO_K8S_MANIFEST} || exit 1
+}
+
+generate_config() {
+  for yaml in `find . -type f | grep "\.template"`; do
+    path=$(echo $yaml | sed -r 's/\/template\//dist\//g')
+    path=$(echo $path | sed -r 's/\.template//g')
+    path=$(echo $path | sed 's/\.//')
+    directory=$(echo $path | sed 's/\(.*\)\/.*/\1/')
+    mkdir -p $directory
+    eval "envsubst < ${yaml} > $path"
+  done
 }
