@@ -1,6 +1,6 @@
 # k8s-generator-config
 
-Generator config for Kubernetes
+Generator config for Kubernetes (**CoreOS**)
 
 
 ### ENV variable
