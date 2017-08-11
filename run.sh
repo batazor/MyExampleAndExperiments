@@ -28,7 +28,7 @@ export ADVERTISE_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}
 # Warning ======================================================================
 
 yes_or_no "Show config?" && show_config;
-yes_or_no "Generate new cert?" && new_ssl;
 yes_or_no "Delete old k8s files?" && clean_k8s_conf;
+yes_or_no "Generate new cert?" && new_ssl;
 yes_or_no "Create a master?" && add_master;
 yes_or_no "This a worket?" && add_worker;
