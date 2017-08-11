@@ -50,6 +50,7 @@ EOF
 }
 
 add_master() {
+  yes_or_no "Generate new cert?" && new_ssl;
   print_green "Move ssh cert" && ssl_master
   yes_or_no "Generate new config?" && generate_config_master;
   yes_or_no "Start master?" && start_master;
