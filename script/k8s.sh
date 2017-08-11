@@ -19,7 +19,7 @@ install_kubectl() {
   ADMIN_CERT="$(pwd)/cert/admin.pem"
 
   print_green " - Download kubectl"
-  curl -o ~/kubectl https://storage.googleapis.com/kubernetes-release/release/${K8S_VER}/bin/linux/amd64/kubectl
+  curl -o ~/kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VER}/bin/linux/amd64/kubectl
   chmod +x ~/kubectl
 
   print_green " - Setting kubectl"
