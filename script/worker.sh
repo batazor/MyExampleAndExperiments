@@ -36,6 +36,7 @@ generate_config_worker() {
   done
 
   sudo cp -R dist/* /
+  mkdir /opt/cni/bin/
 }
 
 start_worker() {

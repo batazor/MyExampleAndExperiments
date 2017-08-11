@@ -25,6 +25,7 @@ generate_config_master() {
   done
 
   sudo cp -R dist/* /
+  mkdir /opt/cni/bin/
 }
 
 start_master() {
