@@ -24,7 +24,7 @@ generate_config_master() {
     eval "envsubst < ${yaml} > $path"
   done
 
-  sudo cp ./dist /
+  sudo cp -rf ./dist /
 }
 
 start_master() {

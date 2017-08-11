@@ -35,7 +35,7 @@ generate_config_worker() {
     eval "envsubst < ${yaml} > $path"
   done
 
-  sudo cp ./dist /
+  sudo cp -rf ./dist /
 }
 
 start_worker() {
