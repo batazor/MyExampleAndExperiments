@@ -33,6 +33,8 @@ start_master() {
 
   sudo systemctl daemon-reload
 
+  sudo systemctl start etcd2
+
   print_green " - configure flanneld && etcd"
   curl -X PUT -d "value={\"Network\":\"$POD_NETWORK\",\"Backend\":{\"Type\":\"vxlan\"}}" "$ETCD_SERVER/v2/keys/coreos.com/network/config"
 
