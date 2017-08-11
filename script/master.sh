@@ -41,8 +41,11 @@ start_master() {
   sudo systemctl restart flanneld docker kubelet
 
   cat << EOF
+--------------------------------------------------------------------------------
 Basic Health Checks
 $ curl http://127.0.0.1:8080/version
+$ curl -s localhost:10255/pods | jq -r '.items[].metadata.name'
+--------------------------------------------------------------------------------
 EOF
 }
 
