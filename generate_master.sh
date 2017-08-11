@@ -11,12 +11,8 @@ export DEPLOY_ROOT_DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 source "$DEPLOY_ROOT_DIR/script/common.sh"
 
-# Export ENV variables
-export $(cat .env | xargs)
-
-# TODO: add if-else
-export ADVERTISE_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
-
+# ==============================================================================
+# Generate config ==============================================================
 print_green "Generate config"
 for yaml in `find . -type f | grep "\.template"`; do
   path=$(echo $yaml | sed -r 's/\/template\//dist\//g')
