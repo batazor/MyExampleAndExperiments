@@ -8,8 +8,8 @@ clean_k8s_conf() {
 
   print_green "Disable services"
   sudo systemctl daemon-reload
-  sudo systemctl disable kubelet docker flanneld etcd2
-  sudo systemctl stop kubelet docker flanneld etcd2
+  sudo systemctl disable kubelet docker flanneld
+  sudo systemctl stop kubelet docker flanneld
 }
 
 install_kubectl() {
