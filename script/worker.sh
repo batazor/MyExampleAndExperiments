@@ -1,4 +1,4 @@
-ssl() {
+ssl_worker() {
   sudo mkdir -p /etc/kubernetes/ssl
 
   sudo cp ./cert/ca.pem /etc/kubernetes/ssl/ca.pem
@@ -47,7 +47,7 @@ start_worker() {
 }
 
 add_worker() {
-  print_green "Move ssh cert" && ssl
+  print_green "Move ssh cert" && ssl_worker
   yes_or_no "Generate new config?" && generate_config_worker;
   yes_or_no "Start worker?" && start_worker;
 }

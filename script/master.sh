@@ -1,4 +1,4 @@
-ssl() {
+ssl_master() {
   sudo mkdir -p /etc/kubernetes/ssl
 
   sudo cp ./cert/ca.pem /etc/kubernetes/ssl/ca.pem
@@ -47,7 +47,7 @@ EOF
 }
 
 add_master() {
-  print_green "Move ssh cert" && ssl
+  print_green "Move ssh cert" && ssl_master
   yes_or_no "Generate new config?" && generate_config_master;
   yes_or_no "Start master?" && start_master;
 }
