@@ -20,6 +20,7 @@ source "$DEPLOY_ROOT_DIR/script/master.sh"
 export $(cat .env | xargs)
 
 # TODO: add if-else
+export WORKER_FQDN=$HOSTNAME
 export ADVERTISE_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
 
 # ==============================================================================
@@ -28,4 +29,4 @@ export ADVERTISE_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}
 yes_or_no "Show config?" && show_config;
 yes_or_no "Generate new cert?" && new_ssl;
 yes_or_no "Create a master?" && add_master;
-# yes_or_no "This a worket?" && add_worket;
+yes_or_no "This a worket?" && add_worket;
