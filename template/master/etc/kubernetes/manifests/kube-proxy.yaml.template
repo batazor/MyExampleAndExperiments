@@ -3,8 +3,6 @@ kind: Pod
 metadata:
   name: kube-proxy
   namespace: kube-system
-  annotations:
-    rkt.alpha.kubernetes.io/stage1-name-override: coreos.com/rkt/stage1-fly
 spec:
   hostNetwork: true
   containers:
@@ -15,19 +13,14 @@ spec:
     - proxy
     - --master=http://127.0.0.1:8080
     - --cluster-cidr=${POD_NETWORK}
+    #- --proxy-mode=iptables
     securityContext:
       privileged: true
     volumeMounts:
     - mountPath: /etc/ssl/certs
       name: ssl-certs-host
       readOnly: true
-    - mountPath: /var/run/dbus
-      name: dbus
-      readOnly: false
   volumes:
   - hostPath:
       path: /usr/share/ca-certificates
     name: ssl-certs-host
-  - hostPath:
-      path: /var/run/dbus
-    name: dbus

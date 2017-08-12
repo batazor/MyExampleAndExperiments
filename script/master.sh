@@ -2,6 +2,7 @@ ssl_master() {
   sudo mkdir -p /etc/kubernetes/ssl
 
   sudo cp ./cert/ca.pem /etc/kubernetes/ssl/ca.pem
+  sudo cp ./cert/ca-key.pem /etc/kubernetes/ssl/ca-key.pem
   sudo cp ./cert/apiserver.pem /etc/kubernetes/ssl/apiserver.pem
   sudo cp ./cert/apiserver-key.pem /etc/kubernetes/ssl/apiserver-key.pem
 

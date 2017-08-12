@@ -11,7 +11,9 @@ spec:
     command:
     - /hyperkube
     - apiserver
+    - --storage-media-type=application/json
     - --bind-address=0.0.0.0
+    #- --insecure-bind-address=0.0.0.0
     - --etcd-servers=${ETCD_ENDPOINTS}
     - --allow-privileged=true
     - --service-cluster-ip-range=${SERVICE_IP_RANGE}
