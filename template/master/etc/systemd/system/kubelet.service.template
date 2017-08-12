@@ -1,8 +1,6 @@
 [Unit]
 Description=Kubernetes Kubelet
 Documentation=https://github.com/GoogleCloudPlatform/kubernetes
-Requires=hyperkube-import.service kube-certs.service
-After=hyperkube-import.service kube-certs.service
 [Service]
 Environment=KUBELET_IMAGE_TAG=${K8S_VER}
 Environment=KUBELET_IMAGE_URL=quay.io/coreos/hyperkube
