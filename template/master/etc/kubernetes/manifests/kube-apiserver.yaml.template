@@ -11,6 +11,7 @@ spec:
     command:
     - /hyperkube
     - apiserver
+    - --storage-media-type=application/json
     - --bind-address=0.0.0.0
     - --etcd-servers=${ETCD_ENDPOINTS}
     - --allow-privileged=true
