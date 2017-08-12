@@ -22,7 +22,7 @@ export $(cat .env | xargs)
 
 # TODO: add if-else
 export WORKER_FQDN=$HOSTNAME
-# export ADVERTISE_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
+export ADVERTISE_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
 
 # ==============================================================================
 # Warning ======================================================================
