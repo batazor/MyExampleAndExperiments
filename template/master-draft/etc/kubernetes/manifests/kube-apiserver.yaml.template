@@ -7,22 +7,25 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-apiserver
-    image: quay.io/coreos/hyperkube:v1.6.1_coreos.0
+    image: quay.io/coreos/hyperkube:${K8S_VER}
     command:
     - /hyperkube
     - apiserver
+    - --storage-media-type=application/json
     - --bind-address=0.0.0.0
+    - --insecure-bind-address=0.0.0.0 # TODO:
     - --etcd-servers=${ETCD_ENDPOINTS}
     - --allow-privileged=true
     - --service-cluster-ip-range=${SERVICE_IP_RANGE}
-    - --secure-port=443
+    - --service-node-port-range=80-32000
+    - --secure-port=${APISERVER_PORT}
     - --advertise-address=${ADVERTISE_IP}
     - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
     - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
     - --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
     - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
-    - --runtime-config=extensions/v1beta1/networkpolicies=true
+    - --runtime-config=extensions/v1beta1=true,extensions/v1beta1/networkpolicies=true
     - --anonymous-auth=false
     livenessProbe:
       httpGet:

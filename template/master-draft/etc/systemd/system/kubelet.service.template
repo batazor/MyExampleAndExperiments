@@ -1,5 +1,9 @@
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 [Service]
 Environment=KUBELET_IMAGE_TAG=${K8S_VER}
+Environment=KUBELET_IMAGE_URL=quay.io/coreos/hyperkube
 Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
   --volume var-log,kind=host,source=/var/log \
   --mount volume=var-log,target=/var/log \
@@ -10,7 +14,7 @@ ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --api-servers=http://127.0.0.1:8080 \
-  --register-schedulable=false \
+  --register-schedulable=true \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --network-plugin=${NETWORK_PLUGIN} \
   --container-runtime=docker \
@@ -22,6 +26,5 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
 ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
 Restart=always
 RestartSec=10
-
 [Install]
 WantedBy=multi-user.target

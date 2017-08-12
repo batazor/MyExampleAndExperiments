@@ -7,11 +7,13 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-proxy
-    image: quay.io/coreos/hyperkube:v1.6.1_coreos.0
+    image: quay.io/coreos/hyperkube:${K8S_VER}
     command:
     - /hyperkube
     - proxy
     - --master=http://127.0.0.1:8080
+    - --cluster-cidr=${POD_NETWORK}
+    - --proxy-mode=iptables # TODO:
     securityContext:
       privileged: true
     volumeMounts:
