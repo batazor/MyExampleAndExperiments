@@ -19,7 +19,6 @@ show_config() {
   yes_or_no "POD_NETWORK"          ${POD_NETWORK}          || exit 1
 
   yes_or_no "MASTER_HOST"          ${MASTER_HOST}          || exit 1
-  yes_or_no "ETCD_SERVER"          ${ETCD_SERVER}          || exit 1
   yes_or_no "ETCD_ENDPOINTS"       ${ETCD_ENDPOINTS}       || exit 1
   yes_or_no "K8S_VER"              ${K8S_VER}              || exit 1
   yes_or_no "DNS_SERVICE_IP"       ${DNS_SERVICE_IP}       || exit 1
