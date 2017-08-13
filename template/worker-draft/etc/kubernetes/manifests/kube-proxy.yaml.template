@@ -11,8 +11,10 @@ spec:
     command:
     - /hyperkube
     - proxy
-    - --master=${MASTER_HOST}
+    - --master=https://${MASTER_HOST}:${APISERVER_PORT}
     - --kubeconfig=/etc/kubernetes/worker-kubeconfig.yaml
+    - --cluster-cidr=${POD_NETWORK}
+    # - --proxy-mode=iptables
     securityContext:
       privileged: true
     volumeMounts:
