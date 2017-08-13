@@ -2,6 +2,7 @@
 
 Generator config for Kubernetes (**CoreOS**)
 
+For **etcd3** and **k8s 1.6+**
 
 ### ENV variable
 
