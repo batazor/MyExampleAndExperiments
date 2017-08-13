@@ -28,5 +28,6 @@ Create file `.env`
 ### Getting start
 
 ```
+cp .env.sample .env
 ./run.sh
 ```
