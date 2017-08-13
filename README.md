@@ -29,5 +29,6 @@ Create file `.env`
 
 ```
 cp .env.sample .env
+// copy ca.pem and ca-key.pam for workers in folder ./cert
 ./run.sh
 ```
