@@ -11,7 +11,7 @@ spec:
     command:
     - /hyperkube
     - proxy
-    - --master=${MASTER_HOST}
+    - --master=https://${MASTER_HOST}:${APISERVER_PORT}
     - --kubeconfig=/etc/kubernetes/worker-kubeconfig.yaml
     securityContext:
       privileged: true
