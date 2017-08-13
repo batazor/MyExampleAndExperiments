@@ -16,7 +16,8 @@ spec:
     - --etcd-servers=${ETCD_ENDPOINTS}
     - --allow-privileged=true
     - --service-cluster-ip-range=${SERVICE_IP_RANGE}
-    - --secure-port=443
+    - --service-node-port-range=80-32000
+    - --secure-port=${APISERVER_PORT}
     - --advertise-address=${ADVERTISE_IP}
     - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
     - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
