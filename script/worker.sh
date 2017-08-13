@@ -28,8 +28,7 @@ generate_config_worker() {
   for yaml in `find template/worker -type f | grep "\.template"`; do
     path=$(echo $yaml | sed -r 's/^template/dist/g')
 
-    path=$(echo $path | sed -r 's/(\.template|master|worker[!/])//g')
-    path=$(echo $path | sed -r 's/dist\//dist/g')
+    path=$(echo $path | sed -r 's/(\.template|master[!/]|worker[!/])//g')
     directory=$(echo $path | sed 's/\(.*\)\/.*/\1/')
     mkdir -p $directory
     eval "envsubst < ${yaml} > $path"
