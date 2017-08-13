@@ -12,7 +12,7 @@ ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
-  --api-servers=https://${MASTER_HOST} \
+  --api-servers=https://${MASTER_HOST}:${APISERVER_PORT} \\
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --network-plugin=${NETWORK_PLUGIN} \
   --container-runtime=docker \
