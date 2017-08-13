@@ -15,6 +15,7 @@ source "$DEPLOY_ROOT_DIR/script/ssl.sh"
 source "$DEPLOY_ROOT_DIR/script/k8s.sh"
 source "$DEPLOY_ROOT_DIR/script/master.sh"
 source "$DEPLOY_ROOT_DIR/script/worker.sh"
+source "$DEPLOY_ROOT_DIR/script/menu.sh"
 
 # ==============================================================================
 # Export ENV variables =========================================================
@@ -27,7 +28,4 @@ export WORKER_FQDN=$HOSTNAME
 # ==============================================================================
 # Warning ======================================================================
 
-yes_or_no "Show config?" && show_config;
-yes_or_no "Delete old k8s files?" && clean_k8s_conf;
-yes_or_no "Create a master?" && add_master;
-yes_or_no "This a worket?" && add_worker;
+show_menu

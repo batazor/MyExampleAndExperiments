@@ -14,15 +14,21 @@ yes_or_no() {
 }
 
 show_config() {
-  yes_or_no "ADVERTISE_IP"         ${ADVERTISE_IP}         || exit 1
-  yes_or_no "APISERVER_PORT"       ${APISERVER_PORT}       || exit 1
-  yes_or_no "POD_NETWORK"          ${POD_NETWORK}          || exit 1
+  cat << EOF
+--------------------------------------------------------------------------------
+Basic Health Checks
 
-  yes_or_no "MASTER_HOST"          ${MASTER_HOST}          || exit 1
-  yes_or_no "ETCD_ENDPOINTS"       ${ETCD_ENDPOINTS}       || exit 1
-  yes_or_no "K8S_VER"              ${K8S_VER}              || exit 1
-  yes_or_no "DNS_SERVICE_IP"       ${DNS_SERVICE_IP}       || exit 1
-  yes_or_no "NETWORK_PLUGIN"       ${NETWORK_PLUGIN}       || exit 1
-  yes_or_no "SERVICE_IP_RANGE"     ${SERVICE_IP_RANGE}     || exit 1
-  yes_or_no "WORKER_FQDN"          ${WORKER_FQDN}          || exit 1
+ADVERTISE_IP         ${ADVERTISE_IP}
+APISERVER_PORT       ${APISERVER_PORT}
+POD_NETWORK          ${POD_NETWORK}
+
+MASTER_HOST          ${MASTER_HOST}
+ETCD_ENDPOINTS       ${ETCD_ENDPOINTS}
+K8S_VER              ${K8S_VER}
+DNS_SERVICE_IP       ${DNS_SERVICE_IP}
+NETWORK_PLUGIN       ${NETWORK_PLUGIN}
+SERVICE_IP_RANGE     ${SERVICE_IP_RANGE}
+WORKER_FQDN          ${WORKER_FQDN}
+--------------------------------------------------------------------------------
+EOF
 }
