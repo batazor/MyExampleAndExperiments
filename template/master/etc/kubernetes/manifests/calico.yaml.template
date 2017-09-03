@@ -8,6 +8,9 @@ data:
   # Configure this with the location of your etcd cluster.
   etcd_endpoints: "${ETCD_ENDPOINTS}"
 
+  # Configure the Calico backend to use.
+  calico_backend: "bird"
+
   # The CNI network configuration to install on each node.  The special
   # values in this config will be automatically populated.
   cni_network_config: |-
@@ -18,6 +21,9 @@ data:
           "type": "calico",
           "etcd_endpoints": "__ETCD_ENDPOINTS__",
           "log_level": "info",
+          "ipam": {
+              "type": "calico-ipam"
+          },
           "policy": {
               "type": "k8s",
               "k8s_api_root": "https://__KUBERNETES_SERVICE_HOST__:__KUBERNETES_SERVICE_PORT__",
@@ -28,6 +34,25 @@ data:
           }
         }
     }
+
+---
+
+# The following contains k8s Secrets for use with a TLS enabled etcd cluster.
+# For information on populating Secrets, see http://kubernetes.io/docs/user-guide/secrets/
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: calico-etcd-secrets
+  namespace: kube-system
+data:
+  # Populate the following files with etcd TLS configuration if desired, but leave blank if
+  # not using TLS for etcd.
+  # This self-hosted install expects three files with the following names.  The values
+  # should be base64 encoded strings of the entire contents of each file.
+  # etcd-key: null
+  # etcd-cert: null
+  # etcd-ca: null
 
 ---
 
@@ -156,10 +181,10 @@ spec:
       labels:
         k8s-app: calico-policy
       annotations:
-        scheduler.alpha.kubernetes.io/critical-pod: ''
-        scheduler.alpha.kubernetes.io/tolerations: |
-          [{"key": "dedicated", "value": "master", "effect": "NoSchedule" },
-           {"key":"CriticalAddonsOnly", "operator":"Exists"}]
+      scheduler.alpha.kubernetes.io/critical-pod: ''
+      scheduler.alpha.kubernetes.io/tolerations: |
+        [{"key": "dedicated", "value": "master", "effect": "NoSchedule" },
+         {"key":"CriticalAddonsOnly", "operator":"Exists"}]
     spec:
       # The policy controller must run in the host network namespace so that
       # it isn't governed by policy that would prevent it from working.
@@ -177,7 +202,7 @@ spec:
             # The location of the Kubernetes API.  Use the default Kubernetes
             # service for API access.
             - name: K8S_API
-              value: "https://kubernetes.default:443"
+              value: "https://kubernetes.default:${APISERVER_PORT}"
             # Since we're running in the host namespace and might not have KubeDNS
             # access, configure the container's /etc/hosts to resolve
             # kubernetes.default to the correct service clusterIP.
