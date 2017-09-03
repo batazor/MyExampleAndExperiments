@@ -181,10 +181,10 @@ spec:
       labels:
         k8s-app: calico-policy
       annotations:
-      scheduler.alpha.kubernetes.io/critical-pod: ''
-      scheduler.alpha.kubernetes.io/tolerations: |
-        [{"key": "dedicated", "value": "master", "effect": "NoSchedule" },
-         {"key":"CriticalAddonsOnly", "operator":"Exists"}]
+        scheduler.alpha.kubernetes.io/critical-pod: ''
+        scheduler.alpha.kubernetes.io/tolerations: |
+          [{"key": "dedicated", "value": "master", "effect": "NoSchedule" },
+           {"key":"CriticalAddonsOnly", "operator":"Exists"}]
     spec:
       # The policy controller must run in the host network namespace so that
       # it isn't governed by policy that would prevent it from working.
