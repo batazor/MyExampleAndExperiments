@@ -12,14 +12,6 @@ import {
   View
 } from 'react-native';
 
-import App from './src/app';
+import SimpleApp from './src/app';
 
-export default class mobileEmulator extends Component {
-  render() {
-    return (
-      <App />
-    );
-  }
-}
-
-AppRegistry.registerComponent('mobileEmulator', () => mobileEmulator);
+AppRegistry.registerComponent('mobileEmulator', () => SimpleApp);
