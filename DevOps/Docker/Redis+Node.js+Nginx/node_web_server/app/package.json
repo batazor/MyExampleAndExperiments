@@ -1,0 +1,15 @@
+{
+  "name": "node-web-server",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Node.js Hello world app on Ubuntu using docker",
+  "author": "Login Viktor <batazor111@gmail.com>",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "hiredis": "^0.4.1",
+    "redis": "^2.2.1"
+  }
+}
