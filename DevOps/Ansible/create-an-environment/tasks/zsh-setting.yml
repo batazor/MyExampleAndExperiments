@@ -1,0 +1,22 @@
+---
+- name: Setting zsh
+  hosts: all
+
+  vars:
+    zsh_theme: "powerlevel9k/powerlevel9k"
+
+  tasks:
+  - name: Clone powerlevel9k theme
+    git:
+      repo: https://github.com/bhilburn/powerlevel9k.git
+      dest: "~/{{ ansible_user }}/.oh-my-zsh/themes/powerlevel9k"
+    register: cloning
+    when: zsh_theme == "powerlevel9k/powerlevel9k"
+
+  - name: Write .zshrc config
+    template:
+      src: ../template/.zshrc
+      dest: "~{{ ansible_user }}/.zshrc"
+      owner: "{{ ansible_user }}"
+      group: "{{ ansible_user }}"
+      backup: yes

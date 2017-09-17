@@ -1,0 +1,11 @@
+---
+- name: Install vim
+  hosts: all
+  sudo: yes
+
+  tasks:
+  - name: Installing vim
+    apt: name={{ item }} state=latest
+    with_items:
+     - vim
+     - powerline

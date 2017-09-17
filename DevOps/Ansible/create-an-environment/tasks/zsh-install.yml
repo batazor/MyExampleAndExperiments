@@ -1,0 +1,44 @@
+---
+- name: Install zsh
+  hosts: all
+  sudo: yes
+
+  tasks:
+  - name: Installing Zsh and git
+    apt: name={{ item }} state=latest
+    with_items:
+     - git
+     - zsh
+     - git-core
+     - powerline
+
+  - name: Backing up existing ~/.zshrc
+    action: shell if [ -f ~/.zshrc ]; then mv ~/.zshrc ~/.zshrc{,.orig}; fi
+
+  - name: Cloning oh-my-zsh
+    git:
+      repo: https://github.com/robbyrussell/oh-my-zsh
+      dest: ~/.oh-my-zsh
+    register: cloning
+    sudo: no
+
+  - name: Check zsh version
+    shell: "zsh --version | cut -d ' ' -f2"
+    register: zsh_register_version
+    changed_when: false
+    tags: configure
+
+  - name: Creating new ~/.zshrc
+    copy:
+      src=~/.oh-my-zsh/templates/zshrc.zsh-template
+      dest=~/.zshrc
+    when: cloning|success
+    sudo: no
+
+  - name: Change uoyr shell to zsh
+    action: shell chsh -s `which zsh`
+
+  - name: Set zsh as default shell
+    user:
+      name: "{{ ansible_user_id }}"
+      shell: /bin/zsh

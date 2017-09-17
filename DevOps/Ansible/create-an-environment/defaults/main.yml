@@ -1,0 +1,15 @@
+---
+
+# ZSH ==========================================================================
+# .zshrc config
+zsh_theme: "powerlevel9k/powerlevel9k"
+zsh_custom_path: "~{{ ansible_user_id }}/.oh-my-zsh/custom"
+
+# plugins git versions
+zsh_powerlevel9k_version: v0.6.1
+
+# VIM ==========================================================================
+# package name (version)
+vim_package: vim
+# global vim configuration
+vim_config: []
