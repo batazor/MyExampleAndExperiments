@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title Pragprog Books Online Store
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body class='#{ controller.controller_name }'
+
+    #banner
+      = image_tag("logo.png")
+      = @page_title || "Pragmatic Bookshelf"
+
+    #columns
+      #side
+        #cart
+          - if @cart
+            = hidden_div_if(@cart.line_items.empty?, id: 'cart') do
+              = render @cart
+
+        ul
+          li
+            a href="/" Home
+          li
+            a href="#" Questions
+          li
+            a href="#" News
+          li
+            a href="#" Contact
+        p.time= l @date_loaded, :format => :short
+
+      #main
+        = yield
