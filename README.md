@@ -11,6 +11,7 @@ Create file `.env`. `.env.sample` as example
 ### Getting start
 
 ```
+git clone https://github.com/batazor/k8s-generator-config.git && cd k8s-generator-config
 cp .env.sample .env
 // copy ca.pem and ca-key.pam for workers in folder ./cert after run master
 ./run.sh
