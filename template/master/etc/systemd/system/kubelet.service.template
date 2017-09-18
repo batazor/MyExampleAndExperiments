@@ -21,6 +21,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --register-schedulable=true \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --network-plugin=${NETWORK_PLUGIN} \
+  --hairpin-mode=hairpin-veth \
   --container-runtime=docker \
   --allow-privileged=true \
   --pod-manifest-path=/etc/kubernetes/manifests \

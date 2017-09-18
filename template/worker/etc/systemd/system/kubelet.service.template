@@ -18,6 +18,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --api-servers=https://${MASTER_HOST}:${APISERVER_PORT} \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --network-plugin=${NETWORK_PLUGIN} \
+  --hairpin-mode=hairpin-veth \
   --container-runtime=docker \
   --register-node=true \
   --allow-privileged=true \

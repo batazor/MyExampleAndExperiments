@@ -1,7 +1,8 @@
 {
-    "name": "podnet",
-    "type": "flannel",
-    "delegate": {
-        "isDefaultGateway": true
-    }
+  "name": "podnet",
+  "type": "flannel",
+  "delegate": {
+    "isDefaultGateway": true,
+    "hairpinMode": true
+  }
 }
