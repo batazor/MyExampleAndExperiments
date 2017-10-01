@@ -1,0 +1,22 @@
+DOCTYPE html
+html lang="en"
+  head
+    meta charset="UTF-8"
+    title mini-url
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+
+    #main
+      object.logo type="image/svg+xml" data="logo.svg"
+      h2.title HELLO
+      h2.description just shorten links
+
+      == yield
+
+
+      #footer
+        a.link href="https://github.com/batazor/rails-mini-url" GITHUB
+        a.link href="http://batazor.ru" CONTACT ME
