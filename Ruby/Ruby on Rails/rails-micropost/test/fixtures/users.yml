@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  name: Petr Ivanov
+  email: petr@gmail.com
+  location: RU
+  description: I'm Russin!
+
+two:
+  id: 2
+  name: Leo
+  email: leontiev@sound.im
+  location: GE
+  description: Na-na-na
