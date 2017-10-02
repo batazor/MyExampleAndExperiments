@@ -1,7 +1,7 @@
 ssl_worker() {
   sudo mkdir -p /etc/kubernetes/ssl
 
-  sudo cp ./cert/ca.pem /etc/kubernetes/ssl/ca.pem
+  sudo cp ~/cert/ca.pem /etc/kubernetes/ssl/ca.pem
 
   print_green " - Generate the Kubernetes Worker Keypairs"
   sudo openssl genrsa -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker-key.pem 2048
@@ -9,7 +9,7 @@ ssl_worker() {
     -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker.csr -subj "/CN=${WORKER_FQDN}" \
     -config ./conf/worker-openssl.cnf
   sudo ADVERTISE_IP=${ADVERTISE_IP} openssl x509 -req -in /etc/kubernetes/ssl/${WORKER_FQDN}-worker.csr \
-    -CA /etc/kubernetes/ssl/ca.pem -CAkey ./cert/ca-key.pem -CAcreateserial -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker.pem \
+    -CA /etc/kubernetes/ssl/ca.pem -CAkey ~/cert/ca-key.pem -CAcreateserial -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker.pem \
     -days 365 -extensions v3_req -extfile ./conf/worker-openssl.cnf
 
   sudo chmod 600 /etc/kubernetes/ssl/*-key.pem

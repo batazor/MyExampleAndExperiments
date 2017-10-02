@@ -13,6 +13,6 @@ Create file `.env`. `.env.sample` as example
 ```
 git clone https://github.com/batazor/k8s-generator-config.git && cd k8s-generator-config
 cp .env.sample .env
-// copy ca.pem and ca-key.pam for workers in folder ./cert after run master
+// copy ca.pem and ca-key.pam for workers in folder ~/cert after run master
 ./run.sh
 ```
