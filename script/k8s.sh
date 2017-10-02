@@ -13,9 +13,9 @@ clean_k8s_conf() {
 }
 
 install_kubectl() {
-  CA_CERT="$(pwd)/cert/ca.pem"
-  ADMIN_KEY="$(pwd)/cert/admin-key.pem"
-  ADMIN_CERT="$(pwd)/cert/admin.pem"
+  CA_CERT="~/cert/ca.pem"
+  ADMIN_KEY="~/cert/admin-key.pem"
+  ADMIN_CERT="~/cert/admin.pem"
 
   print_green " - Download kubectl"
   curl -O https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VER}/bin/linux/amd64/kubectl
