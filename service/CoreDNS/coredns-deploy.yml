@@ -20,7 +20,6 @@ spec:
         scheduler.alpha.kubernetes.io/critical-pod: ''
         scheduler.alpha.kubernetes.io/tolerations: '[{"key":"CriticalAddonsOnly", "operator":"Exists"}]'
     spec:
-      serviceAccountName: coredns
       containers:
       - name: coredns
         image: coredns/coredns:011
