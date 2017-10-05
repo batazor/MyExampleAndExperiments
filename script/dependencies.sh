@@ -23,7 +23,7 @@ install_kubectl() {
 install_dependencies() {
   echo;echo;echo;
   PS3="Please enter your choice: "
-  options=("cfssl" "Quit")
+  options=("cfssl" "kubectl" "Quit")
   select opt in "${options[@]}"
   do
       case $opt in
