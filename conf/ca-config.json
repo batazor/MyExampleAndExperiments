@@ -4,29 +4,8 @@
       "expiry": "87600h"
     },
     "profiles": {
-      "server": {
-        "usages": [
-          "signing",
-          "key encipherment",
-          "server auth"
-        ],
-        "expiry": "26280h"
-      },
-      "client": {
-        "usages": [
-          "signing",
-          "key encipherment",
-          "client auth"
-        ],
-        "expiry": "8760h"
-      },
-      "server": {
-        "usages": [
-          "signing",
-          "key encipherment",
-          "server auth",
-          "client auth"
-        ],
+      "kubernetes": {
+        "usages": ["signing", "key encipherment", "server auth", "client auth"],
         "expiry": "8760h"
       }
     }

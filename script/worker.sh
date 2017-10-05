@@ -4,19 +4,25 @@ ssl_worker() {
   sudo cp ${HOME}/cert/ca.pem /etc/kubernetes/ssl/ca.pem
 
   print_green " - Generate the Kubernetes Worker Keypairs"
-  sudo openssl genrsa -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker-key.pem 2048
-  sudo ADVERTISE_IP=${ADVERTISE_IP} openssl req -new -key /etc/kubernetes/ssl/${WORKER_FQDN}-worker-key.pem \
-    -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker.csr -subj "/CN=${WORKER_FQDN}" \
-    -config ./conf/worker-openssl.cnf
-  sudo ADVERTISE_IP=${ADVERTISE_IP} openssl x509 -req -in /etc/kubernetes/ssl/${WORKER_FQDN}-worker.csr \
-    -CA /etc/kubernetes/ssl/ca.pem -CAkey ${HOME}/cert/ca-key.pem -CAcreateserial -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker.pem \
-    -days 365 -extensions v3_req -extfile ./conf/worker-openssl.cnf
+  cfssl gencert \
+    -ca=${HOME}/cert/ca.pem \
+    -ca-key=${HOME}/cert/ca-key.pem \
+    -config=conf/ca-config.json \
+    -profile=kubernetes \
+    conf/worker-csr.json | cfssljson -bare /etc/kubernetes/ssl/worker
+  # sudo openssl genrsa -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker-key.pem 2048
+  # sudo ADVERTISE_IP=${ADVERTISE_IP} openssl req -new -key /etc/kubernetes/ssl/${WORKER_FQDN}-worker-key.pem \
+  #   -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker.csr -subj "/CN=${WORKER_FQDN}" \
+  #   -config ./conf/worker-openssl.cnf
+  # sudo ADVERTISE_IP=${ADVERTISE_IP} openssl x509 -req -in /etc/kubernetes/ssl/${WORKER_FQDN}-worker.csr \
+  #   -CA /etc/kubernetes/ssl/ca.pem -CAkey ${HOME}/cert/ca-key.pem -CAcreateserial -out /etc/kubernetes/ssl/${WORKER_FQDN}-worker.pem \
+  #   -days 365 -extensions v3_req -extfile ./conf/worker-openssl.cnf
 
   sudo chmod 600 /etc/kubernetes/ssl/*-key.pem
   sudo chown root:root /etc/kubernetes/ssl/*-key.pem
 
-  sudo ln -s /etc/kubernetes/ssl/${WORKER_FQDN}-worker.pem /etc/kubernetes/ssl/worker.pem
-  sudo ln -s /etc/kubernetes/ssl/${WORKER_FQDN}-worker-key.pem /etc/kubernetes/ssl/worker-key.pem
+  # sudo ln -s /etc/kubernetes/ssl/${WORKER_FQDN}-worker.pem /etc/kubernetes/ssl/worker.pem
+  # sudo ln -s /etc/kubernetes/ssl/${WORKER_FQDN}-worker-key.pem /etc/kubernetes/ssl/worker-key.pem
 
   print_green "TLS Assets"
 }
