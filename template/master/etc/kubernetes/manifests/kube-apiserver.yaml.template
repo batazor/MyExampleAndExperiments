@@ -11,23 +11,35 @@ spec:
     command:
     - /hyperkube
     - apiserver
+    - --apiserver-count=3
+    - --audit-log-maxage=30
+    - --audit-log-maxbackup=3
+    - --audit-log-maxsize=100
+    - --audit-log-path=/var/log/audit.log
     - --storage-media-type=application/json
     - --bind-address=0.0.0.0
-    - --insecure-bind-address=0.0.0.0
+    - --insecure-bind-address=127.0.0.1
     - --etcd-servers=${ETCD_ENDPOINTS}
     - --allow-privileged=true
-    - --service-cluster-ip-range=${SERVICE_IP_RANGE}
-    - --service-node-port-range=80-32000
     - --secure-port=${APISERVER_PORT}
     - --advertise-address=${ADVERTISE_IP}
-    - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
-    - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
-    - --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+    - --admission-control=Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
-    - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
-    - --runtime-config=extensions/v1beta1=true,networking.k8s.io/v1,batch/v2alpha1=true,admissionregistration.k8s.io/v1alpha1=true
+    - --enable-swagger-ui=true
     - --anonymous-auth=false
-    - --authorization-mode=RBAC
+    - --authorization-mode=Node,RBAC
+    - --event-ttl=1h
+    - --kubelet-certificate-authority=/etc/kubernetes/ssl/ca.pem
+    - --kubelet-client-certificate=/etc/kubernetes/ssl/kubernetes.pem
+    - --kubelet-client-key=/etc/kubernetes/ssl/kubernetes-key.pem
+    - --kubelet-https=true
+    - --runtime-config=api/all
+    - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+    - --service-cluster-ip-range=${SERVICE_IP_RANGE}
+    - --service-node-port-range=80-32000
+    - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --tls-cert-file=/etc/kubernetes/ssl/kubernetes.pem
+    - --tls-private-key-file=/etc/kubernetes/ssl/kubernetes-key.pem
     livenessProbe:
       httpGet:
         host: 127.0.0.1
