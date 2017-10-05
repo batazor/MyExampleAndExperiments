@@ -16,6 +16,7 @@ source "$DEPLOY_ROOT_DIR/script/k8s.sh"
 source "$DEPLOY_ROOT_DIR/script/master.sh"
 source "$DEPLOY_ROOT_DIR/script/worker.sh"
 source "$DEPLOY_ROOT_DIR/script/menu.sh"
+source "$DEPLOY_ROOT_DIR/script/dependencies.sh"
 
 # ==============================================================================
 # Export ENV variables =========================================================
