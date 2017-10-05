@@ -49,5 +49,5 @@ add_master() {
   print_green "Move ssh cert" && ssl_master
   yes_or_no "Generate new config?" && generate_config_master;
   yes_or_no "Start master?" && start_master;
-  yes_or_no "Install kubectl?" && install_kubectl;
+  yes_or_no "Setting kubectl?" && setting_kubectl;
 }

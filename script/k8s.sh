@@ -12,7 +12,7 @@ clean_k8s_conf() {
   sudo systemctl stop kubelet docker flanneld
 }
 
-install_kubectl() {
+setting_kubectl() {
   CA_CERT="${HOME}/cert/ca.pem"
   ADMIN_KEY="${HOME}/cert/admin-key.pem"
   ADMIN_CERT="${HOME}/cert/admin.pem"
