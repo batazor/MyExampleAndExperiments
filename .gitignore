@@ -2,3 +2,4 @@
 dist
 cert
 .srl
+conf/apiserver-csr.json
