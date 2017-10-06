@@ -11,9 +11,9 @@ spec:
     command:
     - /hyperkube
     - proxy
-    - --cluster-cidr=${POD_NETWORK}
     - --master=http://127.0.0.1:8080
     - --proxy-mode=iptables
+    # - --cluster-cidr=${POD_NETWORK}
     securityContext:
       privileged: true
     volumeMounts:

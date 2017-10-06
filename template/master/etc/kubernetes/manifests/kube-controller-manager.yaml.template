@@ -11,16 +11,16 @@ spec:
     command:
     - /hyperkube
     - controller-manager
-    - --address=0.0.0.0
-    - --cluster-cidr=${POD_NETWORK}
-    - --cluster-name=kubernetes
-    - --cluster-signing-cert-file=/etc/kubernetes/ssl/ca.pem
-    - --cluster-signing-key-file=/etc/kubernetes/ssl/ca-key.pem
-    - --leader-elect=true
     - --master=http://127.0.0.1:8080
+    # - --address=0.0.0.0
+    # - --cluster-cidr=${POD_NETWORK}
+    # - --cluster-name=kubernetes
+    # - --leader-elect=true
+    - --service-cluster-ip-range=${SERVICE_IP_RANGE}
     - --root-ca-file=/etc/kubernetes/ssl/ca.pem
     - --service-account-private-key-file=/etc/kubernetes/ssl/ca-key.pem
-    - --service-cluster-ip-range=${SERVICE_IP_RANGE}
+    - --cluster-signing-cert-file=/etc/kubernetes/ssl/ca.pem
+    - --cluster-signing-key-file=/etc/kubernetes/ssl/ca-key.pem
     resources:
       requests:
         cpu: 300m
@@ -30,7 +30,7 @@ spec:
         path: /healthz
         port: 10252
       initialDelaySeconds: 15
-      timeoutSeconds: 5
+      timeoutSeconds: 1
     volumeMounts:
     - mountPath: /etc/kubernetes/ssl
       name: ssl-certs-kubernetes
