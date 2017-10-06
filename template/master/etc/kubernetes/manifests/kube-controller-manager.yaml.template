@@ -7,7 +7,7 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-controller-manager
-    image: quay.io/coreos/hyperkube:${K8S_VER}
+    image: gcr.io/google_containers/hyperkube-amd64:${K8S_VER}
     command:
     - /hyperkube
     - controller-manager

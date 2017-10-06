@@ -3,7 +3,7 @@ Description=Kubernetes Kubelet
 
 [Service]
 Environment=KUBELET_IMAGE_TAG=${K8S_VER}
-Environment=KUBELET_IMAGE_URL=quay.io/coreos/hyperkube
+Environment=KUBELET_IMAGE_URL=gcr.io/google_containers/hyperkube-amd64
 Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
   --volume var-log,kind=host,source=/var/log \
   --mount volume=var-log,target=/var/log \
