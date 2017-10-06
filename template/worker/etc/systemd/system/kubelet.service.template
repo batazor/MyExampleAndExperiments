@@ -17,7 +17,7 @@ ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --api-servers=https://${MASTER_HOST}:${APISERVER_PORT} \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
-  --network-plugin=${NETWORK_PLUGIN} \
+  --network-plugin=cni \
   --hairpin-mode=hairpin-veth \
   --container-runtime=docker \
   --register-node=true \
