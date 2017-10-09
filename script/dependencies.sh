@@ -13,7 +13,7 @@ install_kubectl() {
   print_green "Install kubectl."
   mkdir -p ~/bin
   print_green "Download. Please wait..."
-  curl -O https://storage.googleapis.com/kubernetes-release/release/${K8S_VER}/bin/linux/amd64/kubectl
+  curl -O https://storage.googleapis.com/kubernetes-release/release/${KUBELET_IMAGE_TAG}/bin/linux/amd64/kubectl
   mv kubectl ~/bin/kubectl
   chmod +x ~/bin/kubectl
   export PATH=$PATH:~/bin
