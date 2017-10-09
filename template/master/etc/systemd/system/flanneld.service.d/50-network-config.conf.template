@@ -1,0 +1,2 @@
+[Service]
+ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config '{"Network": "${POD_NETWORK}", "Backend": {"Type": "vxlan"}}'
