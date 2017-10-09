@@ -47,8 +47,7 @@ start_worker() {
   print_green "Start..."
 
   sudo systemctl daemon-reload
-  sudo systemctl enable flanneld docker kubelet
-  sudo systemctl restart flanneld docker kubelet
+  sudo systemctl enable --now flanneld docker kubelet
 }
 
 add_worker() {

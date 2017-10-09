@@ -13,7 +13,6 @@ ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
-  --api-servers=http://127.0.0.1:8080 \
   --allow-privileged \
   --anonymous-auth=false \
   --cert-dir=/etc/kubernetes/ssl \
@@ -26,7 +25,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --container-runtime=rkt \
   --contention-profiling \
   --enable-custom-metrics \
-  --eviction-hard="memory.available<100Mi,nodefs.available<10%,nodefs.inodesFree<5%" \ )
+  --eviction-hard="memory.available<100Mi,nodefs.available<10%,nodefs.inodesFree<5%" \
   --experimental-check-node-capabilities-before-mount \
   --fail-swap-on=false \
   --hairpin-mode=hairpin-veth \
