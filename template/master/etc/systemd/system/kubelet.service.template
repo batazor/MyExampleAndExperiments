@@ -15,19 +15,16 @@ ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --allow-privileged \
   --anonymous-auth=false \
-  --cert-dir=/etc/kubernetes/ssl \
   --chaos-chance=0.0 \
   --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --cluster-dns=${DNS_SERVICE_IP} \
   --cluster-domain=cluster.local \
-  --cni-bin-dir=/opt/cni/bin \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --container-runtime=docker \
   --contention-profiling \
   --enable-custom-metrics \
   --eviction-hard="memory.available<100Mi,nodefs.available<10%,nodefs.inodesFree<5%" \
   --experimental-check-node-capabilities-before-mount \
-  --fail-swap-on=false \
   --hairpin-mode=hairpin-veth \
   --hostname-override=${ADVERTISE_IP} \
   --image-pull-progress-deadline 2m \
