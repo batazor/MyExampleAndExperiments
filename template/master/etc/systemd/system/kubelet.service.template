@@ -1,11 +1,11 @@
 [Unit]
-Description=Kubernetes Kubelet
+Description=Kubernetes Kubelet Server
 Documentation=https://raw.githubusercontent.com/kubernetes/kubernetes.github.io/master/docs/admin/kubelet.md
 
 [Service]
 Environment=KUBELET_IMAGE_TAG=${K8S_VER}
 Environment=KUBELET_IMAGE_URL=gcr.io/google_containers/hyperkube-amd64
-Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
+Environment="\
   --volume var-log,kind=host,source=/var/log \
   --mount volume=var-log,target=/var/log \
   --volume cni-bin,kind=host,source=/opt/cni/bin \
@@ -17,16 +17,15 @@ Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
 ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
 ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
-ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
+# ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --api-servers=http://127.0.0.1:8080 \
   --allow-privileged=true \
   --anonymous-auth=false \
   --cert-dir=/etc/kubernetes/ssl \
-  --cgroup-driver=cgroupfs \
   --chaos-chance=0.0 \
   --cluster-dns=${DNS_SERVICE_IP} \
-  --cluster-domain="cluster.local" \
+  --cluster-domain=cluster.local \
   --cni-bin-dir=/opt/cni/bin \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --container-runtime=rkt \
@@ -46,9 +45,11 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --rotate-certificates=true \
   --runtime-request-timeout=5m \
   --v=2
-ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
+# ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
 Restart=always
-RestartSec=10
+RestartSec=2s
+StartLimitInterval=0
+KillMode=process
 
 [Install]
 WantedBy=multi-user.target
