@@ -6,21 +6,15 @@ Documentation=https://raw.githubusercontent.com/kubernetes/kubernetes.github.io/
 Environment=KUBELET_IMAGE_TAG=${K8S_VER}
 Environment=KUBELET_IMAGE_URL=gcr.io/google_containers/hyperkube-amd64
 Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
-  --volume var-log,kind=host,source=/var/log \
-  --mount volume=var-log,target=/var/log \
-  --volume cni-bin,kind=host,source=/opt/cni/bin \
-  --mount volume=cni-bin,target=/opt/cni/bin \
-  --volume etc-cni-net,kind=host,source=/etc/kubernetes/cni/net.d \
-  --mount volume=etc-cni-net,target=/etc/cni/net.d \
-  --volume dns,kind=host,source=/etc/resolv.conf \
-  --mount volume=dns,target=/etc/resolv.conf"
+  --volume=resolv,kind=host,source=/etc/resolv.conf \
+  --mount volume=resolv,target=/etc/resolv.conf"
 ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
 ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --api-servers=http://127.0.0.1:8080 \
-  --allow-privileged=true \
+  --allow-privileged \
   --anonymous-auth=false \
   --cert-dir=/etc/kubernetes/ssl \
   --chaos-chance=0.0 \
@@ -30,29 +24,27 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --cni-bin-dir=/opt/cni/bin \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --container-runtime=rkt \
-  --contention-profiling=true \
-  --enable-custom-metrics=true \
+  --contention-profiling \
+  --enable-custom-metrics \
   --eviction-hard="memory.available<100Mi,nodefs.available<10%,nodefs.inodesFree<5%" \ )
-  --experimental-check-node-capabilities-before-mount=true \
+  --experimental-check-node-capabilities-before-mount \
   --fail-swap-on=false \
   --hairpin-mode=hairpin-veth \
   --hostname-override=${ADVERTISE_IP} \
-  --image-pull-progress-deadline=2m \
-  --iptables-masquerade-bit=14 \
-  --max-pods=300 \
+  --image-pull-progress-deadline 2m \
+  --iptables-masquerade-bit 14 \
+  --max-pods 300 \
   --network-plugin=cni \
   --node-labels="role=master" \
   --pod-manifest-path=/etc/kubernetes/manifests \
-  --rotate-certificates=true \
-  --runtime-request-timeout=5m \
+  --rotate-certificates \
+  --runtime-request-timeout 5m \
   --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem \
   --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem \
   --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
 ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
 Restart=always
-RestartSec=2s
-StartLimitInterval=0
-KillMode=process
+RestartSec=10s
 
 [Install]
 WantedBy=multi-user.target
