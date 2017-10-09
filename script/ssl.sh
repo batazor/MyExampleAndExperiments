@@ -1,5 +1,5 @@
-# new_ssl_cfssl() {
-new_ssl() {
+new_ssl_cfssl() {
+# new_ssl() {
   print_green " - Create cert folder"
   mkdir -p ${HOME}/cert
 
@@ -44,8 +44,8 @@ new_ssl() {
   openssl pkcs12 -inkey ${HOME}/cert/admin-key.pem -in ${HOME}/cert/admin.pem -export -out ${HOME}/cert/admin.pfx
 }
 
-new_ssl_openssl() {
-# new_ssl() {
+# new_ssl_openssl() {
+new_ssl() {
   rm -rf ${HOME}/cert
 
   print_green " - Create cert folder"

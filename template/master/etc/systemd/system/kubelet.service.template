@@ -15,8 +15,6 @@ ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --allow-privileged \
   --anonymous-auth=false \
-  --chaos-chance=0.0 \
-  --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --cluster-dns=${DNS_SERVICE_IP} \
   --cluster-domain=cluster.local \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
@@ -33,9 +31,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --node-labels="role=master" \
   --pod-manifest-path=/etc/kubernetes/manifests \
   --rotate-certificates \
-  --runtime-request-timeout=5m \
-  --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem \
-  --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+  --runtime-request-timeout=5m
 ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
 Restart=always
 RestartSec=10s
