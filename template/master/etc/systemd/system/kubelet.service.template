@@ -5,7 +5,7 @@ Documentation=https://raw.githubusercontent.com/kubernetes/kubernetes.github.io/
 [Service]
 Environment=KUBELET_IMAGE_TAG=${K8S_VER}
 Environment=KUBELET_IMAGE_URL=gcr.io/google_containers/hyperkube-amd64
-Environment="\
+Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
   --volume var-log,kind=host,source=/var/log \
   --mount volume=var-log,target=/var/log \
   --volume cni-bin,kind=host,source=/opt/cni/bin \
@@ -24,6 +24,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --anonymous-auth=false \
   --cert-dir=/etc/kubernetes/ssl \
   --chaos-chance=0.0 \
+  --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --cluster-dns=${DNS_SERVICE_IP} \
   --cluster-domain=cluster.local \
   --cni-bin-dir=/opt/cni/bin \
@@ -44,7 +45,9 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --pod-manifest-path=/etc/kubernetes/manifests \
   --rotate-certificates=true \
   --runtime-request-timeout=5m \
-  --v=2
+  --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem \
+  --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem \
+  --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
 ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
 Restart=always
 RestartSec=2s
