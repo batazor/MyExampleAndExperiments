@@ -22,7 +22,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --cluster-domain=cluster.local \
   --cni-bin-dir=/opt/cni/bin \
   --cni-conf-dir=/etc/kubernetes/cni/net.d \
-  --container-runtime=rkt \
+  --container-runtime=docker \
   --contention-profiling \
   --enable-custom-metrics \
   --eviction-hard="memory.available<100Mi,nodefs.available<10%,nodefs.inodesFree<5%" \
