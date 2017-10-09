@@ -1,6 +1,6 @@
 [Unit]
 Description=Kubernetes Kubelet
-Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+Documentation=https://raw.githubusercontent.com/kubernetes/kubernetes.github.io/master/docs/admin/kubelet.md
 
 [Service]
 Environment=KUBELET_IMAGE_TAG=${K8S_VER}
@@ -19,23 +19,34 @@ ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
+  --api-servers=http://127.0.0.1:8080 \
   --allow-privileged=true \
   --anonymous-auth=false \
-  --client-ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-dir=/etc/kubernetes/ssl \
+  --cgroup-driver=cgroupfs \
+  --chaos-chance=0.0 \
+  # --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --cluster-dns=${DNS_SERVICE_IP} \
   --cluster-domain=cluster.local \
-  --image-pull-progress-deadline=2m \
+  --cni-bin-dir=/opt/cni/bin \ # <Warning: Alpha feature> The full path of the directory in which to search for CNI plugin binaries.
+  --cni-conf-dir=/etc/kubernetes/cni/net.d \ # <Warning: Alpha feature> The full path of the directory in which to search for CNI config files.
+  --container-runtime=rkt \ # rkt,docker
+  --contention-profiling=true \ # Enable lock contention profiling, if profiling is enabled.
+  --enable-custom-metrics=true \ # Support for gathering custom metrics.
+  --eviction-hard="memory.available<100Mi,nodefs.available<10%,nodefs.inodesFree<5%" \ # A set of eviction thresholds (e.g. memory.available<1Gi) that if met would trigger a pod eviction
+  --experimental-check-node-capabilities-before-mount=true \ # [Experimental] if set true, the kubelet will check the underlying node for required components (binaries, etc.) before performing the mount
+  --fail-swap-on=false \ # Makes the Kubelet fail to start if swap is enabled on the node.
+  --hairpin-mode=hairpin-veth \ # How should the kubelet setup hairpin NAT. This allows endpoints of a Service to loadbalance back to themselves if they should try to access their own Service.
+  --hostname-override=${ADVERTISE_IP} \ # If non-empty, will use this string as identification instead of the actual hostname.
+  --image-pull-progress-deadline=2m \ # If no pulling progress is made before this deadline, the image pulling will be cancelled.
+  --iptables-masquerade-bit=14 \ # The bit of the fwmark space to mark packets for SNAT. Must be within the range [0, 31]
+  --max-pods=300 \ # Number of Pods that can run on this Kubelet.
   --network-plugin=cni \
-  # --pod-cidr=${POD_CIDR} \
-  --register-node=true \
-  --runtime-request-timeout=15m \
-  --api-servers=http://127.0.0.1:8080 \
-  --register-schedulable=true \
-  --cni-conf-dir=/etc/kubernetes/cni/net.d \
-  --hairpin-mode=hairpin-veth \
-  --container-runtime=docker \
-  --pod-manifest-path=/etc/kubernetes/manifests \
-  --hostname-override=${ADVERTISE_IP}
+  --node-labels="role=master" \ # Labels to add when registering the node in the cluster
+  --pod-manifest-path=/etc/kubernetes/manifests \ # Path to to the directory containing pod manifest files to run, or the path to a single pod manifest file.
+  --rotate-certificates=true \ # <Warning: Beta feature> Auto rotate the kubelet client certificates by requesting new certificates from the kube-apiserver when the certificate expiration approaches.
+  --runtime-request-timeout=5m \ # Timeout of all runtime requests except long running request - pull, logs, exec and attach. When timeout exceeded, kubelet will cancel the request, throw out an error and retry later. (default 2m0s)
+  --v=2
 ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
 Restart=always
 RestartSec=10
