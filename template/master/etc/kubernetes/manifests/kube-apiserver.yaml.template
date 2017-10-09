@@ -17,49 +17,65 @@ spec:
     command:
     - /hyperkube
     - apiserver
-    - --apiserver-count=3
-    - --audit-log-maxage=30
-    - --audit-log-maxbackup=3
-    - --audit-log-maxsize=100
-    - --audit-log-path=/var/log/audit.log
-    - --storage-media-type=application/json
-    - --bind-address=0.0.0.0
-    - --insecure-bind-address=0.0.0.0 #NOTE: 127.0.0.1
-    - --etcd-servers=${ETCD_ENDPOINTS}
-    - --allow-privileged=true
-    - --secure-port=${APISERVER_PORT}
+    - --requestheader-username-headers=X-Remote-User
+    - --requestheader-group-headers=X-Remote-Group
+    - --requestheader-extra-headers-prefix=X-Remote-Extra-
+    - --requestheader-allowed-names=front-proxy-client
     - --advertise-address=${ADVERTISE_IP}
-    - --admission-control=Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
-    - --enable-swagger-ui=true
-    - --anonymous-auth=false
-    - --authorization-mode=Node,RBAC
-    - --event-ttl=1h
-    - --runtime-config=api/all
+    - --secure-port=${APISERVER_PORT}
+    - --kubelet-client-key=/etc/kubernetes/ssl/apiserver-key.pem
+    - --insecure-port=0
+    - --allow-privileged=true
     - --service-cluster-ip-range=${SERVICE_IP_RANGE}
-    - --service-node-port-range=80-32000
-    - --kubelet-https=true
-    - --kubelet-certificate-authority=/etc/kubernetes/ssl/ca.pem
-    - --kubelet-client-certificate=/etc/kubernetes/ssl/apiserver.pem
-    - --kubelet-client-key=/etc/kubernetes/ssl/kubernetes-key.pem
-    - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+    - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
     - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
     - --tls-private-key-file=/etc/kubernetes/ssl/kubernetes-key.pem
+    - --enable-bootstrap-token-auth=true
+    - --admission-control=Initializers,NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,ResourceQuota
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
-    - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+    - --kubelet-client-certificate=/etc/kubernetes/ssl/apiserver.pem
+    # - --proxy-client-cert-file=/var/lib/localkube/certs/front-proxy-client.crt
+    # - --proxy-client-key-file=/var/lib/localkube/certs/front-proxy-client.key
+    - --authorization-mode=Node,RBAC
+    - --etcd-servers=${ETCD_ENDPOINTS}
+    # - --apiserver-count=3
+    # - --audit-log-maxage=30
+    # - --audit-log-maxbackup=3
+    # - --audit-log-maxsize=100
+    # - --audit-log-path=/var/log/audit.log
+    # - --storage-media-type=application/json
+    # - --bind-address=0.0.0.0
+    # - --insecure-bind-address=0.0.0.0 #NOTE: 127.0.0.1
+    # - --enable-swagger-ui=true
+    # - --anonymous-auth=false
+    # - --event-ttl=1h
+    # - --runtime-config=api/all
+    # - --service-node-port-range=80-32000
+    # - --kubelet-https=true
+    # - --kubelet-certificate-authority=/etc/kubernetes/ssl/ca.pem
+    # - --kubelet-client-key=/etc/kubernetes/ssl/kubernetes-key.pem
+    # - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
     livenessProbe:
+      failureThreshold: 8
       httpGet:
         host: 127.0.0.1
-        port: 8080
         path: /healthz
+        port: 8443
+        scheme: HTTPS
       initialDelaySeconds: 15
       timeoutSeconds: 15
-    ports:
-    - containerPort: 443
-      hostPort: 443
-      name: https
-    - containerPort: 8080
-      hostPort: 8080
-      name: local
+    name: kube-apiserver
+    resources:
+      requests:
+        cpu: 250m
+    # ports:
+    # - containerPort: 443
+    #   hostPort: 443
+    #   name: https
+    # - containerPort: 8080
+    #   hostPort: 8080
+    #   name: local
     volumeMounts:
     - mountPath: /etc/kubernetes/ssl
       name: ssl-certs-kubernetes
