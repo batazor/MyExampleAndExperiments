@@ -7,7 +7,7 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-controller-manager
-    image: gcr.io/google_containers/hyperkube-amd64:${KUBELET_IMAGE_TAG}
+    image: ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
     command:
     - /hyperkube
     - controller-manager

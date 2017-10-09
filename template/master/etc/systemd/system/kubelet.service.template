@@ -4,7 +4,7 @@ Documentation=https://raw.githubusercontent.com/kubernetes/kubernetes.github.io/
 
 [Service]
 Environment=KUBELET_IMAGE_TAG=${KUBELET_IMAGE_TAG}
-Environment=KUBELET_IMAGE_URL=gcr.io/google_containers/hyperkube-amd64
+Environment=KUBELET_IMAGE_URL=${KUBELET_IMAGE_URL}
 Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
   --volume=resolv,kind=host,source=/etc/resolv.conf \
   --mount volume=resolv,target=/etc/resolv.conf"
