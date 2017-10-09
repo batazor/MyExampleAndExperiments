@@ -30,11 +30,12 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --fail-swap-on=false \
   --hairpin-mode=hairpin-veth \
   --hostname-override=${ADVERTISE_IP} \
-  --image-pull-progress-deadline=2m \
-  --iptables-masquerade-bit=14 \
+  --image-pull-progress-deadline 2m \
+  --iptables-masquerade-bit 14 \
   --network-plugin=cni \
   --node-labels="role=master" \
   --pod-manifest-path=/etc/kubernetes/manifests \
+  --rotate-certificates \
   --runtime-request-timeout=5m \
   --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem \
   --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
