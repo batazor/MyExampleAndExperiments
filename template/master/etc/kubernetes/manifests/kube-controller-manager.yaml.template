@@ -17,7 +17,6 @@ spec:
     command:
     - /hyperkube
     - controller-manager
-    - --cluster-name=kubernetes
     - --use-service-account-credentials=true
     - --controllers=*,bootstrapsigner,tokencleaner
     - --cluster-signing-key-file=/etc/kubernetes/ssl/ca-key.pem
