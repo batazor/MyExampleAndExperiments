@@ -33,14 +33,6 @@ start_master() {
 
   sudo systemctl daemon-reload
   sudo systemctl enable --now flanneld docker kubelet
-
-  cat << EOF
---------------------------------------------------------------------------------
-Basic Health Checks
-$ curl http://127.0.0.1:8080/version
-$ curl -s localhost:10255/pods | jq -r '.items[].metadata.name'
---------------------------------------------------------------------------------
-EOF
 }
 
 add_master() {

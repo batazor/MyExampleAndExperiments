@@ -17,7 +17,7 @@ spec:
     command:
     - /hyperkube
     - scheduler
-    - --master=http://127.0.0.1:8080
+    - --master=https://127.0.0.1:${APISERVER_PORT}
     - --address=127.0.0.1
     livenessProbe:
       failureThreshold: 8
