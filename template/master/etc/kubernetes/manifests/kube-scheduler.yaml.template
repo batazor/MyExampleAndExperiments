@@ -19,7 +19,6 @@ spec:
     - scheduler
     - --master=http://127.0.0.1:8080
     - --address=127.0.0.1
-    - --version=true
     livenessProbe:
       failureThreshold: 8
       httpGet:
