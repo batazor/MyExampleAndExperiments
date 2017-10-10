@@ -21,7 +21,7 @@ spec:
     - --advertise-address=${ADVERTISE_IP}
     - --allow-privileged=true
     - --anonymous-auth=false
-    - --apiserver-count=3
+    - --apiserver-count=1
     - --audit-log-maxage=30
     - --audit-log-maxbackup=3
     - --audit-log-maxsize=100
@@ -29,24 +29,26 @@ spec:
     - --authorization-mode=Node,RBAC
     - --bind-address=0.0.0.0
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
-    - --enable-bootstrap-token-auth=true
+    # - --enable-bootstrap-token-auth=true
     - --enable-swagger-ui=true
     - --etcd-servers=${ETCD_ENDPOINTS}
     - --insecure-bind-address=127.0.0.1
+    - --insecure-port=0
     - --kubelet-certificate-authority=/etc/kubernetes/ssl/ca.pem
     - --kubelet-client-certificate=/etc/kubernetes/ssl/apiserver.pem
     - --kubelet-client-key=/etc/kubernetes/ssl/apiserver-key.pem
     - --kubelet-https=true
+    - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+    - --proxy-client-cert-file=/etc/kubernetes/ssl/apiserver.pem
+    - --proxy-client-key-file=/etc/kubernetes/ssl/apiserver-key.pem
     - --requestheader-username-headers=X-Remote-User
     - --requestheader-group-headers=X-Remote-Group
     - --requestheader-extra-headers-prefix=X-Remote-Extra-
     - --requestheader-allowed-names=front-proxy-client
-    - --runtime-config=api/all
     - --secure-port=${APISERVER_PORT}
     - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
     - --service-cluster-ip-range=${SERVICE_IP_RANGE}
     - --service-node-port-range=80-32000
-    - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
     - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
     - --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
     livenessProbe:
@@ -62,13 +64,6 @@ spec:
     resources:
       requests:
         cpu: 250m
-    # ports:
-    # - containerPort: 443
-    #   hostPort: 443
-    #   name: https
-    # - containerPort: 8080
-    #   hostPort: 8080
-    #   name: local
     volumeMounts:
     - mountPath: /etc/kubernetes/ssl
       name: ssl-certs-kubernetes
