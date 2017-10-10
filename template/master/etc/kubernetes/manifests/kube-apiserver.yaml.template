@@ -35,10 +35,10 @@ spec:
     - --admission-control=Initializers,NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,ResourceQuota
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
     - --kubelet-client-certificate=/etc/kubernetes/ssl/apiserver.pem
-    # - --proxy-client-cert-file=/var/lib/localkube/certs/front-proxy-client.crt
-    # - --proxy-client-key-file=/var/lib/localkube/certs/front-proxy-client.key
     - --authorization-mode=Node,RBAC
     - --etcd-servers=${ETCD_ENDPOINTS}
+    # - --proxy-client-cert-file=/var/lib/localkube/certs/front-proxy-client.crt
+    # - --proxy-client-key-file=/var/lib/localkube/certs/front-proxy-client.key
     # - --apiserver-count=3
     # - --audit-log-maxage=30
     # - --audit-log-maxbackup=3
