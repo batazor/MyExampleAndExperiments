@@ -41,13 +41,8 @@ spec:
     - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
     - --proxy-client-cert-file=/etc/kubernetes/ssl/apiserver.pem
     - --proxy-client-key-file=/etc/kubernetes/ssl/apiserver-key.pem
-    - --requestheader-username-headers=X-Remote-User
-    - --requestheader-group-headers=X-Remote-Group
-    - --requestheader-extra-headers-prefix=X-Remote-Extra-
-    - --requestheader-allowed-names=front-proxy-client
-    - --requestheader-client-ca-file=/etc/kubernetes/ssl/ca.pem
     - --secure-port=${APISERVER_PORT}
-    - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+    - --service-account-key-file=/etc/kubernetes/ssl/ca-key.pem
     - --service-cluster-ip-range=${SERVICE_IP_RANGE}
     - --service-node-port-range=80-32000
     - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
