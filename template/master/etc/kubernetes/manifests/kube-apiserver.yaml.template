@@ -30,7 +30,7 @@ spec:
     - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
     - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
     - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
-    - --tls-private-key-file=/etc/kubernetes/ssl/kubernetes-key.pem
+    - --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
     - --enable-bootstrap-token-auth=true
     - --admission-control=Initializers,NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,ResourceQuota
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
@@ -54,7 +54,7 @@ spec:
     # - --service-node-port-range=80-32000
     # - --kubelet-https=true
     # - --kubelet-certificate-authority=/etc/kubernetes/ssl/ca.pem
-    # - --kubelet-client-key=/etc/kubernetes/ssl/kubernetes-key.pem
+    # - --kubelet-client-key=/etc/kubernetes/ssl/apiserver-key.pem
     # - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
     livenessProbe:
       failureThreshold: 8
