@@ -37,25 +37,21 @@ spec:
     - --kubelet-client-certificate=/etc/kubernetes/ssl/apiserver.pem
     - --authorization-mode=Node,RBAC
     - --etcd-servers=${ETCD_ENDPOINTS}
-    # - --proxy-client-cert-file=/var/lib/localkube/certs/front-proxy-client.crt
-    # - --proxy-client-key-file=/var/lib/localkube/certs/front-proxy-client.key
-    # - --apiserver-count=3
-    # - --audit-log-maxage=30
-    # - --audit-log-maxbackup=3
-    # - --audit-log-maxsize=100
-    # - --audit-log-path=/var/log/audit.log
-    # - --storage-media-type=application/json
-    # - --bind-address=0.0.0.0
-    # - --insecure-bind-address=0.0.0.0 #NOTE: 127.0.0.1
-    # - --enable-swagger-ui=true
-    # - --anonymous-auth=false
-    # - --event-ttl=1h
-    # - --runtime-config=api/all
-    # - --service-node-port-range=80-32000
-    # - --kubelet-https=true
-    # - --kubelet-certificate-authority=/etc/kubernetes/ssl/ca.pem
-    # - --kubelet-client-key=/etc/kubernetes/ssl/apiserver-key.pem
-    # - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --apiserver-count=3
+    - --audit-log-maxage=30
+    - --audit-log-maxbackup=3
+    - --audit-log-maxsize=100
+    - --audit-log-path=/var/log/audit.log
+    - --bind-address=0.0.0.0
+    - --insecure-bind-address=127.0.0.1
+    - --enable-swagger-ui=true
+    - --anonymous-auth=false
+    - --event-ttl=1h
+    - --runtime-config=api/all
+    - --service-node-port-range=80-32000
+    - --kubelet-https=true
+    - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --v=2
     livenessProbe:
       failureThreshold: 8
       httpGet:
