@@ -29,7 +29,7 @@ spec:
     - --authorization-mode=Node,RBAC
     - --bind-address=0.0.0.0
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
-    # - --enable-bootstrap-token-auth=true
+    - --enable-bootstrap-token-auth=true
     - --enable-swagger-ui=true
     - --etcd-servers=${ETCD_ENDPOINTS}
     - --insecure-bind-address=127.0.0.1
