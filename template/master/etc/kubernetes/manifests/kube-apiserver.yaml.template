@@ -18,40 +18,38 @@ spec:
     - /hyperkube
     - apiserver
     - --admission-control=Initializers,NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,ResourceQuota
-    - --requestheader-username-headers=X-Remote-User
-    - --requestheader-group-headers=X-Remote-Group
-    - --requestheader-extra-headers-prefix=X-Remote-Extra-
-    - --requestheader-allowed-names=front-proxy-client
     - --advertise-address=${ADVERTISE_IP}
-    - --secure-port=${APISERVER_PORT}
-    - --kubelet-client-key=/etc/kubernetes/ssl/apiserver-key.pem
-    - --insecure-port=0
     - --allow-privileged=true
-    - --service-cluster-ip-range=${SERVICE_IP_RANGE}
-    - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
-    - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
-    - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
-    - --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
-    - --enable-bootstrap-token-auth=true
-    - --client-ca-file=/etc/kubernetes/ssl/ca.pem
-    - --kubelet-client-certificate=/etc/kubernetes/ssl/apiserver.pem
-    - --authorization-mode=Node,RBAC
-    - --etcd-servers=${ETCD_ENDPOINTS}
+    - --anonymous-auth=false
     - --apiserver-count=3
     - --audit-log-maxage=30
     - --audit-log-maxbackup=3
     - --audit-log-maxsize=100
     - --audit-log-path=/var/log/audit.log
+    - --authorization-mode=Node,RBAC
     - --bind-address=0.0.0.0
-    - --insecure-bind-address=127.0.0.1
+    - --client-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --enable-bootstrap-token-auth=true
     - --enable-swagger-ui=true
-    - --anonymous-auth=false
-    - --event-ttl=1h
-    - --runtime-config=api/all
-    - --service-node-port-range=80-32000
+    - --etcd-servers=${ETCD_ENDPOINTS}
+    - --insecure-bind-address=127.0.0.1
+    - --kubelet-certificate-authority=/etc/kubernetes/ssl/ca.pem
+    - --kubelet-client-certificate=/etc/kubernetes/ssl/apiserver.pem
+    - --kubelet-client-key=/etc/kubernetes/ssl/apiserver-key.pem
     - --kubelet-https=true
+    - --requestheader-username-headers=X-Remote-User
+    - --requestheader-group-headers=X-Remote-Group
+    - --requestheader-extra-headers-prefix=X-Remote-Extra-
+    - --requestheader-allowed-names=front-proxy-client
+    - --runtime-config=api/all
+    - --secure-port=${APISERVER_PORT}
+    - --service-account-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+    - --service-cluster-ip-range=${SERVICE_IP_RANGE}
+    - --service-node-port-range=80-32000
     - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
-    - --v=2
+    - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
+    - --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
+    - --version=true
     livenessProbe:
       failureThreshold: 8
       httpGet:

@@ -18,15 +18,15 @@ spec:
     - /hyperkube
     - controller-manager
     - --master=http://127.0.0.1:8080
+    - --cluster-signing-cert-file=/var/lib/kubernetes/ca.pem
+    - --cluster-signing-key-file=/var/lib/kubernetes/ca-key.pem
     - --use-service-account-credentials=true
     - --controllers=*,bootstrapsigner,tokencleaner
-    - --cluster-signing-key-file=/etc/kubernetes/ssl/ca-key.pem
     - --address=127.0.0.1
-    - --leader-elect=true
     - --root-ca-file=/etc/kubernetes/ssl/ca.pem
     - --service-account-private-key-file=/etc/kubernetes/ssl/ca-key.pem
     - --service-cluster-ip-range=${SERVICE_IP_RANGE}
-    - --cluster-signing-key-file=/etc/kubernetes/ssl/ca-key.pem
+    - --version=true
     livenessProbe:
       failureThreshold: 8
       httpGet:
