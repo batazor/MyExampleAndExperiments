@@ -1,19 +1,3 @@
-new_ssl_cfssl() {
-
-  print_green " - Generate the API Server Keypair"
-  envsubst < conf/apiserver-csr.template.json > conf/apiserver-csr.json
-  cfssl gencert \
-    -ca=${HOME}/cert/ca.pem \
-    -ca-key=${HOME}/cert/ca-key.pem \
-    -config=conf/ca-config.json \
-    -profile=kubernetes \
-    conf/apiserver-csr.json | cfssljson -bare ${HOME}/cert/apiserver
-
-  print_green " - Generate key for auth"
-  openssl pkcs12 -inkey ${HOME}/cert/admin-key.pem -in ${HOME}/cert/admin.pem -export -out ${HOME}/cert/admin.pfx
-}
-
-# new_ssl_openssl() {
 new_ssl() {
   rm -rf ${HOME}/cert
 
