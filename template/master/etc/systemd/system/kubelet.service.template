@@ -34,6 +34,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --pod-manifest-path=/etc/kubernetes/manifests \
   --rotate-certificates \
   --runtime-request-timeout=5m \
+  --tls-ca-file=/etc/kubernetes/ssl/ca.pem \
   --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem \
   --tls-private-key-file=/etc/kubernetes/ssl/apiserver-key.pem
 ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
