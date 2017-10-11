@@ -17,14 +17,15 @@ spec:
     command:
     - /hyperkube
     - controller-manager
-    - --master=https://127.0.0.1:${APISERVER_PORT}
+    - --address=127.0.0.1
+    # - --controllers=*,bootstrapsigner,tokencleaner
     - --cluster-signing-cert-file=/var/lib/kubernetes/ca.pem
     - --cluster-signing-key-file=/var/lib/kubernetes/ca-key.pem
-    - --use-service-account-credentials=true
-    - --controllers=*,bootstrapsigner,tokencleaner
-    - --address=127.0.0.1
+    - --master=https://127.0.0.1:${APISERVER_PORT}
+    # - --use-service-account-credentials=true
     - --root-ca-file=/etc/kubernetes/ssl/ca.pem
-    - --service-account-private-key-file=/etc/kubernetes/ssl/kubernetes-key.pem
+    - --service-account-private-key-file=/etc/kubernetes/ssl/ca-key.pem
+    - --service-cluster-ip-range=${SERVICE_IP_RANGE}
     - --service-cluster-ip-range=${SERVICE_IP_RANGE}
     livenessProbe:
       failureThreshold: 8
