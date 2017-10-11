@@ -9,6 +9,7 @@ ssl_master() {
   sudo chmod 600 /etc/kubernetes/ssl/*-key.pem
   sudo chown root:root /etc/kubernetes/ssl/*-key.pem
 
+  print_green "Move ssh cert" && ssl_master
   print_green "TLS Assets"
 }
 
@@ -37,7 +38,6 @@ start_master() {
 
 add_master() {
   yes_or_no "Generate new cert?" && new_ssl;
-  print_green "Move ssh cert" && ssl_master
   yes_or_no "Generate new config?" && generate_config_master;
   yes_or_no "Start master?" && start_master;
   yes_or_no "Setting kubectl?" && setting_kubectl;
