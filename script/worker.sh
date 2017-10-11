@@ -8,7 +8,6 @@ ssl_worker() {
   sudo chmod 600 /etc/kubernetes/ssl/*-key.pem
   sudo chown root:root /etc/kubernetes/ssl/*-key.pem
 
-  print_green "Move ssh cert" && ssl_worker
   print_green "TLS Assets"
 }
 
@@ -36,6 +35,7 @@ start_worker() {
 
 add_worker() {
   yes_or_no "Generate new cert?" && new_ssl;
+  print_green "Move ssh cert" && ssl_worker
   yes_or_no "Generate new config?" && generate_config_worker;
   yes_or_no "Start worker?" && start_worker;
 }
