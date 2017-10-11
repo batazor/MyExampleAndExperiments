@@ -3,8 +3,8 @@ ssl_master() {
 
   sudo cp ${HOME}/cert/ca.pem /etc/kubernetes/ssl/ca.pem
   sudo cp ${HOME}/cert/ca-key.pem /etc/kubernetes/ssl/ca-key.pem
-  sudo cp ${HOME}/cert/apiserver.pem /etc/kubernetes/ssl/apiserver.pem
-  sudo cp ${HOME}/cert/apiserver-key.pem /etc/kubernetes/ssl/apiserver-key.pem
+  sudo cp ${HOME}/cert/kubernetes.pem /etc/kubernetes/ssl/kubernetes.pem
+  sudo cp ${HOME}/cert/kubernetes-key.pem /etc/kubernetes/ssl/kubernetes-key.pem
 
   sudo chmod 600 /etc/kubernetes/ssl/*-key.pem
   sudo chown root:root /etc/kubernetes/ssl/*-key.pem
