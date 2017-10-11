@@ -46,7 +46,7 @@ new_ssl() {
     -config=conf/ca-config.json \
     -hostname=${K8S_SERVICE_IP},${MASTER_HOST},127.0.0.1,kubernetes,kubernetes.default,kubernetes.default.svc,kubernetes.default.svc.cluster.local \
     -profile=kubernetes \
-    conf/kubernetes-csr.json | cfssljson -bare ${HOME}/cert/apiserver
+    conf/kubernetes-csr.json | cfssljson -bare ${HOME}/cert/kubernetes
 
   # print_green " - Generate the API Server Keypair"
   # openssl genrsa -out ${HOME}/cert/apiserver-key.pem 2048
