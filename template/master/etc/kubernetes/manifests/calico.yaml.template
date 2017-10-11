@@ -18,8 +18,7 @@ data:
   # Configure the Calico backend to use.
   calico_backend: "bird"
 
-  # The CNI network configuration to install on each node.  The special
-  # values in this config will be automatically populated.
+  # The CNI network configuration to install on each node.
   cni_network_config: |-
     {
         "name": "calico",
