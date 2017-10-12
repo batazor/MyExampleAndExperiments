@@ -14,6 +14,10 @@ ssl_worker() {
 generate_kubeconfig() {
   print_green " - Generate kubeconfig"
 
+  CA_CERT="${HOME}/cert/ca.pem"
+  ADMIN_KEY="${HOME}/cert/admin-key.pem"
+  ADMIN_CERT="${HOME}/cert/admin.pem"
+
   kubectl config set-cluster default-cluster \
     --certificate-authority=${CA_CERT} \
     --embed-certs \
