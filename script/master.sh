@@ -28,11 +28,6 @@ generate_config_master() {
   sudo cp -R dist/* /
 }
 
-setting_etcd() {
-  print_green " - setting ETCD"
-  etcdctl set /coreos.com/network/config '{ "Network": "$POD_NETWORK", "Backend": {"Type": "vxlan"}}'
-}
-
 start_master() {
   print_green "Start..."
 
