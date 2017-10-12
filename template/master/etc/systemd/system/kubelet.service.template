@@ -14,8 +14,6 @@ ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --allow-privileged \
-  --anonymous-auth=false \
-  --chaos-chance=0.0 \
   --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --cluster-dns=${DNS_SERVICE_IP} \
   --cluster-domain=cluster.local \

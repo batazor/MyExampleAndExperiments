@@ -20,7 +20,6 @@ spec:
     - --admission-control=Initializers,NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,ResourceQuota
     - --advertise-address=${ADVERTISE_IP}
     - --allow-privileged=true
-    - --anonymous-auth=false
     - --apiserver-count=1
     - --audit-log-maxage=30
     - --audit-log-maxbackup=3
