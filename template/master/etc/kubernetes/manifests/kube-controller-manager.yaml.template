@@ -21,6 +21,7 @@ spec:
     # - --controllers=*,bootstrapsigner,tokencleaner
     - --cluster-signing-cert-file=/etc/kubernetes/ssl/ca.pem
     - --cluster-signing-key-file=/etc/kubernetes/ssl/ca-key.pem
+    - --leader-elect=true
     - --master=http://127.0.0.1:8080
     # - --use-service-account-credentials=true
     - --root-ca-file=/etc/kubernetes/ssl/ca.pem
