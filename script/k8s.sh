@@ -23,17 +23,15 @@ setting_kubectl() {
     --embed-certs=true \
     --server=https://${MASTER_HOST}:${APISERVER_PORT}
 
-  kubectl config set-credentials default-admin \
+  kubectl config set-credentials admin \
     --client-certificate=${ADMIN_CERT} \
-    --client-key=${ADMIN_KEY} \
-    --certificate-authority=${CA_CERT} \
-    --embed-certs=true
+    --client-key=${ADMIN_KEY}
 
-  kubectl config set-context default-system \
+  kubectl config set-context default-cluster \
     --cluster=default-cluster \
-    --user=default-admin
+    --user=admin
 
-  kubectl config use-context default-system
+  kubectl config use-context default-cluster
 
   print_green " - Test kubectl. Get node"
   kubectl get node
