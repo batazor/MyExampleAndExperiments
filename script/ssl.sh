@@ -37,8 +37,6 @@ new_ssl() {
 }
 
 new_ssl_worker() {
-  rm -rf ${HOME}/cert
-
   print_green " - Create cert folder"
   mkdir -p ${HOME}/cert
 
