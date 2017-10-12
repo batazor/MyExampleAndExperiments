@@ -36,6 +36,7 @@ generate_kubeconfig() {
     --kubeconfig=${HOSTNAME}.kubeconfig
 
   kubectl config use-context default --kubeconfig=${HOSTNAME}.kubeconfig
+  sudo cp ${HOSTNAME}.kubeconfig /etc/kubernetes/worker-kubeconfig.yaml
 }
 
 generate_config_worker() {
