@@ -20,7 +20,7 @@ setting_kubectl() {
   print_green " - Setting kubectl"
   kubectl config set-cluster default-cluster \
     --certificate-authority=${CA_CERT} \
-    --embed-certs=true \
+    --embed-certs \
     --server=https://${MASTER_HOST}:${APISERVER_PORT}
 
   kubectl config set-credentials admin \

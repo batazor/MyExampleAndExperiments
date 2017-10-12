@@ -1,37 +1,39 @@
+[Unit]
+Description=Kubernetes Kubelet Server
+Documentation=https://raw.githubusercontent.com/kubernetes/kubernetes.github.io/master/docs/admin/kubelet.md
+
 [Service]
 Environment=KUBELET_IMAGE_TAG=${KUBELET_IMAGE_TAG}
 Environment=KUBELET_IMAGE_URL=${KUBELET_IMAGE_URL}
 Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
-  --volume dns,kind=host,source=/etc/resolv.conf \
-  --mount volume=dns,target=/etc/resolv.conf \
-  --volume etc-cni-net,kind=host,source=/etc/kubernetes/cni/net.d \
-  --mount volume=etc-cni-net,target=/etc/cni/net.d \
-  --volume cni-bin,kind=host,source=/opt/cni/bin \
-  --mount volume=cni-bin,target=/opt/cni/bin \
-  --volume var-log,kind=host,source=/var/log \
-  --mount volume=var-log,target=/var/log"
+  --volume=resolv,kind=host,source=/etc/resolv.conf \
+  --mount volume=resolv,target=/etc/resolv.conf"
 ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
 ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
 ExecStart=/usr/lib/coreos/kubelet-wrapper \
-  --api-servers=https://${MASTER_HOST}:${APISERVER_PORT} \
-  --cni-conf-dir=/etc/kubernetes/cni/net.d \
-  --network-plugin=cni \
-  --hairpin-mode=hairpin-veth \
-  --container-runtime=docker \
-  --register-node \
   --allow-privileged \
-  --pod-manifest-path=/etc/kubernetes/manifests \
-  --hostname-override=${ADVERTISE_IP} \
-  --cluster_dns=${DNS_SERVICE_IP} \
-  --cluster_domain=cluster.local \
+  --anonymous-auth=false \
+  --authorization-mode=Webhook \
+  --client-ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cluster-dns=${DNS_SERVICE_IP} \
+  --cluster-domain=cluster.local \
+  --container-runtime=docker \
+  --image-pull-progress-deadline 2m \
+  --hairpin-mode=hairpin-veth \
   --kubeconfig=/etc/kubernetes/worker-kubeconfig.yaml \
+  --network-plugin=cni \
+  --register-node \
+  --require-kubeconfig \
+  --runtime-request-timeout 15m \
   --tls-cert-file=/etc/kubernetes/ssl/worker.pem \
-  --tls-private-key-file=/etc/kubernetes/ssl/worker-key.pem
+  --tls-private-key-file=/etc/kubernetes/ssl/worker-key.pem \
+  --pod-manifest-path=/etc/kubernetes/manifests \
+  --v 2
 ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
 Restart=always
-RestartSec=10
+RestartSec=10s
 
 [Install]
 WantedBy=multi-user.target
