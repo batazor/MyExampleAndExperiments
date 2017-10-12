@@ -6,12 +6,14 @@ Documentation=https://raw.githubusercontent.com/kubernetes/kubernetes.github.io/
 Environment=KUBELET_IMAGE_TAG=${KUBELET_IMAGE_TAG}
 Environment=KUBELET_IMAGE_URL=${KUBELET_IMAGE_URL}
 Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
-  --volume var-log,kind=host,source=/var/log \
-  --mount volume=var-log,target=/var/log \
-  --volume etc-resolv,kind=host,source=/etc/resolv.conf \
-  --mount volume=etc-resolv,target=/etc/resolv.conf \
+  --volume=resolv,kind=host,source=/etc/resolv.conf \
+  --mount volume=resolv,target=/etc/resolv.conf \
   --volume var-lib-cni,kind=host,source=/var/lib/cni \
-  --mount volume=var-lib-cni,target=/var/lib/cni"
+  --mount volume=var-lib-cni,target=/var/lib/cni \
+  --volume opt-cni-bin,kind=host,source=/opt/cni/bin \
+  --mount volume=opt-cni-bin,target=/opt/cni/bin \
+  --volume var-log,kind=host,source=/var/log \
+  --mount volume=var-log,target=/var/log"
 ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
 ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
@@ -23,6 +25,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --cluster-dns=${DNS_SERVICE_IP} \
   --cluster-domain=cluster.local \
+  --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --container-runtime=docker \
   --image-pull-progress-deadline 2m \
   --hairpin-mode=hairpin-veth \
