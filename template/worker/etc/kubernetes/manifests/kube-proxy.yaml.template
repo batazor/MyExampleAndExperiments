@@ -14,7 +14,7 @@ spec:
     - --master=https://${MASTER_HOST}:${APISERVER_PORT}
     - --kubeconfig=/etc/kubernetes/worker-kubeconfig.yaml
     - --proxy-mode=iptables
-    - --v 2
+    - --v=2
     securityContext:
       privileged: true
     volumeMounts:
