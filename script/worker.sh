@@ -3,7 +3,7 @@ ssl_worker() {
 
   sudo cp ${HOME}/cert/ca.pem /etc/kubernetes/ssl/ca.pem
   sudo cp ${HOME}/cert/worker-${HOSTNAME}.pem /etc/kubernetes/ssl/worker.pem
-  sudo cp ${HOME}/cert/worker-key-${HOSTNAME}.pem /etc/kubernetes/ssl/worker-key.pem
+  sudo cp ${HOME}/cert/worker-${HOSTNAME}-key.pem /etc/kubernetes/ssl/worker-key.pem
 
   sudo chmod 600 /etc/kubernetes/ssl/*-key.pem
   sudo chown root:root /etc/kubernetes/ssl/*-key.pem
