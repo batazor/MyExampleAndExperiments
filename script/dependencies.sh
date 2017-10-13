@@ -20,7 +20,7 @@ install_kubectl() {
 
 preload_image() {
   print_green "Download ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}."
-  docker pull ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
+  rkt fetch ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
   print_green "- success!"
 }
 
