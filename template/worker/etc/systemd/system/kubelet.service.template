@@ -32,6 +32,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --hairpin-mode=hairpin-veth \
   --kubeconfig=/etc/kubernetes/worker-kubeconfig.kubeconfig \
   --network-plugin=cni \
+  --node-labels="role=node" \
   --register-node \
   --require-kubeconfig \
   --runtime-request-timeout 15m \
