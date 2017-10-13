@@ -15,4 +15,7 @@ git clone https://github.com/batazor/k8s-generator-config.git && cd k8s-generato
 cp .env.sample .env
 // copy ca.pem and ca-key.pam for workers in folder ${HOME}/cert after run master
 ./run.sh
+// Install depdendecies (2)
+// Setting master (4)
+// Setting wotcher (5)
 ```
