@@ -34,7 +34,6 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --network-plugin=cni \
   --node-labels="role=node" \
   --register-node \
-  --require-kubeconfig \
   --runtime-request-timeout 15m \
   --tls-cert-file=/etc/kubernetes/ssl/worker.pem \
   --tls-private-key-file=/etc/kubernetes/ssl/worker-key.pem \
