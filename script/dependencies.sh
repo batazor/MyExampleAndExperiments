@@ -11,7 +11,7 @@ install_cfssl() {
 install_kubectl() {
   print_green "Install kubectl."
   mkdir -p ~/bin
-  print_green "- Download. Please wait..."
+  print_green "- download. Please wait..."
   curl -O https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_TAG}/bin/linux/amd64/kubectl
   mv kubectl ~/bin/kubectl
   chmod +x ~/bin/kubectl
@@ -19,11 +19,13 @@ install_kubectl() {
 }
 
 preload_image() {
-  print_green "Download ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}."
+  print_green "Install images."
+
+  print_green "- download ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}."
   sudo rkt fetch --pull-policy=update ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
   print_green "- success!"
 
-  print_green "Download quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}."
+  print_green "- download quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}."
   sudo rkt fetch --pull-policy=update quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}
   print_green "- success!"
 }
