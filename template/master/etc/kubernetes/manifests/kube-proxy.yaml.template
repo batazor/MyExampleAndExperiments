@@ -11,23 +11,23 @@ spec:
     command:
     - /hyperkube
     - proxy
-    - --master=https://${MASTER_HOST}:${APISERVER_PORT}
-    # - --master=http://127.0.0.1:8080
+    # - --master=https://${MASTER_HOST}:${APISERVER_PORT}
+    - --master=http://127.0.0.1:8080
     - --proxy-mode=iptables
-    - --kubeconfig=/etc/kubernetes/config/kube-proxy.kubeconfig
+    # - --kubeconfig=/etc/kubernetes/config/kube-proxy.kubeconfig
     securityContext:
       privileged: true
     volumeMounts:
     - mountPath: /etc/ssl/certs
       name: ssl-certs-host
       readOnly: true
-    - mountPath: /etc/kubernetes/config
-      name: kube-proxy-kubernetes
-      readOnly: true
+    # - mountPath: /etc/kubernetes/config
+    #   name: kube-proxy-kubernetes
+    #   readOnly: true
   volumes:
   - hostPath:
       path: /usr/share/ca-certificates
     name: ssl-certs-host
-  - hostPath:
-      path: /etc/kubernetes/config
-    name: kube-proxy-kubernetes
+  # - hostPath:
+  #     path: /etc/kubernetes/config
+  #   name: kube-proxy-kubernetes
