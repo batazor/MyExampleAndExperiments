@@ -30,7 +30,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --container-runtime=docker \
   --image-pull-progress-deadline 2m \
   --hairpin-mode=hairpin-veth \
-  --kubeconfig=/etc/kubernetes/worker-kubeconfig.kubeconfig \
+  --kubeconfig=/etc/kubernetes/worker-kubeconfig.yaml \
   --network-plugin=cni \
   --node-labels="role=node" \
   --register-node \
@@ -38,8 +38,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --runtime-request-timeout 15m \
   --tls-cert-file=/etc/kubernetes/ssl/worker.pem \
   --tls-private-key-file=/etc/kubernetes/ssl/worker-key.pem \
-  --pod-manifest-path=/etc/kubernetes/manifests \
-  --v 2
+  --pod-manifest-path=/etc/kubernetes/manifests
 ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
 Restart=always
 RestartSec=10s

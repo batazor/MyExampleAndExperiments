@@ -49,7 +49,6 @@ spec:
     - --tls-ca-file=/etc/kubernetes/ssl/ca.pem
     - --tls-cert-file=/etc/kubernetes/ssl/kubernetes.pem
     - --tls-private-key-file=/etc/kubernetes/ssl/kubernetes-key.pem
-    - --v=2
     livenessProbe:
       failureThreshold: 8
       httpGet:
