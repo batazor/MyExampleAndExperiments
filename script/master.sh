@@ -26,6 +26,8 @@ generate_config_master() {
   done
 
   sudo cp -R dist/* /
+
+  generate_kube_proxy_config
 }
 
 start_master() {
