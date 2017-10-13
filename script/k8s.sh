@@ -36,6 +36,8 @@ generate_kube_proxy_config() {
     --user=kube-proxy \
     --kubeconfig=kube-proxy.kubeconfig
 
+  kubectl config use-context default --kubeconfig=kube-proxy.kubeconfig
+
   sudo mkdir -p /etc/kubernetes/config
   sudo cp kube-proxy.kubeconfig /etc/kubernetes/config/kube-proxy.kubeconfig
 }
