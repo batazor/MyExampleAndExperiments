@@ -25,7 +25,7 @@ spec:
     - --audit-log-maxbackup=3
     - --audit-log-maxsize=100
     - --audit-log-path=/var/log/audit.log
-    - --authorization-mode=RBAC
+    # - --authorization-mode=RBAC
     - --bind-address=0.0.0.0
     - --client-ca-file=/etc/kubernetes/ssl/ca.pem
     # - --enable-bootstrap-token-auth=true
