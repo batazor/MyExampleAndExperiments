@@ -30,6 +30,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --network-plugin=cni \
   --node-labels="role=master" \
   --pod-manifest-path=/etc/kubernetes/manifests \
+  --register-node \
   --rotate-certificates \
   --runtime-request-timeout 5m \
   --tls-cert-file=/etc/kubernetes/ssl/kubernetes.pem \
