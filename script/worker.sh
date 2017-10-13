@@ -53,7 +53,7 @@ generate_config_worker() {
 
   sudo cp -R dist/* /
 
-  generate_kubeconfig
+  # generate_kubeconfig
   generate_kube_proxy_config
 }
 
