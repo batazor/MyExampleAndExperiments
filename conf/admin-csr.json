@@ -1,8 +1,5 @@
 {
   "CN": "admin",
-  "hosts": [
-    ""
-  ],
   "key": {
     "algo": "rsa",
     "size": 2048
