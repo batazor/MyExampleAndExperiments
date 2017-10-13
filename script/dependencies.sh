@@ -22,28 +22,14 @@ preload_image() {
   print_green "Download ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}."
   rkt fetch ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
   print_green "- success!"
+
+  print_green "Download quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}."
+  rkt fetch quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}
+  print_green "- success!"
 }
 
 install_dependencies() {
-  echo;echo;echo;
-  PS3="Please enter your choice: "
-  options=("cfssl" "kubectl" "preload image" "Quit")
-  select opt in "${options[@]}"
-  do
-      case $opt in
-          "cfssl")
-              install_cfssl
-              ;;
-          "kubectl")
-              install_kubectl
-              ;;
-          "preload image")
-              preload_image
-              ;;
-          "Quit")
-              break
-              ;;
-          *) echo invalid option;;
-      esac
-  done
+  install_cfssl
+  install_kubectl
+  preload_image
 }
