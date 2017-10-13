@@ -18,7 +18,7 @@ generate_kubeconfig() {
   ADMIN_KEY="${HOME}/cert/admin-key.pem"
   ADMIN_CERT="${HOME}/cert/admin.pem"
 
-  kubectl config set-cluster local \
+  kubectl config set-cluster default-cluster \
     --certificate-authority=${CA_CERT} \
     --embed-certs \
     --server=https://${MASTER_HOST}:${APISERVER_PORT} \
@@ -30,12 +30,12 @@ generate_kubeconfig() {
     --embed-certs=true \
     --kubeconfig=${HOSTNAME}.kubeconfig
 
-  kubectl config set-context local \
-    --cluster=local \
+  kubectl config set-context default-cluster \
+    --cluster=default-cluster \
     --user=system:node \
     --kubeconfig=${HOSTNAME}.kubeconfig
 
-  kubectl config use-context local --kubeconfig=${HOSTNAME}.kubeconfig
+  kubectl config use-context default-cluster --kubeconfig=${HOSTNAME}.kubeconfig
   sudo cp ${HOSTNAME}.kubeconfig /etc/kubernetes/worker-kubeconfig.yaml
 }
 
