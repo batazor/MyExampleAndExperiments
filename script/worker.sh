@@ -12,7 +12,7 @@ ssl_worker() {
 }
 
 generate_kubeconfig() {
-  print_green " - Generate kubeconfig"
+  print_green " - generate kubeconfig"
 
   CA_CERT="${HOME}/cert/ca.pem"
   ADMIN_KEY="${HOME}/cert/admin-key.pem"
@@ -36,7 +36,7 @@ generate_kubeconfig() {
     --kubeconfig=${HOSTNAME}.kubeconfig
 
   kubectl config use-context default-cluster --kubeconfig=${HOSTNAME}.kubeconfig
-  sudo cp ${HOSTNAME}.kubeconfig /etc/kubernetes/worker-kubeconfig.yaml
+  sudo cp ${HOSTNAME}.kubeconfig /etc/kubernetes/worker-kubeconfig.kubeconfig
 }
 
 generate_config_worker() {

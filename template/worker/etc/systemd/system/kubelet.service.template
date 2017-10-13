@@ -30,7 +30,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --container-runtime=docker \
   --image-pull-progress-deadline 2m \
   --hairpin-mode=hairpin-veth \
-  --kubeconfig=/etc/kubernetes/worker-kubeconfig.yaml \
+  --kubeconfig=/etc/kubernetes/worker-kubeconfig.kubeconfig \
   --network-plugin=cni \
   --register-node \
   --require-kubeconfig \
