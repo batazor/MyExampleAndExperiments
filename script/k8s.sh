@@ -25,18 +25,18 @@ generate_kube_proxy_config() {
     --certificate-authority=${CA_CERT} \
     --embed-certs \
     --server=https://${MASTER_HOST}:${APISERVER_PORT} \
-    --kubeconfig=${HOSTNAME}.kubeconfig
+    --kubeconfig=kube-proxy.kubeconfig
 
   kubectl config set-credentials system:node \
     --client-certificate=${ADMIN_CERT} \
     --client-key=${ADMIN_KEY} \
     --embed-certs \
-    --kubeconfig=${HOSTNAME}.kubeconfig
+    --kubeconfig=kube-proxy.kubeconfig
 
   kubectl config set-context default-cluster \
     --cluster=default-cluster \
     --user=system:node \
-    --kubeconfig=${HOSTNAME}.kubeconfig
+    --kubeconfig=kube-proxy.kubeconfig
 
   kubectl config use-context default-cluster --kubeconfig=kube-proxy.kubeconfig
 
