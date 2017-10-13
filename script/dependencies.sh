@@ -19,7 +19,7 @@ install_kubectl() {
 }
 
 preload_image() {
-  print_green "Download $KUBELET_IMAGE_URL:$KUBELET_IMAGE_TAG."
+  print_green "Download ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}."
   docker pull ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
   print_green "- success!"
 }
@@ -27,7 +27,7 @@ preload_image() {
 install_dependencies() {
   echo;echo;echo;
   PS3="Please enter your choice: "
-  options=("cfssl" "kubectl" "preinstall image" "Quit")
+  options=("cfssl" "kubectl" "preload image" "Quit")
   select opt in "${options[@]}"
   do
       case $opt in
