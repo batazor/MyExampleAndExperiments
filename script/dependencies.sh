@@ -25,6 +25,14 @@ preload_image() {
   sudo rkt fetch --pull-policy=update ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
   print_green "- success!"
 
+  print_green "- download ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}."
+  sudo docker pull ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
+  print_green "- success!"
+
+  print_green "- download gcr.io/google_containers/pause-amd64:3.0."
+  sudo docker pull gcr.io/google_containers/pause-amd64:3.0
+  print_green "- success!"
+
   print_green "- download quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}."
   sudo rkt fetch --pull-policy=update quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}
   print_green "- success!"
