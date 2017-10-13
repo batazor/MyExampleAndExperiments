@@ -20,13 +20,11 @@ install_kubectl() {
 
 preload_image() {
   print_green "Download ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}."
-  sudo rkt trust --prefix=${KUBELET_IMAGE_URL}
-  sudo rkt fetch ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
+  sudo rkt fetch --pull-policy=update ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
   print_green "- success!"
 
   print_green "Download quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}."
-  sudo rkt trust --prefix=${KUBELET_IMAGE_URL}
-  sudo rkt fetch quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}
+  sudo rkt fetch --pull-policy=update quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}
   print_green "- success!"
 }
 
