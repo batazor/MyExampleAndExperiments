@@ -11,8 +11,8 @@ spec:
     command:
     - /hyperkube
     - proxy
-    # - --master=https://${MASTER_HOST}:${APISERVER_PORT}
-    - --master=http://127.0.0.1:8080
+    - --master=https://${MASTER_HOST}:${APISERVER_PORT}
+    # - --master=http://127.0.0.1:8080
     - --proxy-mode=iptables
     - --kubeconfig=/etc/kubernetes/config/kube-proxy.kubeconfig
     securityContext:

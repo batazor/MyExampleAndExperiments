@@ -13,30 +13,32 @@ clean_k8s_conf() {
 }
 
 generate_kube_proxy_config() {
+  print_green " - generate kubeconfig"
+
   CA_CERT="${HOME}/cert/ca.pem"
-  KUBE_PROXY_KEY="${HOME}/cert/kube-proxy-key.pem"
-  KUBE_PROXY_CERT="${HOME}/cert/kube-proxy.pem"
+  ADMIN_KEY="${HOME}/cert/admin-key.pem"
+  ADMIN_CERT="${HOME}/cert/admin.pem"
 
   print_green " - setting kube-proxy config"
 
   kubectl config set-cluster default-cluster \
-  --certificate-authority=$CA_CERT \
-  --embed-certs \
-  --server=https://${MASTER_HOST}:${APISERVER_PORT} \
-  --kubeconfig=kube-proxy.kubeconfig
-
-  kubectl config set-credentials kube-proxy \
-    --client-certificate=$KUBE_PROXY_CERT \
-    --client-key=$KUBE_PROXY_KEY \
+    --certificate-authority=${CA_CERT} \
     --embed-certs \
-    --kubeconfig=kube-proxy.kubeconfig
+    --server=https://${MASTER_HOST}:${APISERVER_PORT} \
+    --kubeconfig=${HOSTNAME}.kubeconfig
 
-  kubectl config set-context default \
+  kubectl config set-credentials system:node \
+    --client-certificate=${ADMIN_CERT} \
+    --client-key=${ADMIN_KEY} \
+    --embed-certs \
+    --kubeconfig=${HOSTNAME}.kubeconfig
+
+  kubectl config set-context default-cluster \
     --cluster=default-cluster \
-    --user=kube-proxy \
-    --kubeconfig=kube-proxy.kubeconfig
+    --user=system:node \
+    --kubeconfig=${HOSTNAME}.kubeconfig
 
-  kubectl config use-context default --kubeconfig=kube-proxy.kubeconfig
+  kubectl config use-context default-cluster --kubeconfig=kube-proxy.kubeconfig
 
   sudo mkdir -p /etc/kubernetes/config
   sudo cp kube-proxy.kubeconfig /etc/kubernetes/config/kube-proxy.kubeconfig
