@@ -27,7 +27,7 @@ generate_kubeconfig() {
   kubectl config set-credentials system:node \
     --client-certificate=${ADMIN_CERT} \
     --client-key=${ADMIN_KEY} \
-    --embed-certs=true \
+    --embed-certs \
     --kubeconfig=${HOSTNAME}.kubeconfig
 
   kubectl config set-context default-cluster \
@@ -35,6 +35,7 @@ generate_kubeconfig() {
     --user=system:node \
     --kubeconfig=${HOSTNAME}.kubeconfig
 
+  mkdir -p /etc/kubernetes/config
   kubectl config use-context default-cluster --kubeconfig=${HOSTNAME}.kubeconfig
   sudo cp ${HOSTNAME}.kubeconfig /etc/kubernetes/config/worker-kubeconfig.yaml
 }
