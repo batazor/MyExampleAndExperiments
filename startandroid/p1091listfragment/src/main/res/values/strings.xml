@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ListFragment</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="number_list">List numbers</string>
+    <string name="empty">Not data</string>
+</resources>

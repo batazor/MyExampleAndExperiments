@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ServiceBindingLocal</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="start">Start</string>
+    <string name="up">Up</string>
+    <string name="down">Down</string>
+</resources>

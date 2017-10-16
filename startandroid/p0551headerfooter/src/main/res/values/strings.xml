@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">HeaderFooter</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="header_title">Header</string>
+    <string name="footer_title">Footer</string>
+    <string name="button_text">Test</string>
+</resources>

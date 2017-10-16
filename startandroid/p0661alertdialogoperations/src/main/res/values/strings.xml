@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AlertDialogOperations</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="dialog">Dialog</string>
+</resources>

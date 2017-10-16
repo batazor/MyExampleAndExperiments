@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tvTopText">Upper text</string>
+    <string name="btnTopText">Upper button</string>
+    <string name="tvBottomText">Lower text</string>
+    <string name="btnBottomText">Lower button</string>
+    <color name="llTopColor">#336699</color>
+    <color name="llBottomColor">#339966</color>
+</resources>
