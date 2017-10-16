@@ -40,6 +40,23 @@ new_ssl_worker() {
   print_green " - Create cert folder"
   mkdir -p ${HOME}/cert
 
+  read -d '' config <<EOF
+{
+  "CN": "system:node:${ADVERTISE_IP}",
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "C": "RU",
+      "L": "Moscow",
+      "O": "Kubernetes"
+    }
+  ]
+}
+EOF
+
   print_green " - Generate the Kubernetes Worker Keypairs"
   cfssl gencert \
     -ca=${HOME}/cert/ca.pem \
@@ -47,7 +64,7 @@ new_ssl_worker() {
     -config=conf/ca-config.json \
     -hostname=${ADVERTISE_IP},${MASTER_HOST},${K8S_SERVICE_IP} \
     -profile=kubernetes \
-    conf/worker-csr.json | cfssljson -bare ${HOME}/cert/worker-${HOSTNAME}
+    $config | cfssljson -bare ${HOME}/cert/worker-${HOSTNAME}
 
   print_green "TLS Assets"
 }
