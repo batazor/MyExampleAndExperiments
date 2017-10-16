@@ -22,6 +22,7 @@ preload_image() {
   print_green "Install images."
 
   print_green "- download ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}."
+  sudo rkt trust ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
   sudo rkt fetch --pull-policy=update ${KUBELET_IMAGE_URL}:${KUBELET_IMAGE_TAG}
   print_green "- success!"
 
@@ -34,6 +35,7 @@ preload_image() {
   print_green "- success!"
 
   print_green "- download quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}."
+  sudo rkt trust quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}
   sudo rkt fetch --pull-policy=update quay.io/coreos/flannel:${FLANNEL_IMAGE_TAG}
   print_green "- success!"
 }
