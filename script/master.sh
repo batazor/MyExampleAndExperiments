@@ -35,7 +35,7 @@ start_master() {
 
   sudo systemctl daemon-reload
   sudo systemctl enable --now flanneld docker kubelet
-  sudo systemctl reload flanneld docker kubelet
+  sudo systemctl restart flanneld docker kubelet
 }
 
 add_master() {
