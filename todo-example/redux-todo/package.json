@@ -1,0 +1,39 @@
+{
+  "name": "isomorphic-redux",
+  "version": "1.0.0",
+  "description": "Basic isomorphic redux application",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_PATH=$NODE_PATH:./shared node --harmony .",
+    "dev": "npm run start & webpack-dev-server --progress --color",
+    "build": "NODE_ENV=production webpack --progress --color -p --config webpack.prod.config.js"
+  },
+  "keywords": [
+    "redux",
+    "node.js",
+    "isomorphic",
+    "todo"
+  ],
+  "author": "Login Viktor <batazor111@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.5.4",
+    "express": "^4.13.2",
+    "immutable": "^3.7.4",
+    "object-assign": "^3.0.0",
+    "react": "^0.13.3",
+    "react-redux": "^0.8.0",
+    "react-router": "^1.0.0-beta3",
+    "redux": "^1.0.0-rc"
+  },
+  "devDependencies": {
+    "babel": "^5.8.20",
+    "babel-eslint": "^4.0.5",
+    "babel-loader": "^5.3.2",
+    "eslint": "^1.0.0",
+    "eslint-plugin-react": "^3.1.0",
+    "react-hot-loader": "^1.2.8",
+    "webpack": "^1.10.5",
+    "webpack-dev-server": "^1.10.1"
+  }
+}
