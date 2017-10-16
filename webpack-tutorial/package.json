@@ -1,0 +1,14 @@
+{
+  "name": "webpack-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "home.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Login Viktor <batazor111@gmail.com> (batazor.ru)",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^1.12.11"
+  }
+}
