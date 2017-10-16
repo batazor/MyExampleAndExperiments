@@ -24,7 +24,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --cluster-dns=${DNS_SERVICE_IP} \
   --cluster-domain=cluster.local \
-  --cni-conf-dir=/etc/kubernetes/cni/net.d \
+  # --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --container-runtime=docker \
   --contention-profiling \
   --enable-custom-metrics \
@@ -34,7 +34,7 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --hostname-override=${ADVERTISE_IP} \
   --image-pull-progress-deadline 2m \
   --iptables-masquerade-bit 14 \
-  --network-plugin=cni \
+  # --network-plugin=cni \
   --node-labels="role=master" \
   --register-node \
   --pod-manifest-path=/etc/kubernetes/manifests \

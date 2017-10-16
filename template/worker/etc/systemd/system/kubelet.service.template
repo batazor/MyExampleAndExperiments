@@ -26,12 +26,12 @@ ExecStart=/usr/lib/coreos/kubelet-wrapper \
   --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --cluster-dns=${DNS_SERVICE_IP} \
   --cluster-domain=cluster.local \
-  --cni-conf-dir=/etc/kubernetes/cni/net.d \
+  # --cni-conf-dir=/etc/kubernetes/cni/net.d \
   --container-runtime=docker \
   --image-pull-progress-deadline 2m \
   --hairpin-mode=hairpin-veth \
   --kubeconfig=/etc/kubernetes/config/worker-kubeconfig.yaml \
-  --network-plugin=cni \
+  # --network-plugin=cni \
   --node-labels="role=node" \
   --register-node \
   --runtime-request-timeout 15m \
