@@ -1,0 +1,60 @@
+version: '2'
+services:
+  fluentd:
+    container_name: fluentd
+    build: ./fluentd
+    ports:
+    - "24224:24224"
+    volumes:
+    - "./fluentd:/fluentd/etc"
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch
+    depends_on:
+    - fluentd
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    depends_on:
+    - fluentd
+    ports:
+    - "9999:80"
+    logging:
+      driver: fluentd
+  mongo:
+    container_name: mongo
+    image: mongo
+    depends_on:
+    - fluentd
+    ports:
+    - "27017:27017"
+    logging:
+      driver: fluentd
+  node-example:
+    container_name: node-example
+    build: ./node-example
+    depends_on:
+    - fluentd
+    ports:
+    - "4040:3000"
+    logging:
+      driver: fluentd
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.6.5-management
+    depends_on:
+    - fluentd
+    ports:
+    - "15672:15672"
+    logging:
+      driver: fluentd
+      options:
+        tag: rabbitmq
+  kibana:
+    container_name: kibana
+    image: kibana
+    depends_on:
+    - elasticsearch
+    - fluentd
+    ports:
+    - "5601:5601"
