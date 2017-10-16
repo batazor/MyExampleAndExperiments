@@ -57,6 +57,8 @@ new_ssl_worker() {
 }
 EOF
 
+echo $config > /tmp/worker-csr.json
+
   print_green " - Generate the Kubernetes Worker Keypairs"
   cfssl gencert \
     -ca=${HOME}/cert/ca.pem \
@@ -64,7 +66,7 @@ EOF
     -config=conf/ca-config.json \
     -hostname=${ADVERTISE_IP},${MASTER_HOST},${K8S_SERVICE_IP} \
     -profile=kubernetes \
-    $config | cfssljson -bare ${HOME}/cert/worker-${HOSTNAME}
+    /tmp/worker-csr.json | cfssljson -bare ${HOME}/cert/worker-${HOSTNAME}
 
   print_green "TLS Assets"
 }
