@@ -35,7 +35,7 @@ generate_kubeconfig() {
     --user=system:node \
     --kubeconfig=${HOSTNAME}.kubeconfig
 
-  mkdir -p /etc/kubernetes/config
+  sudo mkdir -p /etc/kubernetes/config
   kubectl config use-context default-cluster --kubeconfig=${HOSTNAME}.kubeconfig
   sudo cp ${HOSTNAME}.kubeconfig /etc/kubernetes/config/worker-kubeconfig.yaml
 }
