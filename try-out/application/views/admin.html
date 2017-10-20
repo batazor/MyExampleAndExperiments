@@ -1,0 +1,313 @@
+{% extends "admin.tpl" %}
+
+{% block title %}Админка{% endblock %}
+
+{% block content %}
+<script>
+$(document).ready(function(){var i=$('input').size()+1;$('#add').click(function(){$('<li class="field"><div id="switch" class="left"><input type="checkbox" name="vibor['+i+']" checked><label><span class="fontawesome-ok"></span><span class="fontawesome-remove"></span><div></div></label></div><input type="text" name="answer['+i+']"></li>').fadeIn('slow').appendTo('.inputs');i++});$('#remove').click(function(){if(i>1){$('.field:last').remove();i--}});$('#reset').click(function(){while(i>2){$('.field:last').remove();i--}});$('.submit').click(function(){var answers=[];$.each($('.field'),function(){answers.push($(this).val())});if(answers.length==0){answers="none"}alert(answers);return false})});
+</script>
+
+
+    {% if info.otvet == "main" %}
+    	<h1 class="title">Hello!</h1>
+    {% elseif info.otvet == "gut" %}
+    	<h3>Все прошло хорошо</h3>
+    {% elseif info.otvet == "err" %}
+	    <p>Обноражуны следующие ошибки({{ info.err|length }}):</p>
+	    <ul>
+		    {% for err in info.err %}
+		    	<li><p>{{err}}</p></li>
+		    {% endfor %}
+		</ul>
+    {% elseif info.otvet == "content" %}
+    	<script type="text/javascript" src="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.js"></script>
+    	<script type="text/javascript">$(function() {$('#tag').tagsInput({width:'auto'});});</script>
+		<h1 class="title">Контент</h1>
+    	<p><a href="/admin/content/add" class="button right"><span>добавить</span></a></p>
+    	{% if info.action == "content_add" %}
+			<form class="add" method="post" action="/admin/content/add">
+				<h4 class="title">Введите ваш вопрос.</h4>
+				<textarea id="editor_area" name="question">{{info.content_list.question}}</textarea>
+				<h4 class="title">Введите варианты ответов</h4>
+				<a href="#" id="add" class="but btnBlue">Добавить</a>
+				<a href="#" id="remove" class="but btnBlue">Удалить</a>
+				<a href="#" id="reset" class="but btnBlue">Сбросить</a>
+				<ul>
+					<div class="inputs">
+					</div>
+				</ul>
+				<h4 class="title">Введите теги</h4>
+				<input type="text" id="tag" class="tag" name="tag"/></p>
+				<input type="submit" class="right button" name="go" value="Готово">
+			</form>
+		{% elseif info.action == "content_upd" %}
+			<h1>Обноление</h1>
+			<form class="add" method="post" action="/admin/content/upd">
+				<h4 class="title">Введите ваш вопрос.</h4>
+				<textarea id="editor_area" name="question">{{info.content_list.question}}</textarea>
+				<h4 class="title">Введите варианты ответов</h4>
+				<a href="#" id="add" class="but btnBlue">Добавить</a>
+				<a href="#" id="remove" class="but btnBlue">Удалить</a>
+				<a href="#" id="reset" class="but btnBlue">Сбросить</a>
+				<ul>
+					<div class="inputs">
+	    				{% for i in 0..info.content_list.cout %}
+							<li class="field" style="display: list-item;">
+								<div id="switch" class="left">
+									{% if info.content_list.answer.vibor[i] == "on" %}
+										<input type="checkbox" name="vibor[{{i}}]" checked>
+									{% else %}
+										<input type="checkbox" name="vibor[{{i}}]">
+									{% endif %}
+										<label>
+											<span class="fontawesome-ok"></span>
+											<span class="fontawesome-remove"></span>
+											<div></div>
+										</label>
+								</div>
+								<input type="text" name="answer[]" value="{{info.content_list.answer.answer[i]}}">
+							</li>
+	    				{% endfor %}
+					</div>
+				</ul>
+				<h4 class="title">Введите теги</h4>
+				<input type="text" id="tag" name="tag" value="{{info.tag}}">
+				<input type="hidden" name="v_id" value="{{info.content_list.id}}">
+				<input type="submit" class="right button" name="upd" value="Готово">
+			</form>
+		{% elseif info.action == "content_list" %}
+			<h1>Список вопросов</h1>
+			<ul class="list">
+				{% for content_list in info.content_list %}
+	    			<li>{{content_list.question}} <a href="/admin/content/del/{{content_list.id}}"><i class="fa fa-power-off"></i></a><a href="/admin/content/upd/{{content_list.id}}"><i class="fa fa-pencil"></i></a></li>
+	    		{% endfor %}
+			</ul>
+			<div id="paginator"><span class="paginate left ajax"><i></i><i></i></span><p class="counter"></p><span class="paginate right ajax"><i></i><i></i></span></div>
+			<script>
+			$(document).ready(function(){
+				// basic paging logic to demo the buttons
+				var pr = document.querySelector( '.paginate.left' );
+				var pl = document.querySelector( '.paginate.right' );
+
+				pr.onclick = slide.bind( this, -1 );
+				pl.onclick = slide.bind( this, 1 );
+
+				var index = 0, total = {{info.page_count}};
+
+				function slide(offset) {
+					index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+					document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+					pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+					pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+				}
+
+				slide(0);
+
+				$('.left').click( function() {
+					$.ajax({
+						type: 'POST',
+						url: '/ajax_admin.php?action=paginator_question',
+						data: 'count={{info.count}}&page='+index,
+						success: function(data){
+							$('.list').html(data);
+						}
+					});
+				});
+				$('.right').click( function() {
+					$.ajax({
+						type: 'POST',
+						url: '/ajax_admin.php?action=paginator_question',
+						data: 'count={{info.count}}&page='+index,
+						success: function(data){
+							$('.list').html(data);
+						}
+					});
+				});
+			});
+			</script>
+    	{% endif %}
+    {% elseif info.otvet == "users" %}
+    	<h1 class="title">Юзеры</h1>
+    	<p><a href="/admin/users/add" class="button right"><span>добавить</span></a></p>
+    	{% if info.action     == "users_add" %}
+    		<form class="add" method="post" action="/admin/users/add">
+				<h4 class="title">Введите логин</h4>
+					<input type="text" name="login">
+				<h4 class="title">Введите пароль</h4>
+					<input type="password" name="password">
+				<h4 class="title">Введите email</h4>
+					<input type="email" name="email">
+				<h4 class="title">Статус. 0,1-пользователи 2-Админ 3-Админ 4-Хозяин</h4>
+					<input type="range" min="0" max="4" step="1" name="status"/>
+				<br>
+				<input type="submit" class="right button" name="users_add" value="Добавить">
+			</form>
+    	{% elseif info.action == "users_upd" %}
+    		<form class="add" method="post" action="/admin/users/upd">
+    			<input type="hidden" name="u_id" value="{{info.users_list.id}}">
+				<h4 class="title">Введите логин</h4>
+					<input type="text" name="login" value="{{info.users_list.login}}">
+				<h4 class="title">Введите новый пароль</h4>
+					<input type="password" name="password">
+				<h4 class="title">Введите email</h4>
+					<input type="email" name="email" value="{{info.users_list.email}}">
+				<h4 class="title">Статус. 0,1-пользователи 2-Админ 3-Админ 4-Хозяин</h4>
+					<input type="range" min="0" max="4" step="1" name="status" value="{{info.users_list.status}}"/>
+				<br>
+				<input type="submit" class="right button" name="users_upd" value="Обновить">
+			</form>
+    	{% elseif info.action == "users_list" %}
+    		<h1>Список пользователей</h1>
+			<ul class="list">
+				{% for users_list in info.users_list %}
+	    			<li>
+	    				{{users_list.login}}
+	    				<span>
+		    				<a href="/admin/users/del/{{users_list.id}}"><i class="fa fa-power-off"></i></a>
+		    				<a href="/admin/users/upd/{{users_list.id}}"><i class="fa fa-pencil"></i></a>
+		    				{% if users_list.status > 2 %}
+		    					<p style="background: #A74982;">статус: {{users_list.status}}</p>
+		    				{% else %}
+								<p>статус: {{users_list.status}}</p>
+		    				{% endif %}
+	    				</span>
+	    			</li>
+	    		{% endfor %}
+			</ul>
+			<div id="paginator"><span class="paginate left ajax"><i></i><i></i></span><p class="counter"></p><span class="paginate right ajax"><i></i><i></i></span></div>
+			<script>
+			$(document).ready(function(){
+				// basic paging logic to demo the buttons
+				var pr = document.querySelector( '.paginate.left' );
+				var pl = document.querySelector( '.paginate.right' );
+
+				pr.onclick = slide.bind( this, -1 );
+				pl.onclick = slide.bind( this, 1 );
+
+				var index = 0, total = {{info.page_count}};
+
+				function slide(offset) {
+					index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+					document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+					pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+					pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+				}
+
+				slide(0);
+
+				$('.left').click( function() {
+					$.ajax({
+						type: 'POST',
+						url: '/ajax_admin.php?action=paginator_users',
+						data: 'status={{users_list.status}}&count={{info.count}}&page='+index,
+						success: function(data){
+							$('.list').html(data);
+						}
+					});
+				});
+				$('.right').click( function() {
+					$.ajax({
+						type: 'POST',
+						url: '/ajax_admin.php?action=paginator_users',
+						data: 'count={{info.count}}&page='+index,
+						success: function(data){
+							$('.list').html(data);
+						}
+					});
+				});
+			});
+			</script>
+    	{% endif %}
+    {% elseif info.otvet == "tag" %}
+    	<h1 class="title">Теги</h1>
+    	<p><a href="/admin/tag/add" class="button right"><span>добавить</span></a></p>
+    	{% if info.action     == "tag_list" %}
+    		<h1>Список тегов</h1>
+    		<ul class="list">
+				{% for tag_list in info.tag_list %}
+	    			<li>
+	    				{{tag_list.tag}}
+	    				<span>
+		    				<a href="/admin/tag/del/{{tag_list.id}}"><i class="fa fa-power-off"></i></a>
+		    				<a href="/admin/tag/upd/{{tag_list.id}}"><i class="fa fa-pencil"></i></a>
+	    				</span>
+	    			</li>
+	    		{% endfor %}
+			</ul>
+			<div id="paginator"><span class="paginate left ajax"><i></i><i></i></span><p class="counter"></p><span class="paginate right ajax"><i></i><i></i></span></div>
+			<script>
+			$(document).ready(function(){
+				// basic paging logic to demo the buttons
+				var pr = document.querySelector( '.paginate.left' );
+				var pl = document.querySelector( '.paginate.right' );
+
+				pr.onclick = slide.bind( this, -1 );
+				pl.onclick = slide.bind( this, 1 );
+
+				var index = 0, total = {{info.page_count}};
+
+				function slide(offset) {
+					index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+					document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+					pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+					pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+				}
+
+				slide(0);
+
+				$('.left').click( function() {
+					$.ajax({
+						type: 'POST',
+						url: '/ajax_admin.php?action=paginator_tag',
+						data: 'count={{info.count}}&page='+index,
+						success: function(data){
+							$('.list').html(data);
+						}
+					});
+				});
+				$('.right').click( function() {
+					$.ajax({
+						type: 'POST',
+						url: '/ajax_admin.php?action=paginator_tag',
+						data: 'count={{info.count}}&page='+index,
+						success: function(data){
+							$('.list').html(data);
+						}
+					});
+				});
+			});
+			</script>
+		{% elseif info.action == "tag_upd" %}
+			<h1>Изменить тег</h1>
+			<form class="add" method="post" action="/admin/tag">
+				<h4 class="title">Введите tag</h4>
+					<input type="text" name="tag" value="{{info.tag.tag}}">
+				<h4 class="title">Введите link</h4>
+					<input type="text" name="link" value="{{info.tag.link}}">
+					<input type="hidden" name="id" value="{{info.tag.id}}">
+				<input type="submit" class="right button" name="tag_upd" value="Добавить" style="margin-top:20px;">
+			</form>
+		{% elseif info.action == "tag_add" %}
+			<h1>Добавить новый тег</h1>
+			<form class="add" method="post" action="/admin/tag">
+				<h4 class="title">Введите tag</h4>
+					<input type="text" name="tag">
+				<h4 class="title">Введите link</h4>
+					<input type="text" name="link">
+				<input type="submit" class="right button" name="tag_add" value="Добавить" style="margin-top:20px;">
+			</form>
+		{% endif %}
+    {% elseif info.otvet == "messages" %}
+    	<h1 class="title">Почта</h1>
+    {% else %}
+		<style>#content{width: 100%;} h1{text-align: center;}</style>
+		<h1>try-out.tk</h1>
+		<div class="inner-screen">
+			<form class="form" method="post" action="/admin">
+				<input type="text"     name="login"    placeholder="Login">
+				<input type="password" name="password" placeholder="Password">
+				<input type="submit"   name="verification" value="Войти">
+			</form> 
+		</div>
+    {% endif %}
+{% endblock %}

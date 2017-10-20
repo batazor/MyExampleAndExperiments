@@ -1,0 +1,9 @@
+RewriteBase /
+Options All -Indexes -Includes +FollowSymLinks
+AddDefaultCharset UTF-8
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.try-out\.tk$ [NC]
+RewriteRule ^(.*)$ http://try-out.tk%{REQUEST_URI} [L,R=301]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L]

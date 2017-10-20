@@ -1,0 +1,277 @@
+{% extends "template.tpl" %}
+{% block title %}Вопросы (={% endblock %}
+
+{% block content %}
+	{% if info.otvet == "rand" %}
+		<div id="question">
+			<article class="ac-custom ac-checkbox ac-cross">
+				<a class="button red ajax rand">Проверить</a>
+				<p><span class="span">Вопрос</span></p>
+					<div class="text">{{info.question.question| raw}}</div>
+				<p><span class="span">Варианты ответа</span></p>
+					<ul id="variant">
+						{% for i in (0..info.question.answer.answer|length -1) %}
+							<li><input id="cb{{i}}" type="checkbox" name='{{i}}'><label for="cb{{i}}">{{info.question.answer.answer[i]| raw}}</label></li>
+	    				{% endfor %}
+    				</ul>
+    				<div class="otvet"></div>
+				<input type="hidden" name="id" id="id" value="{{info.question.id}}">
+				<footer>
+					<ul>
+						<li><p>Теги: 
+						{% for tag in info.question.tag %}
+							<span class="span"><a href="/tag/{{tag.link}}">{{tag.tag}}</a></span>
+	    				{% endfor %}
+	    				</p></li>
+						<li><p>Автор: {{info.question.author}}</p></li>
+						<li><p>Дата публикации: {{info.question.date|date("d/m/Y")}}</p></li>
+					</ul>
+				</footer>
+			</article>
+			<div class="menu">
+				<a class="button red" href="/question/option">Настраиваемый тест</a>
+				{% if info.fix == "link" %}
+					<a class="button red" href="/question/rand">random</a>
+				{% else %}
+					<a class="button red ajax rand_update" href="#">random</a>
+				{% endif %}
+				<p>Отвечай на череду случайных вопросов, либо выбери только интересные для вас темы</p>
+			</div>
+		</div>
+		<script>
+			$('#question').on('click', '.rand', function() {
+				$('article .otvet').css('display','block');
+				var all=$('#variant input:checkbox:checked').serializeArray();
+				params = {
+					id : '{{info.question.id}}',
+					checkbox : all
+				};
+				$.ajax({
+					type: 'POST',
+					url: '/ajax.php?action=question_verify',
+					data: params,
+					success: function(data){
+						$('.otvet').html(data);
+					}
+				});
+			});
+		</script>
+	{% elseif info.otvet == "go" %}
+		<div id="question">
+			<article class="ac-custom ac-checkbox ac-checkmark">
+				<a href="#" class="button red rand">Проверить</a>
+				<a href="#" class="button red start">Я устал</a>
+				<div id="fix">
+					<p><span class="span">Вопрос</span></p>
+						<div class="text">{{info.question.question| raw}}</div>
+					<p><span class="span">Варианты ответа</span></p>
+						<ul id="variant">
+							{% for i in (0..info.question.answer.answer|length -1) %}
+								<li><input id="cb{{i}}" type="checkbox" name='{{i}}' data-otvet="{{info.question.id}}"><label for="cb{{i}}">{{info.question.answer.answer[i]| raw}}</label></li>
+		    				{% endfor %}
+						</ul>
+					<input type="hidden" name="id" id="id" value="{{info.question.id}}">
+				</div>
+				<div class="otvet"></div>
+				<footer>
+					<div id="paginator"><span class="paginate left ajax"><i></i><i></i></span><p class="counter"></p><span class="paginate right ajax"><i></i><i></i></span></div>
+				</footer>
+			</article>
+			<div class="menu">
+				<a class="button red" href="/question/option">Настраиваемый тест</a>
+				<a class="button red" href="/question/rand">random</a>
+				<p>Отвечай на череду случайных вопросов, либо выбери только интересные для вас темы</p>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				// basic paging logic to demo the buttons
+				var pr = document.querySelector( '.paginate.left' );
+				var pl = document.querySelector( '.paginate.right' );
+
+				pr.onclick = slide.bind( this, -1 );
+				pl.onclick = slide.bind( this, 1 );
+
+				var index = 0, total = {{info.page_count}};
+
+				function slide(offset) {
+					index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+					document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+					pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+					pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+				}
+
+				slide(0);
+
+				$('#paginator').on('click', '.left', function(){
+					$.ajax({
+						type: 'POST',
+						url: '/ajax.php?action=question_update',
+						data: 'page='+index+'&arr={{info.question_arr}}&otvet='+otvet,
+						success: function(data){
+							$('#fix').html(data);
+						}
+					});
+					$('.otvet').hide(20);
+				});
+				$('#paginator').on('click', '.right', function(){
+					$.ajax({
+						type: 'POST',
+						url: '/ajax.php?action=question_update',
+						data: 'page='+index+'&arr={{info.question_arr}}&otvet='+otvet,
+						success: function(data){
+							$('#fix').html(data);
+						}
+					});
+					$('.otvet').hide(20);
+				});
+
+				function in_array(value, array) {
+					for(var i = 0; i < array.length; i++) {if(array[i] == value) return true;}
+					return false;
+				}
+
+				otvet = []
+
+				$('#fix').on('click', ':checkbox', function(){
+					if($(this).prop("checked")) {
+						if (!in_array(($(this).data('otvet')+"."+(this.name)), otvet)) {otvet.push(($(this).data('otvet')+"."+(this.name)));}
+					} else {
+						key = otvet.indexOf(($(this).data('otvet')+"."+(this.name)));
+						otvet.splice (key,1);
+					}
+				});
+
+				$('#question').on('click', '.start', function(){
+					question_verify = otvet.join('|');
+					$('#question').html(question_verify);
+					$.ajax({
+						type: 'POST',
+						url: '/ajax.php?action=question_verify_all',
+						data: 'question_verify='+question_verify+'&num={{info.page_count}}',
+						success: function(data){
+							$('#question').html(data);
+						}
+					});
+				});
+				
+				$('#question').on('click', '.rand', function() {
+					$('article .otvet').css('display','block');
+					var all=$('#variant input:checkbox:checked').serializeArray();
+					params = {
+						id : $('#id').val(),
+						checkbox : all
+					};
+					$.ajax({
+						type: 'POST',
+						url: '/ajax.php?action=question_verify',
+						data: params,
+						success: function(data){
+							$('.otvet').html(data);
+						}
+					});
+				});
+			});
+		</script>
+	{% elseif info.otvet == "option" %}
+		<div id="question">
+			<article class="ac-custom ac-checkbox ac-checkmark">
+				<a href="#" class="button red start">Запустить</a>
+				<p><span>Выберите теги по которым хотите провести тестирование</span></p>
+				<ul id="variant">
+					{% for i in (0..info.tag|length -1) %}
+						<li><input id="cb{{i}}" type="checkbox" name='{{info.tag[i]['link']}}'><label for="cb{{i}}">{{info.tag[i]['tag']}}</label></li>
+    				{% endfor %}
+				</ul>
+				<footer>
+					<div id="paginator"><span class="paginate left ajax"><i></i><i></i></span><p class="counter"></p><span class="paginate right ajax"><i></i><i></i></span></div>
+				</footer>
+			</article>
+			<div class="menu">
+				<a class="button red" href="/question/option">Настраиваемый тест</a>
+				<a class="button red" href="/question/rand">random</a>
+				<p>Отвечай на череду случайных вопросов, либо выбери только интересные для вас темы</p>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				// basic paging logic to demo the buttons
+				var pr = document.querySelector( '.paginate.left' );
+				var pl = document.querySelector( '.paginate.right' );
+
+				pr.onclick = slide.bind( this, -1 );
+				pl.onclick = slide.bind( this, 1 );
+
+				var index = 0, total = {{info.page_count}};
+
+				function slide(offset) {
+					index = Math.min( Math.max( index + offset, 0 ), total - 1 );
+					document.querySelector( '.counter' ).innerHTML = ( index + 1 ) + ' / ' + total;
+					pr.setAttribute( 'data-state', index === 0 ? 'disabled' : '' );
+					pl.setAttribute( 'data-state', index === total - 1 ? 'disabled' : '' );
+				}
+
+				slide(0);
+
+				$('#paginator').on('click', '.left', function(){
+					$.ajax({
+						type: 'POST',
+						url: '/ajax.php?action=paginator_tag_option',
+						data: 'count={{info.count}}&page='+index+'&tag='+tag,
+						success: function(data){
+							$('#variant').html(data);
+						}
+					});
+				});
+				$('#paginator').on('click', '.right', function(){
+					$.ajax({
+						type: 'POST',
+						url: '/ajax.php?action=paginator_tag_option',
+						data: 'count={{info.count}}&page='+index+'&tag='+tag,
+						success: function(data){
+							$('#variant').html(data);
+						}
+					});
+				});
+
+				function in_array(value, array) {
+					for(var i = 0; i < array.length; i++) {if(array[i] == value) return true;}
+					return false;
+				}
+
+				tag = []
+
+				$('#variant').on('click', ':checkbox', function(){
+					if($(this).prop("checked")) {
+						if (!in_array(this.name, tag)) {tag.push(this.name);}
+					} else {
+						key = tag.indexOf(this.name);
+						tag.splice (key,1);
+					}
+				});
+
+				$('#question').on('click', '.start', function(){
+					tag_link = tag.join('&')
+					location.href = '/question/tag/'+tag_link;
+				});
+			});
+		</script>
+	{% endif %}
+	<script src="/js/svgcheckbx.js"></script>
+	<script>
+		ggg();
+		$('.rand_update').on('click', function(){
+			$.ajax({
+				url: '/ajax.php?action=question_update',
+				success: function(data){
+					$('.ac-custom').html(data);
+				}
+			});
+		});
+		$(window).load(function(){
+			$(".code").mCustomScrollbar({
+			    horizontalScroll:true
+			});
+		});
+	</script>
+{% endblock %}

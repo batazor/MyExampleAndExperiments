@@ -1,0 +1,10 @@
+{% extends "template.tpl" %}
+{% block title %}Добро ожаловать{% endblock %}
+
+{% block content %}
+	{% if info.page_status == "my" %}
+		<p>Добро пожаловать домой</p>
+	{% elseif info.page_status == "stranger" %}
+		<p>Что надо?</p>
+	{% endif %}
+{% endblock %}
