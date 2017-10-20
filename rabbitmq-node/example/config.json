@@ -1,0 +1,4 @@
+{
+  "url": "amqp://localhost",
+  "reconnectTime": 15000
+}
