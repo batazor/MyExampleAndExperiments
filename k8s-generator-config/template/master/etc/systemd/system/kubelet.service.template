@@ -1,0 +1,51 @@
+[Unit]
+Description=Kubernetes Kubelet Server
+Documentation=https://raw.githubusercontent.com/kubernetes/kubernetes.github.io/master/docs/admin/kubelet.md
+
+[Service]
+Environment=KUBELET_IMAGE_TAG=${KUBELET_IMAGE_TAG}
+Environment=KUBELET_IMAGE_URL=${KUBELET_IMAGE_URL}
+Environment="RKT_RUN_ARGS=--uuid-file-save=/var/run/kubelet-pod.uuid \
+  --volume=resolv,kind=host,source=/etc/resolv.conf \
+  --mount volume=resolv,target=/etc/resolv.conf \
+  --volume var-lib-cni,kind=host,source=/var/lib/cni \
+  --mount volume=var-lib-cni,target=/var/lib/cni \
+  --volume opt-cni-bin,kind=host,source=/opt/cni/bin \
+  --mount volume=opt-cni-bin,target=/opt/cni/bin \
+  --volume var-log,kind=host,source=/var/log \
+  --mount volume=var-log,target=/var/log"
+ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
+ExecStartPre=/usr/bin/mkdir -p /var/log/containers
+ExecStartPre=/usr/bin/mkdir -p /opt/cni/bin
+ExecStartPre=/usr/bin/mkdir -p /var/lib/cni
+ExecStartPre=-/usr/bin/rkt rm --uuid-file=/var/run/kubelet-pod.uuid
+ExecStart=/usr/lib/coreos/kubelet-wrapper \
+  --allow-privileged \
+  --client-ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cluster-dns=${DNS_SERVICE_IP} \
+  --cluster-domain=cluster.local \
+  # --cni-conf-dir=/etc/kubernetes/cni/net.d \
+  --container-runtime=docker \
+  --contention-profiling \
+  --enable-custom-metrics \
+  --eviction-hard="memory.available<100Mi,nodefs.available<10%,nodefs.inodesFree<5%" \
+  --experimental-check-node-capabilities-before-mount \
+  --hairpin-mode=hairpin-veth \
+  --hostname-override=${ADVERTISE_IP} \
+  --image-pull-progress-deadline 2m \
+  --iptables-masquerade-bit 14 \
+  # --network-plugin=cni \
+  --node-labels="role=master" \
+  --register-node \
+  --runtime-request-timeout 15m \
+  --pod-manifest-path=/etc/kubernetes/manifests \
+  --rotate-certificates \
+  --runtime-request-timeout 5m \
+  --tls-cert-file=/etc/kubernetes/ssl/kubernetes.pem \
+  --tls-private-key-file=/etc/kubernetes/ssl/kubernetes-key.pem
+ExecStop=-/usr/bin/rkt stop --uuid-file=/var/run/kubelet-pod.uuid
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
