@@ -1,0 +1,15 @@
+.home_link
+  = link_to "ADMIN", main_path
+.create_new
+  = link_to "New Post", new_admin_post_path
+
+h1 Post List
+
+ul.list
+  - @post.each do |post|
+    li
+      = link_to post.title, admin_post_path(post.id)
+      = link_to 'Edit', edit_admin_post_path(post.id), class: 'update'
+      = link_to 'Delete', admin_post_path(post.id), :method => 'delete', class: 'destroy'
+
+= paginate @post

@@ -1,0 +1,36 @@
+nav#mp-menu.mp-menu
+  .mp-level
+    h2.fa.fa-home Menu
+    ul
+      li
+        a href="/admin/main"
+          = fa_icon "home"
+          | Home
+      li
+        a href="/admin/categories"
+          = fa_icon "code-fork"
+          | Categories
+      li
+        a href="/admin/posts"
+          = fa_icon "edit"
+          | Post
+      li
+        a href="/admin/tags"
+          = fa_icon "tags"
+          | Tags
+      li.icon-arrow-left
+        a href="/admin/settings/index"
+          = fa_icon "tasks"
+          | Settings
+        div.mp-level
+          h2 Settings
+          a.mp-back href="#" back
+          ul
+            li
+              a href="/admin/settings/url"
+                = fa_icon "tasks"
+                | URL pattern
+      li
+        a href="/"
+          = fa_icon "undo"
+          | to site

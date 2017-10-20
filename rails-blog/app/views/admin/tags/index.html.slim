@@ -1,0 +1,15 @@
+.home_link
+  = link_to "ADMIN", main_path
+
+h1 Tags List
+
+ul.list
+  - @tags.each do |tag|
+    li
+      = tag.name
+      = link_to 'Rename', edit_admin_tag_path(tag.id), class: 'update'
+
+      - if tag.taggings_count == 0
+        = link_to 'NULL', admin_tag_path(tag.id), :method => 'delete', class: 'destroy'
+
+= paginate @tags

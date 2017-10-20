@@ -1,0 +1,11 @@
+- content_for :title, @post.title.html_safe
+
+.second
+  .fixed-content
+    h1
+      = @post.title.html_safe
+    p
+      = @post.text.html_safe
+
+= render "comment_list"
+= render "form_comment"

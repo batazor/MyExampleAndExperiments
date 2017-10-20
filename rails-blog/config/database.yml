@@ -1,0 +1,32 @@
+# MySQL.  Versions 5.0+ are recommended.
+#
+# Install the MYSQL driver
+#   gem install mysql2
+#
+# Ensure the MySQL gem is defined in your Gemfile
+#   gem 'mysql2'
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+#
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: rails
+  password: rails
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: rails-blog_development
+
+test:
+  <<: *default
+  database: rails-blog_test
+
+production:
+  <<: *default
+  database: rails-blog_production
+  username: rails-blog
+  password: <%= ENV['RAILS-BLOG_DATABASE_PASSWORD'] %>

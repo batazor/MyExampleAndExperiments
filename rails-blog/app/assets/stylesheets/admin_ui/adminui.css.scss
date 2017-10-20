@@ -1,0 +1,258 @@
+$gray: #28292A;
+$blue: #62B9ED;
+
+@mixin twosecs {
+  transition: all 0.2s;
+}
+
+/*****************/
+/***  FORM UI  ***/
+/*****************/
+
+.form {
+  width: 100%;
+
+  form {
+    width: 90%;
+    margin: 0 auto;
+    border: 3px solid white;
+    border-radius: 15px;
+    padding: 1em;
+
+    label {
+      position: absolute;
+      font: 11px Helvetica Neue, Helvetica, sans-serif;
+      color: #444;
+      text-transform: uppercase;
+      margin-top: 14px;
+      margin-left: 12px;
+      z-index: 1;
+      font-weight: 500;
+      @include twosecs;
+
+      &.active {
+        color: $blue;
+        @include twosecs;
+      }
+    }
+
+    .textarea {
+      background: rgba(101, 201, 231, 0.23);
+    }
+
+    input:not([type="submit"]) {
+      width: 42%;
+      min-width: 278px;
+      color: $blue;
+      border-radius: 3px;
+      outline: 0;
+      border: 3px solid #FFF;
+      position: relative;
+      padding: 24px 8px 6px;
+      font: 18px Helvetica Neue, Helvetica, sans-serif;
+      @include twosecs;
+
+      &:focus {
+        color: $gray;
+        box-shadow: 0 0 6px 3px rgba(0,0,0,.25);
+        -webkit-box-shadow: 0 0 6px 3px rgba(0,0,0,.25);
+        @include twosecs;
+      }
+    }
+  }
+}
+
+/*****************/
+/*** BUTTON UI ***/
+/*****************/
+.btn-primary {
+  box-shadow: 0;
+  border: none;
+  background-color: #f16272;
+  color: #ffffff;
+  outline: none;
+  -webkit-font-smoothing: subpixel-antialiased;
+  transition: all .5s;
+  padding: 10px 19px;
+  font-size: 17px;
+  line-height: 1.471;
+  width: 30%;
+  border-radius: 3px;
+  text-transform: uppercase;
+  margin: auto;
+  margin: 1em auto;
+  display: inherit;
+  cursor: pointer;
+
+  &:hover { background-color: #d34150; }
+}
+
+.create_new {
+  @extend .btn-primary;
+
+  width: 200px;
+  text-align: center;
+  position: absolute;
+  right: 1em;
+  top: 3em;
+}
+
+.back_link, .home_link {
+  @extend .btn-primary;
+
+  width: 200px;
+  text-align: center;
+  position: absolute;
+  right: 1em;
+}
+
+.update_link {
+  @extend .btn-primary;
+
+  width: 200px;
+  text-align: center;
+  position: absolute;
+  right: 16em;
+}
+
+/*****************/
+/*** LIST   UI ***/
+/*****************/
+.list {
+  position: relative;
+  margin-top: 4.7em;
+  list-style-type: none;
+  font-size: 140%;
+
+  li {
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 0.5em;
+    margin: 0.7em;
+    position: relative;
+    padding-right: 7em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .update, .destroy {
+    padding: 10px;
+  }
+
+  .update {
+    border-left: 3px solid orange;
+    position: absolute;
+    right: 3.9em;
+    top: 1px;
+  }
+
+  .destroy {
+    border-left: 3px solid rgb(231, 42, 75);
+    position: absolute;
+    right: 0;
+    top: 1px;
+    border-radius: 0 15px 15px 0;
+    color: rgb(231, 42, 75);
+  }
+}
+
+/*********************/
+/*** PAGINATION UI ***/
+/*********************/
+.pagination {
+  text-align: center;
+
+  span {
+    min-width: 22px;
+    background: rgba(115, 147, 168, 0.9);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    padding: 6px;
+
+    &:hover, &:focus{
+      background: rgba(40,110,250,0.9);
+    }
+
+    a {
+      padding: 6px;
+      border-radius: 3px;
+    }
+  }
+
+  .current {
+    background: rgba(40,110,250,0.9);
+  }
+}
+
+/*****************/
+/*** SELECT UI ***/
+/*****************/
+.select {
+  position: relative;
+  border: 1px solid #fff;
+
+  select {
+    width: 100%;
+    padding: 8px;
+    margin: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #fff;
+    border: 0;
+    outline: none;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  option {
+    color: #000;
+  }
+}
+
+/*****************/
+/*** RADIO UI ***/
+/*****************/
+.btn-radio {
+  list-style-type: none;
+  li { margin-bottom: 15px; }
+
+  input{
+    display: none;
+
+    &[type="radio"]:checked + label { color: #FFFFFF; }
+    &[type="radio"]:checked + label span.small {
+      background-color: rgba(255, 64, 64, 0.8);
+      opacity: 1;
+    }
+  }
+
+  label{
+    color:#777;
+    margin-right:20px;
+  }
+
+  span {
+    &.big {
+      background-color: #fff;
+      border-radius: 50% 50% 50% 50%;
+      display: inline-block;
+      height: 12px;
+      margin-bottom: -11px;
+      margin-right: 9px;
+      padding: 8px;
+      position: relative;
+      top: -3px;
+      width: 12px;
+    }
+
+    &.small {
+      border-radius: 50% 50% 50% 50%;
+      display: block;
+      height: 100%;
+      transition: background 0.4s ease 0s;
+      width: 100%;
+    }
+  }
+}

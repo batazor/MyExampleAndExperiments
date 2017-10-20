@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title Login | Quest-rails
+    = csrf_meta_tags
+    = stylesheet_link_tag 'login'
+
+  body class='#{controller.controller_name}'
+
+    == yield

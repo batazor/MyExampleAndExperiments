@@ -1,0 +1,15 @@
+.second
+  .fixed-content
+    h2 Comments
+    - @post.comments.each do |comment|
+      .comment
+        p
+          strong Commenter: &#160;
+          =' comment.author
+
+        p
+          strong Comment: &#160;
+          =' comment.comment
+
+        - if user_signed_in?
+            = link_to 'delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete'

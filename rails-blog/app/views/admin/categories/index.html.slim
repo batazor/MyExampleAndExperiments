@@ -1,0 +1,15 @@
+.home_link
+  = link_to "ADMIN", main_path
+.create_new
+  = link_to "New Category", new_admin_category_path
+
+h1 Categories List
+
+ul.list
+  - @categories.each do |category|
+    li
+      = link_to category.title, admin_category_path(category.id)
+      = link_to 'Edit', edit_admin_category_path(category.id), class: 'update'
+      = link_to 'Delete', admin_category_path(category.id), :method => 'delete', class: 'destroy'
+
+= paginate @categories

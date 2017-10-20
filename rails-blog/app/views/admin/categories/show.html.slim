@@ -1,0 +1,13 @@
+.back_link
+  = link_to "back", admin_categories_path
+.update_link
+  = link_to "update", edit_admin_category_path(@category)
+
+h1.title
+  strong Title: &#160;
+  = @category.title.html_safe
+
+.content
+  .info
+    strong Description:
+    =' @category.description.html_safe

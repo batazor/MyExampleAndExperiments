@@ -1,0 +1,83 @@
+/*
+*= require_self
+*= require normalize-rails
+*= require froala_editor.min.css
+*= require froala_style.min.css
+*= require font-awesome
+*= require admin_ui/menu.css.scss
+*= require admin_ui/adminui.css.scss
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+html, body, .container, .scroller {
+  height: 100%;
+}
+
+body {
+	background: #34495e;
+	color: #fff;
+	font-weight: 300;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: #f7f7f7;
+	outline: none;
+
+  &:hover, &:focus {
+    color: #fff;
+    outline: none;
+  }
+}
+
+.scroller {
+  overflow-y: scroll;
+}
+
+.scroller,
+.scroller-inner {
+  position: relative;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  background: #34495e;
+}
+
+.block {
+	float: left;
+	padding: 1em 2em;
+
+  a {
+    margin: 0;
+    padding: 0 2em 0.6em;
+    font-size: 1.8em;
+    line-height: 1.5;
+  }
+}
+
+.content {
+		width: 100%;
+
+		.info {
+			width: 90%;
+			margin: 0 auto;
+			border: 3px solid white;
+			border-radius: 15px;
+			padding: 1em;
+		}
+}

@@ -1,0 +1,13 @@
+- @post.each do |post|
+  .second
+    .fixed-content
+      h1
+        = url_pattern(post.title.html_safe, post.id, post.created_at.strftime("%F"))
+      p
+        = post.text.html_safe
+      - unless post.tag_list.empty?
+        p Tags: #{ raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') }
+
+.second
+  .fixed-content
+    = paginate @post
