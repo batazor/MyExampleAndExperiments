@@ -1,0 +1,10 @@
+# Build
+src/build
+src/**/build*
+
+# Logs
+logs
+*.log
+
+# Dependency directory
+node_modules
