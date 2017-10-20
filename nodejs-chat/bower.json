@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-chat",
+  "version": "0.0.1",
+  "homepage": "https://github.com/batazor/nodejs-chat",
+  "authors": [
+    "Login Viktor <batazor111@gmail.com>"
+  ],
+  "description": "Chat on Node.js",
+  "main": "app.js",
+  "keywords": [
+    "chat"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "~0.95.2"
+  }
+}

@@ -1,0 +1,12 @@
+# Logs
+logs
+*.log
+
+# Dependency directory
+node_modules
+
+# Bower
+public/components
+
+# Build
+app/assets/stylesheets/build*
