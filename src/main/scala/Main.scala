@@ -5,7 +5,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import scala.io.StdIn
 
-object WebServer {
+object Main {
   def main(args: Array[String]) {
 
     implicit val system = ActorSystem("my-system")
