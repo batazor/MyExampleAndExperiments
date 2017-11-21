@@ -16,7 +16,12 @@ object Main {
     val route =
       path("hello") {
         get {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Say hello to akka-http</h1>"))
+          complete(HttpEntity(ContentTypes.`application/json`, "{msg: \"Hello World\"}"))
+        }
+      } ~
+      path("counter") {
+        get {
+          complete(HttpEntity(ContentTypes.`application/json`, "{counter: 1}"))
         }
       }
 

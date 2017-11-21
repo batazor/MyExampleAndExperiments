@@ -4,7 +4,7 @@
 		module="akka-server-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20171121154252"
+		publication="20171121160358"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
@@ -41,5 +41,6 @@
 			<artifact name="global-plugins" type="doc" ext="jar" conf="compile" e:classifier="javadoc"/>
 		</dependency>
 		<dependency org="com.eed3si9n" name="sbt-assembly" rev="0.14.6" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
+		<dependency org="com.typesafe.sbt" name="sbt-native-packager" rev="1.0.0" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
 	</dependencies>
 </ivy-module>

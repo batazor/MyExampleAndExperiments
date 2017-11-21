@@ -4,7 +4,7 @@
 		module="akka-server_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20171121151532"
+		publication="20171121155556"
 	>
 		<description>
 		akka-server
@@ -32,6 +32,7 @@
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.12.4" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.12.4" conf="scala-tool->default,optional(default);compile->default(compile)"/>
+		<dependency org="com.typesafe.akka" name="akka-actor_2.12" rev="2.4.9" conf="compile->default(compile)"/>
 		<dependency org="com.typesafe.akka" name="akka-http_2.12" rev="10.0.10" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
