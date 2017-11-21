@@ -23,7 +23,7 @@
   + Visualization
     + [D3](https://d3js.org/)
   + Text Editor
-    + [Slate](https://github.com/ianstormtaylor/slate)
+    + [Draft.js](https://draftjs.org/)
   + Date
     + [date-fns](https://github.com/date-fns/date-fns)
 
