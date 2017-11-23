@@ -1,2 +1,2 @@
-# react-native-ui
+# react-native-device
 UI for mobiles
