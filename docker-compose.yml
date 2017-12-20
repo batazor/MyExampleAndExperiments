@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+
+  mongo:
+    image: mongo:3.6
+    container_name: mongo
+    restart: always
+    volumes:
+    - /data/go-auth/mongodb:/data/db
+
+  auth:
+    image: batazor/go-auth
+    container_name: auth
+    restart: always
+    environment:
+      PORT: 4070
+      MONGO_URL: mongo/auth
+    ports:
+    - "4070:4070"
+    depends_on:
+    - mongo
+    volumes:
+    - ./cert:/app/cert
+
+  react-app:
+    image: batazor/react-app
+    container_name: react-app
+    restart: always
+    ports:
+    - "3000:3000"
+    depends_on:
+    - auth
+
+  opentracing:
+    image: jaegertracing/all-in-one:0.9.0
+    container_name: opentracing
+    restart: always
+    ports:
+    - "5775:5775/udp"
+    - "16686:16686"
