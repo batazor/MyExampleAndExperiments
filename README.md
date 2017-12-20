@@ -3,6 +3,10 @@ General description of the architecture
 
 ![architecture](./images/architecture.png)
 
+### Getting start
+
+`docker-compose up -d`
+
 ### Detail architecture
 
 ##### [Workflow](./Workflow.md)
