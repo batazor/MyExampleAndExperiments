@@ -11,21 +11,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.5.0",
-    "express": "^4.15.4",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.16.0",
+    "express": "^4.16.2",
     "isomorphic-unfetch": "^2.0.0",
-    "next": "^3.2.1",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-markdown": "^2.5.0"
+    "next": "^4.2.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-markdown": "^3.1.4"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^1.9.0",
-    "eslint-plugin-flowtype": "^2.35.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.3.0"
+    "eslint-plugin-flowtype": "^2.41.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1"
   }
 }
