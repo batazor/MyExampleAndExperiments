@@ -1,0 +1,16 @@
+version: "3"
+
+volumes:
+    prometheus_data: {}
+
+services:
+
+  prometheus:
+    image: prom/prometheus:v2.1.0
+    container_name: prometheus
+    restart: always
+    ports:
+    - 9090:9090
+    volumes:
+    - ./prometheus/:/etc/prometheus/
+    - prometheus_data:/prometheus
