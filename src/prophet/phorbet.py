@@ -10,9 +10,11 @@ import pandas as pd
 import numpy as np
 from fbprophet import Prophet
 
+url="https://raw.githubusercontent.com/facebook/prophet/master/examples/example_wp_peyton_manning.csv"
+
 def hello():
     print('Hello, world!')
-    df = pd.read_csv('./examples/example_wp_peyton_manning.csv')
+    df = pd.read_csv(url)
     df['y'] = np.log(df['y'])
     df.head()
     m = Prophet()
