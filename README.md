@@ -7,6 +7,10 @@ General description of the architecture
 
 `docker-compose up -d`
 
+### Stack
+
+![main stack](https://www.cncf.io/wp-content/uploads/2018/03/CNCF_TrailMap_latest-884x1024.png)
+
 ### Detail architecture
 
 ##### [Workflow](./Workflow.md)
