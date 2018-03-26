@@ -1,0 +1,96 @@
+.job_template_build: &job_build
+  type: build
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+  except:
+  - branches
+  when: on_success
+
+.job_template_deploy: &job_deploy
+  type: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+  - export DEPLOYS=$(helm ls --kube-context $KUBE_CONTEXT | grep $RELEASE_NAME | wc -l)
+  - if [ ${DEPLOYS}  -eq 0 ]; then
+      helm --kube-context $KUBE_CONTEXT install
+        --name $RELEASE_NAME
+        --namespace=$PROJECT_NAMESPACE
+        $HELM_PATH;
+    else
+      helm --kube-context $KUBE_CONTEXT upgrade $RELEASE_NAME $HELM_PATH
+        --namespace=$PROJECT_NAMESPACE;
+    fi
+  except:
+  - branches
+  when: manual
+
+image: docker:latest
+
+services:
+- docker:dind
+
+cache:
+  paths:
+  - /apt-cache
+  - /go/src/github.com
+  - /go/src/golang.org
+  - /go/src/google.golang.org
+  - /go/src/gopkg.in
+
+variables:
+  GITHUB_PATH: gitlab.com/batazor
+  PROJECT_NAMESPACE: batazor
+  RELEASE_NAME: $CI_PROJECT_NAME
+  HELM_PATH: ops/Helm/k8s-custom-metric
+
+stages:
+- build
+- deploy
+
+before_script:
+  - mkdir -p /go/src/$GITHUB_PATH /go/src/_/builds
+  - cp -r $CI_PROJECT_DIR /go/src/$GITHUB_PATH/$CI_PROJECT_NAME
+  - ln -s /go/src/$GITHUB_PATH/$CI_PROJECT_NAME /go/src/_/builds/$CI_PROJECT_NAME
+
+build:staging:
+  <<: *job_build
+  before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+  - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG .
+  - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  only:
+  - /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)-rc(?:0|[1-9]\d*)$/
+
+deploy:staging:
+  <<: *job_deploy
+  variables:
+    KUBE_CONTEXT: staging
+  environment:
+    name: staging
+    url: https://auth.example.com
+  only:
+  - /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)-rc(?:0|[1-9]\d*)$/
+
+build:production:
+  <<: *job_build
+  before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+  - docker build -t $CI_REGISTRY_IMAGE .
+  - docker push $CI_REGISTRY_IMAGE
+  - docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_TAG .
+  - docker push $CI_REGISTRY_IMAGE:$CI_BUILD_TAG
+  only:
+  - /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.?(?:0|[1-9]\d*)?$/
+
+deploy:production:
+  <<: *job_deploy
+  variables:
+    KUBE_CONTEXT: production
+  environment:
+    name: $CI_ENVIRONMENT_NAME
+    url: https://auth.example.com
+  only:
+  - /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.?(?:0|[1-9]\d*)?$/
