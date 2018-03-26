@@ -12,8 +12,8 @@ implementation backed by fake data.
 ## How to use this repository
 
 In order to use this repository, you should vendor this repository at
-`github.com/kubernetes-incubator/custom-metrics-apiserver`, and implement the
-`"github.com/kubernetes-incubator/custom-metrics-apiserver/pkg/provider".CustomMetricsProvider`
+`github.com/batazor/k8s-custom-metric`, and implement the
+`"github.com/batazor/k8s-custom-metric/pkg/provider".CustomMetricsProvider`
 interface.  You can then pass this to the main setup functions.
 
 The `pkg/cmd` package contains the building blocks of the actual API
