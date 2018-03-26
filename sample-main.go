@@ -21,7 +21,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/kubernetes-incubator/custom-metrics-apiserver/pkg/sample-cmd/server"
+	"github.com/batazor/k8s-custom-metric/pkg/sample-cmd/server"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/apiserver/pkg/util/logs"
 )

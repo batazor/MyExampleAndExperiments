@@ -1,4 +1,4 @@
-package: github.com/kubernetes-incubator/custom-metrics-apiserver
+package: github.com/batazor/k8s-custom-metric
 import:
 - package: github.com/emicklei/go-restful
   version: 2.2.1  # close to kubernetes Godeps.json

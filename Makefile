@@ -5,7 +5,7 @@ OUT_DIR?=./_output
 
 all: build
 build: vendor
-	CGO_ENABLED=0 GOARCH=$(ARCH) go build -a -tags netgo -o $(OUT_DIR)/$(ARCH)/sample-adapter github.com/kubernetes-incubator/custom-metrics-apiserver
+	CGO_ENABLED=0 GOARCH=$(ARCH) go build -a -tags netgo -o $(OUT_DIR)/$(ARCH)/sample-adapter github.com/batazor/k8s-custom-metric
 
 vendor: glide.lock
 	glide install -v

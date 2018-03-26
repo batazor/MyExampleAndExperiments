@@ -21,7 +21,7 @@ import (
 	"io"
 	"net"
 
-	"github.com/kubernetes-incubator/custom-metrics-apiserver/pkg/apiserver"
+	"github.com/batazor/k8s-custom-metric/pkg/apiserver"
 	genericapiserver "k8s.io/apiserver/pkg/server"
 	genericoptions "k8s.io/apiserver/pkg/server/options"
 )
