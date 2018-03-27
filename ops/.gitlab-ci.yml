@@ -30,14 +30,6 @@ image: docker:latest
 services:
 - docker:dind
 
-cache:
-  paths:
-  - /apt-cache
-  - /go/src/github.com
-  - /go/src/golang.org
-  - /go/src/google.golang.org
-  - /go/src/gopkg.in
-
 variables:
   GITHUB_PATH: gitlab.com/batazor
   PROJECT_NAMESPACE: batazor
@@ -69,7 +61,7 @@ deploy:staging:
     KUBE_CONTEXT: staging
   environment:
     name: staging
-    url: https://auth.example.com
+    url: https://web.example.com
   only:
   - /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)-rc(?:0|[1-9]\d*)$/
 
@@ -91,6 +83,6 @@ deploy:production:
     KUBE_CONTEXT: production
   environment:
     name: $CI_ENVIRONMENT_NAME
-    url: https://auth.example.com
+    url: https://web.example.com
   only:
   - /^(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.?(?:0|[1-9]\d*)?$/
