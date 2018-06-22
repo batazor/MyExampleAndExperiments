@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+
+  bootstrap:
+    image: mikcorer/bootstrap
+    restart: always
+    volumes:
+    - /data/go-auth/bootstrap:/data
+    ports:
+        - 2551
+        - 8558

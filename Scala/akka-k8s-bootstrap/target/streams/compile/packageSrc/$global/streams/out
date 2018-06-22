@@ -1,0 +1,7 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/akka-bootstrap_2.12-0.14.0-sources.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	application.conf[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/mikcorer/IdeaProjects/akka-bootstrap/src/main/resources/application.conf[0m
+[0m[[0m[0mdebug[0m] [0m[0m	bootstrap/DemoApp.scala[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/mikcorer/IdeaProjects/akka-bootstrap/src/main/scala/bootstrap/DemoApp.scala[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m

@@ -1,0 +1,74 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: appka
+  name: appka
+  namespace: test
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: appka
+  template:
+    metadata:
+      labels:
+        app: appka
+        actorSystemName: appka
+    spec:
+      containers:
+      - name: appka
+        image: registry.rightech.io:5000/mikcorer/bootstrap:1.4
+        env:
+        - name: HOST_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        - name: "NETWORK_HOST"
+          value: "eth0:ipv4"
+        livenessProbe:
+          tcpSocket:
+            port: 8558
+        ports:
+        # akka remoting
+        - name: remoting
+          containerPort: 2552
+          protocol: TCP
+        # akka-management bootstrap
+        - name: bootstrap
+          containerPort: 8558
+          protocol: TCP
+        # external http
+        - name: akka-mgmt-http
+          containerPort: 8558
+          protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: appka
+  namespace: test
+spec:
+  # by setting the clusterIp to None we are a "headless service"
+  # and thus the svc ("service") DNS record for the single IP but the IPs of all nodes that we select
+  #
+  # In other words:
+  #  $ kubectl exec -it $POD -- nslookup appka.default.svc.cluster.local
+  #  Server:		10.0.0.10
+  #
+  #  Name:	appka.default.svc.cluster.local
+  #  Address: 172.17.0.7
+  #  Name:	appka.default.svc.cluster.local
+  #  Address: 172.17.0.8
+  #  Name:	appka.default.svc.cluster.local
+  #  Address: 172.17.0.9
+  #  Name:	appka.default.svc.cluster.local
+  #  Address: 172.17.0.6
+  clusterIP: None
+  selector:
+    app: appka
+  ports:
+  - protocol: TCP
+    port: 8558
+    targetPort: 8558

@@ -1,0 +1,10 @@
+[0m[[0m[0minfo[0m] [0m[0m:: delivering :: default#akka-bootstrap_2.12;0.14.0 :: 0.14.0 :: release :: Tue Jun 19 19:57:00 MSK 2018[0m
+[0m[[0m[0mdebug[0m] [0m[0m	options = status=release pubdate=Tue Jun 19 19:57:00 MSK 2018 validate=true resolveDynamicRevisions=true merge=true resolveId=null pubBranch=null[0m
+[0m[[0m[0minfo[0m] [0m[0m	delivering ivy file to /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/ivy-0.14.0.xml[0m
+[0m[[0m[0mdebug[0m] [0m[0m	deliver done (13ms)[0m
+[0m[[0m[0mdebug[0m] [0m[0mlocal do not support transaction. ivy pattern does not use revision as a directory[0m
+[0m[[0m[0minfo[0m] [0m[0m	published akka-bootstrap_2.12 to /home/mikcorer/.ivy2/local/default/akka-bootstrap_2.12/0.14.0/poms/akka-bootstrap_2.12.pom[0m
+[0m[[0m[0minfo[0m] [0m[0m	published akka-bootstrap_2.12 to /home/mikcorer/.ivy2/local/default/akka-bootstrap_2.12/0.14.0/jars/akka-bootstrap_2.12.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	published akka-bootstrap_2.12 to /home/mikcorer/.ivy2/local/default/akka-bootstrap_2.12/0.14.0/srcs/akka-bootstrap_2.12-sources.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	published akka-bootstrap_2.12 to /home/mikcorer/.ivy2/local/default/akka-bootstrap_2.12/0.14.0/docs/akka-bootstrap_2.12-javadoc.jar[0m
+[0m[[0m[0minfo[0m] [0m[0m	published ivy to /home/mikcorer/.ivy2/local/default/akka-bootstrap_2.12/0.14.0/ivys/ivy.xml[0m

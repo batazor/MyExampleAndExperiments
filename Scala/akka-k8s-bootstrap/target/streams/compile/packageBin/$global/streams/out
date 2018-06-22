@@ -1,0 +1,17 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/akka-bootstrap_2.12-0.14.0.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	bootstrap/ClusterWatcher.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/classes/bootstrap/ClusterWatcher.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	bootstrap[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/classes/bootstrap[0m
+[0m[[0m[0mdebug[0m] [0m[0m	bootstrap/DemoApp$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/classes/bootstrap/DemoApp$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	application.conf[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/classes/application.conf[0m
+[0m[[0m[0mdebug[0m] [0m[0m	bootstrap/ClusterWatcher$$anonfun$receive$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/classes/bootstrap/ClusterWatcher$$anonfun$receive$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	bootstrap/DemoApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/classes/bootstrap/DemoApp.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	bootstrap/DemoApp$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/mikcorer/IdeaProjects/akka-bootstrap/target/scala-2.12/classes/bootstrap/DemoApp$delayedInit$body.class[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m
