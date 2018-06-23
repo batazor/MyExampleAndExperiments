@@ -1,0 +1,6 @@
+syntax = "proto3";
+import "telemetry_types.proto";
+
+service Telemetry {
+  rpc GetTelemetry (telmetry.GetTelemetryRequest) returns (stream telemetry.GetTelemetryResult);
+}
