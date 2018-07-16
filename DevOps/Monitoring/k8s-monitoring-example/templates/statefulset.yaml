@@ -1,0 +1,61 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: {{ template "mongodb.fullname" . }}
+  labels:
+    app: {{ template "mongodb.name" . }}
+    release: {{ .Release.Name }}
+spec:
+  serviceName: {{ template "mongodb.fullname" . }}-discovery
+  template:
+    metadata:
+      labels:
+        app: {{ template "mongodb.name" . }}
+        release: {{ .Release.Name }}
+      annotations:
+{{- if and .Values.prometheus.exporter.enabled  (not .Values.prometheus.operator.enabled) }}
+        prometheus.io/scrape: "true"
+        prometheus.io/port: {{ .Values.prometheus.exporter.port | quote }}
+{{- end }}
+    spec:
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
+      serviceAccountName: {{ template "mongodb.serviceAccountName" . }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              protocol: TCP
+              containerPort: 15672
+            - name: mongodb
+              protocol: TCP
+              containerPort: 27017
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+          volumeMounts:
+            - name: config
+              mountPath: /etc/rabbitmq
+        {{ if .Values.prometheus.exporter.enabled }}
+        - name: {{ .Chart.Name }}-exporter
+          image: {{ .Values.prometheus.exporter.image.repository }}:{{ .Values.prometheus.exporter.image.tag }}
+          imagePullPolicy: {{ .Values.prometheus.exporter.image.pullPolicy }}
+          ports:
+          - name: exporter
+            protocol: TCP
+            containerPort: {{ .Values.prometheus.exporter.port }}
+          env:
+            - name: RABBIT_USER
+              value: {{ .Values.rabbitmqUsername | quote }}
+            {{- range $key, $value := .Values.prometheus.exporter.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
+          resources:
+{{ toYaml .Values.prometheus.exporter.resources | indent 12 }}
+        {{ end }}
+      volumes:
+        - name: config
+          emptyDir: {}
+        - name: data
+          emptyDir: {}
