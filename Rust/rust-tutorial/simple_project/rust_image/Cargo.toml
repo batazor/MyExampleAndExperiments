@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Copy Paste <copypaste@gmail.com>"]
 
 [dependencies]
-sdl2 = "0.5.0"
+sdl2 = "0.32.2"
 log = "0.3"
 env_logger = "0.3"
 rand = "0.6.5"
