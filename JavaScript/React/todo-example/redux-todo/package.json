@@ -17,7 +17,7 @@
   "author": "Login Viktor <batazor111@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.5.4",
+    "axios": "^0.18.0",
     "express": "^4.13.2",
     "immutable": "^3.7.4",
     "object-assign": "^3.0.0",
