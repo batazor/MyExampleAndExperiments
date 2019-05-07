@@ -2,7 +2,7 @@
 # VERSION   0.0.1
 
 # Set the base image to Ubuntu
-FROM        node:4.2.1
+FROM node:4.9.1
 
 # File Author / Mainteiner
 MAINTAINER  Login Viktor <batazor111@gmail.com>
