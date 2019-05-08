@@ -1,0 +1,774 @@
+{
+  "annotations": {
+    "list": [
+    {
+      "builtIn": 1,
+      "datasource": "-- Grafana --",
+      "enable": true,
+      "hide": true,
+      "iconColor": "rgba(0, 211, 255, 1)",
+      "name": "Annotations & Alerts",
+      "type": "dashboard"
+    }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 1,
+  "iteration": 1544176475780,
+  "links": [],
+  "panels": [
+  {
+    "aliasColors": {},
+    "bars": false,
+    "dashLength": 10,
+    "dashes": false,
+    "fill": 1,
+    "gridPos": {
+      "h": 9,
+      "w": 8,
+      "x": 0,
+      "y": 0
+    },
+    "id": 4,
+    "legend": {
+      "alignAsTable": true,
+      "avg": false,
+      "current": false,
+      "max": false,
+      "min": false,
+      "rightSide": true,
+      "show": true,
+      "total": false,
+      "values": false
+    },
+    "lines": true,
+    "linewidth": 1,
+    "links": [],
+    "nullPointMode": "null",
+    "percentage": false,
+    "pointradius": 5,
+    "points": false,
+    "renderer": "flot",
+    "seriesOverrides": [],
+    "spaceLength": 10,
+    "stack": false,
+    "steppedLine": false,
+    "targets": [
+    {
+      "expr": "max(gitlab_issue_total{assigneeNickname=~\"$nickname\",milestoune=~\"$milestoune\"}) by (assigneeNickname)",
+      "format": "time_series",
+      "intervalFactor": 1,
+      "legendFormat": "{{assigneeNickname}}",
+      "refId": "A"
+    }
+    ],
+    "thresholds": [],
+    "timeFrom": null,
+    "timeRegions": [],
+    "timeShift": null,
+    "title": "Issue max",
+    "tooltip": {
+      "shared": true,
+      "sort": 0,
+      "value_type": "individual"
+    },
+    "type": "graph",
+    "xaxis": {
+      "buckets": null,
+      "mode": "time",
+      "name": null,
+      "show": true,
+      "values": []
+    },
+    "yaxes": [
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    },
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    }
+    ],
+    "yaxis": {
+      "align": false,
+      "alignLevel": null
+    }
+  },
+  {
+    "aliasColors": {},
+    "bars": false,
+    "dashLength": 10,
+    "dashes": false,
+    "datasource": "Prometheus",
+    "fill": 1,
+    "gridPos": {
+      "h": 9,
+      "w": 9,
+      "x": 8,
+      "y": 0
+    },
+    "id": 8,
+    "legend": {
+      "alignAsTable": true,
+      "avg": false,
+      "current": false,
+      "max": false,
+      "min": false,
+      "rightSide": true,
+      "show": true,
+      "total": false,
+      "values": false
+    },
+    "lines": true,
+    "linewidth": 1,
+    "links": [],
+    "nullPointMode": "null",
+    "percentage": false,
+    "pointradius": 5,
+    "points": false,
+    "renderer": "flot",
+    "seriesOverrides": [],
+    "spaceLength": 10,
+    "stack": false,
+    "steppedLine": false,
+    "targets": [
+    {
+      "expr": "avg(gitlab_issue_total{assigneeNickname=~\"$nickname\",milestoune=~\"$milestoune\"}) by (assigneeNickname)",
+      "format": "time_series",
+      "intervalFactor": 1,
+      "refId": "A"
+    }
+    ],
+    "thresholds": [],
+    "timeFrom": null,
+    "timeRegions": [],
+    "timeShift": null,
+    "title": "Avg issue",
+    "tooltip": {
+      "shared": true,
+      "sort": 0,
+      "value_type": "individual"
+    },
+    "type": "graph",
+    "xaxis": {
+      "buckets": null,
+      "mode": "time",
+      "name": null,
+      "show": true,
+      "values": []
+    },
+    "yaxes": [
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    },
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    }
+    ],
+    "yaxis": {
+      "align": false,
+      "alignLevel": null
+    }
+  },
+  {
+    "aliasColors": {},
+    "bars": false,
+    "dashLength": 10,
+    "dashes": false,
+    "datasource": "Prometheus",
+    "fill": 1,
+    "gridPos": {
+      "h": 9,
+      "w": 7,
+      "x": 17,
+      "y": 0
+    },
+    "id": 6,
+    "legend": {
+      "alignAsTable": true,
+      "avg": false,
+      "current": false,
+      "max": false,
+      "min": false,
+      "rightSide": true,
+      "show": true,
+      "total": false,
+      "values": false
+    },
+    "lines": true,
+    "linewidth": 1,
+    "links": [],
+    "nullPointMode": "null",
+    "percentage": false,
+    "pointradius": 5,
+    "points": false,
+    "renderer": "flot",
+    "seriesOverrides": [],
+    "spaceLength": 10,
+    "stack": false,
+    "steppedLine": false,
+    "targets": [
+    {
+      "expr": "min(gitlab_issue_total{assigneeNickname=~\"$nickname\",milestoune=~\"$milestoune\"}) by (assigneeNickname)",
+      "format": "time_series",
+      "intervalFactor": 1,
+      "legendFormat": "{{assigneeNickname}}",
+      "refId": "A"
+    }
+    ],
+    "thresholds": [],
+    "timeFrom": null,
+    "timeRegions": [],
+    "timeShift": null,
+    "title": "Min Issue",
+    "tooltip": {
+      "shared": true,
+      "sort": 0,
+      "value_type": "individual"
+    },
+    "type": "graph",
+    "xaxis": {
+      "buckets": null,
+      "mode": "time",
+      "name": null,
+      "show": true,
+      "values": []
+    },
+    "yaxes": [
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    },
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    }
+    ],
+    "yaxis": {
+      "align": false,
+      "alignLevel": null
+    }
+  },
+  {
+    "aliasColors": {},
+    "bars": false,
+    "dashLength": 10,
+    "dashes": false,
+    "datasource": "Prometheus",
+    "fill": 1,
+    "gridPos": {
+      "h": 10,
+      "w": 24,
+      "x": 0,
+      "y": 9
+    },
+    "id": 2,
+    "legend": {
+      "alignAsTable": true,
+      "avg": false,
+      "current": false,
+      "hideZero": false,
+      "max": false,
+      "min": false,
+      "rightSide": true,
+      "show": true,
+      "sort": "min",
+      "sortDesc": false,
+      "total": false,
+      "values": false
+    },
+    "lines": true,
+    "linewidth": 1,
+    "links": [],
+    "nullPointMode": "null",
+    "percentage": false,
+    "pointradius": 5,
+    "points": false,
+    "renderer": "flot",
+    "seriesOverrides": [],
+    "spaceLength": 10,
+    "stack": false,
+    "steppedLine": false,
+    "targets": [
+    {
+      "expr": "gitlab_issue_total{assigneeNickname=~\"$nickname\",milestoune=~\"$milestoune\"}",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 1,
+      "legendFormat": "{{assigneeNickname}} {{milestoune}}",
+      "refId": "A"
+    }
+    ],
+    "thresholds": [],
+    "timeFrom": null,
+    "timeRegions": [],
+    "timeShift": null,
+    "title": "Issue total",
+    "tooltip": {
+      "shared": true,
+      "sort": 0,
+      "value_type": "individual"
+    },
+    "type": "graph",
+    "xaxis": {
+      "buckets": null,
+      "mode": "time",
+      "name": null,
+      "show": true,
+      "values": []
+    },
+    "yaxes": [
+    {
+      "format": "short",
+      "label": "weight",
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    },
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": true
+    }
+    ],
+    "yaxis": {
+      "align": false,
+      "alignLevel": null
+    }
+  }
+  ],
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+    {
+      "allValue": null,
+      "current": {
+        "tags": [],
+        "text": "All",
+        "value": [
+          "$__all"
+        ]
+      },
+      "datasource": "Prometheus",
+      "definition": "label_values(gitlab_issue_total, assigneeNickname)",
+      "hide": 0,
+      "includeAll": true,
+      "label": null,
+      "multi": true,
+      "name": "nickname",
+      "options": [
+      {
+        "selected": true,
+        "text": "All",
+        "value": "$__all"
+      },
+      {
+        "selected": false,
+        "text": "Siferoth",
+        "value": "Siferoth"
+      },
+      {
+        "selected": false,
+        "text": "alexey",
+        "value": "alexey"
+      },
+      {
+        "selected": false,
+        "text": "batazor",
+        "value": "batazor"
+      },
+      {
+        "selected": false,
+        "text": "maria",
+        "value": "maria"
+      },
+      {
+        "selected": false,
+        "text": "prohazko",
+        "value": "prohazko"
+      },
+      {
+        "selected": false,
+        "text": "root",
+        "value": "root"
+      },
+      {
+        "selected": false,
+        "text": "rulur",
+        "value": "rulur"
+      },
+      {
+        "selected": false,
+        "text": "saymon",
+        "value": "saymon"
+      },
+      {
+        "selected": false,
+        "text": "slava",
+        "value": "slava"
+      }
+      ],
+      "query": "label_values(gitlab_issue_total, assigneeNickname)",
+      "refresh": 0,
+      "regex": "",
+      "skipUrlSync": false,
+      "sort": 1,
+      "tagValuesQuery": "",
+      "tags": [],
+      "tagsQuery": "",
+      "type": "query",
+      "useTags": false
+    },
+    {
+      "allValue": null,
+      "current": {
+        "tags": [],
+        "text": "All",
+        "value": "$__all"
+      },
+      "datasource": "Prometheus",
+      "definition": "label_values(gitlab_issue_total, milestoune)",
+      "hide": 0,
+      "includeAll": true,
+      "label": null,
+      "multi": false,
+      "name": "milestoune",
+      "options": [
+      {
+        "selected": true,
+        "text": "All",
+        "value": "$__all"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 28",
+        "value": "Sprint 28"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 14",
+        "value": "Sprint 14"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 21",
+        "value": "Sprint 21"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 24",
+        "value": "Sprint 24"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 00",
+        "value": "Sprint 00"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 01",
+        "value": "Sprint 01"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 05",
+        "value": "Sprint 05"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 12",
+        "value": "Sprint 12"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 15",
+        "value": "Sprint 15"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 16",
+        "value": "Sprint 16"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 17",
+        "value": "Sprint 17"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 18",
+        "value": "Sprint 18"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 19",
+        "value": "Sprint 19"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 22",
+        "value": "Sprint 22"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 23",
+        "value": "Sprint 23"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 25",
+        "value": "Sprint 25"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 26",
+        "value": "Sprint 26"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 27",
+        "value": "Sprint 27"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 29",
+        "value": "Sprint 29"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 30",
+        "value": "Sprint 30"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 31",
+        "value": "Sprint 31"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 32",
+        "value": "Sprint 32"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 33",
+        "value": "Sprint 33"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 34",
+        "value": "Sprint 34"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 35",
+        "value": "Sprint 35"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 36",
+        "value": "Sprint 36"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 37",
+        "value": "Sprint 37"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 38",
+        "value": "Sprint 38"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 39",
+        "value": "Sprint 39"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 40",
+        "value": "Sprint 40"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 41",
+        "value": "Sprint 41"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 43",
+        "value": "Sprint 43"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 45",
+        "value": "Sprint 45"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 46",
+        "value": "Sprint 46"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 47",
+        "value": "Sprint 47"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 49",
+        "value": "Sprint 49"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 50",
+        "value": "Sprint 50"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 51",
+        "value": "Sprint 51"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 52",
+        "value": "Sprint 52"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 53",
+        "value": "Sprint 53"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 54",
+        "value": "Sprint 54"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 58",
+        "value": "Sprint 58"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 62",
+        "value": "Sprint 62"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 64",
+        "value": "Sprint 64"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 66",
+        "value": "Sprint 66"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 68",
+        "value": "Sprint 68"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 69",
+        "value": "Sprint 69"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 76",
+        "value": "Sprint 76"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 20",
+        "value": "Sprint 20"
+      },
+      {
+        "selected": false,
+        "text": "Sprint 13",
+        "value": "Sprint 13"
+      }
+      ],
+      "query": "label_values(gitlab_issue_total, milestoune)",
+      "refresh": 0,
+      "regex": "",
+      "skipUrlSync": false,
+      "sort": 0,
+      "tagValuesQuery": "",
+      "tags": [],
+      "tagsQuery": "",
+      "type": "query",
+      "useTags": false
+    }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "GitLab KPI",
+  "uid": "Uc0v6MEiz",
+  "version": 16
+}

@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+
+  prometheus:
+    image: prom/prometheus:v2.5.0
+    container_name: prometheus
+    network_mode: host
+    volumes:
+      - ./ops/prometheus/:/etc/prometheus/
+      - /data/gitlab-exporter/prometheus:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - 9090:9090
+    restart: always
+
+  grafana:
+    image: grafana/grafana:5.4.0
+    container_name: grafana
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+    volumes:
+      - ./ops/grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ./ops/grafana/config.monitoring
+    restart: always
