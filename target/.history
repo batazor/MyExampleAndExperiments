@@ -1,7 +1,0 @@
-sbt assembly
-assembly
-sbt assembly
-assembly
-runMain
-assembly
-run
