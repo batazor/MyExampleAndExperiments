@@ -1,0 +1,17 @@
+version: '2'
+services:
+  web:
+    build: batazor/lmap
+    container_name: LMap
+    env_file: .env
+    ports:
+      - "4000:4000"
+    links:
+      - mongodb
+      - redis
+
+  mongodb:
+    image: mongo:3.3
+
+  redis:
+    image: redis

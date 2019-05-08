@@ -1,0 +1,59 @@
+[
+  {
+    "label": "statistic",
+    "href": "/admin/static",
+    "order": "auto",
+    "icon": {
+      "type": "font-awesome",
+      "name": "fa-plas",
+      "customClass": "fa-lg fa-rotate-90"
+    },
+    "children": [
+      {
+        "label": "todo",
+        "href": "/admin/static/todo",
+        "order": 1,
+        "icon": {
+          "type": "link",
+          "url": "https://example.com/icon.png",
+          "customClass": "fa-lg fa-rotate-90"
+        }
+      },
+      {
+        "label": "user",
+        "href": "/admin/static/user",
+        "order": 2,
+        "icon": {
+          "type": "font-awesome",
+          "name": "fa-plas",
+          "customClass": "fa-lg fa-rotate-90"
+        }
+      }
+    ]
+  },
+  {
+    "label": "user",
+    "href": "/admin/user",
+    "order": "auto",
+    "icon": {
+      "type": "font-awesome",
+      "name": "fa-plas",
+      "customClass": "fa-lg fa-rotate-90"
+    },
+    "children": [
+      {
+        "label": "create",
+        "href": "/admin/user/new",
+        "icon": {
+          "type": "font-awesome",
+          "name": "fa-plas",
+          "customClass": "fa-lg fa-rotate-90"
+        }
+      },
+      {
+        "label": "edit",
+        "href": "/admin/user/new/edit"
+      }
+    ]
+  }
+]
