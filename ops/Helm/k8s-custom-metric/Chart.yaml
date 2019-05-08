@@ -1,7 +1,0 @@
-name: k8s-custom-metric
-version: 0.0.1
-description: Custom Metrics for scaling K8S
-maintainers:
-- email: batazor111@gmail.com
-  name: Login Victor
-engine: gotpl
