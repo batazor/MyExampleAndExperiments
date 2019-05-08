@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record model="ir.ui.view" id="workertracking_list_custom_action">
+    <field name="name">crm.lead</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+    <field name="arch" type="xml">
+      <field name='planned_revenue' position='after'>
+        <label for="mrr" class="oe_edit_only"/>
+        <div class="o_row">
+          <field name="mrr" options="{'currency_field': 'company_currency'}"/>
+        </div>
+      </field>
+    </field>
+  </record>
+</odoo>

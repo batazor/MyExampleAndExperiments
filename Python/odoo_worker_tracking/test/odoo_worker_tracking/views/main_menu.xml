@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- top level menu: no parent -->
+  <menuitem
+    id="main_workertracking_menu"
+    name="Workers"
+  />
+
+  <menuitem
+    id="workertracking_menu"
+    name="Menu"
+    parent="main_workertracking_menu"
+  />
+
+  <menuitem
+    id="workertrackings_menu_workers"
+    name="Workers"
+    parent="workertracking_menu"
+    action="workertracking_list_action"
+  />
+</odoo>

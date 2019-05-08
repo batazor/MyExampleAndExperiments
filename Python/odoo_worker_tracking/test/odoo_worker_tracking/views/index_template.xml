@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- window action -->
+  <!--
+      The following tag is an action definition for a "window action",
+      that is an action opening a view or a set of views
+  -->
+  <record model="ir.actions.act_window" id="workertracking_list_action">
+      <field name="name">Workers</field>
+      <field name="res_model">workertracking.list</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="oe_view_nocontent_create">Add your worker ;-)</p>
+      </field>
+  </record>
+
+  <record id="workertracking_form_view" model="ir.ui.view">
+    <field name="name">Workers</field>
+    <field name="model">workertracking.list</field>
+    <field name="arch" type="xml">
+      <form>
+        <group>
+          <field name="name" />
+        </group>
+      </form>
+    </field>
+  </record>
+</odoo>
