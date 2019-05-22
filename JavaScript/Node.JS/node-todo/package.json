@@ -10,7 +10,7 @@
   "dependencies": {
     "body-parser": "~1.19.0",
     "debug": "~2.0.0",
-    "ejs": "~0.8.8",
+    "ejs": "~2.6.1",
     "express": "~4.9.0",
     "method-override": "^2.3.0",
     "mongoose": "^3.8.19",
