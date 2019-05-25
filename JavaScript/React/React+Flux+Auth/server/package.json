@@ -10,7 +10,7 @@
   "author": "Login Viktor <batazor111@gmail.com> (batazor.ru)",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.7.1",
+    "cors": "^2.8.5",
     "express": "^4.13.4",
     "express-jwt": "^3.4.0"
   }
