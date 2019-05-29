@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.12.3",
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.1",
     "jade": "^1.9.2"
   },
   "devDependencies": {
