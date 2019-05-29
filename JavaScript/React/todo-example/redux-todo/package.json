@@ -19,7 +19,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.13.2",
-    "immutable": "^3.7.4",
+    "immutable": "^3.8.2",
     "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-redux": "^0.8.0",
