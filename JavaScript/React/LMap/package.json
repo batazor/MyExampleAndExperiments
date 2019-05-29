@@ -97,7 +97,7 @@
     "express-graphql": "^0.8.0",
     "express-session": "^1.16.1",
     "graphql": "^0.13.2",
-    "immutable": "^3.8.1",
+    "immutable": "^3.8.2",
     "mongoose": "^4.4.19",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
