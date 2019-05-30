@@ -66,7 +66,7 @@
     "graphql": "^0.13.2",
     "isomorphic-fetch": "^2.2.1",
     "jsdom": "^9.12.0",
-    "json-loader": "^0.5.4",
+    "json-loader": "^0.5.7",
     "leaflet": "^0.7.7",
     "mocha": "^2.5.3",
     "node-sass": "^3.7.0",
