@@ -43,7 +43,7 @@
     "isparta-instrumenter-loader": "^1.0.1",
     "karma": "^0.13.9",
     "karma-chai": "^0.1.0",
-    "karma-coverage": "^0.5.3",
+    "karma-coverage": "^0.5.5",
     "karma-mocha": "^0.2.0",
     "karma-mocha-reporter": "^2.0.0",
     "karma-phantomjs-launcher": "^1.0.0",
