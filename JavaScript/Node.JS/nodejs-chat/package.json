@@ -41,7 +41,7 @@
     "gulp-imagemin": "^2.4.0",
     "gulp-livereload": "^3.8.1",
     "gulp-minify-css": "^0.5.1",
-    "gulp-myth": "^1.0.2",
+    "gulp-myth": "^1.1.0",
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^1.3.3",
     "gulp-stylus": "^2.7.0"
