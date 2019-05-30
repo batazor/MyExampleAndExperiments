@@ -52,7 +52,7 @@
     "keymirror": "^0.1.1",
     "minimist": "^1.2.0",
     "mocha": "^2.2.5",
-    "nib": "~1.0.4",
+    "nib": "~1.1.2",
     "null-loader": "^0.1.1",
     "open": "0.0.5",
     "phantomjs-prebuilt": "^2.0.0",
