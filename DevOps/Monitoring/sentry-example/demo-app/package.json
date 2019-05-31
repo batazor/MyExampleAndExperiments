@@ -14,6 +14,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.3",
-    "raven": "^2.1.0"
+    "raven": "^2.6.4"
   }
 }
