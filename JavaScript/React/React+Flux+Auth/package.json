@@ -56,7 +56,7 @@
     "null-loader": "^0.1.1",
     "open": "0.0.5",
     "phantomjs-prebuilt": "^2.1.16",
-    "postcss": "^5.0.11",
+    "postcss": "^5.2.18",
     "postcss-loader": "^0.8.0",
     "react-addons-test-utils": "^15.0.0",
     "react-bootstrap": "^0.32.4",
