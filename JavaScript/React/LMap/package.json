@@ -85,7 +85,7 @@
     "sass-loader": "^3.2.3",
     "style-loader": "^0.23.1",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1",
+    "webpack-dev-server": "^1.16.5",
     "whatwg-fetch": "^1.0.0"
   },
   "dependencies": {
