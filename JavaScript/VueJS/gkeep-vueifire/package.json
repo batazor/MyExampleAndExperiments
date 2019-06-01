@@ -52,7 +52,7 @@
     "lolex": "^1.6.0",
     "mocha": "^2.5.3",
     "chai": "^3.5.0",
-    "sinon": "^1.17.3",
+    "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
     "inject-loader": "^2.0.1",
     "isparta-loader": "^2.0.0",
