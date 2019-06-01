@@ -53,7 +53,7 @@
     "mocha": "^2.5.3",
     "chai": "^3.5.0",
     "sinon": "^1.17.7",
-    "sinon-chai": "^2.8.0",
+    "sinon-chai": "^2.14.0",
     "inject-loader": "^2.0.1",
     "isparta-loader": "^2.0.0",
     "phantomjs-prebuilt": "^2.1.16",
