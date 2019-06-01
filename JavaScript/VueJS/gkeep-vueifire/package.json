@@ -60,7 +60,7 @@
     "chromedriver": "^2.46.0",
     "cross-spawn": "^2.2.3",
     "nightwatch": "^1.1.11",
-    "selenium-server": "2.53.0",
+    "selenium-server": "2.53.1",
     "ora": "^0.4.1",
     "shelljs": "^0.6.0",
     "url-loader": "^0.5.7",
