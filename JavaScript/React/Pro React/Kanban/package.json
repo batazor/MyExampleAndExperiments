@@ -31,6 +31,6 @@
     "babel-polyfill": "^6.26.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
-    "whatwg-fetch": "^1.0.0"
+    "whatwg-fetch": "^1.1.1"
   }
 }
