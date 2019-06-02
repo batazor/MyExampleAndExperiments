@@ -5,7 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "bootstrap": "^3.4.1",
-    "vue": "^0.12.14",
+    "vue": "^0.12.16",
     "vue-resource": "^0.1.15"
   },
   "devDependencies": {},
