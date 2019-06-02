@@ -2,7 +2,7 @@
 # VERSION   0.0.1
 
 # Set the base image to Ubuntu
-FROM        ubuntu:14.04
+FROM ubuntu:14.10
 
 # File Author / Mainteiner
 MAINTAINER  Login Viktor <batazor111@gmail.com>
