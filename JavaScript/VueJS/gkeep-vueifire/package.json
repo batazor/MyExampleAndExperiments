@@ -51,7 +51,7 @@
     "karma-webpack": "^1.8.1",
     "lolex": "^1.6.0",
     "mocha": "^2.5.3",
-    "chai": "^3.5.0",
+    "chai": "^4.2.0",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.14.0",
     "inject-loader": "^2.0.1",
