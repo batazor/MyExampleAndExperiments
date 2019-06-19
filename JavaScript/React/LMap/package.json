@@ -95,7 +95,7 @@
     "dotenv": "^8.0.0",
     "express": "^4.13.4",
     "express-graphql": "^0.8.0",
-    "express-session": "^1.16.1",
+    "express-session": "^1.16.2",
     "graphql": "^0.13.2",
     "immutable": "^3.8.2",
     "mongoose": "^4.13.18",
