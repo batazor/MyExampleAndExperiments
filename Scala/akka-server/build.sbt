@@ -10,6 +10,6 @@ libraryDependencies ++= {
   Seq(
     "com.typesafe.akka" %% "akka-stream" % akkaVersion
     "com.typesafe.akka" %% "akka-actor" % akkaVersion
-    "com.typesafe.akka" %% "akka-http" % "10.1.8"
+    "com.typesafe.akka" %% "akka-http" % "10.1.9"
   )
 }
