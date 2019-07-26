@@ -18,7 +18,7 @@ def akkaManagementVersion(version: String) = version.split('+')(0)
 // libraryDependencies += "com.lightbend.akka.discovery" %% "akka-discovery-dns" % "0.14.0"
 
 val versionAkkaMgnt = "0.20.0"
-val versionAkkaHttp = "10.1.8"
+val versionAkkaHttp = "10.1.9"
 val versionAkka = "2.5.23"
 
 libraryDependencies ++= Seq(
