@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0",
-    "express": "^4.13.2",
+    "express": "^4.17.1",
     "immutable": "^3.8.2",
     "object-assign": "^3.0.0",
     "react": "^0.14.9",
