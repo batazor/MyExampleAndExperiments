@@ -10,3 +10,7 @@
 ./byfn.sh up -o etcdraft
 docker-compose -f docker-compose-cli.yaml -f docker-compose-etcdraft2.yaml up -d
 ```
+
+### Refs
+
+- [Setup SDK](https://github.com/chainHero/heroes-service/blob/master/blockchain/setup.go)
