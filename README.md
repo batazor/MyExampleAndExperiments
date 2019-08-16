@@ -7,8 +7,10 @@
 > https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html
 
 ```
-./byfn.sh up -o etcdraft
-docker-compose -f docker-compose-cli.yaml -f docker-compose-etcdraft2.yaml up -d
+cd first-network
+./byfn.sh up
+
+go build github.com/batazor/hyperledger-fabric/cmd/hyperledger-fabric
 ```
 
 ### Refs
