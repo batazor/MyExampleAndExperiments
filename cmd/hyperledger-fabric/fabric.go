@@ -32,7 +32,7 @@ func (setup FabricSetup) Run() error {
 		return errors.WithMessage(err, "failed to create channel management client from Admin identity")
 	}
 	setup.admin = resMgmtClient
-	fmt.Println("Ressource management client created")
+	fmt.Println("Resource management client created")
 
 	return err
 }

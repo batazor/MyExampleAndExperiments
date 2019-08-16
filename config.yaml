@@ -7,6 +7,7 @@ client:
     timeout:
       peer:
         endorser: '300'
+
 organizations:
   Org1:
     mspid: Org1MSP
@@ -16,26 +17,26 @@ organizations:
     certificateAuthorities:
     - ca.org1.example.com
     # Needed to load users crypto certs for this org
-    # cryptoPath: peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
-    users:
-      Admin:
-        cert:
-          path: ${HOME}/test/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/tls/admin.pem
+    cryptoPath: first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+#    users:
+#      Admin:
+#        cert:
+#          path: first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/tls/admin.pem
       # User1:
       #   cert:
-      #     path: ${HOME}/test/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem
+      #     path: first-network/crypto-config/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem
 
 peers:
   peer0.org1.example.com:
     url: grpcs://localhost:7051
     tlsCACerts:
-      path: ${HOME}/test/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+      path: first-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
     grpcOptions:
       ssl-target-name-override: peer0.org1.example.com
   peer1.org1.example.com:
     url: grpcs://localhost:8051
     tlsCACerts:
-      path: ${HOME}/test/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+      path: first-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
     grpcOptions:
       ssl-target-name-override: peer1.org1.example.com
 
@@ -44,6 +45,6 @@ certificateAuthorities:
     url: https://localhost:7054
     caName: ca-org1
     tlsCACerts:
-      path: ${HOME}/test/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+      path: first-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
     httpOptions:
       verify: false
