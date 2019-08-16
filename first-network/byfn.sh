@@ -89,7 +89,7 @@ function networkUp() {
   fi
 
   # now run the end to end script
-  docker exec cli scripts/script.sh $CHANNEL_NAME $CLI_DELAY $LANGUAGE $CLI_TIMEOUT $VERBOSE $NO_CHAINCODE
+  docker exec cli scripts/script.sh $CHANNEL_NAME $CLI_DELAY $LANGUAGE $CLI_TIMEOUT $VERBOSE
   if [ $? -ne 0 ]; then
     echo "ERROR !!!! Test failed"
     exit 1
@@ -342,44 +342,6 @@ elif [ "$MODE" == "down" ]; then
 else
   exit 1
 fi
-
-while getopts "h?c:t:d:f:s:l:i:o:anv" opt; do
-  case "$opt" in
-  h | \?)
-    exit 0
-    ;;
-  c)
-    CHANNEL_NAME=$OPTARG
-    ;;
-  t)
-    CLI_TIMEOUT=$OPTARG
-    ;;
-  d)
-    CLI_DELAY=$OPTARG
-    ;;
-  f)
-    COMPOSE_FILE=$OPTARG
-    ;;
-  l)
-    LANGUAGE=$OPTARG
-    ;;
-  i)
-    IMAGETAG=$(go env GOARCH)"-"$OPTARG
-    ;;
-  o)
-    CONSENSUS_TYPE=$OPTARG
-    ;;
-  a)
-    CERTIFICATE_AUTHORITIES=true
-    ;;
-  n)
-    NO_CHAINCODE=true
-    ;;
-  v)
-    VERBOSE=true
-    ;;
-  esac
-done
 
 #Create the network using docker compose
 if [ "${MODE}" == "up" ]; then

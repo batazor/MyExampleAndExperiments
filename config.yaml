@@ -41,10 +41,10 @@ organizations:
       #     path: first-network/crypto-config/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem
 
 orderers:
-  example.com:
+  orderer.example.com:
     url: localhost:7050
     tlsCACerts:
-      path: first-network/crypto-config/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
+      path: first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
 peers:
   peer0.org1.example.com:

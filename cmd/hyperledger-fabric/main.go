@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
 func main() {
@@ -12,12 +11,12 @@ func main() {
 
 		// Channel parameters
 		ChannelID:  "mychannel",
-		ChannelConfig: os.Getenv("GOPATH") + "/src/github.com/batazor/hyperledger-fabric/first-network/channel-artifacts/channel.tx",
+		ChannelConfig: "./first-network/channel-artifacts/channel.tx",
 
 		// Chaincode parameters
 		ChainCodeID:     "hello",
-		ChaincodeGoPath: os.Getenv("GOPATH"),
-		ChaincodePath:   "github.com/batazor/hyperledger-fabric/chaincode/",
+		//ChaincodeGoPath: os.Getenv("GOPATH"),
+		ChaincodePath:   "./chaincode/",
 		OrgAdmin:   "Admin",
 		OrgName:    "Org1",
 		ConfigFile: "./config.yaml",
