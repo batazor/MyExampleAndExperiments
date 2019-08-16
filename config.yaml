@@ -9,9 +9,9 @@ client:
     timeout:
       peer:
         endorser: '300'
-    cryptoPath: first-network/crypto-config/peerOrganizations/org1.example.com/users/{userName}@org1.example.com/msp
+#    cryptoPath: first-network/crypto-config/peerOrganizations/org1.example.com/users/{userName}@org1.example.com/msp
 #  cryptoconfig:
-#    path: ${GOPATH}/src/github.com/batazor/hyperledger-fabric/first-network/crypto-config
+#    path: first-network/crypto-config
 
   BCCSP:
     security:
@@ -39,6 +39,12 @@ organizations:
       # User1:
       #   cert:
       #     path: first-network/crypto-config/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem
+
+orderers:
+  example.com:
+    url: localhost:7050
+    tlsCACerts:
+      path: first-network/crypto-config/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
 
 peers:
   peer0.org1.example.com:

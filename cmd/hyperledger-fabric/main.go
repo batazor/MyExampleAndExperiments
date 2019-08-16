@@ -15,12 +15,12 @@ func main() {
 		ChannelConfig: os.Getenv("GOPATH") + "/src/github.com/batazor/hyperledger-fabric/first-network/channel-artifacts/channel.tx",
 
 		// Chaincode parameters
-		ConfigFile: "./config.yaml",
-		ChaincodeGoPath: os.Getenv("GOPATH"),
-		//ChaincodePath:   "github.com/batazor/hyperledger-fabric/chaincode/",
 		ChainCodeID:     "hello",
-		OrgName:    "Org1",
+		ChaincodeGoPath: os.Getenv("GOPATH"),
+		ChaincodePath:   "github.com/batazor/hyperledger-fabric/chaincode/",
 		OrgAdmin:   "Admin",
+		OrgName:    "Org1",
+		ConfigFile: "./config.yaml",
 
 		// User parameters
 		UserName: "User1",
