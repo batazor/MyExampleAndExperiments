@@ -2,19 +2,46 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func main() {
 	fabric := FabricSetup{
+		// Network parameters
+		OrdererID: "localhost:7050",
+
+		// Channel parameters
+		ChannelID:  "mychannel",
+		ChannelConfig: os.Getenv("GOPATH") + "/src/github.com/batazor/hyperledger-fabric/first-network/channel-artifacts/channel.tx",
+
+		// Chaincode parameters
 		ConfigFile: "./config.yaml",
+		ChaincodeGoPath: os.Getenv("GOPATH"),
+		//ChaincodePath:   "github.com/batazor/hyperledger-fabric/chaincode/",
+		ChainCodeID:     "hello",
 		OrgName:    "Org1",
 		OrgAdmin:   "Admin",
+
+		// User parameters
+		UserName: "User1",
 	}
 
-	err := fabric.Run()
+	// Initialization of the Fabric SDK from the previously set properties
+	err := fabric.Initialize()
 	if err != nil {
-		fmt.Println("Error", err)
+		fmt.Printf("Unable to initialize the Fabric SDK: %v\n", err)
+		return
 	}
+
+	//helloValue, err := fabric.QueryHello()
+	//if err != nil {
+	//	fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
+	//}
+	//
+	//fmt.Println("TEST: >>>>>>>>>>>>>", helloValue)
+
+	// Close SDK
+	defer fabric.CloseSDK()
 }
 
 // TODO: Delete code
