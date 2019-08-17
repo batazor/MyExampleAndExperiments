@@ -32,13 +32,6 @@ organizations:
     - ca.org1.example.com
     # Needed to load users crypto certs for this org
     cryptoPath: first-network/crypto-config/peerOrganizations/org1.example.com/users/{userName}@org1.example.com/msp
-#    users:
-#      Admin:
-#        cert:
-#          path: first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/tls/admin.pem
-      # User1:
-      #   cert:
-      #     path: first-network/crypto-config/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem
 
 orderers:
   orderer.example.com:
