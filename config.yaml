@@ -4,7 +4,7 @@ version: 1.0.0
 client:
   organization: Org1
   logging:
-    level: debug
+    level: info
   connection:
     timeout:
       peer:
@@ -13,14 +13,20 @@ client:
 #  cryptoconfig:
 #    path: first-network/crypto-config
 
-  BCCSP:
-    security:
-      enabled: true
-      default:
-        provider: "SW"
-      hashAlgorithm: "SHA2"
-      softVerify: true
-      level: 256
+channels:
+  mychannel:
+    peers:
+      peer0.org1.example.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+      peer1.org1.example.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
 
 organizations:
   Org1:

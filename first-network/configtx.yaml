@@ -84,6 +84,8 @@ Application: &ApplicationDefaults
 Orderer: &OrdererDefaults
     OrdererType: solo
     Addresses:
+        - 0.0.0.0:7050
+        - localhost:7050
         - orderer.example.com:7050
     BatchTimeout: 2s
     BatchSize:
