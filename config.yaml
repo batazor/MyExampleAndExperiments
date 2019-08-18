@@ -38,6 +38,15 @@ organizations:
     - ca.org1.example.com
     # Needed to load users crypto certs for this org
     cryptoPath: first-network/crypto-config/peerOrganizations/org1.example.com/users/{userName}@org1.example.com/msp
+  Org2:
+    mspid: Org2MSP
+    peers:
+    - peer0.org2.example.com
+    - peer1.org2.example.com
+    certificateAuthorities:
+    - ca.org2.example.com
+    # Needed to load users crypto certs for this org
+    cryptoPath: first-network/crypto-config/peerOrganizations/org2.example.com/users/{userName}@org2.example.com/msp
 
 orderers:
   orderer.example.com:

@@ -11,16 +11,16 @@ func main() {
 		OrdererID: "localhost:7050",
 
 		// Channel parameters
-		ChannelID:  "mychannel",
+		ChannelID:     "mychannel",
 		ChannelConfig: "./first-network/channel-artifacts/channel.tx",
 
 		// Chaincode parameters
 		ChainCodeID:     "hello",
 		ChaincodeGoPath: os.Getenv("GOPATH"),
 		ChaincodePath:   "github.com/batazor/hyperledger-fabric/chaincode/hello/go",
-		OrgAdmin:   "Admin",
-		OrgName:    "Org1",
-		ConfigFile: "./config.yaml",
+		OrgAdmin:        "Admin",
+		OrgName:         "Org1",
+		ConfigFile:      "./config.yaml",
 
 		// User parameters
 		UserName: "User1",
@@ -34,18 +34,18 @@ func main() {
 	}
 
 	// Install and instantiate the chaincode
-	err = fabric.InstallAndInstantiateCC()
-	if err != nil {
-		fmt.Printf("Unable to install and instantiate the chaincode: %v\n", err)
-		return
-	}
-
-	//helloValue, err := fabric.QueryHello()
+	//err = fabric.InstallAndInstantiateCC()
 	//if err != nil {
-	//	fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
+	//	fmt.Printf("Unable to install and instantiate the chaincode: %v\n", err)
+	//	return
 	//}
+
+	// helloValue, err := fabric.QueryHello()
+	// if err != nil {
+	// 	fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
+	// }
 	//
-	//fmt.Println("TEST: >>>>>>>>>>>>>", helloValue)
+	// fmt.Println("TEST: >>>>>>>>>>>>>", helloValue)
 
 	// Close SDK
 	defer fabric.CloseSDK()
