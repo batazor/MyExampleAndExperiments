@@ -45,7 +45,7 @@ func main() {
 		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
 	}
 
-	fmt.Println("TEST: >>>>>>>>>>>>>", helloValue)
+	fmt.Println("Hello", helloValue)
 
 	// Close SDK
 	defer fabric.CloseSDK()
