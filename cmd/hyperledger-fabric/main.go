@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	"github.com/batazor/hyperledger-fabric/pkg/blockchain"
 	"os"
 )
 
 func main() {
-	fabric := FabricSetup{
+	fabric := blockchain.FabricSetup{
 		// Network parameters
 		OrdererID: "localhost:7050",
 

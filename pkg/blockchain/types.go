@@ -1,4 +1,4 @@
-package main
+package blockchain
 
 import (
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/channel"
