@@ -34,18 +34,18 @@ func main() {
 	}
 
 	// Install and instantiate the chaincode
-	//err = fabric.InstallAndInstantiateCC()
-	//if err != nil {
-	//	fmt.Printf("Unable to install and instantiate the chaincode: %v\n", err)
-	//	return
-	//}
+	err = fabric.InstallAndInstantiateCC()
+	if err != nil {
+		fmt.Printf("Unable to install and instantiate the chaincode: %v\n", err)
+		return
+	}
 
-	// helloValue, err := fabric.QueryHello()
-	// if err != nil {
-	// 	fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
-	// }
-	//
-	// fmt.Println("TEST: >>>>>>>>>>>>>", helloValue)
+	helloValue, err := fabric.QueryHello()
+	if err != nil {
+		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
+	}
+
+	fmt.Println("TEST: >>>>>>>>>>>>>", helloValue)
 
 	// Close SDK
 	defer fabric.CloseSDK()
