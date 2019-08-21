@@ -16,9 +16,9 @@ func main() {
 		ChannelConfig: "./first-network/channel-artifacts/channel.tx",
 
 		// Chaincode parameters
-		ChainCodeID:     "hello",
+		ChainCodeID:     "chaincode_example02",
 		ChaincodeGoPath: os.Getenv("GOPATH"),
-		ChaincodePath:   "github.com/batazor/hyperledger-fabric/chaincode/hello/go",
+		ChaincodePath:   "github.com/batazor/hyperledger-fabric/chaincode/chaincode_example02/go",
 		OrgAdmin:        "Admin",
 		OrgName:         "Org1",
 		ConfigFile:      "./config.yaml",
@@ -41,12 +41,33 @@ func main() {
 		return
 	}
 
-	helloValue, err := fabric.QueryHello()
+	// Get A
+	result, err := fabric.Query("query", [][]byte{[]byte("a")})
 	if err != nil {
 		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
 	}
+	fmt.Println("Get A:", result)
 
-	fmt.Println("Hello", helloValue)
+	// Invoke
+	result, err = fabric.Query("invoke", [][]byte{[]byte("a"), []byte("b"), []byte("10")})
+	if err != nil {
+		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
+	}
+	fmt.Println("Invoke from A to B (10)")
+
+	// delete
+	result, err = fabric.Query("delete", [][]byte{[]byte("b")})
+	if err != nil || result != "" {
+		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
+	}
+	fmt.Println("Delete b")
+
+	// Get B
+	result, err = fabric.Query("query", [][]byte{[]byte("b")})
+	if err != nil {
+		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
+	}
+	fmt.Println("Get B:", result)
 
 	// Close SDK
 	defer fabric.CloseSDK()

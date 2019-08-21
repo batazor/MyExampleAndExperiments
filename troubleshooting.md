@@ -6,3 +6,16 @@
 3. `config.yaml`  
   3.1. `no channel peers configured for channel [mychannel]` [solve](https://stackoverflow.com/questions/55936208/failed-to-get-discovery-service-could-not-get-chconfig-cache-reference-read-co)
   3.2. next [solve](https://stackoverflow.com/questions/47978986/hyperledger-fabric-peer-connection-error-with-orderer)
+4. How work invoke???
+```
+> docker logs -f 5614cac77e26
+
+ex02 Invoke
+Query Response:{"Name":"a","Amount":"100"}
+ex02 Invoke
+Aval = 90, Bval = 210
+ex02 Invoke
+ex02 Invoke
+Query Response:{"Name":"b","Amount":"200"}
+
+```
