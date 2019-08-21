@@ -2,8 +2,6 @@
 
 ### Run dev-mode
 
-##### 1. Run network
-
 > https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html
 
 ```
@@ -12,6 +10,10 @@ cd first-network
 
 go build github.com/batazor/hyperledger-fabric/cmd/hyperledger-fabric
 ```
+
+### HTTP API
+
+Postman as example: [link](./docs/hyperledger-fabric.postman_collection.json)
 
 ### Refs
 

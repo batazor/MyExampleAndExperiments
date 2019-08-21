@@ -1,8 +1,15 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"github.com/batazor/hyperledger-fabric/pkg/blockchain"
+	"github.com/batazor/hyperledger-fabric/pkg/web"
+	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
+	"github.com/go-chi/cors"
+	"github.com/go-chi/render"
+	"net/http"
 	"os"
 )
 
@@ -41,34 +48,52 @@ func main() {
 		return
 	}
 
-	// Get A
-	result, err := fabric.Query("query", [][]byte{[]byte("a")})
-	if err != nil {
-		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
-	}
-	fmt.Println("Get A:", result)
-
-	// Invoke
-	result, err = fabric.Query("invoke", [][]byte{[]byte("a"), []byte("b"), []byte("10")})
-	if err != nil {
-		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
-	}
-	fmt.Println("Invoke from A to B (10)")
-
-	// delete
-	result, err = fabric.Query("delete", [][]byte{[]byte("b")})
-	if err != nil || result != "" {
-		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
-	}
-	fmt.Println("Delete b")
-
-	// Get B
-	result, err = fabric.Query("query", [][]byte{[]byte("b")})
-	if err != nil {
-		fmt.Printf("Unable to query the blockchain: %s\n", err.Error())
-	}
-	fmt.Println("Get B:", result)
-
 	// Close SDK
 	defer fabric.CloseSDK()
+
+	ctx := context.WithValue(context.Background(), "fabric", fabric)
+
+	// Run HTTP-server
+	PORT := "8080"
+
+	r := chi.NewRouter()
+
+	// CORS
+	cors := cors.New(cors.Options{
+		AllowedOrigins:   []string{"*"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
+		ExposedHeaders:   []string{"Link"},
+		AllowCredentials: true,
+		MaxAge:           300,
+		//Debug:            true,
+	})
+
+	r.Use(cors.Handler)
+	r.Use(render.SetContentType(render.ContentTypeJSON))
+	r.Use(middleware.RequestID)
+	r.Use(middleware.RealIP)
+	r.Use(middleware.Heartbeat("/healthz"))
+	r.Use(middleware.Recoverer)
+	r.NotFound(NotFoundHandler)
+
+	r.Mount("/", web.Routes())
+	fmt.Println("Run on port " + PORT)
+
+	// Add context
+	srv := http.Server{Addr: ":" + PORT, Handler: chi.ServerBaseContext(ctx, r)}
+
+	// start HTTP-server
+	err = srv.ListenAndServe()
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+}
+
+func NotFoundHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusNotFound)
+
+	return
 }
