@@ -58,7 +58,7 @@
     "esdoc": "^1.1.0",
     "esdoc-es7-plugin": "0.0.3",
     "eslint": "^5.16.0",
-    "eslint-loader": "^2.1.2",
+    "eslint-loader": "^2.2.1",
     "eslint-plugin-react": "^7.13.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.11.2",
