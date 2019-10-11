@@ -30,5 +30,4 @@ require (
 	github.com/sykesm/zap-logfmt v0.0.2 // indirect
 	go.uber.org/zap v1.10.0 // indirect
 	golang.org/x/time v0.0.0-20190308202827-9d24e82272b4 // indirect
-	google.golang.org/genproto v0.0.0-20180831171423-11092d34479b // indirect
 )

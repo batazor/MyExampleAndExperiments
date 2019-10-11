@@ -8,6 +8,12 @@
 cd first-network
 ./byfn.sh up
 
+go build github.com/batazor/hyperledger-fabric/chaincode/hello/go
+
+docker exec -it cli bash
+> peer chaincode install -p github.com/chaincode/hello/go -n hello -v 0.1.0
+> exit
+
 go build github.com/batazor/hyperledger-fabric/cmd/hyperledger-fabric
 ```
 
