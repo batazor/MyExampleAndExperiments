@@ -13,7 +13,7 @@
   "author": "Victor Login @batazor",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.15.3",
+    "express": "^4.17.1",
     "raven": "^2.6.4"
   }
 }
