@@ -1,5 +1,9 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "gitSignOff": {
+    "description": "Append git Signed-off-by signature to git commits.",
+    "commitBody": "Signed-off-by: {{{gitAuthor}}}"
+  }
 }
