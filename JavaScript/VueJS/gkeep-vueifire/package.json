@@ -71,6 +71,6 @@
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-merge": "^0.20.0"
+    "webpack-merge": "^4.2.2"
   }
 }
