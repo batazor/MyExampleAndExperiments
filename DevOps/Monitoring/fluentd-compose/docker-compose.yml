@@ -41,7 +41,7 @@ services:
       driver: fluentd
   rabbitmq:
     container_name: rabbitmq
-    image: rabbitmq:3.7.16-management
+    image: rabbitmq:3.8.0-management
     depends_on:
     - fluentd
     ports:
