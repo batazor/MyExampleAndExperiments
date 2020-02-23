@@ -13,6 +13,6 @@
   "dependencies": {
     "formidable": "^1.0.17",
     "jade": "^1.11.0",
-    "mysql": "^2.17.1"
+    "mysql": "^2.18.1"
   }
 }
