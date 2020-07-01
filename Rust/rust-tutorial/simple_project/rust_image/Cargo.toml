@@ -7,5 +7,5 @@ authors = ["Copy Paste <copypaste@gmail.com>"]
 sdl2 = "0.32.2"
 log = "0.4"
 env_logger = "0.7"
-rand = "0.7.2"
+rand = "0.7.3"
 num = "0.3.0"
