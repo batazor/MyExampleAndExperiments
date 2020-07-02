@@ -68,7 +68,7 @@
     "jsdom": "^9.12.0",
     "json-loader": "^0.5.7",
     "leaflet": "^0.7.7",
-    "mocha": "^6.2.2",
+    "mocha": "^6.2.3",
     "node-sass": "^3.13.1",
     "postcss-loader": "^0.13.0",
     "react": "^15.6.2",

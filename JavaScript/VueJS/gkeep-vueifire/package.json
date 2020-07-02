@@ -50,7 +50,7 @@
     "karma-spec-reporter": "0.0.32",
     "karma-webpack": "^1.8.1",
     "lolex": "^4.2.0",
-    "mocha": "^6.2.2",
+    "mocha": "^6.2.3",
     "chai": "^3.5.0",
     "sinon": "^7.5.0",
     "sinon-chai": "^2.14.0",
