@@ -1,4 +1,4 @@
-FROM golang:1.13
+FROM golang:1.14
 WORKDIR /go/src/ritfest-go-step-by-step
 RUN go get -d -v \
     github.com/takama/router \
