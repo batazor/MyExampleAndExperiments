@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:9.6.17-alpine
+    image: postgres:9.6.18-alpine
     restart: unless-stopped
     environment:
       POSTGRES_USER: sentry
