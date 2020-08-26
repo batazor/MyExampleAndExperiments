@@ -1,6 +1,6 @@
 name := "akka-server"
 version := "0.1"
-scalaVersion := "2.12.12"
+scalaVersion := "2.13.3"
 
 scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
