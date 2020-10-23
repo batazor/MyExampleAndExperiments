@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "react": "^15.7.0",
+    "react-dom": "^15.7.0",
     "whatwg-fetch": "^1.1.1"
   }
 }
