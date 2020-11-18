@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "vue": "^2.6.12",
-    "vue-router": "^3.4.7"
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
     "autoprefixer": "^9.5.1",
@@ -72,7 +72,7 @@
     "sinon": "^7.5.0",
     "sinon-chai": "^3.3.0",
     "url-loader": "^1.1.2",
-    "vue-loader": "^15.9.3",
+    "vue-loader": "^15.9.5",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.2",
