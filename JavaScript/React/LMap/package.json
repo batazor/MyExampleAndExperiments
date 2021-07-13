@@ -53,7 +53,7 @@
     "chai": "^3.5.0",
     "chai-immutable": "^1.6.0",
     "classnames": "^2.2.6",
-    "css-loader": "^1.0.1",
+    "css-loader": "^5.2.7",
     "es6-promise": "^3.3.1",
     "esdoc": "^1.1.0",
     "esdoc-es7-plugin": "0.0.3",
