@@ -54,7 +54,7 @@
     "chai-immutable": "^1.6.0",
     "classnames": "^2.2.6",
     "css-loader": "^5.2.7",
-    "es6-promise": "^3.3.1",
+    "es6-promise": "^4.2.8",
     "esdoc": "^1.1.0",
     "esdoc-es7-plugin": "0.0.3",
     "eslint": "^5.16.0",
