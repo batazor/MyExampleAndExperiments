@@ -23,7 +23,7 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "express-session": "^1.17.1",
+    "express-session": "^1.17.2",
     "jade": "^1.11.0",
     "method-override": "^2.3.10",
     "mongoose": "^5.11.19",
