@@ -3,9 +3,9 @@ name := "akka-bootstrap"
 
 version := "0.14.0"
 
-scalaVersion := "2.13.5"
+scalaVersion := "2.13.6"
 
-scalaVersion := "2.13.5"
+scalaVersion := "2.13.6"
 
 def akkaManagementVersion(version: String) = version.split('+')(0)
 
