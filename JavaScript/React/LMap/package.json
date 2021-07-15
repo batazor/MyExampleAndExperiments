@@ -52,7 +52,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^3.5.0",
     "chai-immutable": "^1.6.0",
-    "classnames": "^2.2.6",
+    "classnames": "^2.3.1",
     "css-loader": "^5.2.7",
     "es6-promise": "^3.3.1",
     "esdoc": "^1.1.0",
