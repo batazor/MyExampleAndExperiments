@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: mongo
-  tag: 4.4.2
+  tag: 4.4.6
   pullPolicy: IfNotPresent
 
 ## Duration in seconds the pod needs to terminate gracefully
