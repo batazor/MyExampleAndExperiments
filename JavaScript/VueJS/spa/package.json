@@ -61,7 +61,7 @@
     "karma-webpack": "^3.0.5",
     "lolex": "^4.2.0",
     "mocha": "^6.2.3",
-    "nightwatch": "^1.5.1",
+    "nightwatch": "^1.7.7",
     "opn": "^6.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.8",
     "ora": "^3.4.0",
