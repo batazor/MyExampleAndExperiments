@@ -8,7 +8,7 @@
 	},
 	"dependencies": {
 		"@expo/vector-icons": "^5.2.0",
-		"native-base": "^2.13.15",
+		"native-base": "^2.15.2",
 		"react": "16.14.0",
 		"react-native": "0.63.4",
 		"react-native-material-design": "^0.3.7"
