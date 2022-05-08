@@ -21,7 +21,7 @@
     "gulp-nodemon": "^2.5.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sourcemaps": "^1.12.1",
-    "gulp-stylus": "^2.7.0",
+    "gulp-stylus": "^2.7.1",
     "gulp-uglify": "^1.5.4",
     "require-dir": "^0.3.2"
   }
