@@ -28,7 +28,7 @@
     "method-override": "^2.3.10",
     "mongoose": "^5.13.14",
     "morgan": "^1.10.0",
-    "passport": "^0.4.1",
+    "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "socket.io": "^1.7.4"
   },
