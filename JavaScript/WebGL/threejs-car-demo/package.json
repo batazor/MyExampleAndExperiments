@@ -16,6 +16,6 @@
     "html-webpack-plugin": "^2.30.1",
     "three": "^0.140.2",
     "webpack": "^4.46.0",
-    "webpack-dev-server": "^3.0.0"
+    "webpack-dev-server": "^3.11.3"
   }
 }
