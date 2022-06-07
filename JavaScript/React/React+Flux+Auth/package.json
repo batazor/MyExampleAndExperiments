@@ -64,7 +64,7 @@
     "react-router": "^2.8.1",
     "rimraf": "^2.7.1",
     "style-loader": "^0.23.1",
-    "stylus": "^0.57.0",
+    "stylus": "^0.58.1",
     "stylus-loader": "^0.6.0",
     "superagent": "^3.8.3",
     "url-loader": "^1.1.2",
