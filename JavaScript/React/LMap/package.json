@@ -65,7 +65,7 @@
     "flow-bin": "^0.180.1",
     "graphql": "^0.13.2",
     "isomorphic-fetch": "^3.0.0",
-    "jsdom": "^16.0.0",
+    "jsdom": "^16.7.0",
     "json-loader": "^0.5.7",
     "leaflet": "^0.7.7",
     "mocha": "^6.2.3",
