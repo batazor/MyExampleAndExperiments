@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/batazor/LMap#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
+    "autoprefixer": "^10.4.8",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.5",
