@@ -9,7 +9,7 @@
   "author": "batazor",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "gulp": "^3.9.1",
     "jade": "^1.11.0"
   },
