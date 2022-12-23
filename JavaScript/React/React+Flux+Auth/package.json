@@ -31,7 +31,7 @@
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.0.0",
     "bower-webpack-plugin": "^0.1.9",
-    "chai": "^3.5.0",
+    "chai": "^4.3.7",
     "copyfiles": "^0.2.2",
     "css-loader": "^5.2.7",
     "eslint": "^5.16.0",
