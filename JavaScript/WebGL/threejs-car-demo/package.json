@@ -15,7 +15,7 @@
     "babel-preset-es2015": "^6.24.1",
     "html-webpack-plugin": "^5.0.0",
     "three": "^0.143.0",
-    "webpack": "^4.46.0",
+    "webpack": "^5.0.0",
     "webpack-dev-server": "^3.11.3"
   }
 }
