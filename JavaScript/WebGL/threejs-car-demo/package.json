@@ -3,7 +3,7 @@
   "name": "example",
   "description": "Using Three.js with Webpack 2",
   "engines": {
-    "node": ">=7.0.0"
+    "node": ">=v18.15.0"
   },
   "scripts": {
     "start": "webpack-dev-server --port 8000 --env.debug",
