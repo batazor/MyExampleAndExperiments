@@ -1,0 +1,83 @@
+{
+	"variables": [],
+	"info": {
+		"name": "hyperledger-fabric",
+		"_postman_id": "78aa5c73-4568-b778-546f-b2c6a5231cf5",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "query",
+			"request": {
+				"url": {
+					"raw": "localhost:8080?query=a",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"query": [
+						{
+							"key": "query",
+							"value": "a",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "invoke",
+			"request": {
+				"url": "localhost:8080",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"from\":\"a\",\n  \"to\":\"b\",\n  \"amount\":\"20\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"url": "localhost:8080",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\":\"b\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

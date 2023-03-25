@@ -1,0 +1,16 @@
+{
+<<<<<<< HEAD
+  "extends": ["config:base"],
+  "rangeStrategy": "bump",
+  "baseBranches": ["master"],
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+=======
+  "extends": [
+    "config:base"
+  ],
+>>>>>>> hyperledger-fabric/master
+  "commitBody": "Signed-off-by: {{{gitAuthor}}}"
+}

@@ -1,0 +1,78 @@
+name: hyperledger-fabric
+version: 1.0.0
+
+client:
+  organization: Org1
+  logging:
+    level: info
+  connection:
+    timeout:
+      peer:
+        endorser: '300'
+#    cryptoPath: first-network/crypto-config/peerOrganizations/org1.example.com/users/{userName}@org1.example.com/msp
+#  cryptoconfig:
+#    path: first-network/crypto-config
+
+channels:
+  mychannel:
+    peers:
+      peer0.org1.example.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+      peer1.org1.example.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+organizations:
+  Org1:
+    mspid: Org1MSP
+    peers:
+    - peer0.org1.example.com
+    - peer1.org1.example.com
+    certificateAuthorities:
+    - ca.org1.example.com
+    # Needed to load users crypto certs for this org
+    cryptoPath: first-network/crypto-config/peerOrganizations/org1.example.com/users/{userName}@org1.example.com/msp
+  Org2:
+    mspid: Org2MSP
+    peers:
+    - peer0.org2.example.com
+    - peer1.org2.example.com
+    certificateAuthorities:
+    - ca.org2.example.com
+    # Needed to load users crypto certs for this org
+    cryptoPath: first-network/crypto-config/peerOrganizations/org2.example.com/users/{userName}@org2.example.com/msp
+
+orderers:
+  orderer.example.com:
+    url: localhost:7050
+    tlsCACerts:
+      path: first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+peers:
+  peer0.org1.example.com:
+    url: grpcs://localhost:7051
+    tlsCACerts:
+      path: first-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+    grpcOptions:
+      ssl-target-name-override: peer0.org1.example.com
+  peer1.org1.example.com:
+    url: grpcs://localhost:8051
+    tlsCACerts:
+      path: first-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+    grpcOptions:
+      ssl-target-name-override: peer1.org1.example.com
+
+certificateAuthorities:
+  ca.org1.example.com:
+    url: https://localhost:7054
+    caName: ca-org1
+    tlsCACerts:
+      path: first-network/crypto-config/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
+    httpOptions:
+      verify: false
