@@ -1,4 +1,4 @@
-module github.com/shortlink-org/shortlink/docs/ADR/decisions/proof/ADR-0027
+module github.com/batazor/MyExampleAndExperiments/Go/ent-example
 
 go 1.21.4
 
